@@ -7,55 +7,48 @@ xx<-read.csv("./Data/accessed18Nov2020/BioTIMEQuery02_04_2018.csv") # a datafram
 # read the meta data
 xxm<-read.csv("./Data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") # a dataframe
 
-#===================== generate results folder for freshwater ===============
+#===================== generate results folder for terrestrial ===============
 
-resloc<-"./Results/Freshwater/"
+resloc<-"./Results/Terrestrial/"
 if(!dir.exists(resloc)){
   dir.create(resloc)
 }
 
 #================ choose study sites based on min year sampling threshold ==============
 
-xxm_freshw<-xxm%>%filter(REALM=="Freshwater")
-nrow(xxm_freshw) # 28 freshwater sites 
+xxm_terres<-xxm%>%filter(REALM=="Terrestrial")
+nrow(xxm_terres) # 181 sites 
 
-pdf("./Results/Freshwater/freshwater_sites_datapoints.pdf", height=5, width=8)
-hist(xxm_freshw$DATA_POINTS, breaks=50, xlab="No. of years", main="Freshwater sites", xlim=c(0,40))
+pdf("./Results/Terrestrial/terrestrial_sites_datapoints.pdf", height=5, width=8)
+hist(xxm_terres$DATA_POINTS, breaks=200, xlab="No. of years", main="Terrestrial sites", xlim=c(0,100))
 dev.off()
 
-
 minyr<-30
-xxm_long_freshw<-xxm_freshw%>%filter(DATA_POINTS>=minyr) # 8 sites with minimum 30 years of data
+xxm_long_terres<-xxm_terres%>%filter(DATA_POINTS>=minyr) # 14 observations with min 30 years of data
 
-unique(xxm_long_freshw$CLIMATE)
+unique(xxm_long_terres$CLIMATE)
 
 #=================== create results folder for each study sites ==================
 
-freshw_study_id<-xxm_long_freshw$STUDY_ID
+terres_study_id<-xxm_long_terres$STUDY_ID
 
-resloc<-"./Results/Freshwater/"
-if(!dir.exists(resloc)){
-  dir.create(resloc)
-}
-
-for(i in 1:length(freshw_study_id)){
-  k<-paste(resloc,freshw_study_id[i],sep="")
+for(i in 1:length(terres_study_id)){
+  k<-paste(resloc,terres_study_id[i],sep="")
   if(!dir.exists(k)){
     dir.create(k)
   }
 }
-
 #==================== saving input spmat for each study id ====================
 
-for(i in 1:length(freshw_study_id)){
-  x<-xx%>%filter(STUDY_ID==freshw_study_id[i])
-  xmeta<-xxm%>%filter(STUDY_ID==freshw_study_id[i])
+for(i in 1:length(terres_study_id)){
+  x<-xx%>%filter(STUDY_ID==terres_study_id[i])
+  xmeta<-xxm%>%filter(STUDY_ID==terres_study_id[i])
   input_sp<-get_input_spmat(x=x,xmeta=xmeta)
-  resloc2<-paste(resloc,freshw_study_id[i],sep="")
+  resloc2<-paste(resloc,terres_study_id[i],sep="")
   saveRDS(input_sp,paste(resloc2,"/spmat_and_list.RDS",sep=""))
 }
 
-#================ get a map for selecting freshwater sites ==========================
+#================ get a map for selecting terrestrial sites ==========================
 
 library(maps)
 wd<-map_data("world")
@@ -64,17 +57,16 @@ g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", f
 g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
              panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
              legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-g1<-g1+geom_point(data=xxm_long_freshw,aes(y=CENT_LAT,x=CENT_LONG,col=factor(TAXA)),alpha=0.4)+
-  theme(legend.position = "bottom",legend.title = element_blank())+ggtitle("Freshwater timeseries: min 30 years")
+g1<-g1+geom_point(data=xxm_long_terres,aes(y=CENT_LAT,x=CENT_LONG,col=factor(TAXA)),alpha=0.4)+
+  theme(legend.position = "bottom",legend.title = element_blank())+ggtitle("Terrestrial timeseries: min 30 years")
 g1
-ggsave("./Results/Freshwater/Freshwater_min30yrs.pdf", width = 20, height = 10, units = "cm")
+ggsave("./Results/Terrestrial/Terrestrial_min30yrs.pdf", width = 20, height = 10, units = "cm")
 
 #====================== now do the tail association analysis ===================
-
 #----------- first save the input for tail analysis ---------------
-for(i in 1:length(freshw_study_id)){
-  siteid<-freshw_study_id[i]
-  m<-readRDS(paste("./Results/Freshwater/",siteid,"/spmat_and_list.RDS",sep=""))
+for(i in 1:length(terres_study_id)){
+  siteid<-terres_study_id[i]
+  m<-readRDS(paste("./Results/Terrestrial/",siteid,"/spmat_and_list.RDS",sep=""))
   
   # first we aggregated the rare sp (present even less than 10% of sampled years) into a pseudo sp 
   presentyr<-apply(X=m$spmat,MARGIN=2,FUN=function(x){sum(x>0)})
@@ -105,7 +97,7 @@ for(i in 1:length(freshw_study_id)){
     ms1<-m$splist
     #------- exclude ties having more than 50% of same values ----------
     Ties<-apply(MARGIN=2,X=m1,FUN=function(x){length(x) - length(unique(x))})
-    excludeTies<-which(Ties>=0.5*nrow(m1)) # more than 50% ties are excluded
+    excludeTies<-which(Ties>=0.8*nrow(m1)) # more than 50% ties are excluded
     if(length(excludeTies)!=0){
       m1<-m1[,-excludeTies]
       ms1<-ms1[-excludeTies]
@@ -113,32 +105,31 @@ for(i in 1:length(freshw_study_id)){
     input_tailanal<-list(m_df=m1,mlist=ms1)
   }
   
-  saveRDS(input_tailanal,paste("./Results/Freshwater/",siteid,"/input_tailanal.RDS",sep=""))
+  saveRDS(input_tailanal,paste("./Results/Terrestrial/",siteid,"/input_tailanal.RDS",sep=""))
   
 }
 
 #------------ Now compute and plot the tail stats ---------------------
 source("./NonParamStat.R")
 source("./NonParamStat_matrixplot.R")
-for(i in 1:length(freshw_study_id)){
-  siteid<-freshw_study_id[i]
-  resloc<-paste("./Results/Freshwater/",siteid,"/",sep="")
+for(i in 1:length(terres_study_id)){
+  siteid<-terres_study_id[i]
+  resloc<-paste("./Results/Terrestrial/",siteid,"/",sep="")
   d<-readRDS(paste(resloc,"input_tailanal.RDS",sep=""))
   d_allsp<-d$mlist
   z<-multcall(d_allsp = d_allsp,resloc=resloc,nbin=2,include_indep = T)
   saveRDS(z,paste(resloc,"NonParamStat.RDS",sep=""))
   NonParamStat_matrixplot(data=z,resloc=resloc,tl.cex=1.2,cl.cex=2,line=1)
 }
-
-#--------------- Do a summary stats for freshwater sites ------------------
+#--------------- Do a summary stats for terrestrial sites ------------------
 summary_table<-c()
-for (i in c(1:length(freshw_study_id))){
-  resloc<-paste("./Results/Freshwater/",freshw_study_id[i],"/",sep="")
+for (i in c(1:length(terres_study_id))){
+  resloc<-paste("./Results/Terrestrial/",terres_study_id[i],"/",sep="")
   x<-readRDS(paste(resloc,"summary_df.RDS",sep=""))
   summary_table<-rbind(summary_table,x)
 }
-summary_table<-cbind(siteid=freshw_study_id,summary_table)
-saveRDS(summary_table,"./Results/Freshwater/summary_table.RDS")
+summary_table<-cbind(siteid=terres_study_id,summary_table)
+saveRDS(summary_table,"./Results/Terrestrial/summary_table.RDS")
 
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
@@ -152,16 +143,15 @@ dat<-t(df)
 colnames(dat)<-dat[1,]
 dat<-dat[-1,]
 
-pdf("./Results/Freshwater/summary_plot.pdf",width=15,height=5)
+pdf("./Results/Terrestrial/summary_plot.pdf",width=15,height=5)
 op<-par(mar=c(5,5,5,1))
-x<-barplot(dat,main = "Freshwater dynamics: min 30 yrs",
-        xlab = "Site id",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
-        cex.lab=2,cex.main=2,
-        col = c("yellow","red","blue","green"))
+x<-barplot(dat,main = "Terrestrial dynamics: min 30 yrs",
+           xlab = "Site id",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
+           cex.lab=2,cex.main=2,
+           col = c("yellow","red","blue","green"))
 text(x = x, y = 1, label = summary_table$nsp, pos = 3, cex = 1.5, col = "purple")
 legend("top",horiz=T,bty="n",cex=1.4,
        c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory"),
        fill = c("yellow","red","blue","green"))
 par(op)
 dev.off()
-

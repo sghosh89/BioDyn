@@ -28,8 +28,8 @@ NonParamStat_matrixplot<-function(data,resloc,tl.cex,cl.cex,line){
   ht<-nsp
   
   
-  pdf(paste(resloc,file="Spearman.pdf",sep=''),width=wd, height=ht)
-  
+  #pdf(paste(resloc,file="Spearman.pdf",sep=''),width=wd, height=ht)
+  png(paste(resloc,file="Spearman.png",sep=''), width = 5000,height = 5000,  res = 300)
   mycorrplot(z=tempo,
                posnI_ind=data$posnI,
                posnN_ind=data$posnN,
@@ -50,8 +50,8 @@ NonParamStat_matrixplot<-function(data,resloc,tl.cex,cl.cex,line){
   cr<-max(abs(minval),abs(maxval))
   
   
-  pdf(paste(resloc,file="Kendall.pdf",sep=''),width=wd, height=ht)
-  
+  #pdf(paste(resloc,file="Kendall.pdf",sep=''),width=wd, height=ht)
+  png(paste(resloc,file="Kendall.png",sep=''), width = 5000,height = 5000,  res = 300)
   mycorrplot(z=tempo,
              posnI_ind=data$posnI,
              posnN_ind=data$posnN,
@@ -74,8 +74,8 @@ NonParamStat_matrixplot<-function(data,resloc,tl.cex,cl.cex,line){
   
   cr<-max(abs(minval),abs(maxval))
   
-  pdf(paste(resloc,file="Corl.pdf",sep=''),width=wd, height=ht)
-  
+  #pdf(paste(resloc,file="Corl.pdf",sep=''),width=wd, height=ht)
+  png(paste(resloc,file="Corl.png",sep=''), width = 5000,height = 5000,  res = 300)
   mycorrplot(z=tempo,
              posnI_ind=data$posnI,
              posnN_ind=data$posnN,
@@ -96,8 +96,8 @@ NonParamStat_matrixplot<-function(data,resloc,tl.cex,cl.cex,line){
   
   cr<-max(abs(minval),abs(maxval))
   
-  pdf(paste(resloc,file="Coru.pdf",sep=''),width=wd, height=ht)
-  
+  #pdf(paste(resloc,file="Coru.pdf",sep=''),width=wd, height=ht)
+  png(paste(resloc,file="Coru.png",sep=''), width = 5000,height = 5000,  res = 300)
   mycorrplot(z=tempo,
              posnI_ind=data$posnI,
              posnN_ind=data$posnN,
