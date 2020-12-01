@@ -19,12 +19,13 @@ if(!dir.exists(resloc)){
 xxm_freshw<-xxm%>%filter(REALM=="Freshwater")
 nrow(xxm_freshw) # 28 freshwater sites 
 
+minyr<-20
+
 pdf("./Results/Freshwater/freshwater_sites_datapoints.pdf", height=5, width=8)
 hist(xxm_freshw$DATA_POINTS, breaks=50, xlab="No. of years", main="Freshwater sites", xlim=c(0,40))
+abline(v=minyr,col="red")
 dev.off()
 
-
-minyr<-30
 xxm_long_freshw<-xxm_freshw%>%filter(DATA_POINTS>=minyr) # 8 sites with minimum 30 years of data
 
 unique(xxm_long_freshw$CLIMATE)
@@ -67,7 +68,8 @@ g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
 g1<-g1+geom_point(data=xxm_long_freshw,aes(y=CENT_LAT,x=CENT_LONG,col=factor(TAXA)),alpha=0.4)+
   theme(legend.position = "bottom",legend.title = element_blank())+ggtitle("Freshwater timeseries: min 30 years")
 g1
-ggsave("./Results/Freshwater/Freshwater_min30yrs.pdf", width = 20, height = 10, units = "cm")
+ggsave(paste("./Results/Freshwater/Freshwater_min",minyr,"yrs.pdf",sep =""),
+       width = 20, height = 10, units = "cm")
 
 #====================== now do the tail association analysis ===================
 
@@ -154,7 +156,7 @@ dat<-dat[-1,]
 
 pdf("./Results/Freshwater/summary_plot.pdf",width=15,height=5)
 op<-par(mar=c(5,5,5,1))
-x<-barplot(dat,main = "Freshwater dynamics: min 30 yrs",
+x<-barplot(dat,main = paste("Freshwater dynamics: min ",minyr," yrs",sep=""),
         xlab = "Site id",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
         cex.lab=2,cex.main=2,
         col = c("yellow","red","blue","green"))

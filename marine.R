@@ -1,56 +1,65 @@
+rm(list=ls())
+graphics.off()
 source("./get_input_spmat.R")
 library(tidyverse)
 #================================== read the raw data ================================
-
+ 
 xx<-read.csv("./Data/accessed18Nov2020/BioTIMEQuery02_04_2018.csv") # a dataframe
 
 # read the meta data
 xxm<-read.csv("./Data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") # a dataframe
 
-#===================== generate results folder for terrestrial ===============
+# read the citation data
+#xc<-read.csv("./Data/accessed18Nov2020/BioTIMECitations_02_04_2018.csv")
 
-resloc<-"./Results/Terrestrial/"
+#===================== generate results folder for marine ===============
+
+resloc<-"./Results/Marine/"
 if(!dir.exists(resloc)){
   dir.create(resloc)
 }
 
 #================ choose study sites based on min year sampling threshold ==============
 
-xxm_terres<-xxm%>%filter(REALM=="Terrestrial")
-nrow(xxm_terres) # 181 sites 
+xxm_marine<-xxm%>%filter(REALM=="Marine")
+nrow(xxm_marine) # 152 sites 
 
 minyr<-20
 
-pdf("./Results/Terrestrial/terrestrial_sites_datapoints.pdf", height=5, width=8)
-hist(xxm_terres$DATA_POINTS, breaks=200, xlab="No. of years", main="Terrestrial sites", xlim=c(0,100))
+pdf("./Results/Marine/marine_sites_datapoints.pdf", height=5, width=8)
+hist(xxm_marine$DATA_POINTS, breaks=50, xlab="No. of years", main="Marine sites", xlim=c(0,100))
 abline(v=minyr,col="red")
 dev.off()
 
-xxm_long_terres<-xxm_terres%>%filter(DATA_POINTS>=minyr) # 14 observations with min 30 years of data
+xxm_long_marine<-xxm_marine%>%filter(DATA_POINTS>=minyr) # 16 sites with min. 30 years of data
 
-unique(xxm_long_terres$CLIMATE)
+unique(xxm_long_marine$CLIMATE)
+
+# But presence/ absence as abundance type is of no use in our case, so we exclude those sites
+id_pa<-which(xxm_long_marine$ABUNDANCE_TYPE == "Presence/Absence")
+xxm_long_marine<-xxm_long_marine[-id_pa,] # 12 sites
 
 #=================== create results folder for each study sites ==================
 
-terres_study_id<-xxm_long_terres$STUDY_ID
+marine_study_id<-xxm_long_marine$STUDY_ID
 
-for(i in 1:length(terres_study_id)){
-  k<-paste(resloc,terres_study_id[i],sep="")
+for(i in 1:length(marine_study_id)){
+  k<-paste(resloc,marine_study_id[i],sep="")
   if(!dir.exists(k)){
     dir.create(k)
   }
 }
 #==================== saving input spmat for each study id ====================
 
-for(i in 1:length(terres_study_id)){
-  x<-xx%>%filter(STUDY_ID==terres_study_id[i])
-  xmeta<-xxm%>%filter(STUDY_ID==terres_study_id[i])
+for(i in 1:length(marine_study_id)){
+  x<-xx%>%filter(STUDY_ID==marine_study_id[i])
+  xmeta<-xxm%>%filter(STUDY_ID==marine_study_id[i])
   input_sp<-get_input_spmat(x=x,xmeta=xmeta)
-  resloc2<-paste(resloc,terres_study_id[i],sep="")
+  resloc2<-paste(resloc,marine_study_id[i],sep="")
   saveRDS(input_sp,paste(resloc2,"/spmat_and_list.RDS",sep=""))
 }
 
-#================ get a map for selecting terrestrial sites ==========================
+#================ get a map for selecting freshwater sites ==========================
 
 library(maps)
 wd<-map_data("world")
@@ -59,18 +68,18 @@ g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", f
 g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
              panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
              legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-g1<-g1+geom_point(data=xxm_long_terres,aes(y=CENT_LAT,x=CENT_LONG,col=factor(TAXA)),alpha=0.4)+
-  theme(legend.position = "bottom",legend.title = element_blank())+ggtitle("Terrestrial timeseries: min 30 years")
+g1<-g1+geom_point(data=xxm_long_marine,aes(y=CENT_LAT,x=CENT_LONG,col=factor(TAXA)),alpha=0.4)+
+  theme(legend.position = "bottom",legend.title = element_blank())+ggtitle("Marine timeseries: min 30 years")
 g1
-ggsave(paste("./Results/Terrestrial/Terrestrial_min",minyr,"yrs.pdf",sep =""),
+ggsave(paste("./Results/Marine/Marine_min",minyr,"yrs.pdf",sep =""),
        width = 20, height = 10, units = "cm")
 
 #====================== now do the tail association analysis ===================
+
 #----------- first save the input for tail analysis ---------------
-for(i in 1:length(terres_study_id)){
-  #cat("i=",i,"\n")
-  siteid<-terres_study_id[i]
-  m<-readRDS(paste("./Results/Terrestrial/",siteid,"/spmat_and_list.RDS",sep=""))
+for(i in 1:length(marine_study_id)){
+  siteid<-marine_study_id[i]
+  m<-readRDS(paste("./Results/Marine/",siteid,"/spmat_and_list.RDS",sep=""))
   
   # first we aggregated the rare sp (present even less than 10% of sampled years) into a pseudo sp 
   presentyr<-apply(X=m$spmat,MARGIN=2,FUN=function(x){sum(x>0)})
@@ -79,7 +88,6 @@ for(i in 1:length(terres_study_id)){
   
   if(length(rareid)!=0){
     raresp<-m$spmat[,rareid]
-    raresp<-as.matrix(raresp)
     raresp<-apply(X=raresp,MARGIN=1,FUN=sum)
     m1<-m$spmat[,-rareid]
     m1<-cbind(m1,pseudosp=raresp)
@@ -110,31 +118,37 @@ for(i in 1:length(terres_study_id)){
     input_tailanal<-list(m_df=m1,mlist=ms1)
   }
   
-  saveRDS(input_tailanal,paste("./Results/Terrestrial/",siteid,"/input_tailanal.RDS",sep=""))
+  saveRDS(input_tailanal,paste("./Results/Marine/",siteid,"/input_tailanal.RDS",sep=""))
   
 }
 
 #------------ Now compute and plot the tail stats ---------------------
 source("./NonParamStat.R")
 source("./NonParamStat_matrixplot.R")
-for(i in 1:length(terres_study_id)){
-  siteid<-terres_study_id[i]
-  resloc<-paste("./Results/Terrestrial/",siteid,"/",sep="")
+for(i in 1:length(marine_study_id)){
+  siteid<-marine_study_id[i]
+  resloc<-paste("./Results/Marine/",siteid,"/",sep="")
   d<-readRDS(paste(resloc,"input_tailanal.RDS",sep=""))
   d_allsp<-d$mlist
   z<-multcall(d_allsp = d_allsp,resloc=resloc,nbin=2,include_indep = T)
   saveRDS(z,paste(resloc,"NonParamStat.RDS",sep=""))
   NonParamStat_matrixplot(data=z,resloc=resloc,tl.cex=1.2,cl.cex=2,line=1)
 }
-#--------------- Do a summary stats for terrestrial sites ------------------
+
+
+
+
+###############################
+#Ties<-apply(MARGIN=2,X=m1,FUN=function(x){table(x)[table(x) >1]})
+
 summary_table<-c()
-for (i in c(1:length(terres_study_id))){
-  resloc<-paste("./Results/Terrestrial/",terres_study_id[i],"/",sep="")
+for (i in c(1:length(marine_study_id))){
+  resloc<-paste("./Results/Marine/",marine_study_id[i],"/",sep="")
   x<-readRDS(paste(resloc,"summary_df.RDS",sep=""))
   summary_table<-rbind(summary_table,x)
 }
-summary_table<-cbind(siteid=terres_study_id,summary_table)
-saveRDS(summary_table,"./Results/Terrestrial/summary_table.RDS")
+summary_table<-cbind(siteid=marine_study_id,summary_table)
+saveRDS(summary_table,"./Results/Marine/summary_table.RDS")
 
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
@@ -148,9 +162,9 @@ dat<-t(df)
 colnames(dat)<-dat[1,]
 dat<-dat[-1,]
 
-pdf("./Results/Terrestrial/summary_plot.pdf",width=18,height=5)
+pdf("./Results/Marine/summary_plot.pdf",width=15,height=5)
 op<-par(mar=c(5,5,5,1))
-x<-barplot(dat,main =paste("Terrestrial dynamics: min ",minyr," yrs",sep=""),
+x<-barplot(dat,main = paste("Marine dynamics: min ",minyr," yrs",sep=""),
            xlab = "Site id",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
            cex.lab=2,cex.main=2,
            col = c("yellow","red","blue","green"))
@@ -160,3 +174,4 @@ legend("top",horiz=T,bty="n",cex=1.4,
        fill = c("yellow","red","blue","green"))
 par(op)
 dev.off()
+
