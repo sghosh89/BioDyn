@@ -144,15 +144,17 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nneg=nneg/nint)
 
 df<-summary_table%>%select(siteid,f_nind,f_nL,f_nU,f_nneg)
+df$Taxa<-xxm_long_terres$TAXA
+df <-df[order(df$Taxa),]
 dat<-t(df)
 colnames(dat)<-dat[1,]
 dat<-dat[-1,]
 
-pdf("./Results/Terrestrial/summary_plot.pdf",width=18,height=5)
-op<-par(mar=c(5,5,5,1))
-x<-barplot(dat,main =paste("Terrestrial dynamics: min ",minyr," yrs",sep=""),
-           xlab = "Site id",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
-           cex.lab=2,cex.main=2,
+pdf("./Results/Terrestrial/summary_plot.pdf",width=18,height=10)
+op<-par(mar=c(10,5,5,1))
+x<-barplot(dat[1:4,],main =paste("Terrestrial dynamics: min ",minyr," yrs",sep=""),
+           xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
+           cex.lab=2,cex.main=2,names.arg = dat[5,],las=2,
            col = c("yellow","red","blue","green"))
 text(x = x, y = 1, label = summary_table$nsp, pos = 3, cex = 1.5, col = "purple")
 legend("top",horiz=T,bty="n",cex=1.4,
