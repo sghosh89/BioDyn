@@ -3,12 +3,13 @@
 #     z : a matrix
 #     posnI_ind : a matrix containing the row and col indices of z for which z indicates indep values
 #     posnN_ind : a matrix containing the row and col indices of z for which z indicates sig. neg cor values
+#     posn_notneeded: a matrix of cell indices to not show in the plot
 #     colrange : a vector containing min and max value of the color range
 #     tl.cex,cl.cex,line : numeric values for size of text in the labels and colorbar
 
 library(corrplot)
 
-mycorrplot<-function(z,posnI_ind,posnN_ind,colrange,tl.cex,cl.cex){
+mycorrplot<-function(z,posnI_ind,posnN_ind,posn_notneeded,colrange,tl.cex,cl.cex){
   
   col1 <- colorRampPalette(c("blue","white","red")) 
   
@@ -53,6 +54,14 @@ mycorrplot<-function(z,posnI_ind,posnN_ind,colrange,tl.cex,cl.cex){
     #         bg = "transparent", tl.col = "transparent",p.mat = N,sig.level = -2,col="transparent",
     #         pch=20,pch.col="green",pch.cex = 5,number.cex = 2)
     
+  }
+  
+  # cells with -1 not needed to show
+  if(dim(posn_notneeded)[1]!=0){
+    znn<-matrix(NA,nrow(z),ncol(z))
+    znn[posn_notneeded]<- -1
+    corrplot(znn, cl.pos = "n", na.label = " ", add = T,addgrid.col = "black",type="lower",
+             bg = "transparent", tl.col = "transparent",col="black",method="color")
   }
   
 }

@@ -113,6 +113,8 @@ multcall<-function(d_allsp,resloc,nbin,include_indep){
   
   corval<-spear
   pval_BiCopIndep<-spear
+  posnI<-spear
+  posnN<-spear
   
   #------------------- PLOT :  copula_for_all_sp pair ----------------
   pdf(paste(resloc,"AllCops_nbin_",nbin,".pdf",sep=""),width=6*lensp, height=6*lensp)
@@ -152,12 +154,25 @@ multcall<-function(d_allsp,resloc,nbin,include_indep){
   
   if(include_indep==T){
     level<-0.05
-    posnI<-which(pval_BiCopIndep>=level, arr.ind = T) #indices of indep. pair
-    posnN<-which(pval_BiCopIndep<level & corval <0, arr.ind = T) #indices of significantly neg. correlated pair
+    posnIind<-which(pval_BiCopIndep>=level, arr.ind = T) #indices of indep. pair
+    posnNind<-which(pval_BiCopIndep<level & corval <0, arr.ind = T) #indices of significantly neg. correlated pair
   }else{
-    posnI<-NA
-    posnN<- which(corval <0, arr.ind = T)
+    posnIind<-NA
+    posnNind<- which(corval <0, arr.ind = T)
   }
+  
+  posnI[posnIind]<-1
+  posnN[posnNind]<-1
+  
+  #-------- saving only lower triangular part of the result matrix ------
+  spear[upper.tri(spear,diag=T)]<-NA
+  kend[upper.tri(kend,diag=T)]<-NA
+  Corl[upper.tri(Corl,diag=T)]<-NA
+  Coru[upper.tri(Coru,diag=T)]<-NA
+  corval[upper.tri(corval,diag=T)]<-NA
+  posnI[upper.tri(posnI,diag=T)]<-NA
+  posnN[upper.tri(posnN,diag=T)]<-NA
+  #---------------------------------------------
   
   #if(npa_stats=="cor"){
   res<-list(spear=spear,kend=kend,
