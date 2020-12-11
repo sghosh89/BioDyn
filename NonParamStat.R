@@ -66,7 +66,6 @@ copsync<-function(m,nbin){
 #               be all the same for ds1 and ds2.
 # pfname   :    Filename (without extension) prepended to plot files saved.
 # nbin : number of bins used to compute npa stats
-# include_indep : logical (T/ F), whether to carry out independence test or not
 
 #----------Output - A list of length 1 with these elements-----------------
 
@@ -86,7 +85,7 @@ copsync<-function(m,nbin){
 #                 correlation values, whether significant or not. And also the true correlation. (same as 'corval' output 
 #                                 from vivj_matrix.R)
 
-multcall<-function(d_allsp,resloc,nbin,include_indep){
+multcall<-function(d_allsp,resloc,nbin){
   
   lensp<-length(d_allsp)
   
@@ -125,14 +124,13 @@ multcall<-function(d_allsp,resloc,nbin,include_indep){
       
       #if(i!=j){
       ms<-vivj_matrix(d_allsp=d_allsp,i=i,j=j,level=0.05,
-                      ploton=T,onbounds=F,lb=NA,ub=NA,
-                      include_indep=include_indep)
+                      ploton=T,onbounds=F,lb=NA,ub=NA)
       m<-ms$mat
       
       corval[i,j]<-ms$corval
       pval_BiCopIndep[i,j]<-ms$IndepTestRes
       
-      thisres<-copsync(m,nbin=nbin)
+      thisres<-copsync(m=m,nbin=nbin)
       
       spear[i,j]<-thisres$spear
       kend[i,j]<-thisres$kend
@@ -152,14 +150,11 @@ multcall<-function(d_allsp,resloc,nbin,include_indep){
   
   #-------------------------------------------------------------------------
   
-  if(include_indep==T){
-    level<-0.05
-    posnIind<-which(pval_BiCopIndep>=level, arr.ind = T) #indices of indep. pair
-    posnNind<-which(pval_BiCopIndep<level & corval <0, arr.ind = T) #indices of significantly neg. correlated pair
-  }else{
-    posnIind<-NA
-    posnNind<- which(corval <0, arr.ind = T)
-  }
+  
+   level<-0.05
+   posnIind<-which(pval_BiCopIndep>=level, arr.ind = T) #indices of indep. pair
+   posnNind<-which(pval_BiCopIndep<level & corval <0, arr.ind = T) #indices of significantly neg. correlated pair
+ 
   
   posnI[posnIind]<-1
   posnN[posnNind]<-1

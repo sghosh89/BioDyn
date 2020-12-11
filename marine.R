@@ -89,13 +89,14 @@ for(i in 1:length(marine_study_id)){
   
   if(length(rareid)!=0){
     raresp<-m$spmat[,rareid]
+    raresp<-as.matrix(raresp) # this line is for when you have only one rare sp
     raresp<-apply(X=raresp,MARGIN=1,FUN=sum)
     m1<-m$spmat[,-rareid]
     tot_target_sp<-ncol(m1)
-    m1<-cbind(m1,pseudosp=raresp)
+    m1<-cbind(m1,raresp=raresp)
     m1<-as.data.frame(m1)
     ms1<-m$splist[-rareid]
-    ms1$pseudosp<-data.frame(YEAR=ms1[[1]]$YEAR,mean_estimate=m1$pseudosp)
+    ms1$raresp<-data.frame(YEAR=ms1[[1]]$YEAR,mean_estimate=m1$raresp)
     
     #------- exclude ties having more than 80% of same values ----------
     #Ties<-apply(MARGIN=2,X=m1,FUN=function(x){length(x) - length(unique(x))})
@@ -105,7 +106,7 @@ for(i in 1:length(marine_study_id)){
     #  ms1<-ms1[-excludeTies]
     #}
     #--------------------------------------------------
-    input_tailanal<-list(m_df=m1,mlist=ms1)
+    input_tailanal<-list(m_df=m1,mlist=ms1,tot_target_sp=tot_target_sp)
     
   }else{
     m1<-m$spmat
@@ -118,7 +119,7 @@ for(i in 1:length(marine_study_id)){
     #  m1<-m1[,-excludeTies]
     #  ms1<-ms1[-excludeTies]
     #}
-    input_tailanal<-list(m_df=m1,mlist=ms1)
+    input_tailanal<-list(m_df=m1,mlist=ms1,tot_target_sp=tot_target_sp)
   }
   
   saveRDS(input_tailanal,paste("./Results/Marine/",siteid,"/input_tailanal.RDS",sep=""))
@@ -139,11 +140,11 @@ for(i in 1:length(marine_study_id)){
   
   #------ analysis with species only ---------
   d_allsp<-d$mlist
-  z<-multcall(d_allsp = d_allsp,resloc=resloc,nbin=2,include_indep = T)
+  z<-multcall(d_allsp = d_allsp,resloc=resloc,nbin=2)
   
   #----------- analysis with covary sp ----------------
   df<-d$m_df # dataframe with species timeseries along column
-  zcov<-copula_covary(df = df,include_indep = T,nbin = 2)
+  zcov<-copula_covary(df = df, resloc=resloc,nbin = 2)
   
   #----- now combine the results ------------
   
@@ -211,9 +212,6 @@ for(i in 1:length(marine_study_id)){
                           tl.cex=1.2,cl.cex=2,line=1)
 }
 
-
-
-
 ###############################
 #Ties<-apply(MARGIN=2,X=m1,FUN=function(x){table(x)[table(x) >1]})
 
@@ -233,20 +231,22 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nU=nU/nint,
                                       f_nneg=nneg/nint)
 
-df<-summary_table%>%select(siteid,f_nind,f_nL,f_nU,f_nneg)
+df<-summary_table%>%select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
 df$Taxa<-xxm_long_marine$TAXA
 df <-df[order(df$Taxa),]
 dat<-t(df)
 colnames(dat)<-dat[1,]
 dat<-dat[-1,]
+nsp<-dat[1,]
+dat<-dat[-1,]
 
 pdf("./Results/Marine/summary_plot.pdf",width=25,height=10)
 op<-par(mar=c(10,5,5,1))
-x<-barplot(dat,main = paste("Marine dynamics: min ",minyr," yrs",sep=""),
+x<-barplot(dat[,],main = paste("Marine dynamics: min ",minyr," yrs",sep=""),
            xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
            cex.lab=2,cex.main=2,names.arg = dat[5,],las=2,
            col = c("yellow","red","blue","green"))
-text(x = x, y = 1, label = paste(colnames(dat),"(",summary_table$nsp,")",sep=""), pos = 3, cex = 1, col = "purple")
+text(x = x, y = 1, label = paste(colnames(dat),"(",nsp,")",sep=""), pos = 3, cex = 1, col = "purple")
 #text(x = x, y = 1, label = colnames(dat), pos = 1, cex = 1.5, col = "purple")
 legend("top",horiz=T,bty="n",cex=1.2,
        c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory","site(species)"),

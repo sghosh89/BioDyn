@@ -10,7 +10,6 @@
 #            then the arguments lb and ub must be numeric
 # lb : numeric value between [0,1] for lower bound (default =NA)
 # ub : numeric value between [0,1] for upper bound (default =NA), ub should be greater than lb 
-# include_indep: logical (whether to keep track for indep. test or not)
 
 # Output :
 # A list of 4 elements:
@@ -22,7 +21,7 @@
 # and an optional plot of the copula
 
 library(VineCopula)
-vivj_matrix<-function(d_allsp,i,j,level=0.05,ploton,onbounds=F,lb=NA,ub=NA,include_indep){
+vivj_matrix<-function(d_allsp,i,j,level=0.05,ploton,onbounds=F,lb=NA,ub=NA){
   
   ds1<-d_allsp[[i]]
   ds2<-d_allsp[[j]]
@@ -72,8 +71,10 @@ vivj_matrix<-function(d_allsp,i,j,level=0.05,ploton,onbounds=F,lb=NA,ub=NA,inclu
   pval<-ct$p.value
   
   if(ploton==T){
-    if(include_indep==T){
+
       if(IndepTestRes<level && corval>0){ # for significant positive correlation
+        
+        
         plot(vi,vj,type='p',col=rgb(0,0,0,0.3),pch=19,xlim=c(0,1),ylim=c(0,1),
              xlab=names(d_allsp)[i],ylab=names(d_allsp)[j],cex.lab=1.5)
         
@@ -123,61 +124,11 @@ vivj_matrix<-function(d_allsp,i,j,level=0.05,ploton,onbounds=F,lb=NA,ub=NA,inclu
       }
       mtext(paste0("(sp_x, sp_y) = (",i," , ",j,")"),
             side = 3, line=0.15, adj=0.5, col="black")
-      
-      if(IndepTestRes<level && corval<0){
-        vj<-VineCopula::pobs(-(d2$Dat))
-      }
-      
-    }else{ # when we consider all cells however week their correlations were.
-      if(corval>0){ # for all +ve correlations
-        plot(vi,vj,type='p',col=rgb(0,0,0,0.3),pch=19,xlim=c(0,1),ylim=c(0,1),
-             xlab=names(d_allsp)[i],ylab=names(d_allsp)[j],cex.lab=1.5)
-        
-        
-        if(j>i){
-          if(onbounds==T & identical(vi,vj)==F){
-            ind_lb<-which(vi+vj==(2*lb))
-            ind_ub<-which(vi+vj==(2*ub))
-            onlb<-length(ind_lb)
-            onub<-length(ind_ub)
-            
-            if(onlb!=0 | onub!=0){
-              mtext(paste0("onbs = (",onlb," , ",onub,")"),
-                    side = 4, line=0.15, adj=0.5, col="red") 
-            }
-          }
-        }
-      }else{ # for all -ve correlations
-        plot(vi,vj,type='p',col=rgb(0,1,0,0.3),pch=19,xlim=c(0,1),ylim=c(0,1),
-             xlab=names(d_allsp)[i],ylab=names(d_allsp)[j],cex.lab=1.5)
-        
-        if(j>i){
-          if(onbounds==T & identical(vi,vj)==F){
-            vneg<-VineCopula::pobs(-(d2$Dat)) # see when we count points on bounds we took reverse of second variable
-            ind_lb<-which(vi+vneg==(2*lb))
-            ind_ub<-which(vi+vneg==(2*ub))
-            
-            #vneg<-VineCopula::pobs(-(d1$Dat)) # NOTE : onbs will not be same if we consider first variable to be reversed
-            #ind_lb<-which(vj+vneg==(2*lb))
-            #ind_ub<-which(vj+vneg==(2*ub))
-            
-            onlb<-length(ind_lb)
-            onub<-length(ind_ub)
-            
-            if(onlb!=0 | onub!=0){ 
-              mtext(paste0("onbs = (",onlb," , ",onub,")"),
-                    side = 4, line=0.15, adj=0.5, col="red") 
-            }
-          }
-        }
-      }
-      
-      if(corval<0){ #reverse the variable
-        vj<-VineCopula::pobs(-(d2$Dat))
-      }
-      
-    }
-    
+  
+  }
+  
+  if(IndepTestRes<level && corval<0){
+    vj<-VineCopula::pobs(-(d2$Dat))
   }
   
   Years<-d1$Year
