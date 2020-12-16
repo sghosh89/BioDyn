@@ -144,7 +144,7 @@ for(i in 1:length(freshw_study_id)){
   z<-multcall(d_allsp = d_allsp,resloc=resloc,nbin=2)
   
   #----------- analysis with covary sp ----------------
-  df<-d$m_df[,-1] # dataframe with species timeseries along column, 1st column delete as for YEAR
+  df<-d$m_df # dataframe with species timeseries along column
   zcov<-copula_covary(df = df, resloc=resloc,nbin = 2)
   
   #----- now combine the results ------------
