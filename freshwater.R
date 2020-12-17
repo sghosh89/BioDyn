@@ -218,6 +218,11 @@ for(i in 1:length(freshw_study_id)){
 
 meta_freshw<-xxm%>%filter(STUDY_ID%in%freshw_study_id)
 
+pdf("./Results/Freshwater/histogram_site_area.pdf",width=5,height=3)
+hist(meta_freshw$AREA_SQ_KM,20,xlab="Area(Sq. Km.)",ylab="No. of freshwater sites", 
+     main=paste(nrow(meta_freshw)," sites",sep=""))
+dev.off()
+
 library(maps)
 wd<-map_data("world")
 g1<-ggplot()+coord_fixed()+xlab("")+ylab("")

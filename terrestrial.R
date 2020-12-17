@@ -218,6 +218,11 @@ for(i in 1:length(terres_study_id)){
 
 meta_terres<-xxm%>%filter(STUDY_ID%in%terres_study_id)
 
+pdf("./Results/Terrestrial/histogram_site_area.pdf",width=5,height=3)
+hist(meta_terres$AREA_SQ_KM,breaks=100,xlab="Area(Sq. Km.)",ylab="No. of terrestrial sites", 
+     main=paste(nrow(meta_terres)," sites",sep=""))
+dev.off()
+
 library(maps)
 wd<-map_data("world")
 g1<-ggplot()+coord_fixed()+xlab("")+ylab("")

@@ -217,6 +217,12 @@ for(i in 1:length(marine_study_id)){
 
 meta_marine<-xxm%>%filter(STUDY_ID%in%marine_study_id)
 
+pdf("./Results/Marine/histogram_site_area.pdf",width=5,height=3)
+hist(meta_marine$AREA_SQ_KM,breaks=100,xlab="Area(Sq. Km.)",ylab="No. of marine sites", 
+     main=paste(nrow(meta_marine)," sites",sep=""))
+dev.off()
+
+
 library(maps)
 wd<-map_data("world")
 g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
