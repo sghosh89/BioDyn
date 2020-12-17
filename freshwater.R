@@ -79,7 +79,7 @@ for(i in 1:length(freshw_study_id)){
   # first we aggregated the rare sp (present even less than 30% of sampled years) into a pseudo sp 
   presentyr<-apply(X=m$spmat,MARGIN=2,FUN=function(x){sum(x>0)})
   presentyr<-unname(presentyr)
-  rareid<-which(presentyr<=0.1*nrow(m$spmat)) # rare sp = present less than 10% of sampled year
+  rareid<-which(presentyr<=0.3*nrow(m$spmat)) # rare sp = present less than 30% of sampled year
   
   if(ncol(m$spmat)==length(rareid)){
     all_raresp_site_id<-c(all_raresp_site_id,siteid) # this site has all sp rare throughout the years

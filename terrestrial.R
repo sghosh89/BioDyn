@@ -1,13 +1,18 @@
-source("./get_input_spmat.R")
+rm(list=ls())
+
+#----------------------------------
 library(tidyverse)
 #================================== read the raw data ================================
 
-xx<-read.csv("./Data/accessed18Nov2020/BioTIMEQuery02_04_2018.csv") # a dataframe
+# read the data
+bt_rarefied<-readRDS("./Results/bt_rarefied_data_pt_thrs_20.RDS")
 
 # read the meta data
 xxm<-read.csv("./Data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") # a dataframe
+xxm_terres<-xxm%>%filter(REALM=="Terrestrial")
+nrow(xxm_terres) # 28 terrestrial sites 
 
-#===================== generate results folder for terrestrial ===============
+#===================== generate results folder for Terrestrial ===============
 
 resloc<-"./Results/Terrestrial/"
 if(!dir.exists(resloc)){
@@ -16,24 +21,22 @@ if(!dir.exists(resloc)){
 
 #================ choose study sites based on min year sampling threshold ==============
 
-xxm_terres<-xxm%>%filter(REALM=="Terrestrial")
-nrow(xxm_terres) # 181 sites 
-
-minyr<-20
+data_pt_thrs<-20
 
 pdf("./Results/Terrestrial/terrestrial_sites_datapoints.pdf", height=5, width=8)
-hist(xxm_terres$DATA_POINTS, breaks=200, xlab="No. of years", main="Terrestrial sites", xlim=c(0,100))
-abline(v=minyr,col="red")
+hist(xxm_terres$DATA_POINTS, breaks=50, xlab="No. of years", main="Terrestrial sites", xlim=c(0,40))
+abline(v=data_pt_thrs,col="red")
 dev.off()
-
-xxm_long_terres<-xxm_terres%>%filter(DATA_POINTS>=minyr) # 14 observations with min 30 years of data
-
-unique(xxm_long_terres$CLIMATE)
 
 #=================== create results folder for each study sites ==================
 
-terres_study_id<-xxm_long_terres$STUDY_ID
-saveRDS(terres_study_id,"./Results/Terrestrial/terres_study_id.RDS")
+terres_study_id<-xxm_terres$STUDY_ID # all Terrestrial sites
+terres_study_id<-terres_study_id[which(terres_study_id%in%bt_rarefied$STUDY_ID)] # sites with a 
+# certain number of threshold
+resloc<-"./Results/Terrestrial/"
+if(!dir.exists(resloc)){
+  dir.create(resloc)
+}
 
 for(i in 1:length(terres_study_id)){
   k<-paste(resloc,terres_study_id[i],sep="")
@@ -41,82 +44,89 @@ for(i in 1:length(terres_study_id)){
     dir.create(k)
   }
 }
+
+#================= filter data only for Terrestrial sites =========================
+bt_rarefied_terres<-bt_rarefied%>%filter(STUDY_ID%in%terres_study_id)
+
 #==================== saving input spmat for each study id ====================
 
 for(i in 1:length(terres_study_id)){
-  x<-xx%>%filter(STUDY_ID==terres_study_id[i])
+  
+  x<-bt_rarefied_terres%>%filter(STUDY_ID==terres_study_id[i])
+  xmat<-x%>%spread(Species, Value)%>%select(-STUDY_ID)
+  year<-xmat$YEAR
+  xmat<-as.matrix(xmat[,-1])
+  rownames(xmat)<-year
+  xlist<-split(x,x$Species)
+  xlist<-purrr::map(xlist,~ (.x %>% select(YEAR,Value)))
+  
   xmeta<-xxm%>%filter(STUDY_ID==terres_study_id[i])
-  input_sp<-get_input_spmat(x=x,xmeta=xmeta)
+  
+  input_sp<-list(spmat=xmat,splist=xlist,meta=xmeta)
+  
   resloc2<-paste(resloc,terres_study_id[i],sep="")
   saveRDS(input_sp,paste(resloc2,"/spmat_and_list.RDS",sep=""))
 }
 
-#================ get a map for selecting terrestrial sites ==========================
-
-library(maps)
-wd<-map_data("world")
-g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
-g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", fill="gray90")
-g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
-             panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
-             legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-g1<-g1+geom_point(data=xxm_long_terres,aes(y=CENT_LAT,x=CENT_LONG,col=factor(TAXA)),alpha=0.4)+
-  theme(legend.position = "bottom",legend.title = element_blank())+
-  ggtitle(paste("Terrestrial timeseries: min ",minyr," years",sep=""))
-g1
-ggsave(paste("./Results/Terrestrial/Terrestrial_min",minyr,"yrs.pdf",sep =""),
-       width = 20, height = 10, units = "cm")
-
 #====================== now do the tail association analysis ===================
+
+all_raresp_site_id<-c() # initiate to store bad sites with all rare sp.
 #----------- first save the input for tail analysis ---------------
 for(i in 1:length(terres_study_id)){
-  #cat("i=",i,"\n")
   siteid<-terres_study_id[i]
   m<-readRDS(paste("./Results/Terrestrial/",siteid,"/spmat_and_list.RDS",sep=""))
   
-  # first we aggregated the rare sp (present even less than 10% of sampled years) into a pseudo sp 
+  # first we aggregated the rare sp (present even less than 30% of sampled years) into a pseudo sp 
   presentyr<-apply(X=m$spmat,MARGIN=2,FUN=function(x){sum(x>0)})
   presentyr<-unname(presentyr)
-  rareid<-which(presentyr<=0.1*nrow(m$spmat)) # rare sp = present less than 10% of sampled year
+  rareid<-which(presentyr<=0.3*nrow(m$spmat)) # rare sp = present less than 30% of sampled year
   
-  if(length(rareid)!=0){
-    raresp<-m$spmat[,rareid]
-    raresp<-as.matrix(raresp) # this line is for when you have only one rare sp
-    raresp<-apply(X=raresp,MARGIN=1,FUN=sum)
-    m1<-m$spmat[,-rareid]
-    tot_target_sp<-ncol(m1)
-    m1<-cbind(m1,pseudosp=raresp)
-    m1<-as.data.frame(m1)
-    ms1<-m$splist[-rareid]
-    ms1$pseudosp<-data.frame(YEAR=ms1[[1]]$YEAR,mean_estimate=m1$pseudosp)
-    
-    #------- exclude ties having more than 80% of same values ----------
-    #Ties<-apply(MARGIN=2,X=m1,FUN=function(x){length(x) - length(unique(x))})
-    #excludeTies<-which(Ties>=0.8*nrow(m1)) # more than 80% ties are excluded
-    #if(length(excludeTies)!=0){
-    #  m1<-m1[,-excludeTies]
-    #  ms1<-ms1[-excludeTies]
-    #}
-    #--------------------------------------------------
-    input_tailanal<-list(m_df=m1,mlist=ms1,tot_target_sp=tot_target_sp)
-    
+  if(ncol(m$spmat)==length(rareid)){
+    all_raresp_site_id<-c(all_raresp_site_id,siteid) # this site has all sp rare throughout the years
   }else{
-    m1<-m$spmat
-    ms1<-m$splist
-    tot_target_sp<-ncol(m1)
-    #------- exclude ties having more than 50% of same values ----------
-    #Ties<-apply(MARGIN=2,X=m1,FUN=function(x){length(x) - length(unique(x))})
-    #excludeTies<-which(Ties>=0.8*nrow(m1)) # more than 50% ties are excluded
-    #if(length(excludeTies)!=0){
-    #  m1<-m1[,-excludeTies]
-    #  ms1<-ms1[-excludeTies]
-    #}
-    input_tailanal<-list(m_df=m1,mlist=ms1,tot_target_sp=tot_target_sp)
+    if(length(rareid)!=0){
+      raresp<-m$spmat[,rareid]
+      raresp<-as.matrix(raresp) # this line is for when you have only one rare sp
+      raresp<-apply(X=raresp,MARGIN=1,FUN=sum)
+      m1<-m$spmat[,-rareid]
+      tot_target_sp<-ncol(m1)
+      m1<-cbind(m1,raresp=raresp)
+      m1<-as.data.frame(m1)
+      ms1<-m$splist[-rareid]
+      ms1$raresp<-data.frame(YEAR=ms1[[1]]$YEAR,mean_estimate=m1$raresp)
+      
+      #------- exclude ties having more than 80% of same values ----------
+      #Ties<-apply(MARGIN=2,X=m1,FUN=function(x){length(x) - length(unique(x))})
+      #excludeTies<-which(Ties>=0.8*nrow(m1)) # more than 80% ties are excluded
+      #spTies<-m1[,excludeTies]
+      #if(length(excludeTies)!=0){
+      #  m1<-m1[,-excludeTies]
+      #  ms1<-ms1[-excludeTies]
+      #}
+      #--------------------------------------------------
+      input_tailanal<-list(m_df=m1,mlist=ms1,tot_target_sp=tot_target_sp)
+      
+    }else{
+      m1<-m$spmat
+      ms1<-m$splist
+      tot_target_sp<-ncol(m1)
+      #------- exclude ties having more than 50% of same values ----------
+      #Ties<-apply(MARGIN=2,X=m1,FUN=function(x){length(x) - length(unique(x))})
+      #excludeTies<-which(Ties>=0.8*nrow(m1)) # more than 80% ties are excluded
+      #if(length(excludeTies)!=0){
+      #  m1<-m1[,-excludeTies]
+      # ms1<-ms1[-excludeTies]
+      #}
+      input_tailanal<-list(m_df=m1,mlist=ms1,tot_target_sp=tot_target_sp)
+    }
+    
+    saveRDS(input_tailanal,paste("./Results/Terrestrial/",siteid,"/input_tailanal.RDS",sep=""))
   }
   
-  saveRDS(input_tailanal,paste("./Results/Terrestrial/",siteid,"/input_tailanal.RDS",sep=""))
-  
 }
+
+# update terres_study_id: goodsites where some common target sp. are present
+terres_study_id<-setdiff(terres_study_id,all_raresp_site_id) 
 
 #------------ Now compute and plot the tail stats ---------------------
 source("./NonParamStat.R")
@@ -124,7 +134,7 @@ source("./NonParamStat_matrixplot.R")
 source("./copula_covary.R")
 
 for(i in 1:length(terres_study_id)){
-    siteid<-terres_study_id[i]
+  siteid<-terres_study_id[i]
   resloc<-paste("./Results/Terrestrial/",siteid,"/",sep="")
   d<-readRDS(paste(resloc,"input_tailanal.RDS",sep=""))
   tot_target_sp<-d$tot_target_sp
@@ -135,7 +145,7 @@ for(i in 1:length(terres_study_id)){
   
   #----------- analysis with covary sp ----------------
   df<-d$m_df # dataframe with species timeseries along column
-  zcov<-copula_covary(df = df, resloc=resloc, nbin = 2)
+  zcov<-copula_covary(df = df, resloc=resloc,nbin = 2)
   
   #----- now combine the results ------------
   
@@ -202,7 +212,27 @@ for(i in 1:length(terres_study_id)){
                           tot_target_sp=tot_target_sp,
                           tl.cex=1.2,cl.cex=2,line=1)
 }
-#--------------- Do a summary stats for terrestrial sites ------------------
+
+
+#================ get a map for selecting Terrestrial sites ==========================
+
+meta_terres<-xxm%>%filter(STUDY_ID%in%terres_study_id)
+
+library(maps)
+wd<-map_data("world")
+g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
+g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", fill="gray90")
+g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+             panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
+             legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
+g1<-g1+geom_point(data=meta_terres,aes(y=CENT_LAT,x=CENT_LONG,col=factor(TAXA)),alpha=0.4)+
+  theme(legend.position = "bottom",legend.title = element_blank())+
+  ggtitle(paste("Terrestrial timeseries: min ",data_pt_thrs," years",sep=""))
+g1
+ggsave(paste("./Results/Terrestrial/Terrestrial_min",data_pt_thrs,"yrs.pdf",sep =""),
+       width = 20, height = 10, units = "cm")
+
+#--------------- Do a summary stats for Terrestrial sites ------------------
 summary_table<-c()
 for (i in c(1:length(terres_study_id))){
   resloc<-paste("./Results/Terrestrial/",terres_study_id[i],"/",sep="")
@@ -220,7 +250,7 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nneg=nneg/nint)
 
 df<-summary_table%>%select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
-df$Taxa<-xxm_long_terres$TAXA
+df$Taxa<-meta_terres$TAXA
 df <-df[order(df$Taxa),]
 dat<-t(df)
 colnames(dat)<-dat[1,]
@@ -229,8 +259,8 @@ nsp<-dat[1,]
 dat<-dat[-1,]
 
 pdf("./Results/Terrestrial/summary_plot.pdf",width=25,height=10)
-op<-par(mar=c(10,5,5,1))
-x<-barplot(dat[1:4,],main =paste("Terrestrial dynamics: min ",minyr," yrs",sep=""),
+op<-par(mar=c(12,5,5,1))
+x<-barplot(dat,main = paste("Terrestrial dynamics: min ",data_pt_thrs," yrs",sep=""),
            xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
            cex.lab=2,cex.main=2,names.arg = dat[5,],las=2,
            col = c("yellow","red","blue","green"))
@@ -241,3 +271,10 @@ legend("top",horiz=T,bty="n",cex=1.2,
        fill = c("yellow","red","blue","green","purple"))
 par(op)
 dev.off()
+
+##########################################################################
+
+
+
+
+
