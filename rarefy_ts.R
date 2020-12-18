@@ -61,7 +61,7 @@ rarefy_ts <- function(grid, type=c("count", "biomass"), resamples=100, trimsampl
     # abundance wasn't actually recorded 
     # or the species is indicated as absent)
     filter_(.dots=zero_NA_filter) %>%
-    # calculate how many observations per year per study: i.e. total number of plots per STUDY_ID+YEAR combo
+    # calculate how many observations per year per study: i.e. total number of unique plots per STUDY_ID+YEAR combo
     dplyr::summarise(nsamples = n_distinct(ObsEventID)) 
   
   # Check if you wanted to remove years with especially low samples (< 1/2 the average number of samples)
