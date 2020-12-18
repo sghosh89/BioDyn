@@ -47,8 +47,7 @@ copula_covary<-function(df,resloc=NA,nbin=2){
     i<-k
     j<-k+nsp
     
-    ms<-vivj_matrix(d_allsp=d_allsp,i=i,j=j,level=0.05,
-                    ploton=F,onbounds=F,lb=NA,ub=NA)
+    ms<-vivj_matrix(d_allsp=d_allsp,i=i,j=j,level=0.05,ploton=F)
     m<-ms$mat
     
     corval[1,k]<-ms$corval

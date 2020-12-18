@@ -3,25 +3,23 @@
 
 # Input :
 # d_allsp : dataset in data[[sp]] format
+# sp : species index
 # i,j : sp-pair indices
 # level : significance level for BiCopIndepTest p-value
-# ploton : (optional) logical, if T gives copula plot without transforming j-th variable to it's -ve value
-# onbounds : a logical tag (default=FALSE) to get info about the points exactly lying on bounds, if set to TRUE 
-#            then the arguments lb and ub must be numeric
-# lb : numeric value between [0,1] for lower bound (default =NA)
-# ub : numeric value between [0,1] for upper bound (default =NA), ub should be greater than lb 
+# ploton : (optional) logical, if T gives copula plot without transforming j-th 
+# variable to it's -ve value
 
 # Output :
 # A list of 4 elements:
 #                      mat : a matrix : copula of (vi,vj) with transforming j-th variable to it's -ve value for -ve corr.
 #                      corval : Spearman's correlation
-#                      pval   : pvalue of Spearman's cor.test
+#                      pval   : pvalue of Kendall's cor.test
 #                      IndepTestRes : BiCopIndepTest p-value
 
 # and an optional plot of the copula
 
 library(VineCopula)
-vivj_matrix<-function(d_allsp,i,j,level=0.05,ploton,onbounds=F,lb=NA,ub=NA){
+vivj_matrix<-function(d_allsp,i,j,level=0.05,ploton){
   
   ds1<-d_allsp[[i]]
   ds2<-d_allsp[[j]]
@@ -70,66 +68,33 @@ vivj_matrix<-function(d_allsp,i,j,level=0.05,ploton,onbounds=F,lb=NA,ub=NA){
   corval<-unname(ct$estimate)
   pval<-ct$p.value
   
-  if(ploton==T){
-
-      if(IndepTestRes<level && corval>0){ # for significant positive correlation
-        
-        
-        plot(vi,vj,type='p',col=rgb(0,0,0,0.3),pch=19,xlim=c(0,1),ylim=c(0,1),
-             xlab=names(d_allsp)[i],ylab=names(d_allsp)[j],cex.lab=1.5)
-        
-        
-        if(j>i){
-          if(onbounds==T & identical(vi,vj)==F){
-            ind_lb<-which(vi+vj==(2*lb))
-            ind_ub<-which(vi+vj==(2*ub))
-            onlb<-length(ind_lb)
-            onub<-length(ind_ub)
-            
-            if(onlb!=0 | onub!=0){
-              mtext(paste0("onbs = (",onlb," , ",onub,")"),
-                    side = 4, line=0.15, adj=0.5, col="red") 
-            }
-          }
-        }
-        
-        
-      }else if(IndepTestRes<level && corval<0){ # for significant negative correlation
-        plot(vi,vj,type='p',col=rgb(0,1,0,0.3),pch=19,xlim=c(0,1),ylim=c(0,1),
-             xlab=names(d_allsp)[i],ylab=names(d_allsp)[j],cex.lab=1.5)
-        
-        if(j>i){
-          if(onbounds==T & identical(vi,vj)==F){
-            vneg<-VineCopula::pobs(-(d2$Dat)) # see when we count points on bounds we took reverse of second variable
-            ind_lb<-which(vi+vneg==(2*lb))
-            ind_ub<-which(vi+vneg==(2*ub))
-            
-            #vneg<-VineCopula::pobs(-(d1$Dat)) # NOTE : onbs will not be same if we consider first variable to be reversed
-            #ind_lb<-which(vj+vneg==(2*lb))
-            #ind_ub<-which(vj+vneg==(2*ub))
-            
-            onlb<-length(ind_lb)
-            onub<-length(ind_ub)
-            
-            if(onlb!=0 | onub!=0){ 
-              mtext(paste0("onbs = (",onlb," , ",onub,")"),
-                    side = 4, line=0.15, adj=0.5, col="red") 
-            }
-          }
-        }
-        
-      }else{ # independent case
-        plot(-1,0,xlim=c(0,1),ylim=c(0,1),xlab=names(d_allsp)[i],ylab=names(d_allsp)[j],cex.lab=1.5)
-        text(0.5,0.5,"Indep.",adj=c(0.5,.5),cex=2)
-      }
+  
+  if(IndepTestRes<level && corval>0){ # for significant positive correlation
+    if(ploton==T){
+      plot(vi,vj,type='p',col=rgb(0,0,0,0.3),pch=19,xlim=c(0,1),ylim=c(0,1),
+           xlab=names(d_allsp)[i],ylab=names(d_allsp)[j],cex.lab=1.5)
       mtext(paste0("(sp_x, sp_y) = (",i," , ",j,")"),
             side = 3, line=0.15, adj=0.5, col="black")
-  
+    }
+    
+  }else if(IndepTestRes<level && corval<0){ # for significant negative correlation
+    if(ploton==T){
+      plot(vi,vj,type='p',col=rgb(0,1,0,0.3),pch=19,xlim=c(0,1),ylim=c(0,1),
+           xlab=names(d_allsp)[i],ylab=names(d_allsp)[j],cex.lab=1.5)
+      mtext(paste0("(sp_x, sp_y) = (",i," , ",j,")"),
+            side = 3, line=0.15, adj=0.5, col="black")
+    }
+    vj<-VineCopula::pobs(-(d2$Dat)) # reverse the variable
+    
+  }else{ # independent case
+    if(ploton==T){
+      plot(-1,0,xlim=c(0,1),ylim=c(0,1),xlab=names(d_allsp)[i],ylab=names(d_allsp)[j],cex.lab=1.5)
+      text(0.5,0.5,"Indep.",adj=c(0.5,.5),cex=2)
+      mtext(paste0("(sp_x, sp_y) = (",i," , ",j,")"),
+            side = 3, line=0.15, adj=0.5, col="black")
+    }
   }
   
-  if(IndepTestRes<level && corval<0){
-    vj<-VineCopula::pobs(-(d2$Dat))
-  }
   
   Years<-d1$Year
   #-------------------------
@@ -143,5 +108,3 @@ vivj_matrix<-function(d_allsp,i,j,level=0.05,ploton,onbounds=F,lb=NA,ub=NA){
               pval=pval,
               IndepTestRes=IndepTestRes))  
 }
-
-

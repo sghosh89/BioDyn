@@ -123,8 +123,7 @@ multcall<-function(d_allsp,resloc,nbin){
     for (j in c(1:lensp)){
       
       #if(i!=j){
-      ms<-vivj_matrix(d_allsp=d_allsp,i=i,j=j,level=0.05,
-                      ploton=T,onbounds=F,lb=NA,ub=NA)
+      ms<-vivj_matrix(d_allsp=d_allsp,i=i,j=j,level=0.05,ploton=T)
       m<-ms$mat
       
       corval[i,j]<-ms$corval
