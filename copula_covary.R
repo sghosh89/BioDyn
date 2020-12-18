@@ -2,7 +2,6 @@
 # Input: 
 # df = a dataframe with each target (common) species time series along column, 
 #             last column having the aggregated rare species
-# resloc : NA(default) or path to save copula plots
 # nbin = 2 (default) number of bins used for tail dep. analysis 
 
 # Output:
@@ -12,7 +11,7 @@
 source("vivj_matrix.R")
 source("NonParamStat.R")
 set.seed(seed=101)
-copula_covary<-function(df,resloc=NA,nbin=2){
+copula_covary<-function(df,nbin=2){
   
   id_rare<-ncol(df)
   df<-df[,-id_rare]
@@ -41,8 +40,7 @@ copula_covary<-function(df,resloc=NA,nbin=2){
   kend<-Corl<-Coru<-posnI<-posnN<-pval_BiCopIndep<-spear
   corval<-spear
   
-  #pdf(paste(resloc,"copula_covary_plot.pdf",sep=""),width=nsp,height=nsp)
-  #op<-par(mfrow=c(2,5),mar=c(5,5,5,5),mgp=c(3,1,0))
+ 
   for(k in 1:nsp){
     i<-k
     j<-k+nsp
@@ -69,9 +67,6 @@ copula_covary<-function(df,resloc=NA,nbin=2){
     posnN[posnNind]<-1
     
   }
-  
-  #par(op)
-  #dev.off()
   
   res<-rbind(spear,kend,
              Corl,Coru,

@@ -145,7 +145,7 @@ for(i in 1:length(terres_study_id)){
   
   #----------- analysis with covary sp ----------------
   df<-d$m_df # dataframe with species timeseries along column
-  zcov<-copula_covary(df = df, resloc=resloc,nbin = 2)
+  zcov<-copula_covary(df = df, nbin = 2)
   
   #----- now combine the results ------------
   
