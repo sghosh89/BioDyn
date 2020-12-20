@@ -139,6 +139,7 @@ for(i in 1:length(marine_study_id)){
 #================ get a map for selecting marine sites ==========================
 
 meta_marine<-xxm%>%filter(STUDY_ID%in%marine_study_id)
+saveRDS(meta_marine,"./Results/Marine/meta_marine.RDS")
 
 pdf("./Results/Marine/histogram_site_area.pdf",width=5,height=3)
 hist(meta_marine$AREA_SQ_KM,breaks=100,xlab="Area(Sq. Km.)",ylab="No. of marine sites", 

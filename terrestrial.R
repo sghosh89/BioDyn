@@ -139,6 +139,7 @@ for(i in 1:length(terres_study_id)){
 #================ get a map for selecting Terrestrial sites ==========================
 
 meta_terres<-xxm%>%filter(STUDY_ID%in%terres_study_id)
+saveRDS(meta_terres,"./Results/Terrestrial/meta_terres.RDS")
 
 pdf("./Results/Terrestrial/histogram_site_area.pdf",width=5,height=3)
 hist(meta_terres$AREA_SQ_KM,breaks=100,xlab="Area(Sq. Km.)",ylab="No. of terrestrial sites", 
