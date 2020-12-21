@@ -1,4 +1,5 @@
-
+path<-dirname(rstudioapi::getSourceEditorContext()$path)
+setwd(path)
 source("get_rarefied_BioTIME_data.R")
 source("freshwater.R")
 source("marine.R")
