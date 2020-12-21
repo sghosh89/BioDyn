@@ -5,16 +5,16 @@ library(tidyverse)
 #================================== read the raw data ================================
 
 # read the data
-bt_rarefied<-readRDS("./Results/bt_rarefied_data_pt_thrs_20.RDS")
+bt_rarefied<-readRDS("../../DATA/for_BioTIME/wrangled_data/bt_rarefied_data_pt_thrs_20.RDS")
 
 # read the meta data
-xxm<-read.csv("./Data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") # a dataframe
+xxm<-read.csv("../../DATA/for_BioTIME/raw_data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") # a dataframe
 xxm_freshw<-xxm%>%filter(REALM=="Freshwater")
 nrow(xxm_freshw) # 28 freshwater sites 
 
 #===================== generate results folder for freshwater ===============
 
-resloc<-"./Results/Freshwater/"
+resloc<-"../../Results/for_BioTIME/Freshwater/"
 if(!dir.exists(resloc)){
   dir.create(resloc)
 }
@@ -23,7 +23,7 @@ if(!dir.exists(resloc)){
 
 data_pt_thrs<-20
 
-pdf("./Results/Freshwater/freshwater_sites_datapoints.pdf", height=5, width=8)
+pdf("../../Results/for_BioTIME/Freshwater/freshwater_sites_datapoints.pdf", height=5, width=8)
 hist(xxm_freshw$DATA_POINTS, breaks=50, xlab="No. of years", main="Freshwater sites", xlim=c(0,40))
 abline(v=data_pt_thrs,col="red")
 dev.off()
@@ -33,7 +33,7 @@ dev.off()
 freshw_study_id<-xxm_freshw$STUDY_ID # all freshwater sites
 freshw_study_id<-freshw_study_id[which(freshw_study_id%in%bt_rarefied$STUDY_ID)] # sites with a 
                                                               # certain number of threshold
-resloc<-"./Results/Freshwater/"
+resloc<-"../../Results/for_BioTIME/Freshwater/"
 if(!dir.exists(resloc)){
   dir.create(resloc)
 }
@@ -74,7 +74,7 @@ all_raresp_site_id<-c() # initiate to store bad sites with all rare sp.
 #----------- first save the input for tail analysis ---------------
 for(i in 1:length(freshw_study_id)){
   siteid<-freshw_study_id[i]
-  m<-readRDS(paste("./Results/Freshwater/",siteid,"/spmat.RDS",sep=""))
+  m<-readRDS(paste("../../Results/for_BioTIME/Freshwater/",siteid,"/spmat.RDS",sep=""))
   
   # first we aggregated the rare sp (present even less than 30% of sampled years) into a pseudo sp 
   presentyr<-apply(X=m$spmat,MARGIN=2,FUN=function(x){sum(x>0)})
@@ -115,7 +115,7 @@ for(i in 1:length(freshw_study_id)){
       input_tailanal<-m1
     }
     
-    saveRDS(input_tailanal,paste("./Results/Freshwater/",siteid,"/input_tailanal.RDS",sep=""))
+    saveRDS(input_tailanal,paste("../../Results/for_BioTIME/Freshwater/",siteid,"/input_tailanal.RDS",sep=""))
   }
 
 }
@@ -124,11 +124,11 @@ for(i in 1:length(freshw_study_id)){
 freshw_study_id<-setdiff(freshw_study_id,all_raresp_site_id) 
 
 #------------ Now compute and plot the tail stats ---------------------
-source("./tail_analysis.R")
+source("tail_analysis.R")
 
 for(i in 1:length(freshw_study_id)){
   siteid<-freshw_study_id[i]
-  resloc<-paste("./Results/Freshwater/",siteid,"/",sep="")
+  resloc<-paste("../../Results/for_BioTIME/Freshwater/",siteid,"/",sep="")
   df<-readRDS(paste(resloc,"input_tailanal.RDS",sep="")) # dataframe with species timeseries along column
   
   #----------- analysis with covary sp ----------------
@@ -138,9 +138,9 @@ for(i in 1:length(freshw_study_id)){
 #================ get a map for selecting freshwater sites ==========================
 
 meta_freshw<-xxm%>%filter(STUDY_ID%in%freshw_study_id)
-saveRDS(meta_freshw,"./Results/Freshwater/meta_freshw.RDS")
+saveRDS(meta_freshw,"../../Results/for_BioTIME/Freshwater/meta_freshw.RDS")
 
-pdf("./Results/Freshwater/histogram_site_area.pdf",width=5,height=3)
+pdf("../../Results/for_BioTIME/Freshwater/histogram_site_area.pdf",width=5,height=3)
 hist(meta_freshw$AREA_SQ_KM,20,xlab="Area(Sq. Km.)",ylab="No. of freshwater sites", 
      main=paste(nrow(meta_freshw)," sites",sep=""))
 dev.off()
@@ -156,18 +156,18 @@ g1<-g1+geom_point(data=meta_freshw,aes(y=CENT_LAT,x=CENT_LONG,col=factor(TAXA)),
   theme(legend.position = "bottom",legend.title = element_blank())+
   ggtitle(paste("Freshwater timeseries: min ",data_pt_thrs," years",sep=""))
 g1
-ggsave(paste("./Results/Freshwater/Freshwater_min",data_pt_thrs,"yrs.pdf",sep =""),
+ggsave(paste("../../Results/for_BioTIME/Freshwater/Freshwater_min",data_pt_thrs,"yrs.pdf",sep =""),
        width = 20, height = 10, units = "cm")
 
 #--------------- Do a summary stats for freshwater sites ------------------
 summary_table<-c()
 for (i in c(1:length(freshw_study_id))){
-  resloc<-paste("./Results/Freshwater/",freshw_study_id[i],"/",sep="")
+  resloc<-paste("../../Results/for_BioTIME/Freshwater/",freshw_study_id[i],"/",sep="")
   x<-readRDS(paste(resloc,"summary_df.RDS",sep=""))
   summary_table<-rbind(summary_table,x)
 }
 summary_table<-cbind(siteid=freshw_study_id,summary_table)
-saveRDS(summary_table,"./Results/Freshwater/summary_table.RDS")
+saveRDS(summary_table,"../../Results/for_BioTIME/Freshwater/summary_table.RDS")
 
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
@@ -185,7 +185,7 @@ dat<-dat[-1,]
 nsp<-dat[1,]
 dat<-dat[-1,]
 
-pdf("./Results/Freshwater/summary_plot.pdf",width=15,height=10)
+pdf("../../Results/for_BioTIME/Freshwater/summary_plot.pdf",width=15,height=10)
 op<-par(mar=c(12,5,5,1))
 x<-barplot(dat,main = paste("Freshwater dynamics: min ",data_pt_thrs," yrs",sep=""),
            xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),

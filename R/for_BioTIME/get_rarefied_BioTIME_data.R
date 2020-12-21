@@ -1,12 +1,12 @@
 
-source("./rarefy_ts.R")
+source("rarefy_ts.R")
 
 #============ now call the function ==================
 # read data first
-xx<-read.csv("./Data/accessed18Nov2020/BioTIMEQuery02_04_2018.csv") # a dataframe
-saveRDS(xx,"./Data/accessed18Nov2020/BioTIMEQuery02_04_2018.RDS")
+xx<-read.csv("../../DATA/for_BioTIME/raw_data/accessed18Nov2020/BioTIMEQuery02_04_2018.csv") # a dataframe
+saveRDS(xx,"../../DATA/for_BioTIME/raw_data/accessed18Nov2020/BioTIMEQuery02_04_2018.RDS")
 # read the meta data
-xxm<-read.csv("./Data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") # a dataframe
+xxm<-read.csv("../../DATA/for_BioTIME/raw_data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") # a dataframe
 
 bt<-dplyr::inner_join(xxm, xx, by='STUDY_ID')
 
@@ -30,7 +30,7 @@ rarefy_abund <- rarefy_ts(grid=bt_grid_abund,
                           trimsamples = F, 
                           data_pt_thrs = data_pt_thrs)
 # saving results
-saveRDS(rarefy_abund,paste("./Results/rarefy_abund_data_pt_thrs_",data_pt_thrs,".RDS",sep=""))
+saveRDS(rarefy_abund,paste("../../DATA/for_BioTIME/wrangled_data/rarefy_abund_data_pt_thrs_",data_pt_thrs,".RDS",sep=""))
 
 
 #------------------------------- for biomass --------------------------------------------
@@ -45,7 +45,7 @@ rarefy_bmass <- rarefy_ts(grid=bt_grid_bmass,
                           data_pt_thrs = data_pt_thrs)
 
 # saving results
-saveRDS(rarefy_bmass,paste("./Results/rarefy_bmass_data_pt_thrs_",data_pt_thrs,".RDS",sep=""))
+saveRDS(rarefy_bmass,paste("../../DATA/for_BioTIME/wrangled_data/rarefy_bmass_data_pt_thrs_",data_pt_thrs,".RDS",sep=""))
 
 #---------------------- now clean a bit and merge both Abund/biomass data ----------------------
 z_abund<-rarefy_abund%>%group_by(STUDY_ID,Species,YEAR)%>%
@@ -57,7 +57,7 @@ z_bmass<-rarefy_bmass%>%group_by(STUDY_ID,Species,YEAR)%>%
 bt_rarefied<-rbind(z_abund,z_bmass)
 
 # saving results
-saveRDS(bt_rarefied,paste("./Results/bt_rarefied_data_pt_thrs_",data_pt_thrs,".RDS",sep=""))
+saveRDS(bt_rarefied,paste("../../DATA/for_BioTIME/wrangled_data/bt_rarefied_data_pt_thrs_",data_pt_thrs,".RDS",sep=""))
 
 
 

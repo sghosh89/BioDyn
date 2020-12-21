@@ -1,9 +1,9 @@
 # This script will do the copula analysis, will generate necessary plots, will show how a species 
 # tail dep. fluctuates with the rest of species in the phyto-plankton community
 
-source("./NonParamStat.R")
-source("./copula_covary.R")
-source("./NonParamStat_matrixplot.R")
+source("NonParamStat.R")
+source("copula_covary.R")
+source("NonParamStat_matrixplot.R")
 
 # Input:
 # mat: a matrix or dataframe where each target species time series along each column, 
