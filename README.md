@@ -1,2 +1,2 @@
-# BioDyn_BioTIME
-Exploring general pattern in BioTIME database
+# BioDyn
+Exploring general pattern in BioTIME and other database
