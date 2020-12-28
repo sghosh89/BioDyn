@@ -150,7 +150,7 @@ grouped_splist$sampled_yr<-length(unique(ddata$year))
 grouped_splist$sampled_date<-length(unique(ddata$date))
 presentyr<-ddata%>%group_by(species)%>%
                            summarise(present_yr=n_distinct(year),present_date=n_distinct(date))%>%ungroup()
-grouped_splist<-inner_join(grouped_splist,presentyr,by="species")
+grouped_splist<-inner_join(grouped_splist,presentyr,by="species")%>%mutate(included=0)
 
 write.csv(grouped_splist,paste(resloc,"grouped_splist_",dataset_id,".csv",sep=""),row.names = F)
 

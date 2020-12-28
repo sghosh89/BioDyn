@@ -54,7 +54,7 @@ df<-ddata%>%group_by(species)%>%summarise(total_density=sum(density),
                                           sampled_yr=length(unique(ddata$year)),
                                           presentyr=n_distinct(year),
                                           sampled_date=length(unique(ddata$date)),
-                                          present_date=n_distinct(date))%>%ungroup()
+                                          present_date=n_distinct(date))%>%ungroup()%>%mutate(included=0)
 
 write.csv(ddata,paste(resloc,dataset_id,"_ddata_1975to1995.csv",sep=""),row.names = F)
 write.csv(df,paste(resloc,dataset_id,"_grouped_phytoplankton_list_1975to1995.csv",sep=""),row.names = F)
@@ -110,7 +110,7 @@ df<-ddata%>%group_by(species)%>%summarise(total_density=sum(density),
                                           sampled_yr=length(unique(ddata$year)),
                                           presentyr=n_distinct(year),
                                           sampled_date=length(unique(ddata$date)),
-                                          present_date=n_distinct(date))%>%ungroup()
+                                          present_date=n_distinct(date))%>%ungroup()%>%mutate(included=0)
 
 write.csv(ddata,paste(resloc,dataset_id,"_ddata_1996to2013.csv",sep=""),row.names = F)
 write.csv(df,paste(resloc,dataset_id,"_grouped_phytoplankton_list_1996to2013.csv",sep=""),row.names = F)
@@ -128,7 +128,7 @@ df_all<-df_all%>%mutate(total_density=total_density.x+total_density.y,
                         sampled_yr=sampled_yr.x+sampled_yr.y,
                         present_yr=presentyr.x+presentyr.y,
                         sampled_date=sampled_date.x+sampled_date.y,
-                        present_date=present_date.x+present_date.y)
+                        present_date=present_date.x+present_date.y)%>%mutate(included=0)
 write.csv(df_all,paste(resloc,dataset_id,"_grouped_phytoplankton_list_1975to2013.csv",sep=""),row.names = F)
 
 
