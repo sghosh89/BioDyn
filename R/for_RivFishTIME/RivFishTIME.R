@@ -53,25 +53,16 @@ for(i in 1:length(good_TimeSeriesID_q3q4)){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-#--------------- Do a summary stats for freshwater sites ------------------
+#--------------- Do a summary stats for all good sites ------------------
 summary_table<-c()
-for (i in c(1:length(freshw_study_id))){
-  resloc<-paste("../../Results/for_BioTIME/Freshwater/",freshw_study_id[i],"/",sep="")
-  x<-readRDS(paste(resloc,"summary_df.RDS",sep=""))
+for (i in c(1:length(good_TimeSeriesID_q3q4))){
+  siteid<-good_TimeSeriesID_q3q4[i]
+  resloc_input<-paste(resloc,siteid,"/",sep="")
+  x<-readRDS(paste(resloc_input,"summary_df.RDS",sep=""))
   summary_table<-rbind(summary_table,x)
 }
-summary_table<-cbind(siteid=freshw_study_id,summary_table)
-saveRDS(summary_table,"../../Results/for_BioTIME/Freshwater/summary_table.RDS")
+summary_table<-cbind(siteid=good_TimeSeriesID_q3q4,summary_table)
+saveRDS(summary_table,"../../Results/for_RivFishTIME/summary_table.RDS")
 
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
@@ -81,27 +72,38 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nneg=nneg/nint)
 
 df<-summary_table%>%select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
-df$Taxa<-meta_freshw$TAXA
-df <-df[order(df$Taxa),]
 dat<-t(df)
 colnames(dat)<-dat[1,]
 dat<-dat[-1,]
 nsp<-dat[1,]
 dat<-dat[-1,]
+dat<-as.data.frame(dat)
 
-pdf("../../Results/for_BioTIME/Freshwater/summary_plot.pdf",width=15,height=10)
-op<-par(mar=c(12,5,5,1))
-x<-barplot(dat,main = paste("Freshwater dynamics: min ",data_pt_thrs," yrs",sep=""),
-           xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
-           cex.lab=2,cex.main=2,names.arg = dat[5,],las=2,
-        col = c("yellow","red","blue","green"))
-text(x = x, y = 1, label = paste(colnames(dat),"(",nsp,")",sep=""), pos = 3, cex = 1, col = "purple")
-#text(x = x, y = 1, label = colnames(dat), pos = 1, cex = 1.5, col = "purple")
-legend("top",horiz=T,bty="n",cex=1.2,
-       c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory","site(species)"),
-       fill = c("yellow","red","blue","green","purple"))
-par(op)
-dev.off()
+# now plot this long dataframe by splitting in multiple pdfs 
+z<-tapply(as.list(dat), gl(ncol(dat)/20, 20), as.data.frame)
+z_nsp<-split(nsp, ceiling(seq_along(nsp)/20))
+
+for(i in 1:length(z)){
+  pdf(paste("../../Results/for_RivFishTIME/summary_plot_",i,".pdf",sep=""),width=25,height=10)
+  op<-par(mar=c(12,5,5,1))
+  z1<-as.matrix(z[[i]])
+  x<-barplot(z1,main = "RivFishTIME dynamics: min 20 yrs",
+             xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
+             cex.lab=2,cex.main=2,las=2,
+             col = c("yellow","red","blue","green"))
+  text(x = x, y = 1, label = paste(colnames(z1),"(",z_nsp[[i]],")",sep=""), pos = 3, cex = 1, col = "purple")
+  legend("top",horiz=T,bty="n",cex=1.2,
+         c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory","site(species)"),
+         fill = c("yellow","red","blue","green","purple"))
+  par(op)
+  dev.off()
+}
+
+# second summary plot: how many sites showed indep/ LT/ RT/ -ve dominant?
+
+
+
+
 
 ##########################################################################
 
