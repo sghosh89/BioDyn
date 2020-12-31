@@ -13,8 +13,10 @@ source("NonParamStat.R")
 set.seed(seed=101)
 copula_covary<-function(df,nbin=2){
   
-  id_rare<-ncol(df)
-  df<-df[,-id_rare]
+  if(tail(colnames(df),1)=="raresp"){ # if at all any raresp existed
+    id_rare<-ncol(df)
+    df<-df[,-id_rare]
+  }
   
   dc<-df  # This matrix needs to be overwritten by the total abundance - target sp
   nsp<-ncol(dc)

@@ -31,64 +31,79 @@ tail_analysis<-function(mat, resloc, nbin=2){
     tot_target_sp<-ncol(mat)
   }
   
-  #----- now combine the results ------------
+  #----- now combine the results: but only if tot_target_sp>2 ------------
   
-  # for spearman
-  zs<-z$spear
-  tsp<-ncol(zs)-ncol(zcov)
-  tempo<-matrix(0.999,nrow=nrow(zcov),ncol=tsp) # 0.999 value will be filled in with black color in the plot
-  zcov<-cbind(zcov,tempo)
-  zs<-rbind(zs,zcov[1,])
-  zs<-cbind(zs,matrix(0.999,nrow=nrow(zs),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
-  rownames(zs)[nrow(zs)]<-"covsp"
   
-  # for kend
-  zk<-z$kend
-  zk<-rbind(zk,zcov[2,])
-  zk<-cbind(zk,matrix(0.999,nrow=nrow(zk),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
-  rownames(zk)[nrow(zk)]<-"covsp"
-  
-  # for Corl
-  zcl<-z$Corl
-  zcl<-rbind(zcl,zcov[3,])
-  zcl<-cbind(zcl,matrix(0.999,nrow=nrow(zcl),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
-  rownames(zcl)[nrow(zcl)]<-"covsp"
-  
-  # for Coru
-  zcu<-z$Coru
-  zcu<-rbind(zcu,zcov[4,])
-  zcu<-cbind(zcu,matrix(0.999,nrow=nrow(zcu),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
-  rownames(zcu)[nrow(zcu)]<-"covsp"
-  
-  # for posnI
-  zpI<-z$posnI
-  zpI<-rbind(zpI,zcov[5,])
-  zpI<-cbind(zpI,matrix(0.999,nrow=nrow(zpI),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
-  rownames(zpI)[nrow(zpI)]<-"covsp"
-  
-  # for posnN
-  zpN<-z$posnN
-  zpN<-rbind(zpN,zcov[6,])
-  zpN<-cbind(zpN,matrix(0.999,nrow=nrow(zpN),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
-  rownames(zpN)[nrow(zpN)]<-"covsp"
-  
-  # for corval
-  zcval<-z$corval
-  zcval<-rbind(zcval,zcov[7,])
-  zcval<-cbind(zcval,matrix(0.999,nrow=nrow(zcval),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
-  rownames(zcval)[nrow(zcval)]<-"covsp"
-  
-  # for cells to not show in the plot
-  posn_notneeded<-which(zs==0.999,arr.ind=T)
-  
-  zres<-list(spear=zs,
-             kend=zk,
-             Corl=zcl,
-             Coru=zcu,
-             posnI=zpI,
-             posnN=zpN,
-             corval=zcval,
-             posn_notneeded=posn_notneeded)
+  if(tot_target_sp>2){
+    # for spearman
+    zs<-z$spear
+    tsp<-ncol(zs)-ncol(zcov)
+    tempo<-matrix(0.999,nrow=nrow(zcov),ncol=tsp) # 0.999 value will be filled in with black color in the plot
+    zcov<-cbind(zcov,tempo)
+    zs<-rbind(zs,zcov[1,])
+    zs<-cbind(zs,matrix(0.999,nrow=nrow(zs),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
+    rownames(zs)[nrow(zs)]<-"covsp"
+    
+    # for kend
+    zk<-z$kend
+    zk<-rbind(zk,zcov[2,])
+    zk<-cbind(zk,matrix(0.999,nrow=nrow(zk),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
+    rownames(zk)[nrow(zk)]<-"covsp"
+    
+    # for Corl
+    zcl<-z$Corl
+    zcl<-rbind(zcl,zcov[3,])
+    zcl<-cbind(zcl,matrix(0.999,nrow=nrow(zcl),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
+    rownames(zcl)[nrow(zcl)]<-"covsp"
+    
+    # for Coru
+    zcu<-z$Coru
+    zcu<-rbind(zcu,zcov[4,])
+    zcu<-cbind(zcu,matrix(0.999,nrow=nrow(zcu),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
+    rownames(zcu)[nrow(zcu)]<-"covsp"
+    
+    # for posnI
+    zpI<-z$posnI
+    zpI<-rbind(zpI,zcov[5,])
+    zpI<-cbind(zpI,matrix(0.999,nrow=nrow(zpI),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
+    rownames(zpI)[nrow(zpI)]<-"covsp"
+    
+    # for posnN
+    zpN<-z$posnN
+    zpN<-rbind(zpN,zcov[6,])
+    zpN<-cbind(zpN,matrix(0.999,nrow=nrow(zpN),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
+    rownames(zpN)[nrow(zpN)]<-"covsp"
+    
+    # for corval
+    zcval<-z$corval
+    zcval<-rbind(zcval,zcov[7,])
+    zcval<-cbind(zcval,matrix(0.999,nrow=nrow(zcval),ncol=tsp)) # 0.999 value will be filled in with black color in the plot
+    rownames(zcval)[nrow(zcval)]<-"covsp"
+    
+    # for cells to not show in the plot
+    posn_notneeded<-which(zs==0.999,arr.ind=T)
+    
+    zres<-list(spear=zs,
+               kend=zk,
+               Corl=zcl,
+               Coru=zcu,
+               posnI=zpI,
+               posnN=zpN,
+               corval=zcval,
+               posn_notneeded=posn_notneeded)
+  }else{
+    posn_notneeded<-matrix(NA,nrow=1,ncol=2)
+    colnames(posn_notneeded)<-c("row","col")
+    zres<-list(spear=z$spear,
+               kend=z$kend,
+               Corl=z$Corl,
+               Coru=z$Coru,
+               posnI=z$posnI,
+               posnN=z$posnN,
+               corval=z$corval,
+               posn_notneeded=posn_notneeded)
+  }
+ 
   saveRDS(zres,paste(resloc,"NonParamStat.RDS",sep=""))
   
   NonParamStat_matrixplot(data=zres,

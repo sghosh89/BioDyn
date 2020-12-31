@@ -57,11 +57,12 @@ mycorrplot<-function(z,posnI_ind,posnN_ind,posn_notneeded,colrange,tl.cex,cl.cex
   }
   
   # cells with -1 not needed to show
-  if(dim(posn_notneeded)[1]!=0){
+  if(all(is.na(posn_notneeded))==F & dim(posn_notneeded)[1]!=0){
     znn<-matrix(NA,nrow(z),ncol(z))
     znn[posn_notneeded]<- -1
     corrplot(znn, cl.pos = "n", na.label = " ", add = T,addgrid.col = "black",type="lower",
              bg = "transparent", tl.col = "transparent",col="black",method="color")
   }
+  
   
 }

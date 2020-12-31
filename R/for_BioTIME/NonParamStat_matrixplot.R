@@ -20,10 +20,13 @@ NonParamStat_matrixplot<-function(data,resloc,posn_notneeded,tot_target_sp,tl.ce
   tempo[indI]<-NA
   diag(tempo)<-NA
   
-  minval<-min(tempo,na.rm=T)
-  maxval<-max(tempo,na.rm=T)
-  
-  cr<-max(abs(minval),abs(maxval))
+  if(all(is.na(tempo))==T){# when all cells having indep values/ NA
+    cr<-1
+  }else{
+    minval<-min(tempo,na.rm=T)
+    maxval<-max(tempo,na.rm=T)
+    cr<-max(abs(minval),abs(maxval))
+  }
   
   #pdf(paste(resloc,file="Spearman.pdf",sep=''),width=wd, height=ht)
   png(paste(resloc,file="Spearman.png",sep=''), width = 5000,height = 5000,  res = 300)
@@ -45,11 +48,13 @@ NonParamStat_matrixplot<-function(data,resloc,posn_notneeded,tot_target_sp,tl.ce
   tempo[indI]<-NA
   diag(tempo)<-NA
   
-  minval<-min(tempo,na.rm=T)
-  maxval<-max(tempo,na.rm=T)
-  
-  cr<-max(abs(minval),abs(maxval))
-  
+  if(all(is.na(tempo))==T){
+    cr<-1
+  }else{
+    minval<-min(tempo,na.rm=T)
+    maxval<-max(tempo,na.rm=T)
+    cr<-max(abs(minval),abs(maxval))
+  }
   
   #pdf(paste(resloc,file="Kendall.pdf",sep=''),width=wd, height=ht)
   png(paste(resloc,file="Kendall.png",sep=''), width = 5000,height = 5000,  res = 300)
@@ -73,11 +78,14 @@ NonParamStat_matrixplot<-function(data,resloc,posn_notneeded,tot_target_sp,tl.ce
   tempo[indI]<-NA
   diag(tempo)<-NA
   
+  if(all(is.na(tempo))==T){
+    cr<-1
+  }else{
+    minval<-min(tempo,na.rm=T)
+    maxval<-max(tempo,na.rm=T)
+    cr<-max(abs(minval),abs(maxval))
+  }
   
-  minval<-min(tempo,na.rm=T)
-  maxval<-max(tempo,na.rm=T)
-  
-  cr<-max(abs(minval),abs(maxval))
   
   #pdf(paste(resloc,file="Corl.pdf",sep=''),width=wd, height=ht)
   png(paste(resloc,file="Corl.png",sep=''), width = 5000,height = 5000,  res = 300)
@@ -99,11 +107,13 @@ NonParamStat_matrixplot<-function(data,resloc,posn_notneeded,tot_target_sp,tl.ce
   tempo[indI]<-NA
   diag(tempo)<-NA
   
-  
-  minval<-min(tempo,na.rm=T)
-  maxval<-max(tempo,na.rm=T)
-  
-  cr<-max(abs(minval),abs(maxval))
+  if(all(is.na(tempo))==T){
+    cr<-1
+  }else{
+    minval<-min(tempo,na.rm=T)
+    maxval<-max(tempo,na.rm=T)
+    cr<-max(abs(minval),abs(maxval))
+  }
   
   #pdf(paste(resloc,file="Coru.pdf",sep=''),width=wd, height=ht)
   png(paste(resloc,file="Coru.png",sep=''), width = 5000,height = 5000,  res = 300)
@@ -124,10 +134,13 @@ NonParamStat_matrixplot<-function(data,resloc,posn_notneeded,tot_target_sp,tl.ce
   tempo[indI]<-NA
   diag(tempo)<-NA
   
-  minval<-min(tempo,na.rm=T)
-  maxval<-max(tempo,na.rm=T)
-  
-  cr<-max(abs(minval),abs(maxval))
+  if(all(is.na(tempo))==T){
+    cr<-1
+  }else{
+    minval<-min(tempo,na.rm=T)
+    maxval<-max(tempo,na.rm=T)
+    cr<-max(abs(minval),abs(maxval))
+  }
   
   #pdf(paste(resloc,file="Corl-Coru.pdf",sep=''),width=wd, height=ht)
   png(paste(resloc,file="Corl-Coru.png",sep=''), width = 5000,height = 5000,  res = 300)
