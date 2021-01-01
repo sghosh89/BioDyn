@@ -71,6 +71,15 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nU=nU/nint,
                                       f_nneg=nneg/nint)
 
+pdf(paste("../../Results/for_RivFishTIME/hist_targetsp.pdf",sep=""),width=10,height=6)
+op<-par(mar=c(5,5,5,2))
+hist(summary_table$nsp, breaks=100, xlim=c(0,40), xlab="Number of target sp.",
+     ylab="Frequency (sites)", col="skyblue", 
+     main=paste("RivFishTIME: ",nrow(summary_table)," sites", sep=""))
+par(op)
+dev.off()
+
+
 df<-summary_table%>%select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
 dat<-t(df)
 colnames(dat)<-dat[1,]
@@ -100,12 +109,41 @@ for(i in 1:length(z)){
 }
 
 # second summary plot: how many sites showed indep/ LT/ RT/ -ve dominant?
+d.ind<-as.numeric(dat[1,])
+d.L<-as.numeric(dat[2,])
+d.U<-as.numeric(dat[3,])
+d.neg<-as.numeric(dat[4,])
 
 
+d<-rbind(d.ind,d.L,d.U,d.neg)
 
+pdf(paste("../../Results/for_RivFishTIME/summary_plot_full.pdf",sep=""),width=80,height=10)
+op<-par(mar=c(10,15,10,10))
+barplot(d,width=4,border = "black", col=c("yellow", "red", "blue","green"),cex.axis = 3, ylim=c(0,1.4), ylab="Frequency", cex.lab=3)
+legend(x=0,y=1.3,horiz=T,bty="n",cex=4,
+       c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory"),
+       fill = c("yellow","red","blue","green"))
+par(op)
+dev.off()
 
+# total number of sites
+ncol(d)
 
-##########################################################################
+# for how many sites indep. interaction were dominant?
+sum(d[1,]>d[2,] & d[1,]>d[3,] & d[1,]>d[4,])
+
+# for how many sites LT asymmetry were dominant?
+sum(d[2,]>d[3,])
+
+# for how many sites UT asymmetry were dominant?
+sum(d[3,]>d[2,])
+
+# for how many sites +ve corr were dominant?
+sum((d[2,]+d[3,])>d[4,])
+
+# for how many sites -ve corr were dominant?
+sum((d[2,]+d[3,])<d[4,])
+
 
 
 
