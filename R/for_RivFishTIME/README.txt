@@ -1,5 +1,5 @@
 # raw data are already saved in DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020 folder
-# wrangle those data with wrangling_data.r
+# wrangle those data with wrangling_data.R
 # tail analysis results done in RivFishTIME.R
 # all can be done by running Master_RivFishTIME.R file
 
