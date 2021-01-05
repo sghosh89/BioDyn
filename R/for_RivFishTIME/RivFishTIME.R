@@ -11,8 +11,11 @@ if(!dir.exists(resloc)){
 #-----------------------------------------
 # plot the sampling sites
 good_TimeSeriesID_q3q4<-readRDS("../../DATA/for_RivFishTIME/wrangled_data/good_TimeSeriesID_q3q4.RDS")
-
+x<-read.csv("../../DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020/1873_2_RivFishTIME_SurveyTable.csv") # a dataframe
 x_meta<-read.csv("../../DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020/1873_2_RivFishTIME_TimeseriesTable.csv")
+z<-x %>% distinct(TimeSeriesID, .keep_all = TRUE)%>%select(TimeSeriesID,UnitAbundance)
+x_meta<-inner_join(z,x_meta,by="TimeSeriesID")
+
 x_meta<-x_meta%>%filter(TimeSeriesID%in%good_TimeSeriesID_q3q4)
 
 library(maps)
@@ -63,7 +66,6 @@ for (i in c(1:length(good_TimeSeriesID_q3q4))){
 }
 summary_table<-cbind(siteid=good_TimeSeriesID_q3q4,summary_table)
 saveRDS(summary_table,"../../Results/for_RivFishTIME/summary_table.RDS")
-
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
@@ -145,7 +147,4 @@ sum((d[2,]+d[3,])>d[4,])
 sum((d[2,]+d[3,])<d[4,])
 
 
-
-
-
-
+####################################################################################################

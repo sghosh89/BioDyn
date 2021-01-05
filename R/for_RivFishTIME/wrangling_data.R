@@ -6,12 +6,18 @@ x<-read.csv("../../DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020/
 str(x)
 x_meta<-read.csv("../../DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020/1873_2_RivFishTIME_TimeseriesTable.csv")
 #x_readme<-read.csv("../../DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020/1873_2_Readme.csv")
+z<-x %>% distinct(TimeSeriesID, .keep_all = TRUE)%>%select(TimeSeriesID,UnitAbundance)
+x_meta<-inner_join(z,x_meta,by="TimeSeriesID")
 
 # summary table: 11386 unique timeseries 
 c<-x%>%group_by(TimeSeriesID)%>%summarise(nyr=n_distinct(Year),
                                           nsp=n_distinct(Species),
                                           nq=n_distinct(Quarter),
-                                          uq=unique(Quarter))%>%ungroup()
+                                          uq=unique(Quarter),
+                                          nsurvey=n_distinct(SurveyID),
+                                          nunit=n_distinct(UnitAbundance))%>%ungroup()
+unique(c$nunit) # 1: so it ensures we always had same unit of abundance for a given TimeSeriesID 
+
 # but we will consider only those having >=20 years data
 c20<-c%>%filter(nyr>=20) # there are 967 timeseries like that
 
