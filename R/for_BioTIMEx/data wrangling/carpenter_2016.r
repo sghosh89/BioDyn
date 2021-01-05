@@ -1,6 +1,6 @@
 ## carpenter_2016: zooplankton data
 library(tidyverse)
-
+`%notin%` <- Negate(`%in%`)
 #######################
 # download data
 
@@ -157,10 +157,38 @@ write.csv(grouped_splist,paste(resloc,"grouped_splist_",dataset_id,".csv",sep=""
 # after Blake will indicate which species he wants, I will make the input matrix for tail analysis as
 # a matrix with species abundance time series along column, rownames will be for years
 
+sp_blake<-read.csv(paste(resloc,"grouped_splist_carpenter_2016_blake_sorted.csv",sep=""))
+badsp<-sp_blake$species[which(sp_blake$included==0)]
+sp_blake<-sp_blake[,1:2]
+
+all(sort(unique(sp_blake$species))==sort(unique(ddata$species)))==T # checked
+
+ddata<-ddata%>%filter(species%notin%badsp) # exclude badsp
+
+# species aggregation
+ddata<-inner_join(ddata,sp_blake,by="species") 
+
+spmat<-ddata%>%select(year, species=Species_agg, value)
+spmat<-spmat%>%group_by(year,species)%>%summarize(value=sum(value))%>%ungroup()%>%
+               spread(species, value, fill=0)%>%as.data.frame()
+
+rownames(spmat)<-spmat$year
+spmat<-spmat[,-1]
+countnon_0<-apply(spmat,MARGIN=2,FUN=function(y){sum(y>0)})
+# common sp present atleast 70% of sampling years, rest of the species are considered rare and aggregated into single one
+presentyr<-0.7*nrow(spmat) 
+commonsp<-which(countnon_0>=presentyr)
+commonsp<-spmat[,commonsp]
+rare_sp<-which(countnon_0<presentyr)
+if(length(rare_sp)!=0){
+  raresp<-spmat[,rare_sp]
+  raresp<-apply(raresp,MARGIN=1,FUN=sum)
+  commonsp$raresp<-raresp
+}
+
+write.csv2(commonsp,paste(resloc,dataset_id,"_inputmatrix_tailanal.csv",sep=""),row.names = T)
+saveRDS(commonsp,paste(resloc,dataset_id,"_inputmatrix_tailanal.RDS",sep=""))
 
 
 
 
-
-#fwrite(ddata, paste0('../../DATA/for_BioTIMEx/wrangled_data/', dataset_id, "/", dataset_id, '.csv'),
-#          row.names=FALSE)
