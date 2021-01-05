@@ -1,0 +1,6 @@
+path<-dirname(rstudioapi::getSourceEditorContext()$path)
+setwd(path)
+source("lakedata_cleaning.R")
+source("select_sp_forBlake.R")
+source("get_input_spmat_phytoplankton.R")
+source("tail_analysis_phytoplankton.R")
