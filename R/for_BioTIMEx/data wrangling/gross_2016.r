@@ -28,9 +28,8 @@ x<-x%>%filter(!is.na(biomass_g)&biomass_g>0)%>%
 
 x<-x%>%group_by(year,species)%>%
                     summarise(mean_biomass_gm=mean(biomass_g))%>%ungroup()%>%
-             spread(species,mean_biomass_gm)
+             spread(species,mean_biomass_gm,fill=0)%>%as.data.frame()
 
-x[is.na(x)]<-0
 rownames(x)<-x$year
 x<-x[,-1]
 countnon_0<-apply(x,MARGIN=2,FUN=function(y){sum(y>0)})
