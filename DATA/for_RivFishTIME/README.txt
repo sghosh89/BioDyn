@@ -1,2 +1,2 @@
 for_RivFishTIME:
-raw_data accessed on 18Dec2020.
+raw_data accessed on 08Dec2020.
