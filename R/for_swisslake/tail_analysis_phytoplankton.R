@@ -107,13 +107,49 @@ dat<-dat[-1,]
 
 pdf(paste("../../Results/for_swisslake/summary_plot_phytoplankton.pdf",sep=""),width=10,height=5)
 op<-par(mar=c(3,5,5,1))
-x<-barplot(dat,width=4,border = "black", col=c("yellow", "red", "blue","green"),cex.axis = 1.5, ylim=c(0,1.4), 
+x<-barplot(dat,width=4,border = "black", col=c("yellow", "red", "skyblue","green"),cex.axis = 1.5, ylim=c(0,1.4), 
         ylab="Frequency", cex.lab=2)
 legend(x=0,y=1.3,horiz=T,bty="n",cex=0.8,
        c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory"),
-       fill = c("yellow","red","blue","green"))
+       fill = c("yellow","red","skyblue","green"))
 text(x = x, y = 1, label = nsp, pos = 3, cex = 1, col = "purple")
 par(op)
 dev.off()
+
+#################################################################################################
+my_summary_boxplot<-function(summary_table,nametag){
+  # for how many sites LT asymmetry were dominant?
+  nLT<-sum(summary_table$f_nL>summary_table$f_nU)
+  
+  # for how many sites +ve corr were dominant?
+  nP<-sum((summary_table$f_nL+summary_table$f_nU)>summary_table$f_nneg)
+  
+  # for how many sites +ve corr were dominant?
+  nC<-sum((summary_table$f_nL+summary_table$f_nU)<summary_table$f_nneg)
+  
+  z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+  colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
+  y <- gather(z, Pairwise.Interaction, Frequency) 
+  boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
+          col=c("green","yellow","skyblue","red"),
+          main=paste(nametag,", #sites: ",nrow(z),", #sites(more syn.): ",nP,", #sites(more comp.): ",nC))
+}
+###################################################################################################
+
+pdf("../../Results/for_swisslake/summary_boxplot_phytoplankton.pdf",width=14,height=6)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=1.5, cex.sub=1.5)
+my_summary_boxplot(summary_table = summary_df,nametag = "Swisslakes' phytoplankton")
+par(op)
+dev.off()
+
+
+
+
+
+
+
+
+
+
 
 
