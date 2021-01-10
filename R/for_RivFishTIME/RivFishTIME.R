@@ -150,6 +150,8 @@ my_summary_boxplot<-function(summary_table,nametag){
           main=paste(nametag,", #sites: ",nrow(z),", #sites(more syn.): ",nP,", #sites(more comp.): ",nC))
 }
 ###################################################################################################
+# call the boxplot by biorealm
+
 sv<-split(summary_table,f=summary_table$BioRealm)
 pdf("../../Results/for_RivFishTIME/summary_boxplot_by_biorealm.pdf",width=28,height=10)
 op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),mfrow=c(2,2),cex.axis=2, cex.lab=2, cex.main=2, cex.sub=2)
@@ -158,6 +160,28 @@ for(i in 1:length(sv)){
 }
 par(op)
 dev.off()
+
+# call the boxplot by country
+
+# summary by North USA, North & South EU
+
+dt1<-summary_table%>%filter(Country=="USA")
+dt2<-summary_table%>%filter(Country%in%c("FIN","SWE"))# north EU
+dt3<-summary_table%>%filter(Country%in%c("GBR","FRA","BEL","ESP")) # south EU
+
+pdf("../../Results/for_RivFishTIME/summary_boxplot_by_region.pdf",width=28,height=10)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),mfrow=c(2,2),cex.axis=2, cex.lab=2, cex.main=2, cex.sub=2)
+my_summary_boxplot(summary_table = dt1,nametag = "North America")
+my_summary_boxplot(summary_table = dt2,nametag = "North Europe")
+my_summary_boxplot(summary_table = dt3,nametag = "South Europe")
+par(op)
+dev.off()
+
+
+
+
+
+
 
 pdf("../../Results/for_RivFishTIME/summary_boxplot.pdf",width=14,height=6)
 op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=2, cex.sub=1.5)
