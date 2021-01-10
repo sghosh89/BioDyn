@@ -20,6 +20,7 @@ x_meta<-x_meta%>%filter(TimeSeriesID%in%good_TimeSeriesID_q3q4)
 
 library(maps)
 wd<-map_data("world")
+wd<-wd%>%filter(long<50 & lat>-50)
 g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
 g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", fill="gray90")
 g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
@@ -81,6 +82,8 @@ hist(summary_table$nsp, breaks=100, xlim=c(0,40), xlab="Number of target sp.",
 par(op)
 dev.off()
 
+summary_table<-inner_join(summary_table,x_meta,by=c("siteid"="TimeSeriesID"))
+saveRDS(summary_table,"../../Results/for_RivFishTIME/summary_table_detail_version.RDS")
 
 df<-summary_table%>%select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
 dat<-t(df)
@@ -127,24 +130,109 @@ legend(x=0,y=1.3,horiz=T,bty="n",cex=4,
        fill = c("yellow","red","skyblue","green"))
 par(op)
 dev.off()
+#######################################################################################
 
-# total number of sites
-ncol(d)
+my_summary_boxplot<-function(summary_table,nametag){
+  # for how many sites LT asymmetry were dominant?
+  nLT<-sum(summary_table$f_nL>summary_table$f_nU)
+  
+  # for how many sites +ve corr were dominant?
+  nP<-sum((summary_table$f_nL+summary_table$f_nU)>summary_table$f_nneg)
+  
+  # for how many sites +ve corr were dominant?
+  nC<-sum((summary_table$f_nL+summary_table$f_nU)<summary_table$f_nneg)
+  
+  z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+  colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
+  y <- gather(z, Pairwise.Interaction, Frequency) 
+  boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
+          col=c("green","yellow","skyblue","red"),
+          main=paste(nametag,", #sites: ",nrow(z),", #sites(more syn.): ",nP,", #sites(more comp.): ",nC))
+}
+###################################################################################################
+sv<-split(summary_table,f=summary_table$BioRealm)
+pdf("../../Results/for_RivFishTIME/summary_boxplot_by_biorealm.pdf",width=28,height=10)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),mfrow=c(2,2),cex.axis=2, cex.lab=2, cex.main=2, cex.sub=2)
+for(i in 1:length(sv)){
+  my_summary_boxplot(summary_table = sv[[i]],nametag = names(sv)[i])
+}
+par(op)
+dev.off()
 
-# for how many sites indep. interaction were dominant?
-sum(d[1,]>d[2,] & d[1,]>d[3,] & d[1,]>d[4,])
+pdf("../../Results/for_RivFishTIME/summary_boxplot.pdf",width=14,height=6)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=2, cex.sub=1.5)
+my_summary_boxplot(summary_table = summary_table,nametag = "RivFishTIME")
+par(op)
+dev.off()
 
-# for how many sites LT asymmetry were dominant?
-sum(d[2,]>d[3,])
+#---------------------------- on map summary plot -------------------------------------------------
+df<-summary_table
+df$asym<-NA
 
-# for how many sites UT asymmetry were dominant?
-sum(d[3,]>d[2,])
+# more LT
+id<-which(df$f_nL>df$f_nU)
+df$asym[id]<-"Syn.(rare)"
 
-# for how many sites +ve corr were dominant?
-sum((d[2,]+d[3,])>d[4,])
+# more UT
+id<-which(df$f_nL<df$f_nU)
+df$asym[id]<-"Syn.(abundant)"
 
-# for how many sites -ve corr were dominant?
-sum((d[2,]+d[3,])<d[4,])
+# LT==UT
+id<-which(df$f_nL==df$f_nU)
+df$asym[id]<-"Synchrony" 
+
+# comp>syn
+# more LT
+id<-which(df$f_nneg>df$f_npos)
+df$negcor<-"more synchronous"
+df$negcor[id]<-"more compensatory" 
+
+routeL<-sum(df$asym=="Syn.(rare)") # syn: LT dep.
+routeU<-sum(df$asym=="Syn.(abundant)") # syn: UT dep.
+routeS<-sum(df$asym%in%c("Syn.(rare)","Syn.(abundant)","Syn.")) # Syn: no taildep.
+routeC<-sum(df$negcor=="more compensatory") # Comp.
+
+df_s<-df%>%filter(negcor=="more synchronous")
+df_c<-df%>%filter(negcor=="more compensatory")
+
+# for synchrony
+library(maps)
+wd<-map_data("world")
+wd<-wd%>%filter(long<50 & lat>-50)
+g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
+g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", fill="gray90")
+g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+             panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
+             legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
+g1<-g1+geom_point(data=df_s,aes(y=Latitude,x=Longitude,col=factor(asym)),alpha=0.2,cex=0.2)+
+  ggtitle(paste("RivFishTIME: ",nrow(df_s)," synchronous sites",sep=""))+ 
+  theme(plot.title = element_text(size = 5),legend.position = "right",
+        legend.title = element_blank(),
+        legend.text=element_text(size=4))
+g1
+ggsave(paste(resloc,"sites_on_map_details_syn.pdf",sep =""),
+       width = 8, height = 4, units = "cm")
+
+# for compensatory
+library(maps)
+wd<-map_data("world")
+wd<-wd%>%filter(long<50 & lat>-50)
+g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
+g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", fill="gray90")
+g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+             panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
+             legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
+g1<-g1+geom_point(data=df_c,aes(y=Latitude,x=Longitude,col=factor(BioRealm)),alpha=0.2,cex=0.2)+
+  ggtitle(paste("RivFishTIME: ",nrow(df_c)," compensatory sites",sep=""))+ 
+  theme(plot.title = element_text(size = 5),legend.position = "right",
+        legend.title = element_blank(),
+        legend.text=element_text(size=3))+guides(colour=guide_legend(nrow=7))
+g1
+ggsave(paste(resloc,"sites_on_map_details_comp.pdf",sep =""),
+       width = 8, height = 5, units = "cm")
 
 
-####################################################################################################
+
+
+
+
