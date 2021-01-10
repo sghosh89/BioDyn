@@ -113,11 +113,11 @@ for(i in 1:length(sv)){
                             sep=""),
                xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.3),
                cex.lab=2,cex.main=2,las=2,cex.axis = 2,
-               col = c("yellow","red","blue","green"))
+               col = c("yellow","red","skyblue","green"))
    
     legend("top",horiz=T,bty="n",cex=1,
            c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory","site(species)"),
-           fill = c("yellow","red","blue","green","purple"))
+           fill = c("yellow","red","skyblue","green","purple"))
  
   text(x = x, y = 1, label = paste("(",xb$nsp,")",sep=""), 
        pos = 3, cex = 1, 
@@ -140,12 +140,21 @@ dev.off()
 
 #################################################################################################
 my_summary_boxplot<-function(summary_table,nametag){
+  # for how many sites LT asymmetry were dominant?
+  nLT<-sum(summary_table$f_nL>summary_table$f_nU)
+  
+  # for how many sites +ve corr were dominant?
+  nP<-sum((summary_table$f_nL+summary_table$f_nU)>summary_table$f_nneg)
+  
+  # for how many sites +ve corr were dominant?
+  nC<-sum((summary_table$f_nL+summary_table$f_nU)<summary_table$f_nneg)
+  
   z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
   colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
   y <- gather(z, Pairwise.Interaction, Frequency) 
   boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
-          col=c("green","yellow","blue","red"),
-          main=paste(nametag,", #sites: ",nrow(z)))
+          col=c("green","yellow","skyblue","red"),
+          main=paste(nametag,", #sites: ",nrow(z),", #sites(more syn.): ",nP,", #sites(more comp.): ",nC))
 }
 ###################################################################################################
 
@@ -159,7 +168,7 @@ dev.off()
 
 pdf("../../Results/for_BBS/summary_boxplot.pdf",width=14,height=6)
 op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=2, cex.sub=1.5)
-
+  
   my_summary_boxplot(summary_table = summary_table,nametag = "BBS")
 
 par(op)
