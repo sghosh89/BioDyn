@@ -101,11 +101,11 @@ for(i in 1:length(z)){
   x<-barplot(z1,main = "RivFishTIME dynamics: min 20 yrs",
              xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
              cex.lab=2,cex.main=2,las=2,
-             col = c("yellow","red","blue","green"))
+             col = c("yellow","red","skyblue","green"))
   text(x = x, y = 1, label = paste(colnames(z1),"(",z_nsp[[i]],")",sep=""), pos = 3, cex = 1, col = "purple")
   legend("top",horiz=T,bty="n",cex=1.2,
          c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory","site(species)"),
-         fill = c("yellow","red","blue","green","purple"))
+         fill = c("yellow","red","skyblue","green","purple"))
   par(op)
   dev.off()
 }
@@ -121,10 +121,10 @@ d<-rbind(d.ind,d.L,d.U,d.neg)
 
 pdf(paste("../../Results/for_RivFishTIME/summary_plot_full.pdf",sep=""),width=80,height=10)
 op<-par(mar=c(10,15,10,10))
-barplot(d,width=4,border = "black", col=c("yellow", "red", "blue","green"),cex.axis = 3, ylim=c(0,1.4), ylab="Frequency", cex.lab=3)
+barplot(d,width=4,border = "black", col=c("yellow", "red", "skyblue","green"),cex.axis = 3, ylim=c(0,1.4), ylab="Frequency", cex.lab=3)
 legend(x=0,y=1.3,horiz=T,bty="n",cex=4,
        c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory"),
-       fill = c("yellow","red","blue","green"))
+       fill = c("yellow","red","skyblue","green"))
 par(op)
 dev.off()
 

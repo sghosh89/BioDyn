@@ -61,13 +61,13 @@ get_summary_plot_regional<-function(x_meta,summary_table,country,label_country,n
                             ", UT sites =",nUT, sep=""),
                xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.3),
                cex.lab=2,cex.main=2,las=2,
-               col = c("yellow","red","blue","green"))
+               col = c("yellow","red","skyblue","green"))
     text(x = x, y = 1, label = paste("(",summary_table_c$nsp,")",sep=""), 
          pos = 3, cex = 1, 
          col = "purple")
     legend("top",horiz=T,bty="n",cex=2,
            c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory","site(species)"),
-           fill = c("yellow","red","blue","green","purple"))
+           fill = c("yellow","red","skyblue","green","purple"))
     par(op)
     dev.off()
   }else{ # multipanel plot starts
@@ -88,16 +88,16 @@ get_summary_plot_regional<-function(x_meta,summary_table,country,label_country,n
                                 ", UT sites =",nUT, sep=""),
                    xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.3),
                    cex.lab=cex.lab,cex.main=cex.main,las=2,cex.axis = cex.axis,
-                   col = c("yellow","red","blue","green"))
+                   col = c("yellow","red","skyblue","green"))
         legend("top",horiz=T,bty="n",cex=cex,
                c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory","site(species)"),
-               fill = c("yellow","red","blue","green","purple"))
+               fill = c("yellow","red","skyblue","green","purple"))
       }else{
         x<-barplot(dat[,a:b],
                    main = "",
                    xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.3),
                    cex.lab=cex.lab,cex.axis = cex.axis,las=2,
-                   col = c("yellow","red","blue","green"))
+                   col = c("yellow","red","skyblue","green"))
       }
       text(x = x, y = 1, label = paste("(",summary_table_c$nsp[a:b],")",sep=""), 
            pos = 3, cex = cex, 
@@ -163,4 +163,57 @@ get_summary_plot_regional(x_meta=x_meta_exclude_count,summary_table=summary_tabl
                           cex.lab=3,cex.main=3,cex=3,cex.axis = 3)
 
 
+
+#################################################################################################
+my_summary_boxplot<-function(summary_table,nametag){
+  # for how many sites LT asymmetry were dominant?
+  nLT<-sum(summary_table$f_nL>summary_table$f_nU)
+  
+  # for how many sites +ve corr were dominant?
+  nP<-sum((summary_table$f_nL+summary_table$f_nU)>summary_table$f_nneg)
+  
+  # for how many sites +ve corr were dominant?
+  nC<-sum((summary_table$f_nL+summary_table$f_nU)<summary_table$f_nneg)
+  
+  z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+  colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
+  y <- gather(z, Pairwise.Interaction, Frequency) 
+  boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
+          col=c("green","yellow","skyblue","red"),
+          main=paste(nametag,", #sites: ",nrow(z),", #sites(more syn.): ",nP,", #sites(more comp.): ",nC))
+}
+###################################################################################################
+
+# call the boxplot function
+
+good_TimeSeriesID_q3q4<-readRDS("../../DATA/for_RivFishTIME/wrangled_data/good_TimeSeriesID_q3q4.RDS")
+
+x_meta<-read.csv("../../DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020/1873_2_RivFishTIME_TimeseriesTable.csv")
+x_meta<-x_meta%>%filter(TimeSeriesID%in%good_TimeSeriesID_q3q4)
+
+summary_table<-readRDS("../../Results/for_RivFishTIME/summary_table.RDS")
+summary_table<-summary_table%>%mutate(f_nind=nind/nint,
+                                      f_npos=npos/nint,
+                                      f_nL=nL/nint,
+                                      f_nU=nU/nint,
+                                      f_nneg=nneg/nint)
+
+summary_table<-inner_join(summary_table,x_meta,by=c("siteid"="TimeSeriesID"))
+
+# boxplot for whole data
+pdf("../../Results/for_RivFishTIME/summary_boxplot.pdf",width=14,height=6)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=2, cex.sub=1.5)
+my_summary_boxplot(summary_table = summary_table,nametag = "RivFishTIME")
+par(op)
+dev.off()
+
+# boxplot by BioRealm
+sv<-split(summary_table,f=summary_table$BioRealm)
+pdf("../../Results/for_RivFishTIME/summary_boxplot_by_BioRealm.pdf",width=18,height=12)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),mfrow=c(2,2),cex.axis=1.5, cex.lab=1.5, cex.main=1.5, cex.sub=2)
+for(i in 1:length(sv)){
+  my_summary_boxplot(summary_table = sv[[i]],nametag = names(sv)[i])
+}
+par(op)
+dev.off()
 
