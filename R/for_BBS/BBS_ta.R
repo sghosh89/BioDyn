@@ -81,7 +81,7 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nneg=nneg/nint)
 
 
-pdf(paste("../../Results/for_BBS/hist_targetsp.pdf",sep=""),width=10,height=6)
+pdf("../../Results/for_BBS/hist_targetsp.pdf",width=10,height=6)
 op<-par(mar=c(5,5,5,2))
 hist(summary_table$nsp, breaks=100, xlim=c(0,100), xlab="Number of target sp.",
      ylab="Frequency (sites)", col="skyblue", 
@@ -90,9 +90,11 @@ par(op)
 dev.off()
 
 summary_table<-inner_join(summary_table,metadata,by=c("siteid"="Country_State_Route"))
+saveRDS(summary_table,"../../Results/for_BBS/summary_table_detail_version.RDS")
+
 sv<-split(summary_table,f=summary_table$Stratum_name)
 
-pdf("../../Results/for_BBS/summary_plot_by_stratumregion.pdf",width=20,height=5)
+pdf("../../Results/for_BBS/summary_hist_by_stratumregion.pdf",width=20,height=5)
 op<-par(mar=c(10,10,5,1),mgp=c(5,1,0))
 
 for(i in 1:length(sv)){
@@ -127,6 +129,48 @@ dev.off()
 
 
 #   summary histogram
+
+#pie chart
+#x<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+#x<-as.matrix(x)
+#pie(x[1,],labels=colnames(x),col=c("yellow","red","blue","green"))
+
+#head(mtcars)
+#boxplot(mpg~cyl,y)
+
+#################################################################################################
+my_summary_boxplot<-function(summary_table,nametag){
+  z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+  colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
+  y <- gather(z, Pairwise.Interaction, Frequency) 
+  boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
+          col=c("green","yellow","blue","red"),
+          main=paste(nametag,", #sites: ",nrow(z)))
+}
+###################################################################################################
+
+pdf("../../Results/for_BBS/summary_boxplot_by_stratumregion.pdf",width=90,height=40)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),mfrow=c(8,9),cex.axis=2, cex.lab=3, cex.main=4, cex.sub=2)
+for(i in 1:length(sv)){
+  my_summary_boxplot(summary_table = sv[[i]],nametag = names(sv)[i])
+}
+par(op)
+dev.off()
+
+pdf("../../Results/for_BBS/summary_boxplot.pdf",width=14,height=6)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=2, cex.sub=1.5)
+
+  my_summary_boxplot(summary_table = summary_table,nametag = "BBS")
+
+par(op)
+dev.off()
+
+
+
+
+
+
+
 
 
 
