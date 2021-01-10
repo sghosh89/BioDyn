@@ -192,12 +192,12 @@ op<-par(mar=c(12,5,5,1))
 x<-barplot(dat,main = paste("Marine dynamics: min ",data_pt_thrs," yrs",sep=""),
            xlab = "",ylab="Freq. of pairwise interaction",ylim=c(0,1.4),
            cex.lab=2,cex.main=2,names.arg = dat[5,],las=2,
-           col = c("yellow","red","blue","green"))
+           col = c("yellow","red","skyblue","green"))
 text(x = x, y = 1, label = paste(colnames(dat),"(",nsp,")",sep=""), pos = 3, cex = 1, col = "purple")
 #text(x = x, y = 1, label = colnames(dat), pos = 1, cex = 1.5, col = "purple")
 legend("top",horiz=T,bty="n",cex=1.2,
        c("Independent","Synchrony when rare", "Synchrony when abundant","compensatory","site(species)"),
-       fill = c("yellow","red","blue","green","purple"))
+       fill = c("yellow","red","skyblue","green","purple"))
 par(op)
 dev.off()
 
