@@ -176,7 +176,7 @@ dev.off()
 
 
 #---------------------------- on map summary plot -------------------------------------------------
-df<-summary_table%>%select(f_nind,f_npos,f_nL,f_nU,f_nneg,Latitude,Longitude)
+df<-summary_table
 df$asym<-NA
 
 # more LT
@@ -194,7 +194,7 @@ df$asym[id]<-"Synchrony"
 # comp>syn
 # more LT
 id<-which(df$f_nneg>df$f_npos)
-df$negcor<-"more Synchronous"
+df$negcor<-"more synchronous"
 df$negcor[id]<-"more compensatory" 
 
 routeL<-sum(df$asym=="Syn.(rare)") # syn: LT dep.
@@ -202,6 +202,10 @@ routeU<-sum(df$asym=="Syn.(abundant)") # syn: UT dep.
 routeS<-sum(df$asym%in%c("Syn.(rare)","Syn.(abundant)","Syn.")) # Syn: no taildep.
 routeC<-sum(df$negcor=="more compensatory") # Comp.
   
+df_s<-df%>%filter(negcor=="more synchronous")
+df_c<-df%>%filter(negcor=="more compensatory")
+
+# for synchrony
 library(maps)
 wd<-map_data("world")
 wd<-wd%>%filter(region%in%c("USA","Canada"))%>%filter(long<0)
@@ -210,15 +214,32 @@ g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", f
 g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
              panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
              legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-g1<-g1+geom_point(data=df,aes(y=Latitude,x=Longitude,col=factor(asym),shape=factor(negcor)),alpha=0.5,cex=0.5)+
-  ggtitle(paste("BBS: ",nrow(df)," routes",sep=""))+ 
+g1<-g1+geom_point(data=df_s,aes(y=Latitude,x=Longitude,col=factor(asym)),alpha=0.5,cex=0.5)+
+  ggtitle(paste("BBS: ",nrow(df_s)," synchronous routes",sep=""))+ 
   theme(plot.title = element_text(size = 5),legend.position = "right",
         legend.title = element_blank(),
         legend.text=element_text(size=4))
 g1
-ggsave(paste(resloc,"routes_on_map_details.pdf",sep =""),
+ggsave(paste(resloc,"routes_on_map_details_syn.pdf",sep =""),
        width = 8, height = 5, units = "cm")
 
+# for compensatory
+library(maps)
+wd<-map_data("world")
+wd<-wd%>%filter(region%in%c("USA","Canada"))%>%filter(long<0)
+g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
+g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", fill="gray90")
+g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+             panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
+             legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
+g1<-g1+geom_point(data=df_c,aes(y=Latitude,x=Longitude,col=factor(Stratum_name)),alpha=0.5,cex=0.5)+
+  ggtitle(paste("BBS: ",nrow(df_c)," compensatory routes",sep=""))+ 
+  theme(plot.title = element_text(size = 5),legend.position = "right",
+        legend.title = element_blank(),
+        legend.text=element_text(size=4))
+g1
+ggsave(paste(resloc,"routes_on_map_details_comp.pdf",sep =""),
+       width = 8, height = 5, units = "cm")
 
 
 
