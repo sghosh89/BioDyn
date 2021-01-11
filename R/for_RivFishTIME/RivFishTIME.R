@@ -202,33 +202,23 @@ dev.off()
 
 #---------------------------- on map summary plot -------------------------------------------------
 df<-summary_table
-df$asym<-NA
+# for how many sites +ve corr were dominant? synchronous sites
+nP<-sum((df$f_nL+df$f_nU)>df$f_nneg)
+shorttab<-df[which(df$f_nL+df$f_nU>df$f_nneg),]
+
+shorttab$asym<-NA
 
 # more LT
-id<-which(df$f_nL>df$f_nU)
-df$asym[id]<-"Syn.(rare)"
+id<-which(shorttab$f_nL>shorttab$f_nU)
+shorttab$asym[id]<-"Syn.(rare)"
 
 # more UT
-id<-which(df$f_nL<df$f_nU)
-df$asym[id]<-"Syn.(abundant)"
+id<-which(shorttab$f_nL<shorttab$f_nU)
+shorttab$asym[id]<-"Syn.(abundant)"
 
 # LT==UT
-id<-which(df$f_nL==df$f_nU)
-df$asym[id]<-"Synchrony" 
-
-# comp>syn
-# more LT
-id<-which(df$f_nneg>df$f_npos)
-df$negcor<-"more synchronous"
-df$negcor[id]<-"more compensatory" 
-
-routeL<-sum(df$asym=="Syn.(rare)") # syn: LT dep.
-routeU<-sum(df$asym=="Syn.(abundant)") # syn: UT dep.
-routeS<-sum(df$asym%in%c("Syn.(rare)","Syn.(abundant)","Syn.")) # Syn: no taildep.
-routeC<-sum(df$negcor=="more compensatory") # Comp.
-
-df_s<-df%>%filter(negcor=="more synchronous")
-df_c<-df%>%filter(negcor=="more compensatory")
+id<-which(shorttab$f_nL==shorttab$f_nU)
+shorttab$asym[id]<-"Synchrony" 
 
 # for synchrony
 library(maps)
@@ -239,8 +229,8 @@ g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", f
 g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
              panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
              legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-g1<-g1+geom_point(data=df_s,aes(y=Latitude,x=Longitude,col=factor(asym)),alpha=0.2,cex=0.2)+
-  ggtitle(paste("RivFishTIME: ",nrow(df_s)," synchronous sites",sep=""))+ 
+g1<-g1+geom_point(data=shorttab,aes(y=Latitude,x=Longitude,col=factor(asym)),alpha=0.2,cex=0.2)+
+  ggtitle(paste("RivFishTIME: ",nrow(shorttab)," synchronous sites",sep=""))+ 
   theme(plot.title = element_text(size = 5),legend.position = "right",
         legend.title = element_blank(),
         legend.text=element_text(size=4))
@@ -249,6 +239,14 @@ ggsave(paste(resloc,"sites_on_map_details_syn.pdf",sep =""),
        width = 8, height = 4, units = "cm")
 
 # for compensatory
+#---------- comp>syn ----------
+
+df<-summary_table
+
+# for how many sites -ve corr were dominant? synchronous sites
+nC<-sum((df$f_nL+df$f_nU)<df$f_nneg)
+shorttab<-df[which(df$f_nL+df$f_nU<df$f_nneg),]
+
 library(maps)
 wd<-map_data("world")
 wd<-wd%>%filter(long<50 & lat>-50)
@@ -257,8 +255,8 @@ g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", f
 g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
              panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
              legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-g1<-g1+geom_point(data=df_c,aes(y=Latitude,x=Longitude,col=factor(BioRealm)),alpha=0.2,cex=0.2)+
-  ggtitle(paste("RivFishTIME: ",nrow(df_c)," compensatory sites",sep=""))+ 
+g1<-g1+geom_point(data=shorttab,aes(y=Latitude,x=Longitude,col=factor(BioRealm)),alpha=0.2,cex=0.2)+
+  ggtitle(paste("RivFishTIME: ",nrow(shorttab)," compensatory sites",sep=""))+ 
   theme(plot.title = element_text(size = 5),legend.position = "right",
         legend.title = element_blank(),
         legend.text=element_text(size=3))+guides(colour=guide_legend(nrow=7))
