@@ -194,12 +194,6 @@ my_summary_boxplot(summary_table = dt3,nametag = "South Europe",myresloc ="../..
 par(op)
 dev.off()
 
-
-
-
-
-
-
 pdf("../../Results/for_RivFishTIME/summary_boxplot.pdf",width=14,height=6)
 op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=2, cex.sub=1.5)
 my_summary_boxplot(summary_table = summary_table,nametag = "RivFishTIME",myresloc ="../../Results/for_RivFishTIME/")
