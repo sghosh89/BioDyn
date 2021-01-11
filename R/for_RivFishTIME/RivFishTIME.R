@@ -132,15 +132,26 @@ par(op)
 dev.off()
 #######################################################################################
 
-my_summary_boxplot<-function(summary_table,nametag){
-  # for how many sites LT asymmetry were dominant?
-  nLT<-sum(summary_table$f_nL>summary_table$f_nU)
+my_summary_boxplot<-function(summary_table,nametag,myresloc){
   
   # for how many sites +ve corr were dominant?
   nP<-sum((summary_table$f_nL+summary_table$f_nU)>summary_table$f_nneg)
+  shorttab<-summary_table[which(summary_table$f_nL+summary_table$f_nU>summary_table$f_nneg),]
   
-  # for how many sites +ve corr were dominant?
+    # out of those sites: for how many sites LT asymmetry were dominant?
+    nLT<-sum(shorttab$f_nL>shorttab$f_nU)
+  
+    # for how many sites UT asymmetry were dominant?
+    nUT<-sum(shorttab$f_nL<shorttab$f_nU)
+  
+    # for how many sites no asymmetry were dominant?
+    nSym<-sum(shorttab$f_nL==shorttab$f_nU)
+  
+  # for how many sites -ve corr were dominant?
   nC<-sum((summary_table$f_nL+summary_table$f_nU)<summary_table$f_nneg)
+  
+  # for how many sites syn==comp?
+  nEqSynComp<-sum((summary_table$f_nL+summary_table$f_nU)==summary_table$f_nneg)
   
   z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
   colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
@@ -148,6 +159,11 @@ my_summary_boxplot<-function(summary_table,nametag){
   boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
           col=c("green","yellow","skyblue","red"),
           main=paste(nametag,", #sites: ",nrow(z),", #sites(more syn.): ",nP,", #sites(more comp.): ",nC))
+  
+  dtable<-data.frame(nSyn=nP,nLT=nLT,nUT=nUT,nSym=nSym,nComp=nC,nEqSynComp=nEqSynComp)
+  rownames(dtable)<-nametag
+  print(dtable)
+  saveRDS(dtable,paste(myresloc,"summary_dtable_from_boxplot_",nametag,".RDS",sep=""))
 }
 ###################################################################################################
 # call the boxplot by biorealm
@@ -156,7 +172,8 @@ sv<-split(summary_table,f=summary_table$BioRealm)
 pdf("../../Results/for_RivFishTIME/summary_boxplot_by_biorealm.pdf",width=28,height=10)
 op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),mfrow=c(2,2),cex.axis=2, cex.lab=2, cex.main=2, cex.sub=2)
 for(i in 1:length(sv)){
-  my_summary_boxplot(summary_table = sv[[i]],nametag = names(sv)[i])
+  cat("i=",i,"\n")
+  my_summary_boxplot(summary_table = sv[[i]],nametag = names(sv)[i],myresloc ="../../Results/for_RivFishTIME/" )
 }
 par(op)
 dev.off()
@@ -171,9 +188,9 @@ dt3<-summary_table%>%filter(Country%in%c("GBR","FRA","BEL","ESP")) # south EU
 
 pdf("../../Results/for_RivFishTIME/summary_boxplot_by_region.pdf",width=28,height=10)
 op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),mfrow=c(2,2),cex.axis=2, cex.lab=2, cex.main=2, cex.sub=2)
-my_summary_boxplot(summary_table = dt1,nametag = "North America")
-my_summary_boxplot(summary_table = dt2,nametag = "North Europe")
-my_summary_boxplot(summary_table = dt3,nametag = "South Europe")
+my_summary_boxplot(summary_table = dt1,nametag = "North America",myresloc ="../../Results/for_RivFishTIME/")
+my_summary_boxplot(summary_table = dt2,nametag = "North Europe",myresloc ="../../Results/for_RivFishTIME/")
+my_summary_boxplot(summary_table = dt3,nametag = "South Europe",myresloc ="../../Results/for_RivFishTIME/")
 par(op)
 dev.off()
 
@@ -185,7 +202,7 @@ dev.off()
 
 pdf("../../Results/for_RivFishTIME/summary_boxplot.pdf",width=14,height=6)
 op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=2, cex.sub=1.5)
-my_summary_boxplot(summary_table = summary_table,nametag = "RivFishTIME")
+my_summary_boxplot(summary_table = summary_table,nametag = "RivFishTIME",myresloc ="../../Results/for_RivFishTIME/")
 par(op)
 dev.off()
 
