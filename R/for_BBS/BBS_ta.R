@@ -139,15 +139,26 @@ dev.off()
 #boxplot(mpg~cyl,y)
 
 #################################################################################################
-my_summary_boxplot<-function(summary_table,nametag){
-  # for how many sites LT asymmetry were dominant?
-  nLT<-sum(summary_table$f_nL>summary_table$f_nU)
+my_summary_boxplot<-function(summary_table,nametag,myresloc){
   
   # for how many sites +ve corr were dominant?
   nP<-sum((summary_table$f_nL+summary_table$f_nU)>summary_table$f_nneg)
+  shorttab<-summary_table[which(summary_table$f_nL+summary_table$f_nU>summary_table$f_nneg),]
   
-  # for how many sites +ve corr were dominant?
+  # out of those sites: for how many sites LT asymmetry were dominant?
+  nLT<-sum(shorttab$f_nL>shorttab$f_nU)
+  
+  # for how many sites UT asymmetry were dominant?
+  nUT<-sum(shorttab$f_nL<shorttab$f_nU)
+  
+  # for how many sites no asymmetry were dominant?
+  nSym<-sum(shorttab$f_nL==shorttab$f_nU)
+  
+  # for how many sites -ve corr were dominant?
   nC<-sum((summary_table$f_nL+summary_table$f_nU)<summary_table$f_nneg)
+  
+  # for how many sites syn==comp?
+  nEqSynComp<-sum((summary_table$f_nL+summary_table$f_nU)==summary_table$f_nneg)
   
   z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
   colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
@@ -155,55 +166,52 @@ my_summary_boxplot<-function(summary_table,nametag){
   boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
           col=c("green","yellow","skyblue","red"),
           main=paste(nametag,", #sites: ",nrow(z),", #sites(more syn.): ",nP,", #sites(more comp.): ",nC))
+  
+  dtable<-data.frame(nSyn=nP,nLT=nLT,nUT=nUT,nSym=nSym,nComp=nC,nEqSynComp=nEqSynComp)
+  rownames(dtable)<-nametag
+  print(dtable)
+  saveRDS(dtable,paste(myresloc,"summary_dtable_from_boxplot_",str_replace(nametag,"/","_"),".RDS",sep=""))
 }
 ###################################################################################################
 
-pdf("../../Results/for_BBS/summary_boxplot_by_stratumregion.pdf",width=90,height=40)
-op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),mfrow=c(8,9),cex.axis=2, cex.lab=3, cex.main=4, cex.sub=2)
-for(i in 1:length(sv)){
-  my_summary_boxplot(summary_table = sv[[i]],nametag = names(sv)[i])
-}
-par(op)
-dev.off()
 
 pdf("../../Results/for_BBS/summary_boxplot.pdf",width=14,height=6)
 op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=2, cex.sub=1.5)
   
-  my_summary_boxplot(summary_table = summary_table,nametag = "BBS")
+  my_summary_boxplot(summary_table = summary_table,nametag = "BBS",myresloc="../../Results/for_BBS/")
 
 par(op)
 dev.off()
 
+pdf("../../Results/for_BBS/summary_boxplot_by_stratumregion.pdf",width=90,height=40)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),mfrow=c(8,9),cex.axis=2, cex.lab=3, cex.main=4, cex.sub=2)
+for(i in 1:length(sv)){
+  cat("i=",i,"\n")
+  my_summary_boxplot(summary_table = sv[[i]],nametag = names(sv)[i],myresloc="../../Results/for_BBS/")
+}
+par(op)
+dev.off()
 
 #---------------------------- on map summary plot -------------------------------------------------
 df<-summary_table
-df$asym<-NA
+
+# for how many sites +ve corr were dominant? synchronous sites
+nP<-sum((df$f_nL+df$f_nU)>df$f_nneg)
+shorttab<-df[which(df$f_nL+df$f_nU>df$f_nneg),]
+
+shorttab$asym<-NA
 
 # more LT
-id<-which(df$f_nL>df$f_nU)
-df$asym[id]<-"Syn.(rare)"
+id<-which(shorttab$f_nL>shorttab$f_nU)
+shorttab$asym[id]<-"Syn.(rare)"
 
 # more UT
-id<-which(df$f_nL<df$f_nU)
-df$asym[id]<-"Syn.(abundant)"
+id<-which(shorttab$f_nL<shorttab$f_nU)
+shorttab$asym[id]<-"Syn.(abundant)"
 
 # LT==UT
-id<-which(df$f_nL==df$f_nU)
-df$asym[id]<-"Synchrony" 
-
-# comp>syn
-# more LT
-id<-which(df$f_nneg>df$f_npos)
-df$negcor<-"more synchronous"
-df$negcor[id]<-"more compensatory" 
-
-routeL<-sum(df$asym=="Syn.(rare)") # syn: LT dep.
-routeU<-sum(df$asym=="Syn.(abundant)") # syn: UT dep.
-routeS<-sum(df$asym%in%c("Syn.(rare)","Syn.(abundant)","Syn.")) # Syn: no taildep.
-routeC<-sum(df$negcor=="more compensatory") # Comp.
-  
-df_s<-df%>%filter(negcor=="more synchronous")
-df_c<-df%>%filter(negcor=="more compensatory")
+id<-which(shorttab$f_nL==shorttab$f_nU)
+shorttab$asym[id]<-"Synchrony" 
 
 # for synchrony
 library(maps)
@@ -214,14 +222,23 @@ g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", f
 g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
              panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
              legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-g1<-g1+geom_point(data=df_s,aes(y=Latitude,x=Longitude,col=factor(asym)),alpha=0.5,cex=0.5)+
-  ggtitle(paste("BBS: ",nrow(df_s)," synchronous routes",sep=""))+ 
+g1<-g1+geom_point(data=shorttab,aes(y=Latitude,x=Longitude,col=factor(asym)),alpha=0.5,cex=0.2)+
+  ggtitle(paste("BBS: ",nrow(shorttab)," synchronous routes",sep=""))+ 
   theme(plot.title = element_text(size = 5),legend.position = "right",
         legend.title = element_blank(),
         legend.text=element_text(size=4))
 g1
 ggsave(paste(resloc,"routes_on_map_details_syn.pdf",sep =""),
        width = 8, height = 5, units = "cm")
+
+
+#---------- comp>syn ----------
+
+df<-summary_table
+
+# for how many sites -ve corr were dominant? synchronous sites
+nC<-sum((df$f_nL+df$f_nU)<df$f_nneg)
+shorttab<-df[which(df$f_nL+df$f_nU<df$f_nneg),]
 
 # for compensatory
 library(maps)
@@ -232,11 +249,11 @@ g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", f
 g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
              panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
              legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-g1<-g1+geom_point(data=df_c,aes(y=Latitude,x=Longitude,col=factor(Stratum_name)),alpha=0.5,cex=0.5)+
-  ggtitle(paste("BBS: ",nrow(df_c)," compensatory routes",sep=""))+ 
+g1<-g1+geom_point(data=shorttab,aes(y=Latitude,x=Longitude,col=factor(Stratum_name)),alpha=0.5,cex=0.3)+
+  ggtitle(paste("BBS: ",nrow(shorttab)," compensatory routes",sep=""))+ 
   theme(plot.title = element_text(size = 5),legend.position = "right",
         legend.title = element_blank(),
-        legend.text=element_text(size=4))
+        legend.text=element_text(size=3))+guides(colour=guide_legend(nrow=7))
 g1
 ggsave(paste(resloc,"routes_on_map_details_comp.pdf",sep =""),
        width = 8, height = 5, units = "cm")
