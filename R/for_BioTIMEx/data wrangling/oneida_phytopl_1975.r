@@ -1,6 +1,7 @@
 # Phytoplankton data in oneida lake
 # source: https://search.dataone.org/view/kgordon.31.64 
 library(tidyverse)
+`%notin%` <- Negate(`%in%`)
 
 dataset_id <- 'oneida_phytopl_1975'
 
@@ -131,4 +132,42 @@ df_all<-df_all%>%mutate(total_density=total_density.x+total_density.y,
                         present_date=present_date.x+present_date.y)%>%mutate(included=0)
 write.csv(df_all,paste(resloc,dataset_id,"_grouped_phytoplankton_list_1975to2013.csv",sep=""),row.names = F)
 
+##################################################################################################################
+spmat<-read.csv(paste("../../DATA/for_BioTIMEx/wrangled_data/",dataset_id,"/",dataset_id,"_grouped_phytoplankton_list_1975to2013_BM.csv",sep=""))
+spmat<-spmat%>%select(species,include,total_density,sampled_yr,present_yr,sampled_date,present_date)%>%
+  filter(include==1)%>%select(-include)
 
+d1<-read.csv(paste("../../DATA/for_BioTIMEx/wrangled_data/",dataset_id,"/",dataset_id,"_ddata_1975to1995.csv",sep=""))
+d1<-d1%>%filter(year%notin%c(1978,1982)) # very few times sampled
+d1<-d1%>%select(year,species,density)
+
+d2<-read.csv(paste("../../DATA/for_BioTIMEx/wrangled_data/",dataset_id,"/",dataset_id,"_ddata_1996to2013.csv",sep=""))
+d2<-d2%>%select(year,species,density)
+
+dall<-rbind(d1,d2)
+dall<-dall%>%filter(species%in%spmat$species)
+
+spmat<-spmat%>%mutate(spname=species)%>%separate(species,c("genus","sp")," ")
+id1<-as.data.frame(table(spmat$genus))
+id1<-id1[id1$Freq>=2,]
+id1$sp<-"sp."
+id1<-id1[,c(1,3)]
+id2<-which(spmat$genus%in%id1$Var1)
+spmat$sp[id2]<-"sp."
+dall<-inner_join(dall,spmat,by=c("species"="spname"))
+dall<-dall%>%select(year,genus,sp,density)%>%mutate(species=paste(genus,sp,sep=" "))%>%
+  select(year,species,density)
+dall<-dall%>%group_by(year,species)%>%summarize(mean_density=mean(density))%>%ungroup()
+dall<-dall%>%spread(species,mean_density,fill=0)%>%as.data.frame()
+rownames(dall)<-dall$year
+dall<-dall[,-1]
+
+count_non0<-apply(dall,MARGIN=2,FUN=function(x){sum(x!=0)})
+id_common<-which(count_non0>=0.7*nrow(dall))
+id_rare<-which(count_non0<0.7*nrow(dall))
+commonspmat<-dall[,id_common]
+if(length(id_rare!=0)){
+  rarespmat<-dall[,id_rare]
+  commonspmat$raresp<-apply(rarespmat,MARGIN=1,FUN=sum)
+}
+saveRDS(commonspmat,paste("../../DATA/for_BioTIMEx/wrangled_data/",dataset_id,"/",dataset_id,"_inputmatrix_tailanal.RDS",sep=""))
