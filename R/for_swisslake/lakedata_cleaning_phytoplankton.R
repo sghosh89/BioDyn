@@ -215,7 +215,12 @@ get_meanstat_multisamp<-function(dat){
   #  8 --------------------32---------2 (2015-2016): other included years have 1-4 sampling date per month-----------------------------
   #==========================================================================================
   
-  x<-dat%>%group_by(year,id_Eawag,species) %>%   # group by combinations
+  # first summarize for each month in a year for multiple sampling days
+  x<-dat%>%group_by(year,month,id_Eawag,species)%>%
+    summarize(biov=mean(biov),abundance=mean(abundance))%>%ungroup()
+  
+  # then summarize for each year for multiple sampling months
+  x<-x%>%group_by(year,id_Eawag,species) %>%   # group by combinations
     summarise(biov = mean(biov),                 # get summary stats
               abun_mean = mean(abundance)) %>%ungroup()
   return(x)
