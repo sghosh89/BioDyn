@@ -195,7 +195,18 @@ BBS_ta_Diet5Cat<-function(data, resloc){
   #----------------------------------------------------------
   spid_aou<-setdiff(rownames(tempo),c("raresp","covsp"))
   targetsp<-zall[match(spid_aou,zall$AOU),]
-  sptablediet<-table(targetsp$Diet.5Cat) # the count of target species into diet category
+  
+  # the count of target species into diet category
+  sptablediet<-data.frame(nsp_FruiNect=NA,
+                          nsp_Invertebrate=NA,
+                          nsp_Omnivore=NA,
+                          nsp_PlantSeed=NA,
+                          nsp_VertFishScav=NA)
+  sptablediet$nsp_FruiNect<-sum(targetsp$Diet.5Cat=="FruiNect")
+  sptablediet$nsp_Invertebrate<-sum(targetsp$Diet.5Cat=="Invertebrate")
+  sptablediet$nsp_Omnivore<-sum(targetsp$Diet.5Cat=="Omnivore")
+  sptablediet$nsp_PlantSeed<-sum(targetsp$Diet.5Cat=="PlantSeed")
+  sptablediet$nsp_VertFishScav<-sum(targetsp$Diet.5Cat=="VertFishScav")
   
   #possible pairwise (syn or comp. would be equal) combination table with the species diet for each route
   
@@ -218,23 +229,23 @@ BBS_ta_Diet5Cat<-function(data, resloc){
                                PlantSeed_VertFishScav=NA)
   
   # same diet group combo
-  possible_pairwise$FruiNect<-unname(sptablediet[1])*(unname(sptablediet[1])-1)*0.5
-  possible_pairwise$Invertebrate<-unname(sptablediet[2])*(unname(sptablediet[2])-1)*0.5
-  possible_pairwise$Omnivore<-unname(sptablediet[3])*(unname(sptablediet[3])-1)*0.5
-  possible_pairwise$PlantSeed<-unname(sptablediet[4])*(unname(sptablediet[4])-1)*0.5
-  possible_pairwise$VertFishScav<-unname(sptablediet[6])*(unname(sptablediet[6])-1)*0.5
+  possible_pairwise$FruiNect<-sptablediet$nsp_FruiNect*(sptablediet$nsp_FruiNect-1)*0.5
+  possible_pairwise$Invertebrate<-sptablediet$nsp_Invertebrate*(sptablediet$nsp_Invertebrate-1)*0.5
+  possible_pairwise$Omnivore<-sptablediet$nsp_Omnivore*(sptablediet$nsp_Omnivore-1)*0.5
+  possible_pairwise$PlantSeed<-sptablediet$nsp_PlantSeed*(sptablediet$nsp_PlantSeed-1)*0.5
+  possible_pairwise$VertFishScav<-sptablediet$nsp_VertFishScav*(sptablediet$nsp_VertFishScav-1)*0.5
   
   # different diet group combo
-  possible_pairwise$FruiNect_Invertebrate<-unname(sptablediet[1])*(unname(sptablediet[2]))
-  possible_pairwise$FruiNect_Omnivore<-unname(sptablediet[1])*(unname(sptablediet[3]))
-  possible_pairwise$FruiNect_PlantSeed<-unname(sptablediet[1])*(unname(sptablediet[4]))
-  possible_pairwise$FruiNect_VertFishScav<-unname(sptablediet[1])*(unname(sptablediet[6]))
-  possible_pairwise$Invertebrate_Omnivore<-unname(sptablediet[2])*(unname(sptablediet[3]))
-  possible_pairwise$Invertebrate_PlantSeed<-unname(sptablediet[2])*(unname(sptablediet[4]))
-  possible_pairwise$Invertebrate_VertFishScav<-unname(sptablediet[2])*(unname(sptablediet[6]))
-  possible_pairwise$Omnivore_PlantSeed<-unname(sptablediet[3])*(unname(sptablediet[4]))
-  possible_pairwise$Omnivore_VertFishScav<-unname(sptablediet[3])*(unname(sptablediet[6]))
-  possible_pairwise$PlantSeed_VertFishScav<-unname(sptablediet[4])*(unname(sptablediet[6]))
+  possible_pairwise$FruiNect_Invertebrate<-sptablediet$nsp_FruiNect*sptablediet$nsp_Invertebrate
+  possible_pairwise$FruiNect_Omnivore<-sptablediet$nsp_FruiNect*sptablediet$nsp_Omnivore
+  possible_pairwise$FruiNect_PlantSeed<-sptablediet$nsp_FruiNect*sptablediet$nsp_PlantSeed
+  possible_pairwise$FruiNect_VertFishScav<-sptablediet$nsp_FruiNect*sptablediet$nsp_VertFishScav
+  possible_pairwise$Invertebrate_Omnivore<-sptablediet$nsp_Invertebrate*sptablediet$nsp_Omnivore
+  possible_pairwise$Invertebrate_PlantSeed<-sptablediet$nsp_Invertebrate*sptablediet$nsp_PlantSeed
+  possible_pairwise$Invertebrate_VertFishScav<-sptablediet$nsp_Invertebrate*sptablediet$nsp_VertFishScav
+  possible_pairwise$Omnivore_PlantSeed<-sptablediet$nsp_Omnivore*sptablediet$nsp_PlantSeed
+  possible_pairwise$Omnivore_VertFishScav<-sptablediet$nsp_Omnivore*sptablediet$nsp_VertFishScav
+  possible_pairwise$PlantSeed_VertFishScav<-sptablediet$nsp_PlantSeed*sptablediet$nsp_VertFishScav
   
   res<-list(sptablediet=sptablediet,
             possible_pairwise=possible_pairwise,
@@ -283,86 +294,174 @@ saveRDS(summary_BBSta_dietcat,"../../Results/for_BBS/summary_BBSta_dietcat.RDS")
 
 # Now ask some question:
 
+#================= whether guild "Invertebrate" has more or less synchrony/competition than other guilds? =======================
+ysp<-summary_BBSta_dietcat$summary_dietcat_allroutes_sptablediet # number of species into each guild
+x_obs_syn<-summary_BBSta_dietcat$summary_allroutes_obs_diet_syn
+x_obs_syn<-x_obs_syn[,c(4:7,9)] # within same guild pairwise syn observered
+x_poss<-summary_BBSta_dietcat$summary_allroutes_possible_pairwise
+x_poss<-x_poss[,1:5] # within same guild pairwise syn possible
+x_expected_syn<-x_obs_syn/x_poss # the ratio
+
+x_obs_comp<-summary_BBSta_dietcat$summary_allroutes_obs_diet_comp
+x_obs_comp<-x_obs_comp[,c(4:7,9)] # within same guild pairwise syn observered
+x_poss<-summary_BBSta_dietcat$summary_allroutes_possible_pairwise
+x_poss<-x_poss[,1:5] # within same guild pairwise competition possible
+x_expected_comp<-x_obs_comp/x_poss # the ratio
+
+#x_expected_nonNA<-na.omit(x_expected) # 67 common routes with all finite diet categories expectation
+#boxplot(x_expected_nonNA,main=paste(nrow(x_expected_nonNA)," routes",sep=""),
+#        ylab="observed/possible pairwise synchrony within same guild")
+
+#-----------------------------------------------------------
+pdf("../../Results/for_BBS/Invertebrate_vs_other_withinguild_pairwiseinteraction.pdf", 
+    height=10, width=7)
+op<-par(mfrow=c(4,2),mar=c(2,5,3,3),mgp=c(3,1,0))
+
+tempo<-x_expected_syn[,c(2,1)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="observed/possible pairwise interaction 
+        within same guild", xlab="")
+legend("top",legend="synchrony",bty="n")
+
+tempo<-x_expected_comp[,c(2,1)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="")
+legend("top",legend="competition",bty="n")
 
 
+tempo<-x_expected_syn[,c(2,3)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="observed/possible pairwise interaction 
+        within same guild", xlab="")
+legend("top",legend="synchrony",bty="n")
+
+tempo<-x_expected_comp[,c(2,3)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="")
+legend("top",legend="competition",bty="n")
 
 
+tempo<-x_expected_syn[,c(2,4)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="observed/possible pairwise interaction 
+        within same guild", xlab="")
+legend("top",legend="synchrony",bty="n")
+
+tempo<-x_expected_comp[,c(2,4)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="")
+legend("top",legend="competition",bty="n")
 
 
+tempo<-x_expected_syn[,c(2,5)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="observed/possible pairwise interaction 
+        within same guild", xlab="Guild based on diet")
+legend("top",legend="synchrony",bty="n")
 
+tempo<-x_expected_comp[,c(2,5)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="Guild based on diet")
+legend("top",legend="competition",bty="n")
 
-
-
-
-
-
-pdf("../../Results/for_BBS/summary_dietcat_allroutes.pdf", height=8, width=20)
-op<-par(mfrow=c(3,2),mar=c(5,7,5,3),mgp=c(3,1,0))
-
-x<-summary_dietcat_allroutes_summary_diet_syn
-x<-x[,2:3]
-range(x)
-plot(1:2,x[1,],ylim=c(0,600),type="p",xaxt="n",xlab="Diet",ylab="Pairwise interactions\n (all routes)",
-     cex.lab=2,cex.axis=2,pch=19,col=rgb(1,0,0,0.3))
-axis(1, at=1:2, labels=c("same", "different"),cex.lab=2,cex.axis=2)
-legend("top",legend="Synchrony",cex=2,bty="n")
-for(i in 2:nrow(x)){
-  points(1:2,x[i,],ylim=c(0,50),pch=19,col=rgb(0,0,0,0.3))
-}
-
-x<-summary_dietcat_allroutes_summary_diet_syn
-x<-x[,-c(1:3)]
-range(x)
-plot(1:6,x[1,],ylim=c(0,320),type="p",xaxt="n",xlab="Diet",ylab="Target sp. interactions\n (same diet pair)",
-     cex.lab=2,cex.axis=2,pch=19,col=rgb(1,0,0,0.3))
-axis(1, at=1:6, labels=colnames(x),cex.lab=2,cex.axis=2)
-legend("top",legend="Synchrony",cex=2,bty="n")
-for(i in 2:nrow(x)){
-  points(1:6,x[i,],ylim=c(0,50),pch=19,col=rgb(1,0,0,0.3))
-}
-
-x<-summary_dietcat_allroutes_summary_diet_competition
-x<-x[,2:3]
-range(x)
-plot(1:2,x[1,],ylim=c(0,160),type="p",xaxt="n",xlab="Diet",ylab="Pairwise interactions\n (all routes)",
-     cex.lab=2,cex.axis=2,pch=19,col=rgb(0,0,1,0.3))
-axis(1, at=1:2, labels=c("same", "different"),cex.lab=2,cex.axis=2)
-legend("top",legend="Competition",cex=2,bty="n")
-for(i in 2:nrow(x)){
-  points(1:2,x[i,],ylim=c(0,50),pch=19,col=rgb(0,0,1,0.3))
-}
-
-x<-summary_dietcat_allroutes_summary_diet_competition
-x<-x[,-c(1:3)]
-range(x)
-plot(1:6,x[1,],ylim=c(0,80),type="p",xaxt="n",xlab="Diet",ylab="Target sp. interactions\n (same diet pair)",
-     cex.lab=2,cex.axis=2,pch=19,col=rgb(0,0,1,0.3))
-axis(1, at=1:6, labels=colnames(x),cex.lab=2,cex.axis=2)
-legend("top",legend="Competition",cex=2,bty="n")
-for(i in 2:nrow(x)){
-  points(1:6,x[i,],ylim=c(0,50),pch=19,col=rgb(0,0,1,0.3))
-}
-
-x<-summary_dietcat_allroutes_sptablediet
-range(x)
-plot(1:6,x[1,],ylim=c(0,50),type="p",xaxt="n",xlab="Diet",ylab="Target sp. count\n (all routes)",
-     cex.lab=2,cex.axis=2,pch=19,col=rgb(0,0,0,0.3))
-axis(1, at=1:6, labels=colnames(x),cex.lab=2,cex.axis=2)
-for(i in 2:nrow(x)){
-  points(1:6,x[i,],ylim=c(0,50),pch=19,col=rgb(0,0,0,0.3))
-}
 par(op)
 dev.off()
 
+#===== whether guild "Invertebrate" has show more or less synchrony/competition within itself than cross-guild?=======================
+
+ysp<-summary_BBSta_dietcat$summary_dietcat_allroutes_sptablediet # number of species into each guild
+x_obs_syn<-summary_BBSta_dietcat$summary_allroutes_obs_diet_syn
+x_obs_syn<-x_obs_syn[,c("Invertebrate",
+                        "FruiNect_Invertebrate",
+                        "Invertebrate_Omnivore",
+                        "Invertebrate_PlantSeed",
+                        "Invertebrate_VertFishScav")] # within same guild pairwise syn observered
+x_poss<-summary_BBSta_dietcat$summary_allroutes_possible_pairwise
+x_poss<-x_poss[,c("Invertebrate",
+                  "FruiNect_Invertebrate",
+                  "Invertebrate_Omnivore",
+                  "Invertebrate_PlantSeed",
+                  "Invertebrate_VertFishScav")] # within same guild pairwise syn possible
+x_expected_syn<-x_obs_syn/x_poss # the ratio
+
+x_obs_comp<-summary_BBSta_dietcat$summary_allroutes_obs_diet_comp
+x_obs_comp<-x_obs_comp[,c("Invertebrate",
+                        "FruiNect_Invertebrate",
+                        "Invertebrate_Omnivore",
+                        "Invertebrate_PlantSeed",
+                        "Invertebrate_VertFishScav")] # within same guild pairwise comp. observered
+x_expected_comp<-x_obs_comp/x_poss # the ratio
+
+#---------------------------------------
+# for common routes (limited number)
+#x_expected_syn<-na.omit(x_expected_syn)
+#x_expected_comp<-na.omit(x_expected_comp)
+#---------------------------------------
 
 
+pdf("../../Results/for_BBS/Invertebrate_vs_other_crossguild_pairwiseinteraction.pdf", 
+    height=8, width=15)
+op<-par(mfrow=c(2,4),mar=c(5,6,3,2),mgp=c(3,1,0))
+
+tempo<-x_expected_syn[,c(1,2)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="observed/possible pairwise interaction\n (synchrony)", xlab="")
+#legend("top",legend="synchrony",bty="n")
+
+tempo<-x_expected_syn[,c(1,3)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="")
+#legend("top",legend="synchrony",bty="n")
+
+tempo<-x_expected_syn[,c(1,4)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="")
+#legend("top",legend="synchrony",bty="n")
+
+tempo<-x_expected_syn[,c(1,5)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="")
+#legend("top",legend="synchrony",bty="n")
 
 
+tempo<-x_expected_comp[,c(1,2)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="observed/possible pairwise interaction\n (competition)", xlab="Guild based on diet")
+#legend("top",legend="competition",bty="n")
 
+tempo<-x_expected_comp[,c(1,3)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="Guild based on diet")
+#legend("top",legend="competition",bty="n")
 
+tempo<-x_expected_comp[,c(1,4)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="Guild based on diet")
+#legend("top",legend="competition",bty="n")
 
+tempo<-x_expected_comp[,c(1,5)]
+tempo<-na.omit(tempo)
+boxplot(tempo,main=paste(nrow(tempo)," routes",sep=""),
+        ylab="", xlab="Guild based on diet")
+#legend("top",legend="competition",bty="n")
 
-
+par(op)
+dev.off()
 
 
 
