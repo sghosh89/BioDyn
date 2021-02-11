@@ -8,7 +8,7 @@ library(tidyverse)
 bt_rarefied<-readRDS("../../DATA/for_BioTIME/wrangled_data/bt_rarefied_data_pt_thrs_20.RDS")
 
 # read the meta data
-xxm<-read.csv("../../DATA/for_BioTIME/raw_data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") # a dataframe
+xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS") # a dataframe
 xxm_freshw<-xxm%>%filter(REALM=="Freshwater")
 nrow(xxm_freshw) # 28 freshwater sites 
 

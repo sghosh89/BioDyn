@@ -4,7 +4,7 @@ rm(list=ls())
 library(tidyverse)
 #---------------------------------
 # read metadata
-xm<-read.csv("../../DATA/for_BioTIME/raw_data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") 
+xm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS") # a dataframe
 
 # read summary results from freshwater, marine, terrestrial
 r_frs<-readRDS("../../Results/for_BioTIME/Freshwater/summary_table.RDS")
