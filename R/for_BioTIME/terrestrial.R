@@ -12,6 +12,9 @@ xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS") # a d
 xxm_terres<-xxm%>%filter(REALM=="Terrestrial")
 nrow(xxm_terres) # 28 terrestrial sites 
 
+# we are going to exclude analysis for siteid 195: a small subset of BBS data
+xxm_terres<-xxm_terres[-which(xxm_terres$STUDY_ID==195),]
+
 #===================== generate results folder for Terrestrial ===============
 
 resloc<-"../../Results/for_BioTIME/Terrestrial/"

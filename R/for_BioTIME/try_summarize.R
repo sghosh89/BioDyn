@@ -23,7 +23,8 @@ summary_table<-inner_join(summary_table,xm,by=c("siteid"="STUDY_ID"))%>%
                        CLIMATE,HABITAT,BIOME_MAP,TAXA,ORGANISMS,CENT_LAT,CENT_LONG,COMMENTS)
 
 # we are going to exclude results for siteid 195: results from a small subset of BBS data
-summary_table<-summary_table[-which(summary_table$siteid==195),]
+#summary_table<-summary_table[-which(summary_table$siteid==195),]
+# already done in terrestrial.R
 
 saveRDS(summary_table,"../../Results/for_BioTIME/summary_table.RDS")
 
