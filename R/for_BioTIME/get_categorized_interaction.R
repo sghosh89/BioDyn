@@ -156,21 +156,23 @@ get_categorized_interaction<-function(x,xcat){
   table_comp<-t(table_comp)
   
   table_interaction<-cbind(table_indep,table_syn,table_comp)
-  colnames(table_interaction)<-colnames(freq_interaction)<-c("indep","syn","comp")
+  colnames(table_interaction)<-colnames(table_interaction)<-c("indep","syn","comp")
   table_interaction<-as.data.frame(table_interaction)
   
   table_interaction$poss_interaction<-NA
   tt<-as.data.frame(table(xcat$category))
-  table_interaction$poss_interaction[1]<-tt$Freq[1]*tt$Freq[1] 
-  table_interaction$poss_interaction[2]<-tt$Freq[1]*tt$Freq[2] 
-  table_interaction$poss_interaction[3]<-tt$Freq[1]*tt$Freq[3]
-  table_interaction$poss_interaction[4]<-tt$Freq[1]*tt$Freq[4]
-  table_interaction$poss_interaction[5]<-tt$Freq[2]*tt$Freq[2] 
-  table_interaction$poss_interaction[6]<-tt$Freq[2]*tt$Freq[3]
-  table_interaction$poss_interaction[7]<-tt$Freq[2]*tt$Freq[4]
-  table_interaction$poss_interaction[8]<-tt$Freq[3]*tt$Freq[3]
-  table_interaction$poss_interaction[9]<-tt$Freq[3]*tt$Freq[4]
-  table_interaction$poss_interaction[10]<-tt$Freq[4]*tt$Freq[4]
+  table_interaction$poss_interaction[1]<-tt$Freq[1]*(tt$Freq[1]-1)/2 
+  table_interaction$poss_interaction[2]<-(2*tt$Freq[1]*tt$Freq[2])/2 # as 1-2 and 2-1 are the same: multiply by 2, 
+                                                                      # but only compare the lower triangular
+                                                                      #   matrix: so divide by 2
+  table_interaction$poss_interaction[3]<-(2*tt$Freq[1]*tt$Freq[3])/2
+  table_interaction$poss_interaction[4]<-(2*tt$Freq[1]*tt$Freq[4])/2
+  table_interaction$poss_interaction[5]<-tt$Freq[2]*(tt$Freq[2]-1)/2 
+  table_interaction$poss_interaction[6]<-(2*tt$Freq[2]*tt$Freq[3])/2
+  table_interaction$poss_interaction[7]<-(2*tt$Freq[2]*tt$Freq[4])/2
+  table_interaction$poss_interaction[8]<-tt$Freq[3]*(tt$Freq[3]-1)/2
+  table_interaction$poss_interaction[9]<-(2*tt$Freq[3]*tt$Freq[4])/2
+  table_interaction$poss_interaction[10]<-tt$Freq[4]*(tt$Freq[4]-1)/2
   table_interaction$freq_indep<-table_interaction$indep/table_interaction$poss_interaction
   table_interaction$freq_syn<-table_interaction$syn/table_interaction$poss_interaction
   table_interaction$freq_comp<-table_interaction$comp/table_interaction$poss_interaction

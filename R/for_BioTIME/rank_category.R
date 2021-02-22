@@ -137,27 +137,42 @@ res_terres<-gather(res,key="freq_type",value = "Frequency",freq_indep,freq_syn,f
 
 pdf("../../Results/for_BioTIME/interaction_freq_for_eachrealm.pdf",height=8,width=16)
 
-freshw<-ggplot(data=res_freshw,aes(x=Interaction,y=Frequency,col=freq_type))+geom_point(pch=19)+ 
+avg_freshw_intfreq<-res_freshw%>%group_by(Interaction,freq_type)%>%
+  summarize(Frequency=median(Frequency,na.rm=T))%>%ungroup()
+avg_freshw_intfreq_list<-split(avg_freshw_intfreq,f=avg_freshw_intfreq$freq_type)
+freshw<-ggplot(data=res_freshw,aes(x=Interaction,y=Frequency,col=freq_type))+geom_point(pch=19)+
+  geom_point(data=avg_freshw_intfreq,size=6,alpha=0.3)+
+  geom_line(data=avg_freshw_intfreq_list$freq_comp,aes(x=1:10,y=Frequency),lwd=1)+
+  geom_line(data=avg_freshw_intfreq_list$freq_indep,aes(x=1:10,y=Frequency),lwd=1)+
+  geom_line(data=avg_freshw_intfreq_list$freq_syn,aes(x=1:10,y=Frequency),lwd=1)+
   scale_color_manual(values=c("green", "gold1", "red"),guide=F)+
   theme_bw()
 
-marine<-ggplot(data=res_marine,aes(x=Interaction,y=Frequency,col=freq_type))+geom_point(pch=19)+ 
+
+avg_marine_intfreq<-res_marine%>%group_by(Interaction,freq_type)%>%
+  summarize(Frequency=median(Frequency,na.rm=T))%>%ungroup()
+avg_marine_intfreq_list<-split(avg_marine_intfreq,f=avg_marine_intfreq$freq_type)
+marine<-ggplot(data=res_marine,aes(x=Interaction,y=Frequency,col=freq_type))+geom_point(pch=19)+
+  geom_point(data=avg_marine_intfreq,size=6,alpha=0.3)+
+  geom_line(data=avg_marine_intfreq_list$freq_comp,aes(x=1:10,y=Frequency),lwd=1)+
+  geom_line(data=avg_marine_intfreq_list$freq_indep,aes(x=1:10,y=Frequency),lwd=1)+
+  geom_line(data=avg_marine_intfreq_list$freq_syn,aes(x=1:10,y=Frequency),lwd=1)+
   scale_color_manual(values=c("green", "gold1", "red"),guide=F)+
   theme_bw()
 
-terres<-ggplot(data=res_terres,aes(x=Interaction,y=Frequency,col=freq_type))+geom_point(pch=19)+ 
+avg_terres_intfreq<-res_terres%>%group_by(Interaction,freq_type)%>%
+  summarize(Frequency=median(Frequency,na.rm=T))%>%ungroup()
+avg_terres_intfreq_list<-split(avg_terres_intfreq,f=avg_terres_intfreq$freq_type)
+terres<-ggplot(data=res_terres,aes(x=Interaction,y=Frequency,col=freq_type))+geom_point(pch=19)+
+  geom_point(data=avg_terres_intfreq,size=6,alpha=0.3)+
+  geom_line(data=avg_terres_intfreq_list$freq_comp,aes(x=1:10,y=Frequency),lwd=1)+
+  geom_line(data=avg_terres_intfreq_list$freq_indep,aes(x=1:10,y=Frequency),lwd=1)+
+  geom_line(data=avg_terres_intfreq_list$freq_syn,aes(x=1:10,y=Frequency),lwd=1)+
   scale_color_manual(values=c("green", "gold1", "red"))+
   theme_bw()
 
 grid.arrange(freshw,marine,terres, ncol=2, nrow=2)
 
 dev.off()
-
-
-
-
-
-
-
 
 
