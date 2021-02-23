@@ -138,7 +138,7 @@ res_terres<-gather(res,key="freq_type",value = "Frequency",freq_indep,freq_syn,f
 pdf("../../Results/for_BioTIME/interaction_freq_for_eachrealm.pdf",height=8,width=16)
 
 avg_freshw_intfreq<-res_freshw%>%group_by(Interaction,freq_type)%>%
-  summarize(Frequency=median(Frequency,na.rm=T))%>%ungroup()
+  summarize(Frequency=mean(Frequency,na.rm=T))%>%ungroup()
 avg_freshw_intfreq_list<-split(avg_freshw_intfreq,f=avg_freshw_intfreq$freq_type)
 freshw<-ggplot(data=res_freshw,aes(x=Interaction,y=Frequency,col=freq_type))+geom_point(pch=19)+
   geom_point(data=avg_freshw_intfreq,size=6,alpha=0.3)+
@@ -150,7 +150,7 @@ freshw<-ggplot(data=res_freshw,aes(x=Interaction,y=Frequency,col=freq_type))+geo
 
 
 avg_marine_intfreq<-res_marine%>%group_by(Interaction,freq_type)%>%
-  summarize(Frequency=median(Frequency,na.rm=T))%>%ungroup()
+  summarize(Frequency=mean(Frequency,na.rm=T))%>%ungroup()
 avg_marine_intfreq_list<-split(avg_marine_intfreq,f=avg_marine_intfreq$freq_type)
 marine<-ggplot(data=res_marine,aes(x=Interaction,y=Frequency,col=freq_type))+geom_point(pch=19)+
   geom_point(data=avg_marine_intfreq,size=6,alpha=0.3)+
@@ -161,7 +161,7 @@ marine<-ggplot(data=res_marine,aes(x=Interaction,y=Frequency,col=freq_type))+geo
   theme_bw()
 
 avg_terres_intfreq<-res_terres%>%group_by(Interaction,freq_type)%>%
-  summarize(Frequency=median(Frequency,na.rm=T))%>%ungroup()
+  summarize(Frequency=mean(Frequency,na.rm=T))%>%ungroup()
 avg_terres_intfreq_list<-split(avg_terres_intfreq,f=avg_terres_intfreq$freq_type)
 terres<-ggplot(data=res_terres,aes(x=Interaction,y=Frequency,col=freq_type))+geom_point(pch=19)+
   geom_point(data=avg_terres_intfreq,size=6,alpha=0.3)+
