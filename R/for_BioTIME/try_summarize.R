@@ -18,7 +18,7 @@ summary_table<-r_frs_mar_ter%>%mutate(f_nind=nind/nint,
                                       f_nU=nU/nint,
                                       f_nneg=nneg/nint)
 summary_table<-inner_join(summary_table,xm,by=c("siteid"="STUDY_ID"))%>%
-                select(siteid,nsp,nind,npos,nL,nU,nneg,f_nind,f_nL,f_nU,f_nneg,
+                select(siteid,nsp,nind,npos,nL,nU,nneg,L,U,f_nind,f_nL,f_nU,f_nneg,
                        REALM,
                        CLIMATE,HABITAT,BIOME_MAP,TAXA,ORGANISMS,CENT_LAT,CENT_LONG,COMMENTS)
 

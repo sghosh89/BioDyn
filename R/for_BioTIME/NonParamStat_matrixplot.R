@@ -182,7 +182,7 @@ NonParamStat_matrixplot<-function(data,resloc,posn_notneeded,tot_target_sp,tl.ce
   nneg<-nrow(z1_posnN_ind) # negative correlaion in lower.tri of a symmetric matrix
   
   
-  summary_df<-data.frame(nsp=tot_target_sp,nint=nint,nind=nind,npos=npos,nL=nL,nU=nU,nneg=nneg)
+  summary_df<-data.frame(nsp=tot_target_sp,nint=nint,nind=nind,npos=npos,nL=nL,nU=nU,nneg=nneg,L=L,U=U)
   
   #------------------------------------------------------------------------------------------
   
