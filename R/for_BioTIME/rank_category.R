@@ -137,8 +137,8 @@ res_terres<-gather(res,key="freq_type",value = "Frequency",freq_indep,freq_syn,f
 
 # save the result
 saveRDS(res_freshw,"../../Results/for_BioTIME/Freshwater/interaction_freq_for_freshwater.RDS")
-saveRDS(res_marine,"../../Results/for_BioTIME/Marine//interaction_freq_for_marine.RDS")
-saveRDS(res_terres,"../../Results/for_BioTIME/Terrestrial//interaction_freq_for_terrestrial.RDS")
+saveRDS(res_marine,"../../Results/for_BioTIME/Marine/interaction_freq_for_marine.RDS")
+saveRDS(res_terres,"../../Results/for_BioTIME/Terrestrial/interaction_freq_for_terrestrial.RDS")
 
 
 
