@@ -98,7 +98,7 @@ summary_df<-summary_df%>%mutate(f_nind=nind/nint,
                                       f_nL=nL/nint,
                                       f_nU=nU/nint,
                                       f_nneg=nneg/nint)
-summary_df$siteid<-c("WA","UZ","LU","LZ","SE","HA","BA","GR")
+summary_df$siteid<-c("L1WA","L2UZ","L3LU","L4LZ","L5SE","L6HA","L7BA","L8GR")
 
 saveRDS(summary_df,"../../Results/for_swisslake/summary_table_phytoplankton.RDS")
 
