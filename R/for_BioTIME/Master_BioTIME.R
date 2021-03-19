@@ -6,3 +6,4 @@ source("marine.R")     # tail analysis for marine
 source("terrestrial.R") # tail analysis for terrestrial
 source("try_summarize.R") # summarize tail analysis res, plot for each realm
 source("rank_category.R") # compute and save categorized interaction freq between dominant groups
+source("summary_for_stabilitymetric.R") # get stability metric for BioTIME data
