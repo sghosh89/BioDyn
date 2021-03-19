@@ -135,6 +135,25 @@ for(i in 1:length(siteid)){
 rownames(res)<-NULL
 res_terres<-gather(res,key="freq_type",value = "Frequency",freq_indep,freq_syn,freq_comp)
 
+# save the result
+saveRDS(res_freshw,"../../Results/for_BioTIME/Freshwater/interaction_freq_for_freshwater.RDS")
+saveRDS(res_marine,"../../Results/for_BioTIME/Marine//interaction_freq_for_marine.RDS")
+saveRDS(res_terres,"../../Results/for_BioTIME/Terrestrial//interaction_freq_for_terrestrial.RDS")
+
+
+
+
+
+
+
+
+
+#################################################################
+#         plot the interaction freq plot for each realm
+#######################################################################
+
+
+
 pdf("../../Results/for_BioTIME/interaction_freq_for_eachrealm.pdf",height=8,width=16)
 
 avg_freshw_intfreq<-res_freshw%>%group_by(Interaction,freq_type)%>%
