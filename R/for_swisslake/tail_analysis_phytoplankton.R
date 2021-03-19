@@ -98,10 +98,13 @@ summary_df<-summary_df%>%mutate(f_nind=nind/nint,
                                       f_nL=nL/nint,
                                       f_nU=nU/nint,
                                       f_nneg=nneg/nint)
+summary_df$siteid<-c("WA","UZ","LU","LZ","SE","HA","BA","GR")
+
+saveRDS(summary_df,"../../Results/for_swisslake/summary_table_phytoplankton.RDS")
 
 df<-summary_df%>%select(nsp,f_nind,f_nL,f_nU,f_nneg)
 dat<-t(df)
-colnames(dat)<-c("WA","UZ","LU","LZ","SE","HA","BA","GR")
+colnames(dat)<-summary_df$siteid
 nsp<-dat[1,]
 dat<-dat[-1,]
 
