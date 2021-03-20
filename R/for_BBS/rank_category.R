@@ -38,7 +38,7 @@ get_rankabun<-function(siteid){
 
 #########################################
 # now call the function 
-r_ter<-readRDS("../../Results/for_BBS/summary_table.RDS")
+r_ter<-readRDS("../../Results/for_BBS/summary_table_detail_version.RDS")
 siteid<-r_ter$siteid
 get_rankabun(siteid = siteid)
 
@@ -90,6 +90,6 @@ terres<-ggplot(data=res_terres,aes(x=Interaction,y=Frequency,col=freq_type))+geo
   geom_line(data=avg_terres_intfreq_list$freq_syn,aes(x=1:10,y=Frequency),lwd=1)+
   scale_color_manual(values=c("green", "gold1", "orchid"))+
   theme_bw()
-
+terres
 
 
