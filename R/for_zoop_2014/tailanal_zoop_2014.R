@@ -65,7 +65,6 @@ for (i in c(1:length(good_LakeID))){
   summary_table<-rbind(summary_table,x)
 }
 summary_table<-cbind(siteid=good_LakeID,summary_table)
-saveRDS(summary_table,"../../Results/for_zoop_2014/summary_table.RDS")
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
