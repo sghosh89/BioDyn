@@ -4,7 +4,7 @@ library(tidyverse)
 library(ggpmisc)
 
 # read summary results 
-r_BBS<-readRDS("../../Results/for_BBS/summary_table.RDS")
+r_BBS<-readRDS("../../Results/for_BBS/summary_table_detail_version.RDS")
 r_BBS$ens<-NA # effective number of species
 r_BBS$cvsq_real<-NA # square of CV for the real community data
 r_BBS$cvsq_indep<-NA # square of CV of the community if all the sp. behave independently
