@@ -73,7 +73,7 @@ rownames(res)<-NULL
 res_freshw<-gather(res,key="freq_type",value = "Frequency",freq_indep,freq_syn,freq_comp)
 
 # save the result
-saveRDS(res_freshw,"../../Results/for_zoop_2014/interaction_freq_for_RivFishTime.RDS")
+saveRDS(res_freshw,"../../Results/for_zoop_2014/interaction_freq_for_zoop2014.RDS")
 
 
 #################################################################
