@@ -93,6 +93,26 @@ grid.arrange(freshw,terres,marine, ncol=2, nrow=2)
 
 dev.off()
 
+avg_freshw_intfreq_syn<-avg_freshw_intfreq%>%filter(freq_type=="freq_syn")
+avg_freshw_intfreq_comp<-avg_freshw_intfreq%>%filter(freq_type=="freq_comp")
+avg_terres_intfreq_syn<-avg_terres_intfreq%>%filter(freq_type=="freq_syn")
+avg_terres_intfreq_comp<-avg_terres_intfreq%>%filter(freq_type=="freq_comp")
+
+syn_comp_ratio_freshw<-avg_freshw_intfreq_syn$Frequency/avg_freshw_intfreq_comp$Frequency
+syn_comp_ratio_terres<-avg_terres_intfreq_syn$Frequency/avg_terres_intfreq_comp$Frequency
 
 
+dd_f<-data.frame(di=avg_freshw_intfreq_syn$Interaction,ratio=syn_comp_ratio_freshw,REALM="Freshwater")
+dd_t<-data.frame(di=avg_terres_intfreq_syn$Interaction,ratio=syn_comp_ratio_terres,REALM="Terrestrial")
+dd=rbind(dd_f,dd_t)
+gp<-ggplot(data=dd,aes(x=di,y=ratio,col=REALM))+
+  geom_point(pch=19)+
+  geom_line(data=dd_f,aes(x=1:10,y=ratio),lwd=0.8)+
+  geom_line(data=dd_t,aes(x=1:10,y=ratio),lwd=0.8)+
+  scale_color_manual(values=c("blue","green"))+
+  xlab("Dominant species pairwise interaction")+ylab("Syn/Asyn ratio")+
+  theme_bw()
 
+pdf("../../Results/gather_res/ratio_for_eachrealm.pdf",height=5,width=8)
+gp
+dev.off()
