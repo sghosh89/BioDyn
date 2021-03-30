@@ -75,7 +75,7 @@ marine<-ggplot(data=res_marine,aes(x=Interaction,y=Frequency,col=freq_type))+geo
   geom_line(data=avg_marine_intfreq_list$freq_comp,aes(x=1:10,y=Frequency),lwd=1)+
   geom_line(data=avg_marine_intfreq_list$freq_indep,aes(x=1:10,y=Frequency),lwd=1)+
   geom_line(data=avg_marine_intfreq_list$freq_syn,aes(x=1:10,y=Frequency),lwd=1)+
-  scale_color_manual(values=c("green", "gold1", "orchid"),guide=F)+
+  scale_color_manual(values=c("green", "gold1", "orchid"))+
   theme_bw()
 
 avg_terres_intfreq<-res_terres%>%group_by(Interaction,freq_type)%>%
@@ -86,7 +86,7 @@ terres<-ggplot(data=res_terres,aes(x=Interaction,y=Frequency,col=freq_type))+geo
   geom_line(data=avg_terres_intfreq_list$freq_comp,aes(x=1:10,y=Frequency),lwd=1)+
   geom_line(data=avg_terres_intfreq_list$freq_indep,aes(x=1:10,y=Frequency),lwd=1)+
   geom_line(data=avg_terres_intfreq_list$freq_syn,aes(x=1:10,y=Frequency),lwd=1)+
-  scale_color_manual(values=c("green", "gold1", "orchid"))+
+  scale_color_manual(values=c("green", "gold1", "orchid"),guide=F)+
   theme_bw()
 
 grid.arrange(freshw,terres,marine, ncol=2, nrow=2)
