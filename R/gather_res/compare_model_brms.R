@@ -70,7 +70,7 @@ null_model<-brm(bform0,
                 control = list(adapt_delta = 0.99, max_treedepth = 20),
                 save_pars = save_pars(all = TRUE),seed=123)
 print(summary(null_model),digits = 3)
-saveRDS(null_model,"../../Results/gather_res/null_moddel.RDS")
+saveRDS(null_model,"../../Results/gather_res/null_model.RDS")
 
 cat(paste("========= starting a basic full_model Bayesian at ",Sys.time()," ============= \n"))
 
@@ -85,12 +85,12 @@ cat(paste("========= starting a basic full_model Bayesian at ",Sys.time()," ====
 
 full_model <- update(null_model, stability ~ (R + VR + SR + A + uniA )* REALM, 
                      newdata = mydat_scaled)
-saveRDS(full_model,"../../Results/gather_res/full_moddel.RDS")
+saveRDS(full_model,"../../Results/gather_res/full_model.RDS")
 print(summary(full_model),digits = 3)
 #plot(full_model)
 #plot(conditional_effects(full_model), points = T, ask=F)
 # fixef(full_model) #population level effect
-#full_model<-readRDS("../../Results/gather_res/full_moddel.RDS")
+#full_model<-readRDS("../../Results/gather_res/full_model.RDS")
 Sys.time()
 
 #===============================================================================================
