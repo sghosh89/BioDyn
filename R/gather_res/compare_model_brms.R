@@ -68,7 +68,7 @@ null_model<-brm(bform0,
                 data=mydat_scaled,
                 chains=4,cores=4,iter=10000,
                 control = list(adapt_delta = 0.99, max_treedepth = 20),
-                save_pars = save_pars(all = TRUE),seed=123)
+                save_pars = save_pars(all = TRUE),sample_prior = T,seed=123)
 print(summary(null_model),digits = 3)
 saveRDS(null_model,"../../Results/gather_res/null_model.RDS")
 
@@ -108,22 +108,28 @@ cat("==== compare loo for both model =====","\n")
 loo_compare(loo_null,loo_full)
 loo_model_weights(null_model,full_model)
 
-cat("==== R2 for null model =====","\n")
+cat("==== R2 for null model: loo =====","\n")
 loo_R2(null_model)
 
-cat("==== R2 for full model =====","\n")
+cat("==== R2 for full model: loo =====","\n")
 loo_R2(full_model)
+
+cat("==== R2 for null model: bayes =====","\n")
+bayes_R2(null_model)
+
+cat("==== R2 for full model: bayes =====","\n")
+bayes_R2(full_model)
 sink()
 
 #========================================================
-plot(full_model)
+#plot(full_model)
 
 x<-conditional_effects(full_model
                        #,method = "posterior_predict"
                        )
 
 #plot conditional effects
-pdf("./plot.pdf",height=12,width=16)
+pdf("../../Results/gather_res/conditional_effects_brms_univar.pdf",height=12,width=16)
 op<-par(mfrow=c(3,2),mar=c(3,3,3,3))
 
 p1<-plot(x,points=F,plot=F)[[1]]+theme_classic()
@@ -169,14 +175,14 @@ par(op)
 dev.off()
 
 #============================
-post <- posterior_samples(full_model) # posterior distribution
+#post <- posterior_samples(full_model) # posterior distribution
 
 # level of support
-LOS <- function(x=NULL){
-  out =   (length(which(x > 0)) / length(x))*100
-  return(round(out, 3))
-}
-apply(post, 2, LOS)
+#LOS <- function(x=NULL){
+#  out =   (length(which(x > 0)) / length(x))*100
+#  return(round(out, 3))
+#}
+#apply(post, 2, LOS)
 
 #============================
 

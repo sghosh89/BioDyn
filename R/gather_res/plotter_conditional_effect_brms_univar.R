@@ -182,3 +182,96 @@ plotter_conditional_effect_brms_univar(full_model=full_model,xvar=xvar,
 par(op)
 dev.off()
 
+#=======================================================================================
+
+# summary plot for posterior parameter distribution
+library(tidybayes)
+library(tidyverse)
+
+post<-posterior_samples(full_model)
+mypost<-post
+mypost<-rename(mypost, 
+       b_Freshwater=b_Intercept,
+       `b_Terrestrial-b_Freshwater` = b_REALMTerrestrial,
+       b_R_Freshwater = b_R,
+       `b_R_Terrestrial-b_R_Freshwater` = `b_R:REALMTerrestrial`,
+       b_VR_Freshwater = b_VR,
+       `b_VR_Terrestrial-b_VR_Freshwater` = `b_VR:REALMTerrestrial`,
+       b_SR_Freshwater = b_SR,
+       `b_SR_Terrestrial-b_SR_Freshwater` = `b_SR:REALMTerrestrial`,
+       b_A_Freshwater = b_A,
+       `b_A_Terrestrial-b_A_Freshwater` = `b_A:REALMTerrestrial`,
+       b_uniA_Freshwater = b_uniA,
+       `b_uniA_Terrestrial-b_uniA_Freshwater` = `b_uniA:REALMTerrestrial`
+       )
+
+gathered_post <-
+  mypost %>% 
+  mutate("b_Terrestrial" = 
+           `b_Terrestrial-b_Freshwater` + b_Freshwater,
+         "b_R_Terrestrial" = 
+           `b_R_Terrestrial-b_R_Freshwater` + b_R_Freshwater,
+         "b_VR_Terrestrial" = 
+           `b_VR_Terrestrial-b_VR_Freshwater` + b_VR_Freshwater,
+         "b_SR_Terrestrial" = 
+           `b_SR_Terrestrial-b_SR_Freshwater` + b_SR_Freshwater,
+         "b_A_Terrestrial" = 
+           `b_A_Terrestrial-b_A_Freshwater` + b_A_Freshwater,
+         "b_uniA_Terrestrial" = 
+           `b_uniA_Terrestrial-b_uniA_Freshwater` + b_uniA_Freshwater,)%>%
+  select("b_Terrestrial", "b_Freshwater", "b_Terrestrial-b_Freshwater",
+         "b_R_Terrestrial", "b_R_Freshwater", "b_R_Terrestrial-b_R_Freshwater",
+         "b_VR_Terrestrial", "b_VR_Freshwater", "b_VR_Terrestrial-b_VR_Freshwater",
+         "b_SR_Terrestrial", "b_SR_Freshwater", "b_SR_Terrestrial-b_SR_Freshwater",
+         "b_A_Terrestrial", "b_A_Freshwater", "b_A_Terrestrial-b_A_Freshwater",
+         "b_uniA_Terrestrial", "b_uniA_Freshwater", "b_uniA_Terrestrial-b_uniA_Freshwater")%>%
+  gather() %>% 
+  mutate(key = factor(key, levels = c("b_Terrestrial", "b_Freshwater", "b_Terrestrial-b_Freshwater",
+                                      "b_R_Terrestrial", "b_R_Freshwater", "b_R_Terrestrial-b_R_Freshwater",
+                                      "b_VR_Terrestrial", "b_VR_Freshwater", "b_VR_Terrestrial-b_VR_Freshwater",
+                                      "b_SR_Terrestrial", "b_SR_Freshwater", "b_SR_Terrestrial-b_SR_Freshwater",
+                                      "b_A_Terrestrial", "b_A_Freshwater", "b_A_Terrestrial-b_A_Freshwater",
+                                      "b_uniA_Terrestrial", "b_uniA_Freshwater", "b_uniA_Terrestrial-b_uniA_Freshwater")
+  )
+  ) 
+
+p1gpost<-gathered_post %>% 
+  ggplot(aes(x = value, group = key)) +
+  geom_histogram(color = "grey92", fill = "grey86",
+                 size = .2) +
+  stat_pointinterval(aes(y = 0), 
+                     point_interval = mean_qi, .width = c(.95, .50)) +
+  scale_y_continuous(NULL, breaks = NULL) +
+  theme_bw() + theme(panel.grid = element_blank())+
+  facet_wrap(~key, scales = "free_x", ncol=3)
+
+# numeric values for summary
+fixef_tab_univar<-gathered_post %>% 
+  group_by(key) %>% 
+  mean_qi()%>%as.data.frame()
+saveRDS(fixef_tab_univar,"../../Results/gather_res/fixef_tab_brms_univar.RDS")
+# for asymmetric distribution mode_hdi would be better than mean_qi
+
+pdf("../../Results/gather_res/posterior_parameter_brms_univer.pdf",height=12,width=10)
+p1gpost
+dev.off()
+
+summary(full_model)
+apply(post,2,mean) # this is same as estimate of previous line/ next line
+#fixef(full_model)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
