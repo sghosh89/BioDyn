@@ -54,6 +54,8 @@ AIC(model1,model2)
 #car::vif(stability ~ (R + VR), mydat_scaled) testing multicolinearity 
 #car::vif(stability ~ (R + VR+ SR + A + uniA), mydat_scaled) testing multicolinearity 
 
+# summary(model1) # to see R2 value
+# summary(model2)
 #OK, model 2 including all vars is the best one
 
 #======================================================================================================

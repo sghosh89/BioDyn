@@ -14,6 +14,9 @@ pred_func <- function(post, R, VR, SR, A, uniA, REALM){
   stab<-stab*(sd(stab))+mean(stab) # bring back raw var from scaled var
 }
 
+# srt<-pred_func(post,0,0,0,0,0,REALM=0)
+# srt<-pred_func(post,0,0,0,0,0,REALM=1)
+
 # plot conditional effects with original variables
 plotter_conditional_effect_brms_univar<-function(full_model,xvar,ylm,xlab="R",ploton="varyR"){
   post <- posterior_samples(full_model) # posterior distribution
