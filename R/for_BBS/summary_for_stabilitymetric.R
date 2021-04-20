@@ -14,6 +14,7 @@ r_BBS$skw_real <-NA # skewness for the real community data
 r_BBS$skw_indep<-NA # skewness of the community if all the sp. behave independently
 r_BBS$phi_skw<-NA # skewness ratio
 r_BBS$iCV<-NA # inverse of CV: stability metric
+r_BBS$iCValt <-NA # inverse of CV alternative for skewed dist.: stability metric
 
 for(i in 1:nrow(r_BBS)){
   mypath<-paste("../../DATA/for_BBS/wrangled_data/",r_BBS$siteid[i],"/",sep="")
@@ -28,6 +29,7 @@ for(i in 1:nrow(r_BBS)){
   r_BBS$skw_indep[i]<-df$skw_indep
   r_BBS$phi_skw[i]<-df$phi_skw
   r_BBS$iCV[i]<-df$iCV
+  r_BBS$iCValt[i]<-df$iCValt
 }
 r_BBS$REALM<-as.factor("Terrestrial")
 ##########################################################
