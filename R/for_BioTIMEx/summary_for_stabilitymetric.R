@@ -14,6 +14,7 @@ r_combo$skw_real <-NA # skewness for the real community data
 r_combo$skw_indep<-NA # skewness of the community if all the sp. behave independently
 r_combo$phi_skw<-NA # skewness ratio
 r_combo$iCV<-NA # inverse of CV: stability metric
+r_combo$iCValt <-NA # inverse of CV alternative for skewed dist.: stability metric
 
 # This needs to be updated from inputmatfile_list of rank_category.R
 inputmatfile_list<-c(
@@ -44,6 +45,7 @@ for(i in 1:nrow(r_combo)){
   r_combo$skw_indep[i]<-df$skw_indep
   r_combo$phi_skw[i]<-df$phi_skw
   r_combo$iCV[i]<-df$iCV
+  r_combo$iCValt[i]<-df$iCValt
 }
 
 r_combo$REALM<-as.factor(myrealm)

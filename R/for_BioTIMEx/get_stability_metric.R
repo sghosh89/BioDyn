@@ -15,6 +15,7 @@
 #    7. "skw_indep", # skewness of the community if all the sp. behave independently
 #    8. "phi_skw"
 #    9. "iCV" : inverse of CV: stability index
+#    10. "iCValt" : inverse of varialibity for skewed distribution = median/IQR
 
 
 get_stability_metric<-function(m){
@@ -25,7 +26,7 @@ get_stability_metric<-function(m){
   mean_each_sp<-apply(m,MARGIN = 2,FUN = mean)
   cm3_each_sp<-apply(m,MARGIN = 2,FUN = my3cm)
   
-  df_stability<-as.data.frame(matrix(NA,nrow=1,ncol=9))
+  df_stability<-as.data.frame(matrix(NA,nrow=1,ncol=10))
   
   colnames(df_stability)<-c("ens", # effective number of species
                             "cvsq_real", # square of CV for the real community data
@@ -35,7 +36,8 @@ get_stability_metric<-function(m){
                             "skw_real",  # skewness for the real community data
                             "skw_indep", # skewness of the community if all the sp. behave independently
                             "phi_skw", # this is the ratio of skw_real/skw_indep and compared to ??
-                            "iCV" # inverse of coefficient of variation: stability index
+                            "iCV", # inverse of coefficient of variation: stability index
+                            "iCValt"
   )
   
   # effective richness
@@ -56,6 +58,7 @@ get_stability_metric<-function(m){
   
   # inverse of CV
   df_stability$iCV<-mean(tot_quantity)/sd(tot_quantity)
+  df_stability$iCValt<-median(tot_quantity)/IQR(tot_quantity,type=7)
   
   return(df_stability)
   
@@ -112,12 +115,4 @@ myskns<-function(x,na.rm=F){
   
   return(my3cm(x)/(sd(x)^3))
 }
-
-
-
-
-
-
-
-
 
