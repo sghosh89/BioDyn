@@ -18,7 +18,7 @@
 #    10. "iCValt" : inverse of varialibity for skewed distribution = median/IQR
 
 
-get_stability_metric_skewed<-function(m){
+get_stability_metric<-function(m){
   
   
   tot_quantity<-apply(m,MARGIN = 1,FUN = sum)
