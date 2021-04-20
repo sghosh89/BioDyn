@@ -8,7 +8,7 @@ sm_BioTIME<-sm_BioTIME%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
                                   L,U,f_nind,f_nL,f_nU,f_nneg,
                                   cvsq_real,cvsq_indep,phi,phi_LdM,
                                   skw_real,skw_indep,phi_skw,
-                                  iCV,
+                                  iCV,iCValt,
                                   REALM))
 sm_BioTIME$source<-"BioTIME"
 
@@ -18,7 +18,7 @@ sm_BioTIMEx<-sm_BioTIMEx%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
                                     L,U,f_nind,f_nL,f_nU,f_nneg,
                                     cvsq_real,cvsq_indep,phi,phi_LdM,
                                     skw_real,skw_indep,phi_skw,
-                                    iCV,
+                                    iCV,iCValt,
                                     REALM))
 sm_BioTIMEx$source<-"BioTIMEx"
 
@@ -28,7 +28,7 @@ sm_BBS<-sm_BBS%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
                           L,U,f_nind,f_nL,f_nU,f_nneg,
                           cvsq_real,cvsq_indep,phi,phi_LdM,
                           skw_real,skw_indep,phi_skw,
-                          iCV,
+                          iCV,iCValt,
                           REALM))
 sm_BBS$source<-"BBS"
 
@@ -38,7 +38,7 @@ sm_RF<-sm_RF%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
                         L,U,f_nind,f_nL,f_nU,f_nneg,
                         cvsq_real,cvsq_indep,phi,phi_LdM,
                         skw_real,skw_indep,phi_skw,
-                        iCV,
+                        iCV,iCValt,
                         REALM))
 sm_RF$source<-"RivFishTIME"
 
@@ -48,7 +48,7 @@ sm_swisslake_phyto<-sm_swisslake_phyto%>%select(c(siteid,nsp,ens,nind,npos,nL,nU
                                                   L,U,f_nind,f_nL,f_nU,f_nneg,
                                                   cvsq_real,cvsq_indep,phi,phi_LdM,
                                                   skw_real,skw_indep,phi_skw,
-                                                  iCV,
+                                                  iCV,iCValt,
                                                   REALM))
 sm_swisslake_phyto$source<-"SwissLakePhyto"
 
@@ -57,7 +57,7 @@ sm_swisslake_zoo<-sm_swisslake_zoo%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nne
                                               L,U,f_nind,f_nL,f_nU,f_nneg,
                                               cvsq_real,cvsq_indep,phi,phi_LdM,
                                               skw_real,skw_indep,phi_skw,
-                                              iCV,
+                                              iCV,iCValt,
                                               REALM))
 sm_swisslake_zoo$source<-"SwissLakeZoo"
 
@@ -67,7 +67,7 @@ sm_zoop<-sm_zoop%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
                             L,U,f_nind,f_nL,f_nU,f_nneg,
                             cvsq_real,cvsq_indep,phi,phi_LdM,
                             skw_real,skw_indep,phi_skw,
-                            iCV,
+                            iCV,iCValt,
                             REALM))
 sm_zoop$source<-"Zooplankton2014"
 
