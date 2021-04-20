@@ -14,6 +14,7 @@ r_zoop$skw_real <-NA # skewness for the real community data
 r_zoop$skw_indep<-NA # skewness of the community if all the sp. behave independently
 r_zoop$phi_skw<-NA # skewness ratio
 r_zoop$iCV<-NA # inverse of CV: stability metric
+r_zoop$iCValt <-NA # inverse of CV alternative for skewed dist.: stability metric
 
 for(i in 1:nrow(r_zoop)){
   mypath<-paste("../../DATA/for_zoop_2014/wrangled_data/",r_zoop$siteid[i],"/",sep="")
@@ -28,6 +29,7 @@ for(i in 1:nrow(r_zoop)){
   r_zoop$skw_indep[i]<-df$skw_indep
   r_zoop$phi_skw[i]<-df$phi_skw
   r_zoop$iCV[i]<-df$iCV
+  r_zoop$iCValt[i]<-df$iCValt
 }
 r_zoop$REALM<-as.factor("Freshwater")
 ##########################################################
