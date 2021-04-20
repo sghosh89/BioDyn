@@ -13,6 +13,7 @@ r_BioTIME$skw_real <-NA # skewness for the real community data
 r_BioTIME$skw_indep<-NA # skewness of the community if all the sp. behave independently
 r_BioTIME$phi_skw<-NA # skewness ratio
 r_BioTIME$iCV<-NA # inverse of CV: stability metric
+r_BioTIME$iCValt <-NA # inverse of CV alternative for skewed dist.: stability metric
 
 for(i in 1:nrow(r_BioTIME)){
   mypath<-paste("../../Results/for_BioTIME/",r_BioTIME$REALM[i],"/",r_BioTIME$siteid[i],"/",sep="")
@@ -27,6 +28,7 @@ for(i in 1:nrow(r_BioTIME)){
   r_BioTIME$skw_indep[i]<-df$skw_indep
   r_BioTIME$phi_skw[i]<-df$phi_skw
   r_BioTIME$iCV[i]<-df$iCV
+  r_BioTIME$iCValt[i]<-df$iCValt
 }
 r_BioTIME$REALM<-as.factor(r_BioTIME$REALM)
 ##########################################################
