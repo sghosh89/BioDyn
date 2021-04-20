@@ -14,6 +14,7 @@ r_zoo$skw_real <-NA # skewness for the real community data
 r_zoo$skw_indep<-NA # skewness of the community if all the sp. behave independently
 r_zoo$phi_skw<-NA # skewness ratio
 r_zoo$iCV<-NA # inverse of CV: stability metric
+r_zoo$iCValt<-NA # inverse of CV alternative for skewed dist.: stability metric
 
 for(i in 1:nrow(r_zoo)){
   siteid<-r_zoo$siteid[i]
@@ -31,6 +32,7 @@ for(i in 1:nrow(r_zoo)){
   r_zoo$skw_indep[i]<-df$skw_indep
   r_zoo$phi_skw[i]<-df$phi_skw
   r_zoo$iCV[i]<-df$iCV
+  r_zoo$iCValt[i]<-df$iCValt
 }
 r_zoo$REALM<-as.factor("Freshwater")
 ##########################################################

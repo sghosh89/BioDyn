@@ -14,6 +14,7 @@ r_phyto$skw_real <-NA # skewness for the real community data
 r_phyto$skw_indep<-NA # skewness of the community if all the sp. behave independently
 r_phyto$phi_skw<-NA # skewness ratio
 r_phyto$iCV<-NA # inverse of CV: stability metric
+r_phyto$iCValt<-NA # inverse of CV alternative for skewed dist.: stability metric
 
 for(i in 1:nrow(r_phyto)){
   siteid<-r_phyto$siteid[i]
@@ -28,6 +29,7 @@ for(i in 1:nrow(r_phyto)){
   r_phyto$skw_indep[i]<-df$skw_indep
   r_phyto$phi_skw[i]<-df$phi_skw
   r_phyto$iCV[i]<-df$iCV
+  r_phyto$iCValt[i]<-df$iCValt
 }
 r_phyto$REALM<-as.factor("Freshwater")
 ##########################################################
