@@ -151,6 +151,8 @@ plotter_conditional_effect_brms_univar<-function(full_model,xvar,ylm,xlab="R",pl
 
 #==============================================
 full_model<-readRDS("../../Results/gather_res/full_model.RDS")
+#full_model<-readRDS("../../Results/gather_res/full_model_skw.RDS")
+#pdf("../../Results/gather_res/conditional_brms_univar_plot_skw.pdf",height=3,width=6)
 pdf("../../Results/gather_res/conditional_brms_univar_plot.pdf",height=3,width=6)
 op<-par(mfrow=c(2,3),mar=c(4,4,1,1),mgp=c(2.5,1,0))
 xvar = seq(from=2, to=70, by = 1)
