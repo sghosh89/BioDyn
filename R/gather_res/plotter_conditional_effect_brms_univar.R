@@ -168,7 +168,7 @@ plotter_conditional_effect_brms_univar(full_model=full_model,xvar=xvar,
                                        xlab = "Variance Ratio",
                                        ploton="varyVR")
 
-xvar = seq(from=-10, to=10, by = 1)
+xvar = seq(from=-5, to=5, by = 0.1)
 plotter_conditional_effect_brms_univar(full_model=full_model,xvar=xvar,
                                        ylm = c(-2,1),
                                        xlab = "Skewness Ratio",
@@ -255,6 +255,7 @@ fixef_tab_univar<-gathered_post %>%
   group_by(key) %>% 
   mean_qi()%>%as.data.frame()
 saveRDS(fixef_tab_univar,"../../Results/gather_res/fixef_tab_brms_univar.RDS")
+#saveRDS(fixef_tab_univar,"../../Results/gather_res/fixef_tab_brms_univar_skw.RDS")
 # for asymmetric distribution mode_hdi would be better than mean_qi
 
 pdf("../../Results/gather_res/posterior_parameter_brms_univar.pdf",height=12,width=10)
