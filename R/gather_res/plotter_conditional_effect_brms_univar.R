@@ -257,7 +257,8 @@ fixef_tab_univar<-gathered_post %>%
 saveRDS(fixef_tab_univar,"../../Results/gather_res/fixef_tab_brms_univar.RDS")
 # for asymmetric distribution mode_hdi would be better than mean_qi
 
-pdf("../../Results/gather_res/posterior_parameter_brms_univer.pdf",height=12,width=10)
+pdf("../../Results/gather_res/posterior_parameter_brms_univar.pdf",height=12,width=10)
+#pdf("../../Results/gather_res/posterior_parameter_brms_univar_skw.pdf",height=12,width=10)
 p1gpost
 dev.off()
 
