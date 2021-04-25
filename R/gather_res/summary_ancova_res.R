@@ -14,11 +14,11 @@ sm_all<-na.omit(sm_all)
 #sm_all<-sm_all%>%filter(source %in% c("Zooplankton2014","BioTIME","BioTIMEx","RivFishTIME"))
 
 # check Synchrony-stability relationship: expected to be -ve
-mydat<-sm_all[,c("phi","iCV","REALM")]
+mydat<-sm_all[,c("phi","iCValt","REALM")]
 
 #-----------------------------------------------------
 mydat$log_phi<-log(mydat$phi)
-mydat$log_iCV<-log(mydat$iCV)
+mydat$log_iCV<-log(mydat$iCValt)
 class(mydat$REALM) # should be factor 
 
 res<-get_ancova_res(mydat=mydat,xlab="log_phi",ylab="log_iCV")
@@ -32,9 +32,9 @@ res$pwc_vis
 #######################################################
 
 # Stability-richness relationship
-mydat<-sm_all[,c("nsp","iCV","REALM")]
+mydat<-sm_all[,c("nsp","iCValt","REALM")]
 mydat$log_nsp<-log(mydat$nsp)
-mydat$log_iCV<-log(mydat$iCV)
+mydat$log_iCV<-log(mydat$iCValt)
 class(mydat$REALM) # should be factor 
 
 res<-get_ancova_res(mydat=mydat,xlab="log_nsp",ylab="log_iCV")
@@ -56,7 +56,7 @@ res$pwc
 res$pwc_vis
 
 #--------------------------------------------------
-mydat<-sm_all[,c("iCV","phi","REALM","phi_skw","nsp","L","U")]
+mydat<-sm_all[,c("iCValt","phi","REALM","phi_skw","nsp","L","U")]
 mydat$A<-mydat$L+abs(mydat$U) # total asymmetry
 mydat$uniA<-mydat$L+mydat$U
 mydat$AL<-mydat$L/mydat$A # fraction of L in total Asym
