@@ -178,6 +178,7 @@ pie(slices,labels = lbls, border = NA, col=c("skyblue","blue","green"),main="Dat
 
 # Pie Chart with Percentages for taxa
 df_tf<-df%>%filter(REALM%in%c("Freshwater","Terrestrial"))
+df_tf<-na.omit(df_tf)
 df_taxa<-as.data.frame(table(df_tf$TAXA))
 slices <- df_taxa$Freq
 lbls <- df_taxa$Var1
@@ -206,3 +207,14 @@ g1<-g1+geom_point(data=df_tf,aes(y=Latitude,x=Longitude,shape=factor(REALM),col=
 g1
 
 
+df_tf$REALM<-as.character(df_tf$REALM)
+boxplot(iCValt ~ REALM, data = df_tf, xlab = "Realms",
+        ylab = "Stability", main = "",col=c("skyblue","green"))
+
+df_tf$REALM<-as.character(df_tf$REALM)
+boxplot(phi ~ REALM, data = df_tf, xlab = "Realms",
+        ylab = "Synchrony: VR", main = "",col=c("skyblue","green"))
+
+df_tf$REALM<-as.character(df_tf$REALM)
+boxplot(phi_LdM ~ REALM, data = df_tf, xlab = "Realms",
+        ylab = "Synchrony: VR_LdM", main = "",col=c("skyblue","green"))

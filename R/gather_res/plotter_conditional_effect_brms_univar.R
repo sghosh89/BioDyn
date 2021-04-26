@@ -151,8 +151,11 @@ plotter_conditional_effect_brms_univar<-function(full_model,xvar,ylm,xlab="R",pl
 
 #==============================================
 #full_model<-readRDS("../../Results/gather_res/full_model.RDS")
-full_model<-readRDS("../../Results/gather_res/full_model_skw.RDS")
-pdf("../../Results/gather_res/conditional_brms_univar_plot_skw.pdf",height=3,width=6)
+full_model<-readRDS("../../Results/gather_res/full_model_skw_ver2.RDS")
+#full_model<-readRDS("../../Results/gather_res/full_model_skw.RDS")
+
+pdf("../../Results/gather_res/conditional_brms_univar_plot_skw_ver2.pdf",height=3,width=6)
+#pdf("../../Results/gather_res/conditional_brms_univar_plot_skw.pdf",height=3,width=6)
 #pdf("../../Results/gather_res/conditional_brms_univar_plot.pdf",height=3,width=6)
 op<-par(mfrow=c(2,3),mar=c(4,4,1,1),mgp=c(2.5,1,0))
 xvar = seq(from=2, to=70, by = 1)
@@ -255,11 +258,13 @@ fixef_tab_univar<-gathered_post %>%
   group_by(key) %>% 
   mean_qi()%>%as.data.frame()
 #saveRDS(fixef_tab_univar,"../../Results/gather_res/fixef_tab_brms_univar.RDS")
-saveRDS(fixef_tab_univar,"../../Results/gather_res/fixef_tab_brms_univar_skw.RDS")
+#saveRDS(fixef_tab_univar,"../../Results/gather_res/fixef_tab_brms_univar_skw.RDS")
+saveRDS(fixef_tab_univar,"../../Results/gather_res/fixef_tab_brms_univar_skw_ver2.RDS")
 # for asymmetric distribution mode_hdi would be better than mean_qi
 
 #pdf("../../Results/gather_res/posterior_parameter_brms_univar.pdf",height=12,width=10)
-pdf("../../Results/gather_res/posterior_parameter_brms_univar_skw.pdf",height=12,width=10)
+#pdf("../../Results/gather_res/posterior_parameter_brms_univar_skw.pdf",height=12,width=10)
+pdf("../../Results/gather_res/posterior_parameter_brms_univar_skw_ver2.pdf",height=12,width=10)
 p1gpost
 dev.off()
 
@@ -272,7 +277,7 @@ rownames(fixef_tab_univar)<-fixef_tab_univar$key
 fixef_tab_univar<-fixef_tab_univar[,2:4]
 round(fixef_tab_univar,3)
 
-
+ce<-conditional_effects(full_model)
 
 
 
