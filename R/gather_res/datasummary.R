@@ -1,3 +1,6 @@
+# This file will serve as a template for metadata production, results summary+ combined with
+# data I have used for this study.
+#=======================================
 rm(list=ls())
 library(tidyverse)
 #=====================
