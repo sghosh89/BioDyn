@@ -14,6 +14,14 @@ meta_BioTIME$STUDY_ID<-as.character(meta_BioTIME$STUDY_ID)
 data_BioTIME<-sm_all%>%filter(source=="BioTIME")
 data_BioTIME<-inner_join(x=data_BioTIME,y=meta_BioTIME, by=c("siteid" = "STUDY_ID"))
 colnames(data_BioTIME)[28:29]<-c("Latitude","Longitude")
+
+data_BioTIME$nyr<-NA
+for(i in 1:nrow(data_BioTIME)){
+  mypath<-paste("../../Results/for_BioTIME/",data_BioTIME$REALM[i],"/",data_BioTIME$siteid[i],"/",sep="")
+  xx<-readRDS(paste(mypath,"input_tailanal.RDS",sep=""))
+  data_BioTIME$nyr[i]<-nrow(xx)
+}
+
 #---------------------- for BioTIMEx -----------------------------------------------------
 data_BioTIMEx<-sm_all%>%filter(source=="BioTIMEx")
 data_BioTIMEx$TAXA<-NA
@@ -53,6 +61,27 @@ data_BioTIMEx$ORGANISMS[8]<-"Phytoplankton"
 data_BioTIMEx$Latitude[8]<-43.2046
 data_BioTIMEx$Longitude[8]<- 75.9231
 
+data_BioTIMEx$nyr<-NA
+for(i in 1:nrow(data_BioTIMEx)){
+  siteid<-data_BioTIMEx$siteid[i]
+  if(siteid%in%c("carpenter_2016","gross_2016","oneida_phytopl_1975")){
+    xx<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/",siteid,"/",siteid,"_inputmatrix_tailanal.RDS",sep=""))
+  }else if(siteid=="landis_2018"){
+    xx<-readRDS("../../DATA/for_BioTIMEx/wrangled_data/landis_2018/landis_2018_inputmatrix_tailanal_poplarT5.RDS")
+  }else if(siteid=="lightfoot_2015_BOER_E"){
+    xx<-readRDS("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E_inputmatrix_tailanal.RDS")
+  }else if(siteid=="lightfoot_2015_BOER_L"){
+    xx<-readRDS("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E_inputmatrix_tailanal.RDS")
+  }else if(siteid=="lightfoot_2015_LATR_E"){
+    xx<-readRDS("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E_inputmatrix_tailanal.RDS")
+  }else if(siteid=="lightfoot_2015_LATR_L"){
+    xx<-readRDS("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E_inputmatrix_tailanal.RDS")
+  }else{
+    cat("---------- Error: missmatched name for BioTIMEx -------------- \n")
+  }
+  data_BioTIMEx$nyr[i]<-nrow(xx)
+}
+
 #------------ for BBS -------------------------------------------------------------------
 meta_BBS<-readRDS("../../DATA/for_BBS/wrangled_data/unique_routes_all_metadata.RDS")
 meta_BBS<-meta_BBS%>%select(Country_State_Route,Latitude,Longitude)
@@ -61,6 +90,12 @@ data_BBS<-sm_all%>%filter(source=="BBS")
 data_BBS<-inner_join(x=data_BBS,y=meta_BBS, by=c("siteid" = "Country_State_Route"))
 data_BBS$TAXA <-"Birds"
 data_BBS$ORGANISMS <-"Birds"
+
+data_BBS$nyr<-NA
+for(i in 1:nrow(data_BBS)){
+  xx<-readRDS(paste("../../DATA/for_BBS/wrangled_data/",data_BBS$siteid[i],"/input_mat_for_tailanal.RDS",sep=""))
+  data_BBS$nyr[i]<-nrow(xx)
+}
 
 #------------ for RivFishTIME -------------------------------------------------------------------
 meta_RF<-read.csv("../../DATA/for_RivFishTIME/wrangled_data/metadata_for_goodtimeseries.csv")
@@ -71,6 +106,11 @@ data_RF<-inner_join(x=data_RF,y=meta_RF, by=c("siteid" = "TimeSeriesID"))
 data_RF$TAXA <-"Fish"
 data_RF$ORGANISMS<-"Fish"
 
+data_RF$nyr<-NA
+for(i in 1:nrow(data_RF)){
+  xx<-readRDS(paste("../../DATA/for_RivFishTIME/wrangled_data/",data_RF$siteid[i],"/commonspecies_timeseries.RDS",sep=""))
+  data_RF$nyr[i]<-nrow(xx)
+}
 #------------ for SwissLakePhyto -------------------------------------------------------------------
 data_Phyto<-sm_all%>%filter(source=="SwissLakePhyto")
 data_Phyto$TAXA<-"Freshwater plants" # phytoplanktons are tagged as invertebrates in BioTIME?
@@ -109,6 +149,12 @@ data_Phyto$Longitude[7]<-8.2600
 data_Phyto$Latitude[8]<-47.3666
 data_Phyto$Longitude[8]<-8.6795
 
+data_Phyto$nyr<-NA
+for(i in 1:nrow(data_Phyto)){
+  xx<-readRDS(paste("../../DATA/for_swisslake/wrangled_data/input_mat_for_tail_analysis_",data_Phyto$siteid[i],".RDS",sep=""))
+  data_Phyto$nyr[i]<-nrow(xx)
+}
+
 #------------ for SwissLakezoo -------------------------------------------------------------------
 data_zoo<-sm_all%>%filter(source=="SwissLakeZoo")
 data_zoo$TAXA<-"Freshwater invertebrates" # zooplankton
@@ -142,6 +188,16 @@ data_zoo$Longitude[5]<-8.6795
 data_zoo$Latitude[6]<-47.2003
 data_zoo$Longitude[6]<-8.2600
 
+data_zoo$nyr<-NA
+for(i in 1:nrow(data_zoo)){
+  if(data_zoo$siteid[i]=="LU"){
+    xx<-readRDS("../../DATA/for_swisslake/wrangled_data/zooplankton/input_mat_for_tail_analysis_zoo_LU_site3A01.RDS")
+  }else{
+    xx<-readRDS(paste("../../DATA/for_swisslake/wrangled_data/zooplankton/input_mat_for_tail_analysis_zoo_",data_zoo$siteid[i],".RDS",sep="")) 
+  }
+  data_zoo$nyr[i]<-nrow(xx)
+}
+
 #------------ for zoop2014 -------------------------------------------------------------------
 data_zoo2014<-sm_all%>%filter(source=="Zooplankton2014")
 data_zoo2014$TAXA<-"Freshwater invertebrates" # zooplankton
@@ -154,6 +210,11 @@ meta_zoo2014$`LakeID to Use`[49]<-"RC"
 meta_zoo2014<-meta_zoo2014%>%select(c(1,3,4))
 data_zoo2014<-inner_join(x=data_zoo2014,y=meta_zoo2014, by=c("siteid"="LakeID to Use"))
 
+data_zoo2014$nyr<-NA
+for(i in 1:nrow(data_zoo2014)){
+  xx<-readRDS(paste("../../DATA/for_zoop_2014/wrangled_data/",data_zoo2014$siteid[i],"/inputmat_for_tailanal.RDS",sep="")) 
+  data_zoo2014$nyr[i]<-nrow(xx)
+}
 #========================================================================================
 # Now, combine all data
 df<-full_join(data_BioTIME,data_BioTIMEx)
@@ -167,6 +228,7 @@ df$ORGANISMS<-tolower(df$ORGANISMS)
 unique(df$ORGANISMS)
 df$ORGANISMS[df$ORGANISMS=="zooplanton"]<-"zooplankton"
 df$ORGANISMS[df$ORGANISMS%in%c("trees ","plants","tree")]<-"trees"
+
 
 write.csv(df,"../../Results/gather_res/data_summary.csv",row.names = F)
 
