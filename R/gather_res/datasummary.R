@@ -283,3 +283,18 @@ boxplot(phi ~ REALM, data = df_tf, xlab = "Realms",
 df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(phi_LdM ~ REALM, data = df_tf, xlab = "Realms",
         ylab = "Synchrony: VR_LdM", main = "",col=c("skyblue","green"))
+
+#=====================================================================================
+# doing a metadata summary table for John
+
+df<-read.csv("../../Results/gather_res/data_summary.csv")
+df_md<-df%>%select(source,siteid,REALM,TAXA,ORGANISMS,Latitude,Longitude,nsp,nyr)
+write.csv(df_md,"../../Results/gather_res/metadata_summary.csv",row.names = F)
+
+
+
+
+
+
+
+
