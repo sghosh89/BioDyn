@@ -2,6 +2,7 @@ rm(list=ls())
 
 #----------------------------------
 library(tidyverse)
+`%notin%` <- Negate(`%in%`)
 #================================== read the raw data ================================
 
 # read the data
@@ -54,6 +55,10 @@ bt_rarefied_marine<-bt_rarefied%>%filter(STUDY_ID%in%marine_study_id)
 for(i in 1:length(marine_study_id)){
   
   x<-bt_rarefied_marine%>%filter(STUDY_ID==marine_study_id[i])
+  
+  #exclude unknowns
+  x<-x%>%filter(Species%notin%c("Unknown sponge","Manetyngel unknown","Unknown tunicate"))
+  
   xmat<-x%>%spread(Species, Value)%>%select(-STUDY_ID)
   year<-xmat$YEAR
   xmat<-as.matrix(xmat[,-1])

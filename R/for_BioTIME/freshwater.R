@@ -2,6 +2,7 @@ rm(list=ls())
 
 #----------------------------------
 library(tidyverse)
+`%notin%` <- Negate(`%in%`)
 #================================== read the raw data ================================
 
 # read the data
@@ -53,6 +54,10 @@ bt_rarefied_freshw<-bt_rarefied%>%filter(STUDY_ID%in%freshw_study_id)
 for(i in 1:length(freshw_study_id)){
   
   x<-bt_rarefied_freshw%>%filter(STUDY_ID==freshw_study_id[i])
+  
+  # do not consider these unknown sp into analysis
+  x<-x%>%filter(species%notin%c("unspecifiable","Unknown","Unknown rotifer", "Unknown rotifer2"))
+  
   xmat<-x%>%spread(Species, Value)%>%select(-STUDY_ID)
   year<-xmat$YEAR
   xmat<-as.matrix(xmat[,-1])
