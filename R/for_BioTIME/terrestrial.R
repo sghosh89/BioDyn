@@ -59,7 +59,7 @@ for(i in 1:length(terres_study_id)){
   x<-bt_rarefied_terres%>%filter(STUDY_ID==terres_study_id[i])
   
   #exclude unknowns
-  x<-x%>%filter(Species%notin%c("Unknown"))
+  x<-x%>%filter(Species%notin%c("Unknown","Unknown "))
   
   xmat<-x%>%spread(Species, Value)%>%select(-STUDY_ID)
   year<-xmat$YEAR
