@@ -13,12 +13,14 @@ source("summary_stability.R") # to get stability metric table
 source("summary_ancova_res.R") # run ancova for stability-synchrony relationship
 #===============================================================
 
-#=======================================================
-# Bayesian based model to predict stability for freshwater and aquatic realm
-source("compare_model_brms.R") # basic model to analyze stability
-source("plotter_conditional_effect_brms_univar.R") # prediction for conditional effects and posterior parameter plot
-#====================================================
 
 source("datasummary.R") # summarizing data used in this study
 source("targetspecieslist_alldata.R") # summarizing target sp list used for tail analysis in this study
+
+
+#=======================================================
+# Bayesian based model to predict stability for freshwater and aquatic realm
+source("compare_model_brms_stability_skw_ver2.R") # basic model to analyze stability
+source("plotter_conditional_effect_brms_univar.R") # prediction for conditional effects and posterior parameter plot
+#====================================================
 
