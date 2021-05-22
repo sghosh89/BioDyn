@@ -132,6 +132,21 @@ for(k in 1:length(newsite)){
 #--------------------------------------------------------
 saveRDS(newsite,"../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/238/newsite.RDS")
 
+#----------------------- map selected sites------------------
+library(htmltools) 
+library(htmlwidgets)
+library(leaflet) 
+
+dat<-x_allsite%>%select(newsite,LATITUDE,LONGITUDE)%>%distinct()
+sitemap<-leaflet(dat) %>% addTiles() %>%
+  addMarkers(~LONGITUDE, ~LATITUDE, label = ~htmlEscape(newsite))
+f<-paste("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/samplingsite_238_selected.html",sep="")
+htmlwidgets::saveWidget(sitemap, 
+                        file.path(normalizePath(dirname(f)),basename(f)))
+
+
+
+
 
 
 
