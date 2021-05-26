@@ -79,6 +79,36 @@ source("terrestrial_plotlevel_54.R")
 source("terrestrial_plotlevel_56.R")
 source("terrestrial_plotlevel_59.R")
 source("terrestrial_plotlevel_63.R") # dragonfly: lake ecosystem, still terrestrial?
+source("terrestrial_plotlevel_67.R")
+#source("terrestrial_plotlevel_195.R") # STUDY_ID=195 is BBS data - so we excluded here
+source("terrestrial_plotlevel_214.R")
+source("terrestrial_plotlevel_215.R")
+# source("terrestrial_plotlevel_221.R") # not a single lat-lon sampled atleast for 20 yrs, if want to include this study aggregate all
+source("terrestrial_plotlevel_243.R")
+#source("terrestrial_plotlevel_298.R") # not a single lat-lon sampled atleast for 20 yrs, if want to include this study aggregate all
+# source("terrestrial_plotlevel_300.R") # STUDY_ID=300 is BioTIMEx data for landis_2018 - so we excluded here
+source("terrestrial_plotlevel_301.R")
+source("terrestrial_plotlevel_308.R")
+source("terrestrial_plotlevel_311.R")
+source("terrestrial_plotlevel_333.R")
+source("terrestrial_plotlevel_339.R")
+source("terrestrial_plotlevel_355.R")
+#source("terrestrial_plotlevel_356.R")# not a single lat-lon sampled atleast for 20 yrs, if want to include this study aggregate all
+#source("terrestrial_plotlevel_360.R")# all raresp, warnings!
+source("terrestrial_plotlevel_361.R")
+source("terrestrial_plotlevel_363.R")
+source("terrestrial_plotlevel_366.R")
+source("terrestrial_plotlevel_413.R")
+#source("terrestrial_plotlevel_414.R") # same as 413? but different time span?
+#source("terrestrial_plotlevel_416.R") # same as 413? but different time span?
+source("terrestrial_plotlevel_420.R")
+#source("terrestrial_plotlevel_483.R") # all raresp, warnings!
+#source("terrestrial_plotlevel_497.R") # all raresp, warnings!
+
+df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map.RDS")
+df_included<-df%>%filter(site%notin%c(195,221,298,300,356,360,414,416,483,497))
+saveRDS(df_included,"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map_selected.RDS")
+
 
 
 
