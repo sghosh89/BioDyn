@@ -82,6 +82,7 @@ if(!dir.exists(resloc)){
   dir.create(resloc)
 }
 res<-tail_analysis(mat = df, resloc = resloc, nbin = 2)
+saveRDS(site,"../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/478/newsite.RDS")
 
 
 
