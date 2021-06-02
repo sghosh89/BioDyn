@@ -38,8 +38,17 @@ for(k in 1:length(newsite)){
     dir.create(resloc2)
   }
 }
-
-#------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------
+# sometimes months have different multiple sampling dates within a year
+# so, take the average
+x_allsite$Abundance<-as.numeric(x_allsite$Abundance)
+x_allsite$Biomass<-as.numeric(x_allsite$Biomass)
+x_allsite<-x_allsite%>%group_by(newsite,YEAR,MONTH,Species)%>%
+  summarize(Abundance=mean(Abundance,na.rm=T),
+            Biomass=mean(Biomass,na.rm=T),
+            ABUNDANCE_TYPE=unique(ABUNDANCE_TYPE))%>%ungroup()
+# NOTE: ABUNDANCE TYPE should be kept as it is - if NA then keep NA
+#------------------------------------------------------------------------------------------------------------
 newsite_bad<-c()
 for(k in 1:length(newsite)){
   x<-x_allsite%>%filter(newsite==newsite[k])
@@ -48,7 +57,7 @@ for(k in 1:length(newsite)){
   x<-x%>%filter(Species%notin%c("Unknown","Unknown "))
   
   t0<-x%>%group_by(YEAR)%>%summarise(nm=n_distinct(MONTH))%>%ungroup()
-  t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
+  #t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
   
   #---------- ok, after seeing t0, we need to rarefy --------------
   min_samp<-min(t0$nm) # min months sampled each year

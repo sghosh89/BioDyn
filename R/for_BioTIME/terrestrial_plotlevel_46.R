@@ -19,6 +19,7 @@ if(!dir.exists(resloc)){
 site<-df$site
 x<-grid_terres%>%filter(STUDY_ID==site)
 newsite<-site # as we know there is only one site
+unique(x$MONTH) # no monthly info
 
 # Now, create folder for all these newsite
 if(length(newsite)>1){

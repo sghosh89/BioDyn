@@ -30,6 +30,7 @@ tt<-tt%>%filter(n>=20)
 #update
 x_allsite<- x %>% filter(newsite %in% tt$newsite)
 newsite<-tt$newsite
+unique(x_allsite$MONTH) #NA
 
 # Now, create folder for all these newsite
 for(k in 1:length(newsite)){
