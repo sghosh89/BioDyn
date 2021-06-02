@@ -53,7 +53,7 @@ monthly_rarefy<-function(study,resamples=100,field){
      
      # need to fill in as it is
      mydfc<-months_peryr
-     
+     names(mydfc)<-mydf$YEAR
    }
    
    if(length(common_months)!=0){ # with common months
