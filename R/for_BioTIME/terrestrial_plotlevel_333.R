@@ -20,6 +20,7 @@ if(!dir.exists(resloc)){
 site<-df$site
 x<-grid_terres%>%filter(STUDY_ID==site)
 newsite<-site
+unique(x$MONTH)
 
 # Now, create folder for all these newsite
 if(length(newsite)>1){
@@ -31,7 +32,18 @@ if(length(newsite)>1){
   }
 }
 
-#------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------
+# sometimes months have different multiple sampling dates within a year
+# so, take the average
+x$Abundance<-as.numeric(x$Abundance)
+x$Biomass<-as.numeric(x$Biomass)
+x<-x%>%group_by(YEAR,MONTH,Species)%>%
+  summarize(Abundance=mean(Abundance,na.rm=T),
+            Biomass=mean(Biomass,na.rm=T),
+            ABUNDANCE_TYPE=unique(ABUNDANCE_TYPE))%>%ungroup()
+# NOTE: ABUNDANCE TYPE should be kept as it is - if NA then keep NA
+#------------------------------------------------------------------------------------------------------------
+
 newsite_bad<-c()
 
 
@@ -61,7 +73,7 @@ for(k in 1:length(newsite)){
   x<-x%>%filter(Species%notin%c("Unknown","Unknown "))
   
   t0<-x%>%group_by(YEAR)%>%summarise(nm=n_distinct(MONTH))%>%ungroup()
-  t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
+  #t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
   
   #---------- ok, after seeing t0, we need to rarefy --------------
   min_samp<-min(t0$nm) # min months sampled each year
@@ -78,7 +90,7 @@ for(k in 1:length(newsite)){
   id<-which(colnames(x)==field)
   
   if(need_rarefy==T){
-    study<-x%>%select(DAY,MONTH,YEAR,Species,Value=id)
+    study<-x%>%select(MONTH,YEAR,Species,Value=id)
     x_c<-monthly_rarefy(study = study,resamples = 100,field = field)
   }else{
     x<-x%>%select(YEAR,Species,Value=id)

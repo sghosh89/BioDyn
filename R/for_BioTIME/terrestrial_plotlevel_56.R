@@ -8,7 +8,7 @@ grid_terres<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map.RDS")
 df<-df%>%filter(site==56)
 # Though only one lat-lon is reported, there are multiple plots sampled for different years
-
+# No DAY, MONTH info available
 #----------- create result folder for wrangle ddata -------------------------
 resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/56/"
 if(!dir.exists(resloc)){
@@ -76,7 +76,7 @@ for(k in 1:length(newsite)){
   id<-which(colnames(x)==field)
   
   if(need_rarefy==T){
-    study<-x%>%select(DAY,MONTH,YEAR,Species,Value=id)
+    study<-x%>%select(MONTH,YEAR,Species,Value=id)
     x_c<-monthly_rarefy(study = study,resamples = 100,field = field)
   }else{
     x<-x%>%select(YEAR,Species,Value=id)

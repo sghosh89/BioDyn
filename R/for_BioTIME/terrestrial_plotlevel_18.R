@@ -74,7 +74,7 @@ for(k in 1:length(newsite)){
   id<-which(colnames(x)==field)
   
   if(need_rarefy==T){
-    study<-x%>%select(DAY,MONTH,YEAR,Species,Value=id)
+    study<-x%>%select(MONTH,YEAR,Species,Value=id)
     x_c<-monthly_rarefy(study = study,resamples = 100,field = field)
   }else{
     x<-x%>%select(YEAR,Species,Value=id)

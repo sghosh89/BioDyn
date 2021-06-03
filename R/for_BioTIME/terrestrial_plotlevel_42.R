@@ -7,7 +7,7 @@ xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS")
 grid_terres<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/bt_terres_min20yr_rawdata.RDS")
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map.RDS")
 df<-df%>%filter(site==42)
-# only one plot in this site, 30yrs, monthly freq = 1 
+# only one plot in this site, 30yrs
 
 #----------- create result folder for wrangle ddata -------------------------
 resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/42/"

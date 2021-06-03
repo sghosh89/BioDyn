@@ -13,6 +13,7 @@ colnames(grid)[6:8] <- c('Species', 'Abundance', 'Biomass')
 
 grid<-grid%>%group_by(STUDY_ID)%>%filter(n_distinct(YEAR)>=data_pt_thrs) %>% ungroup()
 grid_terres<-grid%>%filter(REALM=="Terrestrial")
+
 #===================== generate results folder for terrestrial ===============
 resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/"
 if(!dir.exists(resloc)){

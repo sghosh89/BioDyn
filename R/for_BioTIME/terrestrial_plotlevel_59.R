@@ -8,6 +8,7 @@ grid_terres<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map.RDS")
 df<-df%>%filter(site==59)
 # 2 plots sampled with regular monthly freq (=1), though same lat-lon reported
+# No MONTH, DAY info available
 
 #----------- create result folder for wrangle ddata -------------------------
 resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/59/"
@@ -49,7 +50,7 @@ for(k in 1:length(newsite)){
   x<-x%>%filter(Species%notin%c("Unknown","Unknown "))
   
   t0<-x%>%group_by(YEAR)%>%summarise(nm=n_distinct(MONTH))%>%ungroup()
-  t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
+  #t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
   
   #---------- ok, after seeing t0, we need to rarefy --------------
   min_samp<-min(t0$nm) # min months sampled each year
@@ -66,7 +67,7 @@ for(k in 1:length(newsite)){
   id<-which(colnames(x)==field)
   
   if(need_rarefy==T){
-    study<-x%>%select(DAY,MONTH,YEAR,Species,Value=id)
+    study<-x%>%select(MONTH,YEAR,Species,Value=id)
     x_c<-monthly_rarefy(study = study,resamples = 100,field = field)
   }else{
     x<-x%>%select(YEAR,Species,Value=id)

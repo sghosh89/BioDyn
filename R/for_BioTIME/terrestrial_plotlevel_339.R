@@ -8,7 +8,7 @@ grid_terres<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map.RDS")
 df<-df%>%filter(site==339)
 
-# single lat-lon is reported, sampled for different monthly freq in year
+# single lat-lon is reported
 
 #----------- create result folder for wrangle data -------------------------
 resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/339/"
@@ -20,6 +20,7 @@ if(!dir.exists(resloc)){
 site<-df$site
 x<-grid_terres%>%filter(STUDY_ID==site)
 newsite<-site
+unique(x$MONTH)
 
 # Now, create folder for all these newsite
 if(length(newsite)>1){
@@ -61,7 +62,7 @@ for(k in 1:length(newsite)){
   x<-x%>%filter(Species%notin%c("Unknown","Unknown "))
   
   t0<-x%>%group_by(YEAR)%>%summarise(nm=n_distinct(MONTH))%>%ungroup()
-  t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
+  #t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
   
   #---------- ok, after seeing t0, we need to rarefy --------------
   min_samp<-min(t0$nm) # min months sampled each year

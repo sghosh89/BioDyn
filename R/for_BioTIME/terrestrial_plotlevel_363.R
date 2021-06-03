@@ -8,7 +8,7 @@ grid_terres<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map.RDS")
 df<-df%>%filter(site==363)
 
-# only one plot in this site, 45yrs, monthly freq = 1 
+# only one plot in this site, 45yrs, no month info available
 
 #----------- create result folder for wrangle ddata -------------------------
 resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/363/"
@@ -20,6 +20,7 @@ if(!dir.exists(resloc)){
 site<-df$site
 x<-grid_terres%>%filter(STUDY_ID==site)
 newsite<-site
+unique(x$MONTH)#NA
 
 # Now, create folder for all these newsite
 if(length(newsite)>1){
