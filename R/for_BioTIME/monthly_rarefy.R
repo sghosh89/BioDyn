@@ -12,7 +12,7 @@ library(lazyeval)
 #study<-study%>%select(DAY,MONTH,YEAR,Species,Abundance)
 
 # Arg:
-# study = a data frame with DAY, MONTH, YEAR, Species, Value (Abundance or Biomass) from raw data
+# study = a data frame with MONTH, YEAR, Species, Value (Abundance or Biomass) from raw data
 # field = "Abundance" or "Biomass"
 monthly_rarefy<-function(study,resamples=100,field){
    
@@ -95,6 +95,14 @@ monthly_rarefy<-function(study,resamples=100,field){
          selected_cms<-sort(c(cmr,fm_extra,em_extra))
        }
        
+        
+       # now, do a check for exceptional case
+       min_months_sampling<-sum(months_peryr[[i]]%in%selected_cms) # this must be >= min_samp for resampling purpose
+       if(min_months_sampling<min_samp){
+         cat(paste("========= exceptional case for resampling, year = ",mydf$YEAR[i],", months = ", paste(months_peryr[[i]], collapse = ", "),"\n"))
+         selected_cms<-months_peryr[[i]]
+       }
+       
        mydfc[[i]]<-selected_cms
        
      }
@@ -141,7 +149,7 @@ monthly_rarefy<-function(study,resamples=100,field){
     rare_samp <- study_nest %>%
       # rarefy to min_samp 
       group_by(YEAR) %>%
-      sample_n(size=min_samp) %>% # here is the stochasticity to choose a set of species at every resampling 
+      sample_n(size=min_samp, replace = F) %>% # here is the stochasticity to choose a set of species at every resampling 
       # unpack and collate taxa from rarefied sample
       unnest(nest_cols)%>%
       group_by(YEAR, Species) %>%

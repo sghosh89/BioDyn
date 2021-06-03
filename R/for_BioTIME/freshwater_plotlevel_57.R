@@ -16,7 +16,7 @@ saveRDS(df,"../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/57/wrangle
 site<-df$site
 x<-grid_freshw%>%filter(STUDY_ID==site)
 # df ensures there is only one single site with each month sampling once in a given year
-
+unique(x$MONTH) # No month info available
 #==================== saving input spmat  ====================
 sort(unique(x$Species))
 
