@@ -161,6 +161,11 @@ get_categorized_interaction<-function(x,xcat){
   
   table_interaction$poss_interaction<-NA
   tt<-as.data.frame(table(xcat$category))
+  
+  tt_dummy<-data.frame(Var1=as.character(1:4))
+  tt<-left_join(tt_dummy,tt,"Var1")
+  tt$Freq[is.na(tt$Freq)]<-0
+  
   table_interaction$poss_interaction[1]<-tt$Freq[1]*(tt$Freq[1]-1)/2 
   table_interaction$poss_interaction[2]<-(2*tt$Freq[1]*tt$Freq[2])/2 # as 1-2 and 2-1 are the same: multiply by 2, 
                                                                       # but only compare the lower triangular
