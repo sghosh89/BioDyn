@@ -7,7 +7,7 @@ data_pt_thrs<-20
 xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS")
 grid_freshw<-readRDS("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/bt_freshw_min20yr_rawdata.RDS")
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/table_for_map.RDS")
-df<-df%>%filter(site==430)
+df<-df%>%filter(site==431)
 
 site<-df$site
 x<-grid_freshw%>%filter(STUDY_ID==site)
@@ -17,9 +17,6 @@ length(newsite)
 # which newsite has atleast 20 yrs of sampling?
 tt<-x%>%group_by(newsite)%>%summarise(n=n_distinct(YEAR))%>%ungroup()
 as.data.frame(table(tt$n))
-
-x$Abundance<-as.numeric(x$Abundance)
-x$Biomass<-as.numeric(x$Biomass)
 
 # we need to group the newsite based on hydrobasins
 latlon_esteban<-distinct(x,newsite,.keep_all=T)
@@ -42,7 +39,7 @@ latlon_esteban<-rename(latlon_esteban,LATITUDE=Y,LONGITUDE=X)
 
 ggplot()+
   geom_point(data=latlon_esteban,aes(x=LONGITUDE,y=LATITUDE,color=as.factor(basin)))+
-  geom_point(data=subset(latlon_esteban,basin%in%c(80355,98961,100981,101416)),aes(x=LONGITUDE,y=LATITUDE),col="black")+
+  geom_point(data=subset(latlon_esteban,basin==80355),aes(x=LONGITUDE,y=LATITUDE),col="black")+
   theme(legend.position="none")
 
 latlon_esteban<-latlon_esteban%>%mutate(newsite=paste("STUDY_ID_",site,"_LAT",LATITUDE,"_LON",LONGITUDE,sep=""))
@@ -53,15 +50,15 @@ length(unique(x$basin))
 
 # now we are going to aggregate by basin
 x_agg<-x%>%group_by(basin,YEAR,MONTH,Species)%>%summarize(Abundance=mean(Abundance),
-                                                          Biomass=mean(Biomass))%>%ungroup()
+                                                              Biomass=mean(Biomass))%>%ungroup()
 
 tt<-x%>%group_by(basin)%>%summarise(n=n_distinct(YEAR))%>%ungroup()
 
 # include sites which are sampled > 20 years
 tt<-tt%>%filter(n>=20)
 
-# only four basins sampled for 27 years
-x_agg<-x_agg%>%filter(basin%in%tt$basin)
+# only one basin 80355 sampled for 27 years
+x_agg<-x_agg%>%filter(basin==80355)
 x_agg$CLIMATE<-unique(x$CLIMATE)
 x_agg$REALM<-unique(x$REALM)
 x_agg$TAXA<-unique(x$TAXA)
@@ -69,11 +66,11 @@ x_agg$ABUNDANCE_TYPE<-unique(x$ABUNDANCE_TYPE)
 x_agg$BIOMASS_TYPE<-unique(x$BIOMASS_TYPE)
 x_agg$site<-unique(x$STUDY_ID)
 x_agg<-rename(x_agg,newsite=basin)
-x_agg$newsite<-paste("STUDY_ID_430_basin_",x_agg$newsite,sep="")
+x_agg$newsite<-paste("STUDY_ID_431_basin_",x_agg$newsite,sep="")
 
 site<-unique(x_agg$site)
 #----------- create result folder for wrangle data -------------------------
-resloc<-"../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/430/"
+resloc<-"../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/431/"
 if(!dir.exists(resloc)){
   dir.create(resloc)
 }
@@ -82,12 +79,11 @@ saveRDS(newsite,paste(resloc,"newsite.RDS",sep=""))
 
 # Now, create folder for all these newsite
 for(k in 1:length(newsite)){
-  resloc2<-paste("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/430/",newsite[k],"/",sep="")
+  resloc2<-paste("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/431/",newsite[k],"/",sep="")
   if(!dir.exists(resloc2)){
     dir.create(resloc2)
   }
 }
-#--------------------------------------------------------------
 
 #------------ now format the data as per input format for tail analysis ------------
 
@@ -118,7 +114,7 @@ for(k in 1:length(newsite)){
     study<-x%>%dplyr::select(MONTH,YEAR,Species,Value=id)
     x_c<-monthly_rarefy(study = study,resamples = 100,field = field)
   }else{
-    x<-x%>%dplyr::select(YEAR,Species,Value=id)
+    x<-x%>%select(YEAR,Species,Value=id)
     x<-x%>%group_by(Species,YEAR)%>%
       dplyr::summarise(Value=mean(Value))%>%ungroup()
     c1<-x%>%group_by(Species)%>%summarize(n_distinct(YEAR))%>%ungroup() 
@@ -138,7 +134,7 @@ for(k in 1:length(newsite)){
   xmeta<-xxm%>%filter(STUDY_ID==site)
   
   input_sp<-list(spmat=xmat,meta=xmeta)
-  resloc<-paste("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/430/",newsite[k],"/",sep="")
+  resloc<-paste("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/431/",newsite[k],"/",sep="")
   saveRDS(input_sp,paste(resloc,"spmat.RDS",sep=""))
   
   #----------- saving input spmat for tailanal ---------------------
@@ -177,11 +173,6 @@ for(k in 1:length(newsite)){
   }
   res<-tail_analysis(mat = input_tailanal, resloc = resloc, nbin = 2)
 }
-
-
-
-
-
 
 
 

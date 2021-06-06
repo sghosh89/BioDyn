@@ -97,36 +97,34 @@ source("./freshwater_plotlevel_238.R")
 source("./freshwater_plotlevel_247.R")
 source("./freshwater_plotlevel_253.R")
 source("./freshwater_plotlevel_254.R")
-#source("./freshwater_plotlevel_430.R") #? each lat lon mostly visited once
-#source("./freshwater_plotlevel_431.R") #? each lat lon mostly visited once
+source("./freshwater_plotlevel_430.R") # each lat lon mostly visited once: aggregated by basin
+source("./freshwater_plotlevel_431.R") # each lat lon mostly visited once: aggregated by basin
 source("./freshwater_plotlevel_478.R")
 
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/table_for_map.RDS")
-df_included<-df%>%filter(site%notin%c(430,431))
-saveRDS(df_included,"../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/table_for_map_selected.RDS")
 
 #--------------- Do a summary stats for freshwater sites ------------------
 summary_table<-c()
-for (i in c(1:length(df_included$site))){
-  resloc<-paste("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/",df_included$site[i],"/",sep="")
+for (i in c(1:length(df$site))){
+  resloc<-paste("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/",df$site[i],"/",sep="")
   newsitelist<-readRDS(paste(resloc,"newsite.RDS",sep=""))
   
   if(length(newsitelist)==1){
-    tempo<-newsitelist==df_included$site[i]
+    tempo<-newsitelist==df$site[i]
     if(tempo==T){
-      resloc2<-paste("../../Results/for_BioTIME/Freshwater_plotlevel/",df_included$site[i],"/",sep="")
+      resloc2<-paste("../../Results/for_BioTIME/Freshwater_plotlevel/",df$site[i],"/",sep="")
     }else{
-      resloc2<-paste("../../Results/for_BioTIME/Freshwater_plotlevel/",df_included$site[i],"/",newsitelist,"/",sep="")
+      resloc2<-paste("../../Results/for_BioTIME/Freshwater_plotlevel/",df$site[i],"/",newsitelist,"/",sep="")
     }
     st<-readRDS(paste(resloc2,"summary_df.RDS",sep=""))
-    st$STUDY_ID<-df_included$site[i]
+    st$STUDY_ID<-df$site[i]
     st$newsite<-newsitelist
     summary_table<-rbind(summary_table,st)
   }else{
     for(j in 1:length(newsitelist)){
-      resloc2<-paste("../../Results/for_BioTIME/Freshwater_plotlevel/",df_included$site[i],"/",newsitelist[j],"/",sep="")
+      resloc2<-paste("../../Results/for_BioTIME/Freshwater_plotlevel/",df$site[i],"/",newsitelist[j],"/",sep="")
       st<-readRDS(paste(resloc2,"summary_df.RDS",sep=""))
-      st$STUDY_ID<-df_included$site[i]
+      st$STUDY_ID<-df$site[i]
       st$newsite<-newsitelist[j]
       summary_table<-rbind(summary_table,st)
     }
@@ -152,6 +150,8 @@ colnames(dat)<-dat[1,]
 dat<-dat[-1,]
 nsp<-dat[2,]
 dat<-dat[-c(1:2),]
+
+data_pt_thrs<-20 # 20 years minimum
 
 pdf("../../Results/for_BioTIME/Freshwater_plotlevel/summary_plot.pdf",width=25,height=10)
 op<-par(mar=c(12,5,5,1))
