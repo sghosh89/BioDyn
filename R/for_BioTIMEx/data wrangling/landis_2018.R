@@ -179,5 +179,5 @@ if(length(rare_sp)!=0){
 resloc<-paste('../../DATA/for_BioTIMEx/wrangled_data/',dataset_id,'/',sep='')
 dir.create(resloc, showWarnings = FALSE)
 
-write.csv2(commonsp,paste(resloc,dataset_id,"_inputmatrix_tailanal_poplarT5.csv",sep=""),row.names = T)
-saveRDS(commonsp,paste(resloc,dataset_id,"_inputmatrix_tailanal_poplarT5.RDS",sep=""))
+write.csv2(commonsp,paste(resloc,dataset_id,"_poplarT5_inputmatrix_tailanal.csv",sep=""),row.names = T)
+saveRDS(commonsp,paste(resloc,dataset_id,"_poplarT5_inputmatrix_tailanal.RDS",sep=""))
