@@ -17,23 +17,10 @@ r_combo$iCV<-NA # inverse of CV: stability metric
 r_combo$iCValt <-NA # inverse of CV alternative for skewed dist.: stability metric
 
 # This needs to be updated from inputmatfile_list of rank_category.R
-inputmatfile_list<-c(
-  "../../DATA/for_BioTIMEx/wrangled_data/carpenter_2016/carpenter_2016_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/gross_2016/gross_2016_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/landis_2018/landis_2018_inputmatrix_tailanal_poplarT5.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_L_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_E_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_L_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/oneida_phytopl_1975/oneida_phytopl_1975_inputmatrix_tailanal.RDS"
-)
-
-myrealm<-c("Freshwater","Terrestrial","Terrestrial",
-           "Terrestrial","Terrestrial","Terrestrial","Terrestrial",
-           "Freshwater")
+inputmatfile_list<-readRDS("../../Results/for_BioTIMEx/inputloc_table.RDS")
+inputmatfile_list<-inputmatfile_list$inputloc
 
 for(i in 1:nrow(r_combo)){
-  siteid<-r_combo$siteid[i]
   m<-readRDS(inputmatfile_list[i])
   df<-get_stability_metric(m=m)
   r_combo$ens[i]<-df$ens
@@ -48,6 +35,70 @@ for(i in 1:nrow(r_combo)){
   r_combo$iCValt[i]<-df$iCValt
 }
 
-r_combo$REALM<-as.factor(myrealm)
+r_combo$REALM<-NA
+r_combo$TAXA<-NA
+r_combo$ORGANISM<-NA
+r_combo$METHOD<-NA
+
+# ---------------- following done manually, help file saved in wrangled data ----------
+id<-which(r_combo$STUDY_ID=="baikal_phyto")
+r_combo$REALM[id]<-"Freshwater"
+r_combo$TAXA[id]<-"Phytoplankton"
+r_combo$ORGANISM[id]<-"Phytoplankton"
+r_combo$METHOD[id]<-"Net"
+
+id<-which(r_combo$STUDY_ID=="carpenter_2016")
+r_combo$REALM[id]<-"Freshwater"
+r_combo$TAXA[id]<-"Zooplankton"
+r_combo$ORGANISM[id]<-"Zooplankton"
+r_combo$METHOD[id]<-"Net" # https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-ntl.355.4
+
+id<-which(r_combo$STUDY_ID=="cumbrian_phyto")
+r_combo$REALM[id]<-"Freshwater"
+r_combo$TAXA[id]<-"Phytoplankton"
+r_combo$ORGANISM[id]<-"Phytoplankton"
+r_combo$METHOD[id]<-"Water column sample"
+
+id<-which(r_combo$STUDY_ID=="cumbrian_zoo")
+r_combo$REALM[id]<-"Freshwater"
+r_combo$TAXA[id]<-"Zooplankton"
+r_combo$ORGANISM[id]<-"Zooplankton"
+r_combo$METHOD[id]<-"Net"
+
+id<-which(r_combo$STUDY_ID=="gross_2016")
+r_combo$REALM[id]<-"Terrestrial"
+r_combo$TAXA[id]<-"Plant"
+r_combo$ORGANISM[id]<-"Plant"
+r_combo$METHOD[id]<-"Control"
+
+id<-which(r_combo$STUDY_ID=="landis_2018")
+r_combo$REALM[id]<-"Terrestrial"
+r_combo$TAXA[id]<-"Insect"
+r_combo$ORGANISM[id]<-"Insect"
+r_combo$METHOD[id]<-"Sticky trap"
+
+id<-which(r_combo$STUDY_ID=="lightfoot_2015")
+r_combo$REALM[id]<-"Terrestrial"
+r_combo$TAXA[id]<-"Insect"
+r_combo$ORGANISM[id]<-"Grasshopper"
+r_combo$METHOD[id]<-"Web trap"
+
+id<-which(r_combo$STUDY_ID=="oneida_fish_gillnets")
+r_combo$REALM[id]<-"Freshwater"
+r_combo$TAXA[id]<-"Fish"
+r_combo$ORGANISM[id]<-"Fish"
+r_combo$METHOD[id]<-"Gillnets"
+
+id<-which(r_combo$STUDY_ID=="oneida_fish_trawl")
+r_combo$REALM[id]<-"Freshwater"
+r_combo$TAXA[id]<-"Fish"
+r_combo$ORGANISM[id]<-"Fish"
+r_combo$METHOD[id]<-"Trawl"
+
+id<-which(r_combo$STUDY_ID=="oneida_phytopl_1975")
+r_combo$REALM[id]<-"Freshwater"
+r_combo$TAXA[id]<-"Phytoplankton"
+r_combo$ORGANISM[id]<-"Phytoplankton"
+r_combo$METHOD[id]<-"Net"
 ##########################################################
 saveRDS(r_combo,"../../Results/for_BioTIMEx/stability_metric.RDS")

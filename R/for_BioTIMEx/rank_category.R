@@ -79,6 +79,7 @@ inputloc_table<-get_inputloc_table(dataset_idset=dataset_idset)
 get_rankabun(inputmatfile_list = inputloc_table$inputloc, pathlist = inputloc_table$resloc)
 #=============================================================================================
 
+saveRDS(inputloc_table,"../../Results/for_BioTIMEx/inputloc_table.RDS")
 
 #=============================================================================================
 # get summary table for BioTIMEx data
@@ -89,7 +90,7 @@ for(i in 1:length(pathlist)){
   tempo<-readRDS(paste(pathlist[i],"summary_df.RDS",sep=""))
   summary_table<-rbind(summary_table,tempo)
 }
-summary_table<-cbind(STUDY__ID=inputloc_table$STUDY_ID,newsite=inputloc_table$newsite,summary_table)
+summary_table<-cbind(STUDY_ID=inputloc_table$STUDY_ID,newsite=inputloc_table$newsite,summary_table)
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
