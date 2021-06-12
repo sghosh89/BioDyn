@@ -101,20 +101,20 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
 #==================================================================================
 summary_table$REALM<-NA
 summary_table$TAXA<-NA
-summary_table$ORGANISM<-NA
+summary_table$ORGANISMS<-NA
 summary_table$METHOD<-NA
 
 # ---------------- following done manually, help file saved in wrangled data ----------
 id<-which(summary_table$STUDY_ID=="baikal_phyto")
 summary_table$REALM[id]<-"Freshwater"
 summary_table$TAXA[id]<-"Phytoplankton"
-summary_table$ORGANISM[id]<-"Phytoplankton"
+summary_table$ORGANISMS[id]<-"Phytoplankton"
 summary_table$METHOD[id]<-"Net"
 
 id<-which(summary_table$STUDY_ID=="carpenter_2016")
 summary_table$REALM[id]<-"Freshwater"
 summary_table$TAXA[id]<-"Zooplankton"
-summary_table$ORGANISM[id]<-"Zooplankton"
+summary_table$ORGANISMS[id]<-"Zooplankton"
 summary_table$METHOD[id]<-"Net" # https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-ntl.355.4
 
 id<-which(summary_table$STUDY_ID=="cumbrian_phyto")
@@ -126,43 +126,43 @@ summary_table$METHOD[id]<-"Water column sample"
 id<-which(summary_table$STUDY_ID=="cumbrian_zoo")
 summary_table$REALM[id]<-"Freshwater"
 summary_table$TAXA[id]<-"Zooplankton"
-summary_table$ORGANISM[id]<-"Zooplankton"
+summary_table$ORGANISMS[id]<-"Zooplankton"
 summary_table$METHOD[id]<-"Net"
 
 id<-which(summary_table$STUDY_ID=="gross_2016")
 summary_table$REALM[id]<-"Terrestrial"
 summary_table$TAXA[id]<-"Plant"
-summary_table$ORGANISM[id]<-"Plant"
+summary_table$ORGANISMS[id]<-"Plant"
 summary_table$METHOD[id]<-"Control"
 
 id<-which(summary_table$STUDY_ID=="landis_2018")
 summary_table$REALM[id]<-"Terrestrial"
 summary_table$TAXA[id]<-"Insect"
-summary_table$ORGANISM[id]<-"Insect"
+summary_table$ORGANISMS[id]<-"Insect"
 summary_table$METHOD[id]<-"Sticky trap"
 
 id<-which(summary_table$STUDY_ID=="lightfoot_2015")
 summary_table$REALM[id]<-"Terrestrial"
 summary_table$TAXA[id]<-"Insect"
-summary_table$ORGANISM[id]<-"Grasshopper"
+summary_table$ORGANISMS[id]<-"Grasshopper"
 summary_table$METHOD[id]<-"Web trap"
 
 id<-which(summary_table$STUDY_ID=="oneida_fish_gillnets")
 summary_table$REALM[id]<-"Freshwater"
 summary_table$TAXA[id]<-"Fish"
-summary_table$ORGANISM[id]<-"Fish"
+summary_table$ORGANISMS[id]<-"Fish"
 summary_table$METHOD[id]<-"Gillnets"
 
 id<-which(summary_table$STUDY_ID=="oneida_fish_trawl")
 summary_table$REALM[id]<-"Freshwater"
 summary_table$TAXA[id]<-"Fish"
-summary_table$ORGANISM[id]<-"Fish"
+summary_table$ORGANISMS[id]<-"Fish"
 summary_table$METHOD[id]<-"Trawl"
 
 id<-which(summary_table$STUDY_ID=="oneida_phytopl_1975")
 summary_table$REALM[id]<-"Freshwater"
 summary_table$TAXA[id]<-"Phytoplankton"
-summary_table$ORGANISM[id]<-"Phytoplankton"
+summary_table$ORGANISMS[id]<-"Phytoplankton"
 summary_table$METHOD[id]<-"Net"
 
 # save the summary table
