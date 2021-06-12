@@ -49,8 +49,8 @@ get_data_EarlyLate<-function(x,dataset_id='lightfoot_2015',resloc,samplingtime){
   commonsp<-ddata_BOER[,commonsp]
   commonsp$raresp<-apply(raresp,MARGIN=1,FUN=sum)
   
-  write.csv2(commonsp,paste(resloc,dataset_id,"_site_BOER_sampling_time_",samplingtime,"_inputmatrix_tailanal.csv",sep=""),row.names = T)
-  saveRDS(commonsp,paste(resloc,dataset_id,"_site_BOER_sampling_time_",samplingtime,"_inputmatrix_tailanal.RDS",sep=""))
+  write.csv2(commonsp,paste(resloc,dataset_id,"_sampling_time_",samplingtime,"_site_BOER_inputmatrix_tailanal.csv",sep=""),row.names = T)
+  saveRDS(commonsp,paste(resloc,dataset_id,"_sampling_time_",samplingtime,"_site_BOER_inputmatrix_tailanal.RDS",sep=""))
   
   # for site LATR
   ddata_LATR<-ddata%>%filter(SITE=="LATR")%>%
@@ -69,8 +69,8 @@ get_data_EarlyLate<-function(x,dataset_id='lightfoot_2015',resloc,samplingtime){
   commonsp<-ddata_LATR[,commonsp]
   commonsp$raresp<-apply(raresp,MARGIN=1,FUN=sum)
   
-  write.csv2(commonsp,paste(resloc,dataset_id,"_site_LATR_sampling_time_",samplingtime,"_inputmatrix_tailanal.csv",sep=""),row.names = T)
-  saveRDS(commonsp,paste(resloc,dataset_id,"_site_LATR_sampling_time_",samplingtime,"_inputmatrix_tailanal.RDS",sep=""))
+  write.csv2(commonsp,paste(resloc,dataset_id,"_sampling_time_",samplingtime,"_site_LATR_inputmatrix_tailanal.csv",sep=""),row.names = T)
+  saveRDS(commonsp,paste(resloc,dataset_id,"_sampling_time_",samplingtime,"_site_LATR_inputmatrix_tailanal.RDS",sep=""))
 }
 
 # call the above function
