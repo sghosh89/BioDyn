@@ -75,6 +75,8 @@ get_data_EarlyLate<-function(x,dataset_id='lightfoot_2015',resloc,samplingtime){
 
 # call the above function
 # first for data sampled on early (summer)
-get_data_EarlyLate(x = x, resloc = resloc, samplingtime = "E")
-get_data_EarlyLate(x = x, resloc = resloc, samplingtime = "L")
+#get_data_EarlyLate(x = x, resloc = resloc, samplingtime = "E")
+get_data_EarlyLate(x = x, resloc = resloc, samplingtime = "L") # only consider late sampling time
 
+sitelist<-c("BOER","LATR")
+saveRDS(sitelist,paste(resloc,"sitelist.RDS",sep=""))
