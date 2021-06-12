@@ -31,46 +31,66 @@ get_rankabun<-function(inputmatfile_list,pathlist){
     }
     
     saveRDS(rankabun,paste(pathlist[i],"rankabun.RDS",sep=""))
+    print(i)
     
   }
 }
 
 #########################################
 # now call the function
-pathlist<-c("../../Results/for_BioTIMEx/carpenter_2016/",
-            "../../Results/for_BioTIMEx/gross_2016/",
-            "../../Results/for_BioTIMEx/landis_2018/poplarT5/",
-            "../../Results/for_BioTIMEx/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E/",
-            "../../Results/for_BioTIMEx/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_L/",
-            "../../Results/for_BioTIMEx/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_E/",
-            "../../Results/for_BioTIMEx/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_L/",
-            "../../Results/for_BioTIMEx/oneida_phytopl_1975/"
-            )
+get_inputloc_table<-function(dataset_idset){
+  STUDY_ID<-c()
+  newsite<-c()
+  inputloc<-c()
+  resloc<-c()
+  for(i in 1:length(dataset_idset)){
+    dataset_id<-dataset_idset[i]
+    inputmatpath<-paste("../../DATA/for_BioTIMEx/wrangled_data/",dataset_id,"/",sep="")
+    if(!file.exists(paste("../../DATA/for_BioTIMEx/wrangled_data/",dataset_id,"/sitelist.RDS",sep=""))){
+      readF<- list.files(inputmatpath, pattern = "_inputmatrix_tailanal.RDS", full.names = TRUE)
+      outpath<-paste("../../Results/for_BioTIMEx/",dataset_id,"/",sep="")
+      STUDY_ID<-c(STUDY_ID,dataset_id)
+      newsite<-c(newsite,dataset_id)
+      inputloc<-c(inputloc,readF)
+      resloc<-c(resloc,outpath)
+    }else{
+      sitelist<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/",dataset_id,"/sitelist.RDS",sep=""))
+      for(k in 1:length(sitelist)){
+        readF<- list.files(inputmatpath, pattern = paste(sitelist[k],"_inputmatrix_tailanal.RDS",sep=""), full.names = TRUE)
+        outpath<-paste("../../Results/for_BioTIMEx/",dataset_id,"/",sitelist[k],"/",sep="")
+        STUDY_ID<-c(STUDY_ID,dataset_id)
+        newsite<-c(newsite,sitelist[k])
+        inputloc<-c(inputloc,readF)
+        resloc<-c(resloc,outpath)
+      }
+    }
+    print(i)
+  }
+  
+  inputloc_table<-as.data.frame(cbind(STUDY_ID,newsite,inputloc,resloc))
+  
+  return(inputloc_table)
+}
 
-inputmatfile_list<-c(
-  "../../DATA/for_BioTIMEx/wrangled_data/carpenter_2016/carpenter_2016_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/gross_2016/gross_2016_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/landis_2018/landis_2018_inputmatrix_tailanal_poplarT5.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_L_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_E_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_L_inputmatrix_tailanal.RDS",
-  "../../DATA/for_BioTIMEx/wrangled_data/oneida_phytopl_1975/oneida_phytopl_1975_inputmatrix_tailanal.RDS"
-)
+dataset_idset<-c("baikal_phyto","carpenter_2016","cumbrian_phyto","cumbrian_zoo",
+                 "gross_2016","landis_2018","lightfoot_2015",
+                 "oneida_fish_gillnets","oneida_fish_trawl","oneida_phytopl_1975")
+inputloc_table<-get_inputloc_table(dataset_idset=dataset_idset)
+get_rankabun(inputmatfile_list = inputloc_table$inputloc, pathlist = inputloc_table$resloc)
+#=============================================================================================
 
-get_rankabun(inputmatfile_list = inputmatfile_list,pathlist = pathlist)
 
-#===============================================================================
+#=============================================================================================
 # get summary table for BioTIMEx data
 # first we need to decide the REALM, organism for each dataset
 summary_table<-c()
+pathlist <- inputloc_table$resloc
 for(i in 1:length(pathlist)){
   tempo<-readRDS(paste(pathlist[i],"summary_df.RDS",sep=""))
   summary_table<-rbind(summary_table,tempo)
 }
-summary_table$siteid<-c("carpenter_2016","gross_2016","landis_2018",
-                  "lightfoot_2015_BOER_E","lightfoot_2015_BOER_L","lightfoot_2015_LATR_E","lightfoot_2015_LATR_L",
-                  "oneida_phytopl_1975")
+summary_table<-cbind(STUDY__ID=inputloc_table$STUDY_ID,newsite=inputloc_table$newsite,summary_table)
+
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
                                       f_nL=nL/nint,
@@ -122,6 +142,6 @@ combo<-ggplot(data=res_combo,aes(x=Interaction,y=Frequency,col=freq_type))+geom_
   geom_line(data=avg_combo_intfreq_list$freq_syn,aes(x=1:10,y=Frequency),lwd=1)+
   scale_color_manual(values=c("green", "gold1", "orchid"))+
   theme_bw()
-#combo
+combo
 
 
