@@ -11,42 +11,40 @@ if(!dir.exists(resloc)){
 }
 
 ########################
-dataset_id<-"lightfoot_2015_site_BOER_sampling_time_E"
-myresloc<-paste(resloc,dataset_id,"/",sep="")
-if(!dir.exists(myresloc)){
-  dir.create(myresloc)
-}
-spmat<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E_inputmatrix_tailanal.RDS",sep=""))
+#dataset_id<-"lightfoot_2015_site_BOER_sampling_time_E"
+#myresloc<-paste(resloc,dataset_id,"/",sep="")
+#if(!dir.exists(myresloc)){
+#  dir.create(myresloc)
+#}
+#spmat<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E_inputmatrix_tailanal.RDS",sep=""))
 
-tail_analysis(mat=spmat,resloc=myresloc,nbin=2)
+#tail_analysis(mat=spmat,resloc=myresloc,nbin=2)
 
 ###########################
-dataset_id<-"lightfoot_2015_site_BOER_sampling_time_L"
-myresloc<-paste(resloc,dataset_id,"/",sep="")
+myresloc<-paste(resloc,"BOER/",sep="")
 if(!dir.exists(myresloc)){
   dir.create(myresloc)
 }
-spmat<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_L_inputmatrix_tailanal.RDS",sep=""))
+spmat<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_sampling_time_L_site_BOER_inputmatrix_tailanal.RDS",sep=""))
 
 tail_analysis(mat=spmat,resloc=myresloc,nbin=2)
 
 ########################
-dataset_id<-"lightfoot_2015_site_LATR_sampling_time_E"
-myresloc<-paste(resloc,dataset_id,"/",sep="")
-if(!dir.exists(myresloc)){
-  dir.create(myresloc)
-}
-spmat<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_E_inputmatrix_tailanal.RDS",sep=""))
+#dataset_id<-"lightfoot_2015_site_LATR_sampling_time_E"
+#myresloc<-paste(resloc,dataset_id,"/",sep="")
+#if(!dir.exists(myresloc)){
+#  dir.create(myresloc)
+#}
+#spmat<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_E_inputmatrix_tailanal.RDS",sep=""))
 
-tail_analysis(mat=spmat,resloc=myresloc,nbin=2)
+#tail_analysis(mat=spmat,resloc=myresloc,nbin=2)
 
 ###########################
-dataset_id<-"lightfoot_2015_site_LATR_sampling_time_L"
-myresloc<-paste(resloc,dataset_id,"/",sep="")
+myresloc<-paste(resloc,"LATR/",sep="")
 if(!dir.exists(myresloc)){
   dir.create(myresloc)
 }
-spmat<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_L_inputmatrix_tailanal.RDS",sep=""))
+spmat<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/lightfoot_2015/lightfoot_2015_sampling_time_L_site_LATR_inputmatrix_tailanal.RDS",sep=""))
 
 tail_analysis(mat=spmat,resloc=myresloc,nbin=2)
 
