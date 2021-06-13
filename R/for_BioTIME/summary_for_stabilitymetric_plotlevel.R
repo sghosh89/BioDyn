@@ -18,7 +18,7 @@ r_BioTIME$iCV<-NA # inverse of CV: stability metric
 r_BioTIME$iCValt <-NA # inverse of CV alternative for skewed dist.: stability metric
 
 xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS")
-xxm<-xxm%>%select(STUDY_ID,REALM,TAXA,ORGANISMS)
+xxm<-xxm%>%dplyr::select(STUDY_ID,REALM,TAXA,ORGANISMS)
 r_BioTIME<-left_join(r_BioTIME,xxm,"STUDY_ID")
 
 for(i in 1:nrow(r_BioTIME)){

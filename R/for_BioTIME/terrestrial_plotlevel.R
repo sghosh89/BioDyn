@@ -157,6 +157,7 @@ colnames(dat)<-dat[1,]
 dat<-dat[-1,]
 nsp<-dat[2,]
 dat<-dat[-c(1:2),]
+data_pt_thrs<-20 # 20 years minimum
 
 pdf("../../Results/for_BioTIME/Terrestrial_plotlevel/summary_plot.pdf",width=85,height=10)
 op<-par(mar=c(12,5,5,1))
