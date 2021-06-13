@@ -120,7 +120,7 @@ summary_table$METHOD[id]<-"Net" # https://portal.edirepository.org/nis/mapbrowse
 id<-which(summary_table$STUDY_ID=="cumbrian_phyto")
 summary_table$REALM[id]<-"Freshwater"
 summary_table$TAXA[id]<-"Freshwater plants"
-summary_table$ORGANISM[id]<-"Phytoplankton"
+summary_table$ORGANISMS[id]<-"Phytoplankton"
 summary_table$METHOD[id]<-"Water column sample"
 
 id<-which(summary_table$STUDY_ID=="cumbrian_zoo")
