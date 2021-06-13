@@ -106,14 +106,14 @@ summary_table$METHOD<-NA
 
 # ---------------- following done manually, help file saved in wrangled data ----------
 id<-which(summary_table$STUDY_ID=="baikal_phyto")
-summary_table$REALM[id]<-"Freshwater plants"
-summary_table$TAXA[id]<-"Phytoplankton"
+summary_table$REALM[id]<-"Freshwater"
+summary_table$TAXA[id]<-"Freshwater plants"
 summary_table$ORGANISMS[id]<-"Phytoplankton"
 summary_table$METHOD[id]<-"Net"
 
 id<-which(summary_table$STUDY_ID=="carpenter_2016")
-summary_table$REALM[id]<-"Freshwater invertebrates"
-summary_table$TAXA[id]<-"Zooplankton"
+summary_table$REALM[id]<-"Freshwater"
+summary_table$TAXA[id]<-"Freshwater invertebrates"
 summary_table$ORGANISMS[id]<-"Zooplankton"
 summary_table$METHOD[id]<-"Net" # https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-ntl.355.4
 
