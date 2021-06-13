@@ -106,32 +106,32 @@ summary_table$METHOD<-NA
 
 # ---------------- following done manually, help file saved in wrangled data ----------
 id<-which(summary_table$STUDY_ID=="baikal_phyto")
-summary_table$REALM[id]<-"Freshwater"
+summary_table$REALM[id]<-"Freshwater plants"
 summary_table$TAXA[id]<-"Phytoplankton"
 summary_table$ORGANISMS[id]<-"Phytoplankton"
 summary_table$METHOD[id]<-"Net"
 
 id<-which(summary_table$STUDY_ID=="carpenter_2016")
-summary_table$REALM[id]<-"Freshwater"
+summary_table$REALM[id]<-"Freshwater invertebrates"
 summary_table$TAXA[id]<-"Zooplankton"
 summary_table$ORGANISMS[id]<-"Zooplankton"
 summary_table$METHOD[id]<-"Net" # https://portal.edirepository.org/nis/mapbrowse?packageid=knb-lter-ntl.355.4
 
 id<-which(summary_table$STUDY_ID=="cumbrian_phyto")
 summary_table$REALM[id]<-"Freshwater"
-summary_table$TAXA[id]<-"Phytoplankton"
+summary_table$TAXA[id]<-"Freshwater plants"
 summary_table$ORGANISM[id]<-"Phytoplankton"
 summary_table$METHOD[id]<-"Water column sample"
 
 id<-which(summary_table$STUDY_ID=="cumbrian_zoo")
 summary_table$REALM[id]<-"Freshwater"
-summary_table$TAXA[id]<-"Zooplankton"
+summary_table$TAXA[id]<-"Freshwater invertebrates"
 summary_table$ORGANISMS[id]<-"Zooplankton"
 summary_table$METHOD[id]<-"Net"
 
 id<-which(summary_table$STUDY_ID=="gross_2016")
 summary_table$REALM[id]<-"Terrestrial"
-summary_table$TAXA[id]<-"Plant"
+summary_table$TAXA[id]<-"Terrestrial plants"
 summary_table$ORGANISMS[id]<-"Plant"
 summary_table$METHOD[id]<-"Control"
 
@@ -161,7 +161,7 @@ summary_table$METHOD[id]<-"Trawl"
 
 id<-which(summary_table$STUDY_ID=="oneida_phytopl_1975")
 summary_table$REALM[id]<-"Freshwater"
-summary_table$TAXA[id]<-"Phytoplankton"
+summary_table$TAXA[id]<-"Freshwater plants"
 summary_table$ORGANISMS[id]<-"Phytoplankton"
 summary_table$METHOD[id]<-"Net"
 
