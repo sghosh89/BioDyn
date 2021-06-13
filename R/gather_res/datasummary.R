@@ -121,7 +121,7 @@ data_Phyto$Longitude<-NA
 data_Phyto$siteid
 
 # form wikipedia
-# lake Walensee
+# lake walensee
 data_Phyto$Latitude[1]<-47.1233
 data_Phyto$Longitude[1]<-9.2022
 
