@@ -52,7 +52,7 @@ sm_RF$source<-"RivFishTIME"
 
 #--------------------------------------- for swisslake phyto -----------------------------------------------------
 sm_swisslake_phyto<-readRDS("../../Results/for_swisslake/stability_metric_for_phytoplankton.RDS")
-sm_swisslake_phyto$TAXA<-"Phytoplankton" #"Freshwater plants" # phytoplanktons are tagged as invertebrates in BioTIME?
+sm_swisslake_phyto$TAXA<-"Freshwater plants" # phytoplanktons are tagged as invertebrates in BioTIME?
 sm_swisslake_phyto$ORGANISMS<-"Phytoplankton"
 sm_swisslake_phyto$newsite<-sm_swisslake_phyto$siteid
 sm_swisslake_phyto$STUDY_ID<-c("lake walensee","lake zurich","lake luzern","lake zurich",
@@ -68,7 +68,7 @@ sm_swisslake_phyto$source<-"SwissLakePhyto"
 
 #--------------------------------------- for swisslake zoo -----------------------------------------------------
 sm_swisslake_zoo<-readRDS("../../Results/for_swisslake/stability_metric_for_zooplankton.RDS")
-sm_swisslake_zoo$TAXA<-"Zooplankton" #"Freshwater invertebrates"
+sm_swisslake_zoo$TAXA<-"Freshwater invertebrates"
 sm_swisslake_zoo$ORGANISMS<-"Zooplankton"
 sm_swisslake_zoo$newsite<-sm_swisslake_zoo$siteid
 sm_swisslake_zoo$STUDY_ID<-c("lake zurich","lake luzern","lake sempach",
@@ -83,7 +83,7 @@ sm_swisslake_zoo$source<-"SwissLakeZoo"
 
 #------------------------------- for zoop2014 ----------------------------------------------
 sm_zoop<-readRDS("../../Results/for_zoop_2014/stability_metric.RDS")
-sm_zoop$TAXA<-"Zooplankton" # Freshwater invertebrates
+sm_zoop$TAXA<-"Freshwater invertebrates"
 sm_zoop$ORGANISMS<-"Zooplankton"
 sm_zoop$STUDY_ID<-sm_zoop$newsite<-sm_zoop$siteid
 sm_zoop<-sm_zoop%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
@@ -96,12 +96,8 @@ sm_zoop$source<-"Zooplankton2014"
 
 #================================================================================================
 sm_all<-rbind(sm_BioTIME,sm_BioTIMEx,sm_BBS,sm_RF,sm_swisslake_phyto,sm_swisslake_zoo,sm_zoop)
+sm_all$TAXA<-tolower(sm_all$TAXA)
+sm_all$ORGANISMS<-tolower(sm_all$ORGANISMS)
 saveRDS(sm_all,"../../Results/gather_res/stability_metric_all.RDS")
-
-#unique(sm_all$TAXA)
-#unique(sm_all$ORGANISMS)
-
-# Freshwater invertebrates = zooplankton (if you are sure)
-# Freshwater plants = phytoplankton (if you are sure)
 
 
