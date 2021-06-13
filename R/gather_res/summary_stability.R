@@ -2,74 +2,106 @@ library(tidyverse)
 #=====================================================================
 # gather stability metric summary for all data you have analyzed
 
-# for BioTIME
-sm_BioTIME<-readRDS("../../Results/for_BioTIME/stability_metric.RDS")
-sm_BioTIME<-sm_BioTIME%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
+#----------------------------- for BioTIME -----------------------------------------------------
+sm_BioTIME<-readRDS("../../Results/for_BioTIME/stability_metric_plotlevel.RDS")
+sm_BioTIME<-sm_BioTIME%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
+                                  nsp,ens,nind,npos,nL,nU,nneg,
                                   L,U,f_nind,f_nL,f_nU,f_nneg,
                                   cvsq_real,cvsq_indep,phi,phi_LdM,
                                   skw_real,skw_indep,phi_skw,
-                                  iCV,iCValt,
-                                  REALM))
+                                  iCV,iCValt))
 sm_BioTIME$source<-"BioTIME"
 
-# for_BioTIMEx
+#----------------------------------- for_BioTIMEx -------------------------------------------
 sm_BioTIMEx<-readRDS("../../Results/for_BioTIMEx/stability_metric.RDS")
-sm_BioTIMEx<-sm_BioTIMEx%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
+sm_BioTIMEx<-sm_BioTIMEx%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
+                                    nsp,ens,nind,npos,nL,nU,nneg,
                                     L,U,f_nind,f_nL,f_nU,f_nneg,
                                     cvsq_real,cvsq_indep,phi,phi_LdM,
                                     skw_real,skw_indep,phi_skw,
-                                    iCV,iCValt,
-                                    REALM))
+                                    iCV,iCValt))
 sm_BioTIMEx$source<-"BioTIMEx"
 
-# for BBS
+#------------------------------------- for BBS -----------------------------------------------
 sm_BBS<-readRDS("../../Results/for_BBS/stability_metric.RDS")
-sm_BBS<-sm_BBS%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
+sm_BBS$TAXA <-"Birds"
+sm_BBS$ORGANISMS <-"Birds"
+sm_BBS<-rename(sm_BBS, newsite = siteid) # each siteid is renamed as newsite to be nested within the stratum 
+sm_BBS<-rename(sm_BBS, STUDY_ID = Stratum_name) # stratum name renamed as STUDY_ID
+sm_BBS<-sm_BBS%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
+                          nsp,ens,nind,npos,nL,nU,nneg,
                           L,U,f_nind,f_nL,f_nU,f_nneg,
                           cvsq_real,cvsq_indep,phi,phi_LdM,
                           skw_real,skw_indep,phi_skw,
-                          iCV,iCValt,
-                          REALM))
+                          iCV,iCValt))
 sm_BBS$source<-"BBS"
 
-# for RivFishTIME
+#-------------------------------- for RivFishTIME ---------------------------------------------
 sm_RF<-readRDS("../../Results/for_RivFishTIME/stability_metric.RDS")
-sm_RF<-sm_RF%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
-                        L,U,f_nind,f_nL,f_nU,f_nneg,
-                        cvsq_real,cvsq_indep,phi,phi_LdM,
-                        skw_real,skw_indep,phi_skw,
-                        iCV,iCValt,
-                        REALM))
+sm_RF$TAXA <-"Fish"
+sm_RF$ORGANISMS <-"Fish"
+sm_RF<-rename(sm_RF, newsite = siteid) # each siteid is renamed as newsite to be nested within the hydrobasin 
+sm_RF<-rename(sm_RF, STUDY_ID = HydroBasin) # Hydrobasin renamed as STUDY_ID
+sm_RF<-sm_RF%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
+                          nsp,ens,nind,npos,nL,nU,nneg,
+                          L,U,f_nind,f_nL,f_nU,f_nneg,
+                          cvsq_real,cvsq_indep,phi,phi_LdM,
+                          skw_real,skw_indep,phi_skw,
+                          iCV,iCValt))
 sm_RF$source<-"RivFishTIME"
 
-# for swisslake
+#--------------------------------------- for swisslake phyto -----------------------------------------------------
 sm_swisslake_phyto<-readRDS("../../Results/for_swisslake/stability_metric_for_phytoplankton.RDS")
-sm_swisslake_phyto<-sm_swisslake_phyto%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
+sm_swisslake_phyto$TAXA<-"Phytoplankton" #"Freshwater plants" # phytoplanktons are tagged as invertebrates in BioTIME?
+sm_swisslake_phyto$ORGANISMS<-"Phytoplankton"
+sm_swisslake_phyto$newsite<-sm_swisslake_phyto$siteid
+sm_swisslake_phyto$STUDY_ID<-c("lake walensee","lake zurich","lake luzern","lake zurich",
+                               "lake sempach","lake hallwil","lake baldegg","lake greifensee")
+  
+sm_swisslake_phyto<-sm_swisslake_phyto%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
+                                                  nsp,ens,nind,npos,nL,nU,nneg,
                                                   L,U,f_nind,f_nL,f_nU,f_nneg,
                                                   cvsq_real,cvsq_indep,phi,phi_LdM,
                                                   skw_real,skw_indep,phi_skw,
-                                                  iCV,iCValt,
-                                                  REALM))
+                                                  iCV,iCValt))
 sm_swisslake_phyto$source<-"SwissLakePhyto"
 
+#--------------------------------------- for swisslake zoo -----------------------------------------------------
 sm_swisslake_zoo<-readRDS("../../Results/for_swisslake/stability_metric_for_zooplankton.RDS")
-sm_swisslake_zoo<-sm_swisslake_zoo%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
+sm_swisslake_zoo$TAXA<-"Zooplankton" #"Freshwater invertebrates"
+sm_swisslake_zoo$ORGANISMS<-"Zooplankton"
+sm_swisslake_zoo$newsite<-sm_swisslake_zoo$siteid
+sm_swisslake_zoo$STUDY_ID<-c("lake zurich","lake luzern","lake sempach",
+                             "lake hallwil","lake greifensee","lake baldegg")
+sm_swisslake_zoo<-sm_swisslake_zoo%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
+                                              nsp,ens,nind,npos,nL,nU,nneg,
                                               L,U,f_nind,f_nL,f_nU,f_nneg,
                                               cvsq_real,cvsq_indep,phi,phi_LdM,
                                               skw_real,skw_indep,phi_skw,
-                                              iCV,iCValt,
-                                              REALM))
+                                              iCV,iCValt))
 sm_swisslake_zoo$source<-"SwissLakeZoo"
 
-# for zoop2014
+#------------------------------- for zoop2014 ----------------------------------------------
 sm_zoop<-readRDS("../../Results/for_zoop_2014/stability_metric.RDS")
-sm_zoop<-sm_zoop%>%select(c(siteid,nsp,ens,nind,npos,nL,nU,nneg,
+sm_zoop$TAXA<-"Zooplankton" # Freshwater invertebrates
+sm_zoop$ORGANISMS<-"Zooplankton"
+sm_zoop$STUDY_ID<-sm_zoop$newsite<-sm_zoop$siteid
+sm_zoop<-sm_zoop%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
+                            nsp,ens,nind,npos,nL,nU,nneg,
                             L,U,f_nind,f_nL,f_nU,f_nneg,
                             cvsq_real,cvsq_indep,phi,phi_LdM,
                             skw_real,skw_indep,phi_skw,
-                            iCV,iCValt,
-                            REALM))
+                            iCV,iCValt))
 sm_zoop$source<-"Zooplankton2014"
 
+#================================================================================================
 sm_all<-rbind(sm_BioTIME,sm_BioTIMEx,sm_BBS,sm_RF,sm_swisslake_phyto,sm_swisslake_zoo,sm_zoop)
 saveRDS(sm_all,"../../Results/gather_res/stability_metric_all.RDS")
+
+#unique(sm_all$TAXA)
+#unique(sm_all$ORGANISMS)
+
+# Freshwater invertebrates = zooplankton (if you are sure)
+# Freshwater plants = phytoplankton (if you are sure)
+
+
