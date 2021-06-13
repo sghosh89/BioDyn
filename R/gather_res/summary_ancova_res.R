@@ -2,16 +2,7 @@ rm(list=ls())
 source("get_ancova_res.R")
 
 sm_all<-readRDS("../../Results/gather_res/stability_metric_all.RDS")
-
-#-----------------------------------------------------------------
-# omit marine points, also levels from factor REALM
-sm_all$REALM<-as.character(sm_all$REALM)
-sm_all<-sm_all[which(sm_all$REALM!="Marine"),]
-sm_all$REALM<-as.factor(sm_all$REALM)
-#----------------------------------------------------------------
 sm_all<-na.omit(sm_all)
-
-#sm_all<-sm_all%>%filter(source %in% c("Zooplankton2014","BioTIME","BioTIMEx","RivFishTIME"))
 
 # check Synchrony-stability relationship: expected to be -ve
 mydat<-sm_all[,c("phi","iCValt","REALM")]
