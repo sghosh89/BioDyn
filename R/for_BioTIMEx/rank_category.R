@@ -137,13 +137,13 @@ summary_table$METHOD[id]<-"Control"
 
 id<-which(summary_table$STUDY_ID=="landis_2018")
 summary_table$REALM[id]<-"Terrestrial"
-summary_table$TAXA[id]<-"Insect"
+summary_table$TAXA[id]<-"Terrestrial invertebrates"
 summary_table$ORGANISMS[id]<-"Insect"
 summary_table$METHOD[id]<-"Sticky trap"
 
 id<-which(summary_table$STUDY_ID=="lightfoot_2015")
 summary_table$REALM[id]<-"Terrestrial"
-summary_table$TAXA[id]<-"Insect"
+summary_table$TAXA[id]<-"Terrestrial invertebrates"
 summary_table$ORGANISMS[id]<-"Grasshopper"
 summary_table$METHOD[id]<-"Web trap"
 
