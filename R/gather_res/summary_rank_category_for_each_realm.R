@@ -22,10 +22,9 @@ ci_BioTIME_t$REALM<-"Terrestrial"
 ci_BioTIME<-rbind(ci_BioTIME_f,ci_BioTIME_t)
 ci_BioTIME$source<-"BioTIME"
 
-
 # for BioTIMEx
-#x<-readRDS("../../Results/for_BioTIMEx/carpenter_2016/categorized_interaction.RDS")
-
+ci_BioTIMEx<-readRDS("../../Results/for_BioTIMEx/interaction_freq_for_BioTIMEx.RDS")
+ci_BioTIMEx$source<-"BioTIMEx"
 
 # for BBS
 ci_BBS<-readRDS("../../Results/for_BBS/interaction_freq_for_BBS.RDS")
@@ -50,7 +49,7 @@ ci_z2014<-readRDS("../../Results/for_zoop_2014/interaction_freq_for_zoop2014.RDS
 ci_z2014$source<-"Zooplankton2014"
 ci_z2014$REALM<-"Freshwater"
 
-ci_all<-rbind(ci_BioTIME,ci_BBS,ci_RF,ci_SL_P,ci_SL_Z,ci_z2014)
+ci_all<-rbind(ci_BioTIME,ci_BioTIMEx,ci_BBS,ci_RF,ci_SL_P,ci_SL_Z,ci_z2014)
 
 #################################################################
 #         plot the interaction freq plot for each realm

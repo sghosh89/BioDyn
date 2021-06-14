@@ -8,69 +8,52 @@ df<-read.csv("../../Results/gather_res/data_summary.csv") # saved from datasumma
 rownames(df)<-NULL
 
 targetspecieslist_alldata<-c()
-  
-  #data.frame(source=NA*numeric(10^7),
- #                                     siteid=NA*numeric(10^7),
-#                                      REALM=NA*numeric(10^7),
-#                                      TAXA=NA*numeric(10^7),
-#                                      ORGANISMS=NA*numeric(10^7),
-#                                      nsp=NA*numeric(10^7),
-#                                      species=NA*numeric(10^7))
-#init<-0
+ 
 for(i in 1:nrow(df)){
   
+  tempo<-readRDS("../../Results/for_BioTIMEx/inputloc_table.RDS")
   rlm<-df$REALM[i]
-  siteid<-df$siteid[i]
+  newsite<-df$newsite[i]
   source<-df$source[i]
   taxa<-df$TAXA[i]
   org<-df$ORGANISMS[i]
   nsp<-df$nsp[i]
   
   if(source=="BioTIME"){
-    mypath<-paste("../../Results/for_BioTIME/",rlm,"/",siteid,"/",sep="")
-  }
-  
-  if(source=="BioTIMEx"){
-    
-    if(siteid%in%c("carpenter_2016","gross_2016","oneida_phytopl_1975")){
-      mypath<-paste("../../Results/for_BioTIMEx/",siteid,"/",sep="")
-    }else if(siteid=="landis_2018"){
-      mypath<-paste("../../Results/for_BioTIMEx/",siteid,"/poplarT5/",sep="")
-    }else if(siteid=="lightfoot_2015_BOER_E"){
-      mypath<-paste("../../Results/for_BioTIMEx/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_E/",sep="")
-    }else if(siteid=="lightfoot_2015_BOER_L"){
-      mypath<-paste("../../Results/for_BioTIMEx/lightfoot_2015/lightfoot_2015_site_BOER_sampling_time_L/",sep="")
-    }else if(siteid=="lightfoot_2015_LATR_E"){
-      mypath<-paste("../../Results/for_BioTIMEx/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_E/",sep="")
-    }else if(siteid=="lightfoot_2015_LATR_L"){
-      mypath<-paste("../../Results/for_BioTIMEx/lightfoot_2015/lightfoot_2015_site_LATR_sampling_time_L/",sep="")
+    if(df$STUDY_ID[i]==df$newsite[i]){
+      mypath<-paste("../../Results/for_BioTIME/",rlm,"_plotlevel/",newsite,"/",sep="")
     }else{
-      cat("---------- Error: missmatched name for BioTIMEx -------------- \n")
+      mypath<-paste("../../Results/for_BioTIME/",rlm,"_plotlevel/",df$STUDY_ID[i],"/",newsite,"/",sep="")
     }
     
   }
   
+  if(source=="BioTIMEx"){
+    mypath<-tempo[which(newsite==newsite),]
+    mypath<-mypath$resloc
+  }
+  
   if(source=="BBS"){
-    mypath<-paste("../../Results/for_BBS/",siteid,"/",sep="")
+    mypath<-paste("../../Results/for_BBS/",newsite,"/",sep="")
   }
   
   if(source=="RivFishTIME"){
-    mypath<-paste("../../Results/for_RivFishTIME/",siteid,"/",sep="")
+    mypath<-paste("../../Results/for_RivFishTIME/",newsite,"/",sep="")
   }
   
   if(source=="SwissLakePhyto"){
-    mypath<-paste("../../Results/for_swisslake/",siteid,"/",sep="")
+    mypath<-paste("../../Results/for_swisslake/",newsite,"/",sep="")
   }
   
   if(source=="SwissLakeZoo"){
-    mypath<-paste("../../Results/for_swisslake/zooplankton/zoo_",siteid,"/",sep="")
+    mypath<-paste("../../Results/for_swisslake/zooplankton/zoo_",newsite,"/",sep="")
   }
   
   if(source=="Zooplankton2014"){
-    mypath<-paste("../../Results/for_zoop_2014/",siteid,"/",sep="")
+    mypath<-paste("../../Results/for_zoop_2014/",newsite,"/",sep="")
   }
   
-  cat(" i = ",i," source = ", source, " siteid = ", siteid, "\n")
+  cat(" i = ",i," source = ", source, " newsite = ", newsite, "\n")
   
   xx<-readRDS(paste(mypath,"NonParamStat.RDS",sep=""))
   xx<-xx$spear
@@ -83,7 +66,7 @@ for(i in 1:nrow(df)){
   }
   
   tgsp<-data.frame(source=NA*numeric(10^3),
-                                        siteid=NA*numeric(10^3),
+                                        newsite=NA*numeric(10^3),
                                         REALM=NA*numeric(10^3),
                                         TAXA=NA*numeric(10^3),
                                         ORGANISMS=NA*numeric(10^3),
@@ -92,7 +75,7 @@ for(i in 1:nrow(df)){
   lxx<-length(xx)
   tgsp$source[1:lxx]<-source
   tgsp$REALM[1:lxx]<-rlm
-  tgsp$siteid[1:lxx]<-siteid
+  tgsp$newsite[1:lxx]<-newsite
   tgsp$TAXA[1:lxx]<-taxa
   tgsp$ORGANISMS[1:lxx]<-org
   tgsp$nsp[1:lxx]<-nsp
