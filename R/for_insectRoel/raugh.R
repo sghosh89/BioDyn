@@ -68,11 +68,13 @@ nyr_thrs<-nyr*0.7
 #                                    nuid3=n_distinct(uid3))%>% # count of uid3 in 'cc' nested under uid0
 #                        ungroup()%>%arrange(desc(nuid0))
 
-tt<-cc%>%group_by(uid3)%>%summarize(nuid3=n(),  
+tt<-cc%>%group_by(uid3)%>%summarize(nyr=n_distinct(Year),
+                                    nuid3=n(),  
                                     nuid0=n_distinct(uid0), # this must be 1 as it is higher taxonomic level than species
                                     nuid1=n_distinct(uid1), # this must be 1
                                     nuid2=n_distinct(uid2))%>% # this must be 1
   ungroup()%>%arrange(desc(nuid3))
+all(tt$nyr==tt$nuid3)==T
 
 # get the species level resolution 
 tt_splevel<-tt%>%filter(nuid3>=nyr_thrs)
@@ -80,32 +82,40 @@ cc_splevel<-cc%>%filter(uid3%in%tt_splevel$uid3)
 
 # update cc, tt
 cc<-cc%>%filter(uid3%notin%tt_splevel$uid3)
-tt<-cc%>%group_by(uid2)%>%summarize(nuid2=n(),  
+tt<-cc%>%group_by(uid2)%>%summarize(nyr=n_distinct(Year),
+                                    nuid2=n(),  
                                     nuid0=n_distinct(uid0), # this must be 1 as it is higher taxonomic level than species
                                     nuid1=n_distinct(uid1))%>% # this must be 1
   ungroup()%>%arrange(desc(nuid2))
+all(tt$nyr==tt$nuid2)==T # this is false 
+# because sp1, sp2 both have same genus (uid2) so 1990, 1992, 1994 repeat
 
 # get the genus level resolution 
-tt_genuslevel<-tt%>%filter(nuid2>=nyr_thrs)
+tt_genuslevel<-tt%>%filter(nyr>=nyr_thrs)
 cc_genuslevel<-cc%>%filter(uid2%in%tt_genuslevel$uid2)
 
 # update cc, tt
 cc<-cc%>%filter(uid2%notin%tt_genuslevel$uid2)
-tt<-cc%>%group_by(uid1)%>%summarize(nuid1=n(),  
+tt<-cc%>%group_by(uid1)%>%summarize(nyr=n_distinct(Year),
+                                    nuid1=n(),  
                                     nuid0=n_distinct(uid0))%>% # this must be 1 as it is higher taxonomic level than species
-                          ungroup()%>%arrange(desc(nuid1))
+  ungroup()%>%arrange(desc(nuid1))
+all(tt$nyr==tt$nuid1)==T # this is false 
 
 # get the subfamily level resolution 
-tt_sfamlevel<-tt%>%filter(nuid1>=nyr_thrs)
+tt_sfamlevel<-tt%>%filter(nyr>=nyr_thrs)
 cc_sfamlevel<-cc%>%filter(uid1%in%tt_sfamlevel$uid1)
 
 # the rest extra left upto family level
 cc_extra<-cc%>%filter(uid1%notin%tt_sfamlevel$uid1)
-tt_extra<-cc_extra%>%group_by(uid0)%>%summarize(nuid0=n(),
+tt_extra<-cc_extra%>%group_by(uid0)%>%summarize(nyr=n_distinct(Year),
+                                                nuid0=n(),
                                                 nuid1=n_distinct(uid1))%>%ungroup()%>%
-                                  arrange(desc(nuid0))
+  arrange(desc(nuid0))
+all(tt$nyr==tt$nuid0)==T # this is false 
+
 # update
-tt<-tt_extra%>%filter(nuid0>=nyr_thrs)
+tt<-tt_extra%>%filter(nyr>=nyr_thrs)
 cc_famlevel<-cc_extra%>%filter(uid0%in%tt$uid0)
 
 # the rest is left for aggregation if you want
@@ -119,15 +129,18 @@ class(cc_all)
 cc_all<-cc_all%>%select(-c(uid0,uid1,uid2,uid3))
 cc_extra<-cc_extra%>%select(-c(uid0,uid1,uid2,uid3))
 
-write.csv(cc_all,"./Datasource_ID_1388_Plot_ID_1049_screeneddata.csv",row.names = F)
-write.csv(cc_extra,"./Datasource_ID_1388_Plot_ID_1049_leftoverdata.csv",row.names = F)
+write.csv(cc_all,"./Datasource_ID_1388_Plot_ID_1049_screeneddata_v2.csv",row.names = F)
+write.csv(cc_extra,"./Datasource_ID_1388_Plot_ID_1049_leftoverdata_v2.csv",row.names = F)
 
 
 
+#######################
 
-
-
-
+#zz<-cc_extra%>%group_by(uid0)%>%summarize(nyr=n_distinct(Year),
+#                                             nuid0=n(),  
+#                                             nuid1=n_distinct(uid1), # this must be 1 as it is higher taxonomic level than species
+#                                             nuid2=n_distinct(uid2))%>%ungroup()%>%
+#  arrange(desc(nuid0))
 
 
 
