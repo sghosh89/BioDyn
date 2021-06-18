@@ -68,6 +68,7 @@ nyr_thrs<-nyr*0.7
 #                                    nuid3=n_distinct(uid3))%>% # count of uid3 in 'cc' nested under uid0
 #                        ungroup()%>%arrange(desc(nuid0))
 
+
 tt<-cc%>%group_by(uid3)%>%summarize(nyr=n_distinct(Year),
                                     nuid3=n(),  
                                     nuid0=n_distinct(uid0), # this must be 1 as it is higher taxonomic level than species
@@ -80,6 +81,10 @@ all(tt$nyr==tt$nuid3)==T
 tt_splevel<-tt%>%filter(nuid3>=nyr_thrs)
 cc_splevel<-cc%>%filter(uid3%in%tt_splevel$uid3)
 
+cc_splevel<-arrange(cc_splevel,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
+cc_splevel$selection<-"splevel"
+
+
 # update cc, tt
 cc<-cc%>%filter(uid3%notin%tt_splevel$uid3)
 tt<-cc%>%group_by(uid2)%>%summarize(nyr=n_distinct(Year),
@@ -89,41 +94,97 @@ tt<-cc%>%group_by(uid2)%>%summarize(nyr=n_distinct(Year),
   ungroup()%>%arrange(desc(nuid2))
 all(tt$nyr==tt$nuid2)==T # this is false 
 # because sp1, sp2 both have same genus (uid2) so 1990, 1992, 1994 repeat
+cc<-arrange(cc,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
 
 # get the genus level resolution 
 tt_genuslevel<-tt%>%filter(nyr>=nyr_thrs)
 cc_genuslevel<-cc%>%filter(uid2%in%tt_genuslevel$uid2)
+cc_genuslevel<-cc_genuslevel%>%filter(Genus!="NA.genus")
+cc_genuslevel_extra<-cc_genuslevel%>%filter(Genus=="NA.genus")
+cc_genuslevel<-arrange(cc_genuslevel,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
+cc_genuslevel$selection<-"genuslevel"
+
 
 # update cc, tt
 cc<-cc%>%filter(uid2%notin%tt_genuslevel$uid2)
+cc<-rbind(cc,cc_genuslevel_extra)
 tt<-cc%>%group_by(uid1)%>%summarize(nyr=n_distinct(Year),
                                     nuid1=n(),  
                                     nuid0=n_distinct(uid0))%>% # this must be 1 as it is higher taxonomic level than species
   ungroup()%>%arrange(desc(nuid1))
 all(tt$nyr==tt$nuid1)==T # this is false 
+cc<-arrange(cc,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
 
 # get the subfamily level resolution 
 tt_sfamlevel<-tt%>%filter(nyr>=nyr_thrs)
 cc_sfamlevel<-cc%>%filter(uid1%in%tt_sfamlevel$uid1)
+cc_sfamlevel<-cc_sfamlevel%>%filter(Subfamily!="NA.subfamily")
+cc_sfamlevel_extra<-cc_sfamlevel%>%filter(Subfamily=="NA.subfamily")
+cc_sfamlevel<-arrange(cc_sfamlevel,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
+cc_sfamlevel$selection<-"sfamlevel"
 
 # the rest extra left upto family level
 cc_extra<-cc%>%filter(uid1%notin%tt_sfamlevel$uid1)
+cc_extra<-rbind(cc_extra,cc_sfamlevel_extra)
 tt_extra<-cc_extra%>%group_by(uid0)%>%summarize(nyr=n_distinct(Year),
                                                 nuid0=n(),
                                                 nuid1=n_distinct(uid1))%>%ungroup()%>%
   arrange(desc(nuid0))
 all(tt$nyr==tt$nuid0)==T # this is false 
+cc_extra<-arrange(cc_extra,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
 
 # update
 tt<-tt_extra%>%filter(nyr>=nyr_thrs)
 cc_famlevel<-cc_extra%>%filter(uid0%in%tt$uid0)
+cc_famlevel<-arrange(cc_famlevel,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
+cc_famlevel$selection<-"famlevel"
 
 # the rest is left for aggregation if you want
-cc_extra<-cc_extra%>%filter(uid0%notin%tt$uid0)
+#cc_extra<-cc_extra%>%filter(uid0%notin%tt$uid0)
+#cc_extra<-arrange(cc_extra,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
 
+# but now we need to further sort down based on family level - we can do genus level aggregation
+t1<-cc_famlevel%>%group_by(Family)%>%count(Subfamily)%>%ungroup()
+
+t11<-t1%>%group_by(Family)%>%
+  summarize(usf=n_distinct(Subfamily),Subfamily=unique(Subfamily))%>%
+  ungroup()
+t11<-inner_join(t11,t1, by=c("Family"="Family","Subfamily"="Subfamily"))
+
+t11k<-t11%>%filter(n>=nyr_thrs) # keep this 
+t11nk<-t11%>%filter(n<nyr_thrs)
+
+# per Family aggregate only 2 unique Subfamily-levels if one of them is NA.Subfamily
+t1<-t11nk%>%filter(usf==2)
+t1n<-t1%>%filter(Subfamily=="NA.subfamily")
+# this t1n table indicates the Family name which has only two Subfamily levels 
+# ( a NA.subfamily and a known subfamily) - so we can aggregate the sfam for this family
+
+cc_famlevel_agg2sfam<-cc_famlevel%>%filter(Family%in%t1n$Family)
+cc_famlevel_agg2sfam$selection<-"famlevel_agg2sfam"
+#----------------- but keep if per family more than >= nyr_thrs obs was there -----------------------
+
+#----------------------------------------------------------------------------------------------------
+#t11nk<-t11nk%>%filter(usf>2)
+#cc_famlevel_2<-cc_famlevel%>%filter(Family%in%t11nk$Family & Subfamily%in%t11nk$Subfamily)
+#c2<-cc_famlevel_2%>%group_by(Family)%>%count()%>%filter(n>=nyr_thrs)%>%ungroup()
+#if(nrow(c2)>0){
+#  cc_famlevel_agg2sfam_extra<-cc_famlevel_agg2sfam_extra%>%filter(Family%in%c2$Family)
+#}
+
+
+t11k_p2<-t11k%>%filter(usf>2)
+c2<-cc_famlevel%>%filter(Family%in%t11k_p2$Family & Subfamily%in%t11k_p2$Subfamily)
+t2<-c2%>%group_by(Family,Subfamily)%>%count(Genus)%>%ungroup()
+t2<-t2%>%filter(t2$n>=nyr_thrs)
+c2<-c2%>%filter(Family%in%t2$Family & Subfamily%in%t2$Subfamily & Genus%in%t2$Genus)
+c2$selection<-"famlevel_agg2genus"
 
 # okay, now combine all data
-cc_all<-rbind(cc_famlevel,cc_sfamlevel,cc_genuslevel,cc_splevel)
+cc_all<-rbind(cc_splevel,cc_genuslevel,cc_sfamlevel,cc_famlevel_agg2sfam, c2)
+cc_all<-arrange(cc_all,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
+nrow(cc_all)
+
 class(cc_all)
 
 cc_all<-cc_all%>%select(-c(uid0,uid1,uid2,uid3))
@@ -132,8 +193,6 @@ cc_extra<-cc_extra%>%select(-c(uid0,uid1,uid2,uid3))
 write.csv(cc_all,"./Datasource_ID_1388_Plot_ID_1049_screeneddata_v2.csv",row.names = F)
 write.csv(cc_extra,"./Datasource_ID_1388_Plot_ID_1049_leftoverdata_v2.csv",row.names = F)
 
-
-
 #######################
 
 #zz<-cc_extra%>%group_by(uid0)%>%summarize(nyr=n_distinct(Year),
@@ -141,7 +200,4 @@ write.csv(cc_extra,"./Datasource_ID_1388_Plot_ID_1049_leftoverdata_v2.csv",row.n
 #                                             nuid1=n_distinct(uid1), # this must be 1 as it is higher taxonomic level than species
 #                                             nuid2=n_distinct(uid2))%>%ungroup()%>%
 #  arrange(desc(nuid0))
-
-
-
 
