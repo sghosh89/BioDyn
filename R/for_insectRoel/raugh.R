@@ -163,15 +163,10 @@ t1n<-t1%>%filter(Subfamily=="NA.subfamily")
 cc_famlevel_agg2sfam<-cc_famlevel%>%filter(Family%in%t1n$Family)
 cc_famlevel_agg2sfam$selection<-"famlevel_agg2sfam"
 #----------------- but keep if per family more than >= nyr_thrs obs was there -----------------------
-
+tempo<-cc_famlevel_agg2sfam%>%group_by(Family)%>%summarize(nyr=n_distinct(Year))%>%ungroup()
+tempo<-tempo%>%filter(nyr>=nyr_thrs)
+cc_famlevel_agg2sfam<-cc_famlevel_agg2sfam%>%filter(Family%in%tempo$Family)
 #----------------------------------------------------------------------------------------------------
-#t11nk<-t11nk%>%filter(usf>2)
-#cc_famlevel_2<-cc_famlevel%>%filter(Family%in%t11nk$Family & Subfamily%in%t11nk$Subfamily)
-#c2<-cc_famlevel_2%>%group_by(Family)%>%count()%>%filter(n>=nyr_thrs)%>%ungroup()
-#if(nrow(c2)>0){
-#  cc_famlevel_agg2sfam_extra<-cc_famlevel_agg2sfam_extra%>%filter(Family%in%c2$Family)
-#}
-
 
 t11k_p2<-t11k%>%filter(usf>2)
 c2<-cc_famlevel%>%filter(Family%in%t11k_p2$Family & Subfamily%in%t11k_p2$Subfamily)
@@ -179,6 +174,11 @@ t2<-c2%>%group_by(Family,Subfamily)%>%count(Genus)%>%ungroup()
 t2<-t2%>%filter(t2$n>=nyr_thrs)
 c2<-c2%>%filter(Family%in%t2$Family & Subfamily%in%t2$Subfamily & Genus%in%t2$Genus)
 c2$selection<-"famlevel_agg2genus"
+#----------------- but keep if per family more than >= nyr_thrs obs was there -----------------------
+#tempo<-c2%>%group_by(Family)%>%summarize(nyr=n_distinct(Year))%>%ungroup()
+#tempo<-tempo%>%filter(nyr>=nyr_thrs)
+#cc_famlevel_agg2sfam<-cc_famlevel_agg2sfam%>%filter(Family%in%tempo$Family)
+#---------------------------------------------------------------------------------------
 
 # okay, now combine all data
 cc_all<-rbind(cc_splevel,cc_genuslevel,cc_sfamlevel,cc_famlevel_agg2sfam, c2)
@@ -187,8 +187,8 @@ nrow(cc_all)
 
 class(cc_all)
 
-cc_all<-cc_all%>%select(-c(uid0,uid1,uid2,uid3))
-cc_extra<-cc_extra%>%select(-c(uid0,uid1,uid2,uid3))
+#cc_all<-cc_all%>%select(-c(uid0,uid1,uid2,uid3))
+#cc_extra<-cc_extra%>%select(-c(uid0,uid1,uid2,uid3))
 
 write.csv(cc_all,"./Datasource_ID_1388_Plot_ID_1049_screeneddata_v2.csv",row.names = F)
 write.csv(cc_extra,"./Datasource_ID_1388_Plot_ID_1049_leftoverdata_v2.csv",row.names = F)
