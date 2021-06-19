@@ -29,7 +29,7 @@ for(i in 1:nrow(df)){
   }
   
   if(source=="BioTIMEx"){
-    mypath<-tempo[which(newsite==newsite),]
+    mypath<-tempo[which(tempo$newsite==newsite & tempo$STUDY_ID==df$STUDY_ID[i]),]
     mypath<-mypath$resloc
   }
   
@@ -85,6 +85,15 @@ for(i in 1:nrow(df)){
   targetspecieslist_alldata<-rbind(targetspecieslist_alldata,tgsp)
 }
 
+# ================ BioTIMEx and cumbrian lake phytoplankton ==================
+tempometa<-read.csv("../../DATA/for_BioTIMEx/wrangled_data/cumbrian_phyto/splist_edited.csv")
+tempo<-inner_join(targetspecieslist_alldata,tempometa,by=c("species"="code"))
+tempo$species<-tempo$sp
+
+id<-which(targetspecieslist_alldata$newsite %in% c("BLEL","ESTH","NBAS","SBAS") & 
+            targetspecieslist_alldata$ORGANISMS == "phytoplankton")
+targetspecieslist_alldata[id,]<-tempo[,1:7]
+#=====================================================================================
 write.csv(targetspecieslist_alldata,"../../Results/gather_res/targetspecies_alldata.csv",row.names = F)
 
 
