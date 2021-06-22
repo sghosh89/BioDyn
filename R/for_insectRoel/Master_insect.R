@@ -1,3 +1,3 @@
 path<-dirname(rstudioapi::getSourceEditorContext()$path)
 setwd(path)
-source("raugh.R") # clean and prepare data
+source("wrangling_data.R") # clean and prepare data
