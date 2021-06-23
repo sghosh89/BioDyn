@@ -230,7 +230,7 @@ get_communitylevel_data<-function(cc,resloc){
   
   tempo<-mat%>%complete(Year, nesting(sp),fill=list(Number=0))
     
-  tempo2<-split(tempo,f=tempo$sp)
+  tempo2<-split(tempo,f=as.factor(tempo$sp))
   spmat<-matrix(NA,nrow=length(yrs),ncol=length(tempo2))
   rownames(spmat)<-yrs
   colnames(spmat)<-names(tempo2)
@@ -238,8 +238,17 @@ get_communitylevel_data<-function(cc,resloc){
     spmat[,n]<-tempo2[[n]]$Number # note: this should be all common sp, 
                                   # but in raw data 0 are also reported
   }
+ 
+  badsp<-apply(spmat,MARGIN=2,function(x){all(x==0)})
+  badspid<-names(badsp)[which(badsp==T)]
+  spmat<-as.data.frame(spmat)
+  spmat<-spmat%>%select(-all_of(badspid))
   
-  spmat<-as.matrix(spmat)
+  if(ncol(spmat)<2){
+   cat("-------- not enough sp present ------------")
+    res<-NA
+  }
+  
   count_non0<-apply(spmat,MARGIN=2,FUN=function(x){sum(x!=0)})
   commonspmat<-spmat[,which(count_non0>=0.7*nrow(spmat))] # common sp present atleast 70% of sampling years
   commonspmat<-as.data.frame(commonspmat)
@@ -247,8 +256,14 @@ get_communitylevel_data<-function(cc,resloc){
     rarespmat<-spmat[,which(count_non0<0.7*nrow(spmat))]
     rarespmat<-as.matrix(rarespmat)
     if(ncol(rarespmat)>0){
-      commonspmat$raresp<-apply(rarespmat,MARGIN=1,FUN=sum)
+      raresp<-apply(rarespmat,MARGIN=1,FUN=sum)
+      raresp<-as.numeric(raresp)
+      commonspmat$raresp<-raresp
     }
     saveRDS(commonspmat,paste(resloc,"inputmat_for_tailanal.RDS",sep=""))
+  }else{
+    cat("-------- not enough sp present ------------")
+    commonspmat<-NA
   }
+  return(commonspmat)
 }

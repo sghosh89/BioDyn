@@ -6,6 +6,7 @@ source("./get_communitylevel_data.R")
 #--------- read data ---------------------------------
 xm<-read.csv("../../DATA/for_insectRoel/20yrFreshwater_Metadata.csv")
 x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData.rds")
+#x<-x%>%filter(Number>0)
 
 Datasource_ID<-setdiff(sort(unique(x$Datasource_ID)),63)
 
@@ -40,13 +41,18 @@ for(i in 1:length(Datasource_ID)){
 for(i in 1:length(Datasource_ID)){
   did<-Datasource_ID[i]
   Plot_ID<-readRDS(paste("../../DATA/for_insectRoel/wrangled_data/",did,"/Plot_ID_list.RDS",sep=""))
+  bad_pidlist<-c()
   for(j in 1:length(Plot_ID)){
     pid<-Plot_ID[j]
     cc<-x%>%filter(Datasource_ID==did & Plot_ID==pid)
     resloc<- paste("../../DATA/for_insectRoel/wrangled_data/",did,"/",pid,"/",sep="") 
-    get_communitylevel_data(cc=cc,resloc=resloc)
+    cm<-get_communitylevel_data(cc=cc,resloc=resloc)
+    if(is.na(cm)==T){
+      bad_pidlist<-c(bad_pidlist,pid)
+    }
     cat("i = ", i, ", j = ",j,", did = ",did, ", pid = ",pid,"\n")
   }
+  saveRDS(bad_pidlist,paste("../../DATA/for_insectRoel/wrangled_data/",did,"/bad_pidlist.RDS",sep=""))
 }
   
 
