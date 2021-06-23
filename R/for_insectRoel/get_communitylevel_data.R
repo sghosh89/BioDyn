@@ -235,10 +235,20 @@ get_communitylevel_data<-function(cc,resloc){
   rownames(spmat)<-yrs
   colnames(spmat)<-names(tempo2)
   for(n in 1:length(tempo2)){
-    spmat[,n]<-tempo2[[n]]$Number # note: this are all common sp, 
-                                  # all rare sp are excluded during data wrangling
+    spmat[,n]<-tempo2[[n]]$Number # note: this should be all common sp, 
+                                  # but in raw data 0 are also reported
   }
   
-  saveRDS(spmat,paste(resloc,"inputmat_for_tailanal.RDS",sep=""))
-  
+  spmat<-as.matrix(spmat)
+  count_non0<-apply(spmat,MARGIN=2,FUN=function(x){sum(x!=0)})
+  commonspmat<-spmat[,which(count_non0>=0.7*nrow(spmat))] # common sp present atleast 70% of sampling years
+  commonspmat<-as.data.frame(commonspmat)
+  if(ncol(commonspmat)>=2){
+    rarespmat<-spmat[,which(count_non0<0.7*nrow(spmat))]
+    rarespmat<-as.matrix(rarespmat)
+    if(ncol(rarespmat)>0){
+      commonspmat$raresp<-apply(rarespmat,MARGIN=1,FUN=sum)
+    }
+    saveRDS(commonspmat,paste(resloc,"inputmat_for_tailanal.RDS",sep=""))
+  }
 }
