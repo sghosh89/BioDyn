@@ -239,6 +239,6 @@ get_communitylevel_data<-function(cc,resloc){
                                   # all rare sp are excluded during data wrangling
   }
   
-  saveRDS(spmat,paste(resloc,"inputmat_for_tailanal",sep=""))
+  saveRDS(spmat,paste(resloc,"inputmat_for_tailanal.RDS",sep=""))
   
 }
