@@ -49,7 +49,12 @@ ci_z2014<-readRDS("../../Results/for_zoop_2014/interaction_freq_for_zoop2014.RDS
 ci_z2014$source<-"Zooplankton2014"
 ci_z2014$REALM<-"Freshwater"
 
-ci_all<-rbind(ci_BioTIME,ci_BioTIMEx,ci_BBS,ci_RF,ci_SL_P,ci_SL_Z,ci_z2014)
+# for insectRoel
+ci_insectRoel<-readRDS("../../Results/for_insectRoel/interaction_freq_for_insects.RDS")
+ci_insectRoel$source<-"InsectRoel"
+ci_insectRoel$REALM<-"Freshwater"
+
+ci_all<-rbind(ci_BioTIME,ci_BioTIMEx,ci_BBS,ci_RF,ci_SL_P,ci_SL_Z,ci_z2014,ci_insectRoel)
 
 #################################################################
 #         plot the interaction freq plot for each realm

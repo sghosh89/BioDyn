@@ -94,10 +94,49 @@ sm_zoop<-sm_zoop%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                             iCV,iCValt))
 sm_zoop$source<-"Zooplankton2014"
 
+#------------------------------- for insectRoel ----------------------------------------------
+sm_insect<-readRDS("../../Results/for_insectRoel/stability_metric.RDS")
+sm_insect<-sm_insect%>%select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
+                            nsp,ens,nind,npos,nL,nU,nneg,
+                            L,U,f_nind,f_nL,f_nU,f_nneg,
+                            cvsq_real,cvsq_indep,phi,phi_LdM,
+                            skw_real,skw_indep,phi_skw,
+                            iCV,iCValt))
+sm_insect$source<-"InsectRoel"
+
 #================================================================================================
-sm_all<-rbind(sm_BioTIME,sm_BioTIMEx,sm_BBS,sm_RF,sm_swisslake_phyto,sm_swisslake_zoo,sm_zoop)
+sm_all<-rbind(sm_BioTIME,sm_BioTIMEx,sm_BBS,sm_RF,sm_swisslake_phyto,sm_swisslake_zoo,sm_zoop,sm_insect)
 sm_all$TAXA<-tolower(sm_all$TAXA)
 sm_all$ORGANISMS<-tolower(sm_all$ORGANISMS)
 saveRDS(sm_all,"../../Results/gather_res/stability_metric_all.RDS")
+
+#------------------ plot f_nL vs f_nU for both realms ------------------------------
+
+sm_all_2<-sm_all%>%select(f=f_nL,REALM)%>%mutate(Type="LT")
+sm_all_3<-sm_all%>%select(f=f_nU,REALM)%>%mutate(Type="UT")
+sm_all_4<-rbind(sm_all_2,sm_all_3)
+gp<-ggplot(sm_all_4, aes(x=REALM, y=f, fill=Type)) +
+  geom_boxplot()+theme_bw()+
+  ylab("Fraction in synchrony")
+gp
+
+pdf("../../Results/gather_res/f_nL_f_nU_ratio_for_eachrealm.pdf",height=5,width=8)
+gp
+dev.off()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
