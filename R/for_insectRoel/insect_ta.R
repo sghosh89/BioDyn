@@ -54,5 +54,96 @@ for(i in 1:length(Datasource_ID)){
     }
 }
 
+#--------------- Do a summary stats for all ------------------
+summary_table<-c()
+didlist<-c()
+pidlist<-c()
+for(i in 1:length(Datasource_ID)){
+  did<-Datasource_ID[i]
+  goodpidlist<-readRDS(paste("../../Results/for_insectRoel/",did,"/goodpidlist.RDS",sep=""))
+  for(j in 1:length(goodpidlist)){
+  pid<-goodpidlist[j]
+  didlist<-c(didlist,did)
+  pidlist<-c(pidlist,pid)
+  resloc_input<-paste("../../Results/for_insectRoel/",did,"/",pid,"/",sep="")
+  st<-readRDS(paste(resloc_input,"summary_df.RDS",sep=""))
+  summary_table<-rbind(summary_table,st)
+  }
+}
+summary_table<-cbind(STUDY_ID=didlist,newsite=pidlist,summary_table)
+saveRDS(summary_table,"../../Results/for_insectRoel/summary_table.RDS")
+
+summary_table<-summary_table%>%mutate(f_nind=nind/nint,
+                                      f_npos=npos/nint,
+                                      f_nL=nL/nint,
+                                      f_nU=nU/nint,
+                                      f_nneg=nneg/nint)
+metadata<-xm%>%select(Plot_ID,REALM=Realm,TAXA=Taxonomic_scope,ORGANISMS=Taxonomic_scope,Latitude,Longitude)
+length(unique(xm$Plot_ID))==nrow(xm)
+summary_table<-inner_join(summary_table,metadata,by=c("newsite"="Plot_ID"))
+summary_table$TAXA<-"Freshwater invertebrates"
+saveRDS(summary_table,"../../Results/for_insectRoel/summary_table_detail_version.RDS")
+
+#################################################################################################
+my_summary_boxplot<-function(summary_table,nametag,myresloc){
+  
+  # for how many sites +ve corr were dominant?
+  nP<-sum((summary_table$f_nL+summary_table$f_nU)>summary_table$f_nneg)
+  shorttab<-summary_table[which(summary_table$f_nL+summary_table$f_nU>summary_table$f_nneg),]
+  
+  # out of those sites: for how many sites LT asymmetry were dominant?
+  nLT<-sum(shorttab$f_nL>shorttab$f_nU)
+  
+  # for how many sites UT asymmetry were dominant?
+  nUT<-sum(shorttab$f_nL<shorttab$f_nU)
+  
+  # for how many sites no asymmetry were dominant?
+  nSym<-sum(shorttab$f_nL==shorttab$f_nU)
+  
+  # for how many sites -ve corr were dominant?
+  nC<-sum((summary_table$f_nL+summary_table$f_nU)<summary_table$f_nneg)
+  
+  # for how many sites syn==comp?
+  nEqSynComp<-sum((summary_table$f_nL+summary_table$f_nU)==summary_table$f_nneg & 
+                    summary_table$f_nind!=1)
+  
+  # This sites are fully indep.
+  #findep<-sum((summary_table$f_nL+summary_table$f_nU)==summary_table$f_nneg & 
+  #                          summary_table$f_nind!=1)
+  
+  # nrow(summary_table)==nLT+nUT+nC+nSym+nEqSynComp+findep
+  
+  z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+  colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
+  y <- gather(z, Pairwise.Interaction, Frequency) 
+  boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
+          col=c("green","yellow","skyblue","red"),
+          main=paste(nametag,", #sites: ",nrow(z),", #sites(more syn.): ",nP,", #sites(more comp.): ",nC))
+  
+  dtable<-data.frame(nSyn=nP,nLT=nLT,nUT=nUT,nSym=nSym,nComp=nC,nEqSynComp=nEqSynComp)
+  rownames(dtable)<-nametag
+  print(dtable)
+  saveRDS(dtable,paste(myresloc,"summary_dtable_from_boxplot_",str_replace(nametag,"/","_"),".RDS",sep=""))
+}
+###################################################################################################
+
+
+pdf("../../Results/for_insectRoel/summary_boxplot.pdf",width=14,height=6)
+op<-par(mar=c(8,8,8,1),mgp=c(5,1,0),cex.axis=1.5, cex.lab=1.5, cex.main=2, cex.sub=1.5)
+
+my_summary_boxplot(summary_table = summary_table,nametag = "insect",myresloc="../../Results/for_insectRoel/")
+
+par(op)
+dev.off()
+
+
+
+
+
+
+
+
+
+
 
 
