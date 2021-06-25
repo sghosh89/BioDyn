@@ -216,8 +216,15 @@ for(i in 1:nrow(data_zoo2014)){
   xx<-readRDS(paste("../../DATA/for_zoop_2014/wrangled_data/",data_zoo2014$newsite[i],"/inputmat_for_tailanal.RDS",sep="")) 
   data_zoo2014$nyr[i]<-nrow(xx)
 }
-#========================================================================================
 
+#------------ for insectRoel -------------------------------------------------------------------
+data_insect<-sm_all%>%filter(source=="InsectRoel")
+
+meta_insect<-read.csv("../../DATA/for_insectRoel/20yrFreshwater_Metadata.csv")
+meta_insect<-meta_insect%>%select(Plot_ID,CENT_LAT=Latitude,CENT_LONG=Longitude)
+meta_insect$Plot_ID<-as.character(meta_insect$Plot_ID)
+data_insect<-inner_join(data_insect,meta_insect,by=c("newsite"="Plot_ID"))
+#========================================================================================
 
 # Now, combine all data
 df<-full_join(data_BioTIME,data_BioTIMEx)
@@ -226,12 +233,12 @@ df<-full_join(df,data_RF)
 df<-full_join(df,data_Phyto)
 df<-full_join(df,data_zoo)
 df<-full_join(df,data_zoo2014)
+df<-full_join(df,data_insect)
 
-unique(df$ORGANISMS)
-df$ORGANISMS<-tolower(df$ORGANISMS)
-df$ORGANISMS[df$ORGANISMS=="zooplanton"]<-"zooplankton"
-df$ORGANISMS[df$ORGANISMS%in%c("trees","plants","plant")]<-"plants"
-
+unique(df$TAXA)
+df$TAXA<-tolower(df$TAXA)
+#df$ORGANISMS[df$ORGANISMS=="zooplanton"]<-"zooplankton"
+#df$ORGANISMS[df$ORGANISMS%in%c("trees","plants","plant")]<-"plants"
 
 write.csv(df,"../../Results/gather_res/data_summary.csv",row.names = F)
 
@@ -257,7 +264,7 @@ pie(slices,labels = NA,
     col=c("red","green","skyblue","blue","darkturquoise","yellow3","purple","green4"),
     border = NA,
     main="Data for different taxa")
-legend(.9, 0.9, lbls, cex = 0.7, 
+legend("bottomleft", lbls, cex = 0.7, 
        fill = c("red","green","skyblue","blue","darkturquoise","yellow3","purple","green4"),
        bty="n")
 
