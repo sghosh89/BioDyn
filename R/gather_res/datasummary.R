@@ -219,6 +219,12 @@ for(i in 1:nrow(data_zoo2014)){
 
 #------------ for insectRoel -------------------------------------------------------------------
 data_insect<-sm_all%>%filter(source=="InsectRoel")
+data_insect$nyr<-NA
+for(i in 1:nrow(data_insect)){
+  xx<-readRDS(paste("../../DATA/for_insectRoel/wrangled_data/",data_insect$STUDY_ID[i],
+                    "/",data_insect$newsite[i],"/inputmat_for_tailanal.RDS",sep="")) 
+  data_insect$nyr[i]<-nrow(xx)
+}
 
 meta_insect<-read.csv("../../DATA/for_insectRoel/20yrFreshwater_Metadata.csv")
 meta_insect<-meta_insect%>%select(Plot_ID,CENT_LAT=Latitude,CENT_LONG=Longitude)
