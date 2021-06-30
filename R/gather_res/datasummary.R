@@ -86,6 +86,8 @@ data_BioTIMEx$CENT_LONG[id]<- -75.9231
 
 data_BioTIMEx$nyr<-NA
 zz<-readRDS("../../Results/for_BioTIMEx/inputloc_table.RDS")
+zz<-inner_join(data_BioTIMEx,zz,by=c("STUDY_ID","newsite"))
+
 for(i in 1:nrow(zz)){
   xx<-readRDS(zz$inputloc[i])
   data_BioTIMEx$nyr[i]<-nrow(xx)
