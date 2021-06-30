@@ -35,6 +35,8 @@ call_model_for_eachtaxa<-function(mydat, taxa){
   
   saveRDS(null_model,paste("../../Results/gather_res/modelres_",taxa,"/nullmodel.RDS",sep=""))
 
+  print(summary(null_model),digits = 3)
+  
   cat(paste("------- brms full model starting at time: ", Sys.time()," -------------- \n "))
   
   bf_stability<-bf(stability_skw ~ (R+VR+A+uniA+SR)+(1+(R+VR+A+uniA+SR)|UID))
@@ -47,7 +49,9 @@ call_model_for_eachtaxa<-function(mydat, taxa){
                   control = list(adapt_delta = 0.99, max_treedepth = 15),
                   save_pars = save_pars(all = TRUE),seed=123)
   
+  print(summary(full_model),digits = 3)
+  
   saveRDS(full_model,paste("../../Results/gather_res/modelres_",taxa,"/fullmodel.RDS",sep=""))
-  return(list(nm=null_model,fm=full_model))
+  
 }
 

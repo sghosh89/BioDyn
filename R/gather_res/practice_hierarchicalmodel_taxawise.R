@@ -30,35 +30,19 @@ table(mydat$TAXA) # mammals for terrestrial, terrestrial data are
 # always large in number than freshwater
 #============================================================================
 # freshwater & terrestrial
-res<-call_model_for_eachtaxa(mydat=mydat,taxa="fish")
-summary(res$nm)
-summary(res$fm)
-res<-call_model_for_eachtaxa(mydat=mydat,taxa="birds")
-summary(res$nm)
-summary(res$fm)
+call_model_for_eachtaxa(mydat=mydat,taxa="fish")
+call_model_for_eachtaxa(mydat=mydat,taxa="birds")
 
 # freshwater & terrestrial
-res<-call_model_for_eachtaxa(mydat=mydat,taxa="freshwater invertebrates")
-summary(res$nm)
-summary(res$fm)
-res<-call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial invertebrates")
-summary(res$nm)
-summary(res$fm)
-
+call_model_for_eachtaxa(mydat=mydat,taxa="freshwater invertebrates")
+call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial invertebrates")
 
 # freshwater & terrestrial
-res<-call_model_for_eachtaxa(mydat=mydat,taxa="freshwater plants")
-summary(res$nm)
-summary(res$fm)
-res<-call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial plants")
-summary(res$nm)
-summary(res$fm)
-
+call_model_for_eachtaxa(mydat=mydat,taxa="freshwater plants")
+call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial plants")
 
 # terrestrial mammals
-res<-call_model_for_eachtaxa(mydat=mydat,taxa="mammals")
-summary(res$nm)
-summary(res$fm)
+call_model_for_eachtaxa(mydat=mydat,taxa="mammals")
 
 sink()
 
