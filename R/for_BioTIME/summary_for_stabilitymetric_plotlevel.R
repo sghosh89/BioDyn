@@ -5,6 +5,8 @@ library(ggpmisc)
 # read summary results from freshwater, terrestrial
 r_frs<-readRDS("../../Results/for_BioTIME/Freshwater_plotlevel/summary_table.RDS")
 r_ter<-readRDS("../../Results/for_BioTIME/Terrestrial_plotlevel/summary_table.RDS")
+r_ter<-r_ter%>%filter(f_nind!=1) # remove community with all independent interactions
+
 r_BioTIME<-rbind(r_frs,r_ter)
 r_BioTIME$ens<-NA # effective number of species
 r_BioTIME$cvsq_real<-NA # square of CV for the real community data

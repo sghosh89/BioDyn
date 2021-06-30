@@ -60,6 +60,7 @@ get_rankabun(summary_table = r_frs,realm = realm)
 # now call the function for terrestrial
 r_ter<-readRDS("../../Results/for_BioTIME/Terrestrial_plotlevel/summary_table.RDS")
 realm<-"Terrestrial_plotlevel"
+r_ter<-r_ter%>%filter(f_nind!=1)# remove community with all independent interactions
 get_rankabun(summary_table = r_ter,realm = realm)
 
 #=========================================================
@@ -86,6 +87,7 @@ for(i in 1:nrow(summary_table)){
 # for terrestrial
 summary_table<-readRDS("../../Results/for_BioTIME/Terrestrial_plotlevel/summary_table.RDS")
 realm<-"Terrestrial_plotlevel"
+summary_table<-summary_table%>%filter(f_nind!=1) # remove community with all independent interactions
 for(i in 1:nrow(summary_table)){
   STUDY_ID<-summary_table$STUDY_ID[i]
   newsite<-summary_table$newsite[i]
@@ -128,6 +130,7 @@ res_freshw<-gather(res,key="freq_type",value = "Frequency",freq_indep,freq_syn,f
 # for terrestrial
 summary_table<-readRDS("../../Results/for_BioTIME/Terrestrial_plotlevel/summary_table.RDS")
 realm<-"Terrestrial_plotlevel"
+summary_table<-summary_table%>%filter(f_nind!=1)# remove community with all independent interactions
 res<-c()
 for(i in 1:nrow(summary_table)){
   STUDY_ID<-summary_table$STUDY_ID[i]

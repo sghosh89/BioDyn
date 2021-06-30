@@ -147,6 +147,9 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nneg=nneg/nint)
 saveRDS(summary_table,"../../Results/for_BioTIME/Terrestrial_plotlevel/summary_table.RDS")
 
+# now exclude the sites which has only indep. interaction
+summary_table<-summary_table%>%filter(f_nind!=1)
+
 df<-summary_table%>%select(STUDY_ID,newsite,nsp,f_nind,f_nL,f_nU,f_nneg)
 xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS")
 xxm<-xxm%>%select(STUDY_ID,TAXA)
