@@ -5,7 +5,9 @@ rm(list=ls())
 source("./get_communitylevel_data.R")
 #--------- read data ---------------------------------
 xm<-read.csv("../../DATA/for_insectRoel/20yrFreshwater_Metadata.csv")
-x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData.rds")
+#x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData.rds")
+x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData 202106.rds")
+#xn<-dplyr::anti_join(x,x2,by="Plot_ID")
 #x<-x%>%filter(Number>0)
 
 Datasource_ID<-setdiff(sort(unique(x$Datasource_ID)),63)

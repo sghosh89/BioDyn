@@ -5,7 +5,8 @@ source("tail_analysis.R")
 library(tidyverse)
 #--------- read data ---------------------------------
 xm<-read.csv("../../DATA/for_insectRoel/20yrFreshwater_Metadata.csv")
-x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData.rds")
+x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData 202106.rds")
+#x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData.rds")
 #x<-x%>%filter(Number>0)
 
 #---------------------------------------
@@ -82,6 +83,7 @@ metadata<-xm%>%select(Plot_ID,REALM=Realm,TAXA=Taxonomic_scope,ORGANISMS=Taxonom
 length(unique(xm$Plot_ID))==nrow(xm)
 summary_table<-inner_join(summary_table,metadata,by=c("newsite"="Plot_ID"))
 summary_table$TAXA<-"Freshwater invertebrates"
+summary_table<-summary_table%>%filter(f_nind!=1)
 saveRDS(summary_table,"../../Results/for_insectRoel/summary_table_detail_version.RDS")
 
 #################################################################################################
