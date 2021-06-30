@@ -29,18 +29,36 @@ mydat<-na.omit(mydat) # one RivFishTIME data point omitted as SR=NaN
 table(mydat$TAXA) # mammals for terrestrial, terrestrial data are 
 # always large in number than freshwater
 #============================================================================
-# freshwater
-call_model_for_eachtaxa(mydat=mydat,taxa="fish")
-call_model_for_eachtaxa(mydat=mydat,taxa="freshwater invertebrates")
-call_model_for_eachtaxa(mydat=mydat,taxa="freshwater plants")
+# freshwater & terrestrial
+res<-call_model_for_eachtaxa(mydat=mydat,taxa="fish")
+summary(res$nm)
+summary(res$fm)
+res<-call_model_for_eachtaxa(mydat=mydat,taxa="birds")
+summary(res$nm)
+summary(res$fm)
 
-# terrestrial
-call_model_for_eachtaxa(mydat=mydat,taxa="birds")
-call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial invertebrates")
-call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial plants")
+# freshwater & terrestrial
+res<-call_model_for_eachtaxa(mydat=mydat,taxa="freshwater invertebrates")
+summary(res$nm)
+summary(res$fm)
+res<-call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial invertebrates")
+summary(res$nm)
+summary(res$fm)
+
+
+# freshwater & terrestrial
+res<-call_model_for_eachtaxa(mydat=mydat,taxa="freshwater plants")
+summary(res$nm)
+summary(res$fm)
+res<-call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial plants")
+summary(res$nm)
+summary(res$fm)
+
 
 # terrestrial mammals
-call_model_for_eachtaxa(mydat=mydat,taxa="mammals")
+res<-call_model_for_eachtaxa(mydat=mydat,taxa="mammals")
+summary(res$nm)
+summary(res$fm)
 
 sink()
 

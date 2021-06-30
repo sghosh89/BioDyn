@@ -34,7 +34,7 @@ call_model_for_eachtaxa<-function(mydat, taxa){
                   save_pars = save_pars(all = TRUE),seed=123)
   
   saveRDS(null_model,paste("../../Results/gather_res/modelres_",taxa,"/nullmodel.RDS",sep=""))
-  
+
   cat(paste("------- brms full model starting at time: ", Sys.time()," -------------- \n "))
   
   bf_stability<-bf(stability_skw ~ (R+VR+A+uniA+SR)+(1+(R+VR+A+uniA+SR)|UID))
@@ -48,18 +48,6 @@ call_model_for_eachtaxa<-function(mydat, taxa){
                   save_pars = save_pars(all = TRUE),seed=123)
   
   saveRDS(full_model,paste("../../Results/gather_res/modelres_",taxa,"/fullmodel.RDS",sep=""))
-  
-  null_model_c<-add_criterion(null_model,
-                            criterion=c("loo", "waic", "loo_R2", "bayes_R2"),
-                            moment_match = T,
-                            reloo = T)
-  saveRDS(null_model_c,paste("../../Results/gather_res/modelres_",taxa,"/nullmodel_withcrit.RDS",sep=""))
-  
-  full_model_c<-add_criterion(full_model,
-                            criterion=c("loo", "waic", "loo_R2", "bayes_R2"),
-                            moment_match = T,
-                            reloo = T)
-  saveRDS(full_model_c,paste("../../Results/gather_res/modelres_",taxa,"/fullmodel_withcrit.RDS",sep=""))
-
+  return(list(nm=null_model,fm=full_model))
 }
 
