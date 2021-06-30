@@ -18,7 +18,8 @@ r_combo$iCValt <-NA # inverse of CV alternative for skewed dist.: stability metr
 
 # This needs to be updated from inputmatfile_list of rank_category.R
 inputmatfile_list<-readRDS("../../Results/for_BioTIMEx/inputloc_table.RDS")
-inputmatfile_list<-inputmatfile_list$inputloc
+mytable<-inner_join(r_combo,inputmatfile_list,by=c("STUDY_ID","newsite"))
+inputmatfile_list<-mytable$inputloc
 
 for(i in 1:nrow(r_combo)){
   m<-readRDS(inputmatfile_list[i])

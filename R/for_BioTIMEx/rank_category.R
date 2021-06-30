@@ -165,11 +165,11 @@ summary_table$TAXA[id]<-"Freshwater plants"
 summary_table$ORGANISMS[id]<-"Phytoplankton"
 summary_table$METHOD[id]<-"Net"
 
+summary_table<-summary_table%>%filter(f_nind!=1)
 # save the summary table
 saveRDS(summary_table,"../../Results/for_BioTIMEx/summary_table.RDS")
 #====================================================================================
 source("./get_categorized_interaction.R")
-
 
 for(i in 1:length(pathlist)){
   x<-readRDS(paste(pathlist[i],"/NonParamStat.RDS",sep=""))
@@ -181,6 +181,10 @@ for(i in 1:length(pathlist)){
 #########################################################################################
 # save the results for interaction freq plot
 
+# now we need only community with f_nind!=1
+mytable<-left_join(summary_table,inputloc_table,by=c("STUDY_ID","newsite"))
+pathlist<-mytable$resloc
+
 # for 
 res<-c()
 for(i in 1:length(pathlist)){
@@ -188,7 +192,7 @@ for(i in 1:length(pathlist)){
   d<-x$table_interaction
   d<-d[,5:7]
   d$Interaction<-rownames(d)
-  d$REALM<-summary_table$REALM[i]
+  d$REALM<-mytable$REALM[i]
   res<-rbind(res,d)
 }
 rownames(res)<-NULL
