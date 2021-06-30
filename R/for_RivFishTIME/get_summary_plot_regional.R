@@ -122,6 +122,7 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nL=nL/nint,
                                       f_nU=nU/nint,
                                       f_nneg=nneg/nint)
+summary_table<-summary_table%>%filter(f_nind!=1) # remove community with all independent interactions
 
 # for USA
 get_summary_plot_regional(x_meta=x_meta,summary_table=summary_table,nr=1,

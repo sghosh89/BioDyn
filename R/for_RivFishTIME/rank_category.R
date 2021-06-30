@@ -39,6 +39,8 @@ get_rankabun<-function(siteid){
 #########################################
 # now call the function 
 r_freshw<-readRDS("../../Results/for_RivFishTIME/summary_table.RDS")
+r_freshw<-r_freshw%>%filter(nint!=nind) # remove community with all independent interactions
+
 siteid<-r_freshw$siteid
 get_rankabun(siteid = siteid)
 

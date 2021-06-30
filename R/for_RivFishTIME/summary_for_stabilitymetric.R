@@ -5,6 +5,7 @@ library(ggpmisc)
 
 # read summary results 
 r_fish<-readRDS("../../Results/for_RivFishTIME/summary_table_detail_version.RDS")
+r_fish<-r_fish%>%filter(f_nind!=1)# remove community with all independent interactions
 r_fish$ens<-NA # effective number of species
 r_fish$cvsq_real<-NA # square of CV for the real community data
 r_fish$cvsq_indep<-NA # square of CV of the community if all the sp. behave independently
