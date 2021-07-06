@@ -46,7 +46,7 @@ get_rankabun<-function(summary_table){
 #########################################
 # now call the function for freshwater
 r_insect<-readRDS("../../Results/for_insectRoel/stability_metric.RDS")
-r_insect<-r_insect%>%filter(f_nind!=1)# remove the community which has only independent interactions
+#r_insect<-r_insect%>%filter(f_nind!=1)# remove the community which has only independent interactions
 get_rankabun(summary_table = r_insect)
 
 #==================================================================================

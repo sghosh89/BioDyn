@@ -42,14 +42,14 @@ tail_analysis<-function(mat, resloc, nbin=2){
   tempo[indI]<-NA
   diag(tempo)<-NA
   
-  if(all(is.na(tempo))==T){
+  #if(all(is.na(tempo))==T){
   # all sp are indep to each other
-    nsp<-tot_target_sp
-    nint<-nsp*(nsp-1)/2
-    summary_df<-data.frame(nsp=tot_target_sp,nint=nint,nind=nint,npos=0,nL=0,nU=0,nneg=0,L=0,U=0)
-    saveRDS(summary_df,paste(resloc,"summary_df.RDS",sep=""))
-    return()
-  }
+  #  nsp<-tot_target_sp
+  #  nint<-nsp*(nsp-1)/2
+  #  summary_df<-data.frame(nsp=tot_target_sp,nint=nint,nind=nint,npos=0,nL=0,nU=0,nneg=0,L=0,U=0)
+  #  saveRDS(summary_df,paste(resloc,"summary_df.RDS",sep=""))
+  #  return()
+  #}
   
   tsp<-ncol(zs)-ncol(zcov)
   tempo<-matrix(0.999,nrow=nrow(zcov),ncol=tsp) # 0.999 value will be filled in with black color in the plot
