@@ -2,10 +2,11 @@ rm(list=ls())
 source("get_ancova_res.R")
 
 sm_all<-readRDS("../../Results/gather_res/stability_metric_all.RDS")
+#sm_all<-sm_all%>%filter(f_nind!=1)
 sm_all<-na.omit(sm_all)
 
 # check Synchrony-stability relationship: expected to be -ve
-mydat<-sm_all[,c("phi","iCValt","REALM")]
+mydat<-sm_all[,c("phi","iCValt","REALM","TAXA")]
 
 #-----------------------------------------------------
 mydat$log_phi<-log(mydat$phi)

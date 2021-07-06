@@ -295,8 +295,12 @@ boxplot(iCValt ~ REALM, data = df_tf, xlab = "Realms",
         ylab = "Stability", main = "",col=c("skyblue","green"))
 
 df_tf$REALM<-as.character(df_tf$REALM)
+boxplot(nsp ~ REALM, data = df_tf, xlab = "Realms",
+        ylab = "Species richness", main = "",col=c("skyblue","green"))
+
+df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(phi ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Synchrony: VR", main = "",col=c("skyblue","green"))
+        ylab = "Variance ratio", main = "",col=c("skyblue","green"))
 
 df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(phi_LdM ~ REALM, data = df_tf, xlab = "Realms",

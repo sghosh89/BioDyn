@@ -13,7 +13,6 @@ source("summary_ancova_res.R") # run ancova for stability-synchrony relationship
 
 source("datasummary.R") # summarizing metadata used in this study
 
-
 # needs to be edited
 source("targetspecieslist_alldata.R") # summarizing target sp list used for tail analysis in this study
 
