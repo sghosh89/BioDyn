@@ -165,7 +165,7 @@ summary_table$TAXA[id]<-"Freshwater plants"
 summary_table$ORGANISMS[id]<-"Phytoplankton"
 summary_table$METHOD[id]<-"Net"
 
-summary_table<-summary_table%>%filter(f_nind!=1)
+#summary_table<-summary_table%>%filter(f_nind!=1)
 # save the summary table
 saveRDS(summary_table,"../../Results/for_BioTIMEx/summary_table.RDS")
 #====================================================================================
