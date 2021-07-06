@@ -20,6 +20,10 @@
 
 get_stability_metric<-function(m){
   
+  id<-which(colnames(m)%in%c("raresp","covsp"))
+  if(length(id)>0){
+    m<-m[,-id]
+  }
   
   tot_quantity<-apply(m,MARGIN = 1,FUN = sum)
   var_each_sp<-apply(m,MARGIN = 2,FUN = var)
@@ -115,4 +119,12 @@ myskns<-function(x,na.rm=F){
   
   return(my3cm(x)/(sd(x)^3))
 }
+
+
+
+
+
+
+
+
 
