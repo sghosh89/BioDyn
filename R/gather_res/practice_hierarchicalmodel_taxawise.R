@@ -1,11 +1,10 @@
 rm(list=ls())
 source("call_model_for_eachtaxa.R")
-library(brms)
 library(tidyverse)
-library(performance)
 
-if(!dir.exists("../../Results/gather_res/test_eachtaxa")){
-  dir.create("../../Results/gather_res/test_eachtaxa")
+resloc<-"../../Results/gather_res/test_eachtaxa"
+if(!dir.exists(resloc)){
+  dir.create(resloc)
 }
 
 
@@ -29,24 +28,24 @@ mydat<-mydat%>%rename(
 #============================================================================
 table(mydat$TAXA) # mammals for terrestrial, terrestrial data are 
 # always large in number than freshwater
-class(mydat_scaled$REALM)
+class(mydat$REALM)
 mydat$TAXA<-as.factor(mydat$TAXA)
 mydat$UID<-as.factor(mydat$UID)
 #============================================================================
 # freshwater & terrestrial
-call_model_for_eachtaxa(mydat=mydat,taxa="fish")
-call_model_for_eachtaxa(mydat=mydat,taxa="birds")
+call_model_for_eachtaxa(mydat=mydat,taxa="fish",resloc=resloc)
+call_model_for_eachtaxa(mydat=mydat,taxa="birds",resloc=resloc)
 
 # freshwater & terrestrial
-call_model_for_eachtaxa(mydat=mydat,taxa="freshwater invertebrates")
-call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial invertebrates")
+call_model_for_eachtaxa(mydat=mydat,taxa="freshwater invertebrates",resloc=resloc)
+call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial invertebrates",resloc=resloc)
 
 # freshwater & terrestrial
-call_model_for_eachtaxa(mydat=mydat,taxa="freshwater plants")
-call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial plants")
+call_model_for_eachtaxa(mydat=mydat,taxa="freshwater plants",resloc=resloc)
+call_model_for_eachtaxa(mydat=mydat,taxa="terrestrial plants",resloc=resloc)
 
 # terrestrial mammals
-call_model_for_eachtaxa(mydat=mydat,taxa="mammals")
+call_model_for_eachtaxa(mydat=mydat,taxa="mammals",resloc=resloc)
 
 sink()
 
