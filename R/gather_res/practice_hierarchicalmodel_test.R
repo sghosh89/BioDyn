@@ -182,26 +182,41 @@ cat(paste("------- completed: ", Sys.time()," -------------- \n "))
 sink()
 
 #################################
+null_model_wo_REALM<-readRDS("../../Results/gather_res/test/nullmodel_wo_REALM.RDS")
+null_model_w_REALM<-readRDS("../../Results/gather_res/test/nullmodel_w_REALM.RDS")
+full_model<-readRDS("../../Results/gather_res/test/fullmodel.RDS")
 
-# to see estimates from random effects
-#xr<-ranef(null_model)
-#xr1<-xr$STUDY_ID
-#names(xr1)
-#xr11<-xr1[,,1]
-#xr12<-xr1[,,2]
 # is it a reasonable fit?
-#pp_check(null_model,nsamples = 100)
-#pp_check(full_model,nsamples = 10)
-#conditional_effects(null_model)
-#conditional_effects(full_model)
-#null_model<-readRDS("../../Results/gather_res/pratice_hierarchical_nullmodel_skwnormal.RDS")
-#full_model<-readRDS("../../Results/gather_res/pratice_hierarchical_fullmodel_skwnormal.RDS")
+#brms::pp_check(null_model_wo_REALM,nsamples = 1000)
+#brms::pp_check(null_model_w_REALM,nsamples = 1000)
+#brms::pp_check(full_model,nsamples = 1000)
 
-#brms::pp_check(null_model,nsamples = 100)
-#brms::pp_check(full_model,nsamples = 100)
-#brms::conditional_effects(full_model)
+conditional_effects(null_model_wo_REALM)
+conditional_effects(null_model_w_REALM)
+conditional_effects(full_model)
+
+# to see estimates
+fixef(full_model,probs = c(0.025, 0.125, 0.875, 0.975))
+ranobj<-ranef(full_model)
+obj<-coef(full_model) # this is the combined effect of fixed and random effect
+  
+# to see estimates from random effects
+names(ranobj)
+ranobj$TAXA
+ranobj$`TAXA:UID`
 
 
+# test case
+objf<-fixef(null_model_w_REALM)
+objr<-ranef(null_model_w_REALM)
+objr$TAXA
+objc<-coef(null_model_w_REALM)
+objc$TAXA[,,"Intercept"]
+
+# fixed effect + random effect == coef effect
+objf["Intercept","Estimate"]+objr$TAXA[,,"Intercept"][1,1]==objc$TAXA[,,"Intercept"][1,1]
+
+## question: what are r_ terms in posterior_samples(full_model)?
 
 
 
