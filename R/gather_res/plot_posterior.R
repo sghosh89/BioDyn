@@ -1,4 +1,5 @@
 # summary plot for posterior parameter distribution
+library(brms)
 library(tidybayes)
 library(tidyverse)
 library(gridExtra)
@@ -27,6 +28,7 @@ gathered_post$color[which(gathered_post$key==keys[3])]<-1
 
 g_I<-gathered_post %>% 
   ggplot(aes(x = value, group = key, fill=as.factor(color))) +
+  geom_vline(xintercept = 0, linetype="dashed", color="dimgray")+
   geom_density(size = .2, alpha=0.6)+guides(fill=FALSE, color=FALSE)+
   stat_pointinterval(aes(y = 0), 
                      point_interval = median_qi, .width = c(.95, 0.75), 
@@ -58,6 +60,7 @@ gathered_post <-
 
 g_R<-gathered_post %>% 
   ggplot(aes(x = value, group = key, fill=as.factor(color))) +
+  geom_vline(xintercept = 0, linetype="dashed", color="dimgray")+
   geom_density(size = .2, alpha=0.6)+guides(fill=FALSE, color=FALSE)+
   stat_pointinterval(aes(y = 0), 
                      point_interval = median_qi, .width = c(.95, 0.75), 
@@ -93,6 +96,7 @@ gathered_post$color[which(gathered_post$key==keys[3])]<-1
 
 g_VR<-gathered_post %>% 
   ggplot(aes(x = value, group = key, fill=as.factor(color))) +
+  geom_vline(xintercept = 0, linetype="dashed", color="dimgray")+
   geom_density(size = .2, alpha=0.6)+guides(fill=FALSE, color=FALSE)+
   stat_pointinterval(aes(y = 0), 
                      point_interval = median_qi, .width = c(.95, 0.75), 
@@ -124,6 +128,7 @@ gathered_post$color[which(gathered_post$key==keys[3])]<-1
 
 g_A<-gathered_post %>% 
   ggplot(aes(x = value, group = key, fill=as.factor(color))) +
+  geom_vline(xintercept = 0, linetype="dashed", color="dimgray")+
   geom_density(size = .2, alpha=0.6)+guides(fill=FALSE, color=FALSE)+
   stat_pointinterval(aes(y = 0), 
                      point_interval = median_qi, .width = c(.95, 0.75), 
@@ -155,6 +160,7 @@ gathered_post$color[which(gathered_post$key==keys[3])]<-1
 
 g_uniA<-gathered_post %>% 
   ggplot(aes(x = value, group = key, fill=as.factor(color))) +
+  geom_vline(xintercept = 0, linetype="dashed", color="dimgray")+
   geom_density(size = .2, alpha=0.6)+guides(fill=FALSE, color=FALSE)+
   stat_pointinterval(aes(y = 0), 
                      point_interval = median_qi, .width = c(.95, 0.75), 
@@ -187,6 +193,7 @@ gathered_post$color[which(gathered_post$key==keys[3])]<-1
 
 g_SR<-gathered_post %>% 
   ggplot(aes(x = value, group = key, fill=as.factor(color))) +
+  geom_vline(xintercept = 0, linetype="dashed", color="dimgray")+
   geom_density(size = .2, alpha=0.6)+guides(fill=FALSE, color=FALSE)+
   stat_pointinterval(aes(y = 0), 
                      point_interval = median_qi, .width = c(.95, 0.75), 
