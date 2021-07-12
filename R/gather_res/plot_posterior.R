@@ -3,6 +3,7 @@ library(tidybayes)
 library(tidyverse)
 library(gridExtra)
 
+full_model<-readRDS("../../Results/gather_res/test/fullmodel.RDS")
 post<-posterior_samples(full_model)
 
 #--------------------------- Intercept ----------------------------------
@@ -31,7 +32,9 @@ g_I<-gathered_post %>%
                      point_interval = median_qi, .width = c(.95, 0.75), 
                      interval_size_range = c(0.5, 2.5))+
   #scale_y_continuous(NULL, breaks = NULL) +
-  theme_bw()+
+  theme_bw(base_size = 24)+theme(axis.title=element_blank(),
+                                 panel.grid.major = element_blank(), 
+                                 panel.grid.minor = element_blank())+
   facet_wrap(~key, scales = "free")
 
 #--------------------------- Richness ----------------------------------
@@ -60,7 +63,9 @@ g_R<-gathered_post %>%
                      point_interval = median_qi, .width = c(.95, 0.75), 
                        interval_size_range = c(0.5, 2.5))+
   #scale_y_continuous(NULL, breaks = NULL) +
-  theme_bw()+
+  theme_bw(base_size = 24)+theme(axis.title=element_blank(),
+                                 panel.grid.major = element_blank(), 
+                                 panel.grid.minor = element_blank())+
   facet_wrap(~key, scales = "free")
 
 #gathered_post %>% 
@@ -93,7 +98,9 @@ g_VR<-gathered_post %>%
                      point_interval = median_qi, .width = c(.95, 0.75), 
                      interval_size_range = c(0.5, 2.5))+
   #scale_y_continuous(NULL, breaks = NULL) +
-  theme_bw()+
+  theme_bw(base_size = 24)+theme(axis.title=element_blank(),
+                                 panel.grid.major = element_blank(), 
+                                 panel.grid.minor = element_blank())+
   facet_wrap(~key, scales = "free")
 
 #--------------------------- Total asymmetry A ----------------------------------
@@ -122,7 +129,9 @@ g_A<-gathered_post %>%
                      point_interval = median_qi, .width = c(.95, 0.75), 
                      interval_size_range = c(0.5, 2.5))+
   #scale_y_continuous(NULL, breaks = NULL) +
-  theme_bw()+
+  theme_bw(base_size = 24)+theme(axis.title=element_blank(),
+                                 panel.grid.major = element_blank(), 
+                                 panel.grid.minor = element_blank())+
   facet_wrap(~key, scales = "free")
 
 #--------------------------- Net asymmetry: uniA ----------------------------------
@@ -151,7 +160,9 @@ g_uniA<-gathered_post %>%
                      point_interval = median_qi, .width = c(.95, 0.75), 
                      interval_size_range = c(0.5, 2.5))+
   #scale_y_continuous(NULL, breaks = NULL) +
-  theme_bw()+
+  theme_bw(base_size = 24)+theme(axis.title=element_blank(),
+                                 panel.grid.major = element_blank(), 
+                                 panel.grid.minor = element_blank())+
   #facet_wrap(~key, scales = "free_x")
   facet_wrap(~key, scales = "free")
 
@@ -180,7 +191,9 @@ g_SR<-gathered_post %>%
   stat_pointinterval(aes(y = 0), 
                      point_interval = median_qi, .width = c(.95, 0.75), 
                      interval_size_range = c(0.5, 2.5))+
-  theme_bw()+
+  theme_bw(base_size = 24)+theme(axis.title=element_blank(),
+                                 panel.grid.major = element_blank(), 
+                                 panel.grid.minor = element_blank())+
   facet_wrap(~key, scales = "free")
 
 pdf("../../Results/gather_res/test/plot_posterior.pdf",height=24,width=15)
