@@ -1,4 +1,5 @@
 # summary plot for posterior parameter distribution
+rm(list=ls())
 library(brms)
 library(tidybayes)
 library(tidyverse)

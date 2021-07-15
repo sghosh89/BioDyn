@@ -14,12 +14,16 @@ source("summary_ancova_res.R") # run ancova for stability-synchrony relationship
 source("datasummary.R") # summarizing metadata used in this study
 
 # needs to be edited
-source("targetspecieslist_alldata.R") # summarizing target sp list used for tail analysis in this study
+#source("targetspecieslist_alldata.R") # summarizing target sp list used for tail analysis in this study
 
-source("practice_hierarchicalmodel.R")
+# Bayesian model
+source("bayesian_model_realmlevel.R") # Realm level, TAXA as random effect
+source("bayesian_model_taxalevel.R") # TAXA as fixed effect
+
+# plotting model results
+source("plot_posterior_realmlevel.R")
+source("plot_posterior_taxalevel.R")
 #=======================================================
-# Bayesian based model to predict stability for freshwater and aquatic realm
-source("compare_model_brms_stability_skw_ver2.R") # basic model to analyze stability
-source("plotter_conditional_effect_brms_univar.R") # prediction for conditional effects and posterior parameter plot
+#source("plotter_conditional_effect_brms_univar.R") # prediction for conditional effects and posterior parameter plot
 #====================================================
 
