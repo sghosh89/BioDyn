@@ -24,6 +24,4 @@ source("bayesian_model_taxalevel.R") # TAXA as fixed effect
 source("plot_posterior_realmlevel.R")
 source("plot_posterior_taxalevel.R")
 #=======================================================
-#source("plotter_conditional_effect_brms_univar.R") # prediction for conditional effects and posterior parameter plot
-#====================================================
 
