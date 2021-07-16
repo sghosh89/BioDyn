@@ -23,5 +23,4 @@ source("bayesian_model_taxalevel.R") # TAXA as fixed effect
 # plotting model results
 source("plot_posterior_realmlevel.R")
 source("plot_posterior_taxalevel.R")
-#=======================================================
 
