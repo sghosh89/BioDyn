@@ -1,0 +1,78 @@
+sp_pool,Exclude,Species,Grouping...4,Order,Family,Genus,Habitat,Grouping...9
+Acant.verna,NA,Acanthocyclops vernalis,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Acantl.curvi,1,Acantholeberis curvirostris,Cladocera,Diplostraca,NA,NA,NA,NA
+Acrop.harpa,NA,Acroperus harpae,Cladocera,Anomopoda,Chydoridae,Chydorus,NA,Chydorid
+Algla.lepto,NA,Agladiaptomus leptopus,Copepod,Calanoida,NA,NA,NA,Calanoid
+Alona.sp,NA,Alona,Cladocera,Anomopoda,Chydoridae,Alona,NA,Chydorid
+Alone.sp,NA,Alonella,Cladocera,Anomopoda,Chydoridae,Alonella,NA,Chydorid
+Bosmina.sp,NA,Bosmina,Cladocera,Anomopoda,Bosminidae,Bosmina,NA,Bosmina
+Bytho.long,NA,Bythotrephes longimanus,Bythotrephes,NA,NA,NA,NA,Bythotrephes
+Cal.copepodite,1,Calanoid copepodid,NA,NA,NA,NA,NA,NA
+Calanoida,NA,Calanoida,Copepod,Calanoida,NA,NA,NA,Calanoid
+Campt.sp.,NA,Camptocercus,Cladocera,Anomopoda,Chydoridae,Camptocercus,NA,Chydorid
+Cerio.lacus,NA,Ceriodaphnia lacustris,Cladocera,Anomopoda,Daphnidae,Ceriodaphnia,NA,Ceriodaphnia
+Cerio.pulch,NA,Ceriodaphnia pulchella,Cladocera,Anomopoda,Daphnidae,Ceriodaphnia,NA,Ceriodaphnia
+Cerio.quadr,NA,Ceriodaphnia quadrata,Cladocera,Anomopoda,Daphnidae,Ceriodaphnia,NA,Ceriodaphnia
+Cerio.sp.,NA,Ceriodaphnia,Cladocera,Anomopoda,Daphnidae,Ceriodaphnia,NA,Ceriodaphnia
+Chydo.bicor,NA,Chydorus bicornutus,Cladocera,Anomopoda,Chydoridae,Chydorus,NA,Chydorid
+Chydo.favif,NA,Chydorus,Cladocera,Anomopoda,Chydoridae,Chydorus,NA,Chydorid
+Chydo.sphae,NA,Chydorus sphaericus,Cladocera,Anomopoda,Chydoridae,Chydorus,NA,Chydorid
+Cyc.copepodite,1,Cyclopoid copepodid,NA,NA,NA,NA,NA,NA
+Cyclo.scuti,NA,Cyclops scutifer,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Cyclopoida,NA,Cyclopoida,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Daphn.ambig,NA,Daphnia ambigua,Cladocera,Anomopoda,Daphnidae,Daphnia,NA,Daphnia
+Daphn.denti,NA,Daphnia denticornis,Cladocera,Anomopoda,Daphnidae,Daphnia,NA,Daphnia
+Daphn.galea,NA,Daphnia galeata,Cladocera,Anomopoda,Daphnidae,Daphnia,NA,Daphnia
+Daphn.pulex,NA,Daphnia pulex,Cladocera,Anomopoda,Daphnidae,Daphnia,NA,Daphnia
+Daphn.remis,NA,Daphnia longiremis,Cladocera,Anomopoda,Daphnidae,Daphnia,NA,Daphnia
+Daphn.retro,NA,Daphnia retrocurva,Cladocera,Anomopoda,Daphnidae,Daphnia,NA,Daphnia
+Daphnia.sp.,NA,Daphnia.sp.,Cladocera,Anomopoda,Daphnidae,Daphnia,NA,Daphnia
+Diacy.bicus,NA,Diacyclops biscuspidatus,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Diacyclops.sp,NA,Diacyclops.sp,NA,NA,NA,NA,NA,Cyclopoid
+Diaph.birge,NA,Diaphanosoma birgei,Cladocera,Ctenopoda,Sididae,Diaphanosoma,NA,Sididae
+Diapt.copep,1,Diaptomus copepodid,NA,NA,NA,NA,NA,NA
+Dispa.acuti,NA,Diparalona acutirostis,Cladocera,Anomopoda,Chydoridae,Disparalona,NA,Chydorid
+Drepa.denta,1,Drepanopus,NA,NA,NA,NA,Marine,NA
+Episc.lacus,NA,Epischura lacustris,Copepod,Calanoida,Temoridae,Epischura,NA,Calanoid
+Epischura.sp,NA,Epischura,Copepod,Calanoida,Temoridae,Epischura,NA,Calanoid
+Eucyc.agili,NA,Eucyclops agilis,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Eucyc.elega,NA,Eucycyclops elegans,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Eucyc.spera,NA,Eucyclops speratus,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Eucyclops.sp,NA,Eucyclops.sp,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Eurycercus.sp,NA,Eurycercus,Cladocera,Anomopoda,Eurycercidae,Eurycercus,NA,Eurycercus
+Harpacticoida,1,Harpacticoid.sp,NA,NA,NA,NA,NA,NA
+Holop.gibbe,NA,Holopedium gibberum,Cladocera,Ctenopoda,Holopedidiidae,Holopedium,NA,Holopedium
+Holopedium.sp,NA,Holopedium,Cladocera,Ctenopoda,Holopedidiidae,Holopedium,NA,Holopedium
+Ilyocryptus.sp,1,Ilyocryptus,NA,Anomopoda,Ilyocryptidae,NA,Marine,NA
+Laton.setif,NA,Latona setifera,Cladocera,Ctenopoda,Sididae,Latona,NA,Sididae
+Latona.sp,NA,Latona.sp,Cladocera,Ctenopoda,Sididae,Latona,NA,Sididae
+Lepto.ashla,NA,Leptodiaptomus ashlandi,Copepod,Calanoida,Diaptomus,NA,NA,Calanoid
+Lepto.kindt,NA,Leptodora kindtii,Cladocera,Haplopoda,Leptodoridae,NA,NA,Leptodora
+Lepto.minut,NA,Leptodiaptomus minutus,Copepod,Calanoida,Diaptomus,NA,NA,Calanoid
+Lepto.sclis,NA,Leptodiaptomus sicilis,Copepod,Calanoida,Diaptomus,NA,NA,Calanoid
+Leydi.acant,NA,Leydigia acanthocercoides,Cladocera,Anomopoda,Chydoridae,Leydigia,NA,Chydorid
+Leydigia.sp,NA,Leydigia.sp,Cladocera,Anomopoda,Chydoridae,Leydigia,NA,Chydorid
+Limno.macru,NA,Limnocalanus macrurus,Copepod,Calanoida,NA,NA,NA,Calanoid
+Macrocyclops.sp,NA,Macrocyclops,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Macrothrix.sp,NA,Macrothrix,Cladocera,Anomopoda,Macrothricidae,Macrothrix,NA,Macrothrix
+Mesoc.edax,NA,Mesocyclops edax,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Mesocyclops.sp,NA,Mesocyclops,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+nauplii,1,nauplii,NA,NA,NA,NA,NA,NA
+Ophryoxus.sp,NA,Ophryoxus,Cladocera,Anomopoda,Ophryoxidae,Ophryoxus,NA,Ophryoxus
+Ortho.modes,1,Orthocyclops Modestus,NA,NA,NA,NA,NA,NA
+Orthocyclops.sp,NA,Orthocyclops.sp,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Paracyclops.sp,NA,Paracyclops,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Pleur.procu,NA,Pleuroxus,Cladocera,Anomopoda,Chydoridae,Pleuroxus,NA,Chydorid
+Pleuroxus.sp,NA,Pleuroxus,Cladocera,Anomopoda,Chydoridae,Pleuroxus,NA,Chydorid
+Polyp.pedic,NA,Polyphemus,Cladocera,Onchypoda,Polyphemidae,Polyphemus,NA,Polyphemus
+Rotifer,1,Rotifer,NA,NA,NA,NA,NA,NA
+Scapholeberis.sp,NA,Scapholeberis,Cladocera,Anomopoda,Daphnidae,Scapholeberis,NA,Scapholeberis
+Senec.calan,1,Senecella calanoides,NA,NA,NA,NA,NA,NA
+Sida.cryst,NA,sida crystallina,Cladocera,Ctenopoda,Sididae,Sida,NA,Sididae
+Simoc.vetul,NA,Simocephalus vetulus,Cladocera,Anomopoda,Daphnidae,Simocephalus,NA,Simocephalus
+Simocephalus.sp,NA,Simocephalus.sp,Cladocera,Anomopoda,Daphnidae,Simocephalus,NA,Simocephalus
+Skist.orego,NA,Skistodiaptomus oregonensis,Copepod,Calanoida,Diaptomus,NA,NA,Calanoid
+Skist.palli,NA,Skistodiaptomus pallidus,Copepod,Calanoida,Diaptomus,NA,NA,Calanoid
+Skistodiaptomus.sp,NA,Skistodiaptomus.sp,Copepod,Calanoida,Diaptomus,NA,NA,Calanoid
+Tropocyclops.sp,NA,Tropocyclops,Copepod,Cyclopoida,NA,NA,NA,Cyclopoid
+Unkno.clado,1,Unknown,NA,Anomopoda,Chydoridae,Chydorus,NA,NA
