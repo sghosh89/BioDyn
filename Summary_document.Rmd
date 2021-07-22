@@ -113,7 +113,7 @@ Below is the description of model set up:
 
 \begin{figure}[!ht]
 \includegraphics[width=18cm]{./Results/gather_res/ratio_for_eachrealm_ai.pdf}
-\caption{Synchrony>asynchrony and upper tail dominance over lower tail in asymmetry for freshwater than terrestrial communities indicate lower stability for freshwater (could be in suppmat). \label{fig_realm_ratio}}
+\caption{Synchrony higher than asynchrony and upper tail dominance over lower tail in asymmetry for freshwater than terrestrial communities indicate lower stability for freshwater (could be in suppmat). \label{fig_realm_ratio}}
 \end{figure} 
 
 \begin{figure}[!ht]
@@ -123,12 +123,13 @@ Below is the description of model set up:
 
 \begin{figure}[!ht]
 \includegraphics[width=18cm]{./Results/gather_res/test/fullmodelres.pdf}
-\caption{Posterior estimates from full model (green: terrestrial, blue: freshwater, red: terrestrial-freshwater). \label{fig_post_fm}}
+\caption{Posterior estimates from full model (green: terrestrial, blue: freshwater, red: terrestrial-freshwater). Point estimates are median values (circles) with
+75$\%$ (thickest bars), and 95$\%$ (thinnest bars) uncertainty intervals. \label{fig_post_fm}}
 \end{figure} 
 
 \begin{figure}[!ht]
 \includegraphics[width=18cm]{./Results/gather_res/taxa_fixedeffect/plot_posterior_pointinterval_ai.pdf}
-\caption{Posterior estimate from model using taxa as fixed effect (could be in suppmat). \label{fig_taxa_fix}}
+\caption{Posterior estimate from model using taxa as fixed effect. Point estimates are median values (circles) with 75$\%$ (thickest bars), and 95$\%$ (thinnest bars) uncertainty intervals. (could be in suppmat). \label{fig_taxa_fix}}
 \end{figure} 
 
 
