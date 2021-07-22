@@ -1,14 +1,27 @@
 ---
-title: "BioDyn Summary Document"
+title: "A global analysis of community stability across freshwater and terrestrial realms"
 author: "Shyamolina"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output:
-  html_document:
-    toc: yes
-    number_sections: no
+output: 
   pdf_document:
-    toc: yes
-urlcolor: blue
+    number_sections: no
+    keep_tex: yes
+    fig_caption: yes
+
+header-includes:
+      - \usepackage{setspace}\doublespacing
+      - \usepackage{lettrine}
+      - \usepackage{hyperref}
+      - \usepackage{lineno}\linenumbers
+      - \hypersetup{linkcolor=red}
+      - \usepackage{caption}\captionsetup[figure]{width=16cm}\captionsetup[figure]{font={stretch=1.5}}\captionsetup[table]{width=16cm}\captionsetup[table]{font={stretch=1.5}} 
+      - \usepackage[nomarkers,nolists]{endfloat}
+
+mainfont: Times New Roman 
+tables: True
+link-citations: True
+urlcolor : blue
+indent : True
 ---
 
 ```{r setup, include=FALSE, echo=F, message=F, results="hide"}
@@ -20,25 +33,35 @@ library(knitr)
 library(kableExtra)
 ```
 
-# Objective\label{Objective}
-  - to assess community stability considering synchronous interactions between species at their extreme abundance (common or rare) for both realms: freshwater and terrestrial
-  - usual method uses species richness (R) and variance ratio (VR) to assess stability with basic expectation: stability should increase with richness and decrease with synchrony. VR is a way to express the level of synchrony between species. VR=1 (independent interaction, zero correlation between species), VR<1 (asynchonous interaction, -ve correlation between species), VR>1 (synchronous interaction, +ve correlation between species).
-  - we want to see if we add additional predictors, e.g., (Asymmetry = A, direction of asymmetry = uniA, skewness ratio = SR), then can we explain the stability better?
+# Summary\label{Abstract}
 
-# Overview of Data\label{OverData}
+Determining the drivers of community stability is an important challenge given ongoing environmental change.  Theoretically, community stability is expected to increase with species richness, and decrease with synchronous interactions between species.  However, patterns of synchronous interactions could be asymmetric between species in a changing extreme environment.  The interspecific interactions become asymmetric if species are synchronous when they are simultaneously rare (asymmetry in lower tail, Fig. \ref{fig_concept}b) or abundant (asymmetry in upper tail, Fig. \ref{fig_concept}c). We determine if stability across realms are different and including patterns of asymmetry in synchrony improves our ability to predict stability across realms.  Specifically, we compare three models: (i) a basic model without realms and without asymmetry, (ii) a null model with realms and without asymmetry - only with commonly considered drivers of community stability, i.e., species richness, and variance ratio (biomass variation compared to independent community), and (iii) a full model with realms and with asymmetry (Fig. \ref{fig_concept}f). In our \nameref{Modeling framework}, we consider total 5 predictors: richness (R), variance ratio (VR), total asymmetry (A), net asymmetry (uniA), and skewness ratio (SR). Theoretical expectation with usual drivers: stability should increase with richness and decrease with increasing 
+variance ratio (or synchrony). We hypothesize asymmetry (A), most probably caused by the extreme events, would destabilize the community increasing variation in total productivity. Recent study proposes [Ghosh et al., in press] lower tail asymmetry is a new kind of compensatory dynamics - so increasing stability. So, we expect stability should increase with net asymmetry (uniA = LT-UT). Finally, skewness ratio (SR) would influence stability depending on dominance in LT or UT in the community. The usual expectation is depicted in Fig. \ref{fig_concept}f.
 
-We collected species-level community data from freshwater and terrestrial realms. Here is a snippet of the cleaned metadata with 28 observations:
+We analyzed temporal community-stability for >2700 communities (freshwater:716, terrestrial:2023) using a hierarchical Bayesian mixed-effect modeling framework where random intercepts are assigned for study sites nested within taxa (see \nameref{overdata}). 
+
+We find a higher synchrony:asynchrony ratio (positive vs. negative pairwise interactions) for freshwater than terrestrial communities (Fig \ref{fig_realm_ratio}a). We also find a slightly higher upper tail dependence than lower tail dependence in synchrony for Freshwater (Fig \ref{fig_realm_ratio}b). These two preliminary findings are indicating freshwater communities should be less stable than terrestrial ones. From a three-model comparison study (Fig. \ref{fig_compare_models}), we observe realm has significant effect on stability and on the drivers affecting stability. Our study shows addition of asymmetry-components in the model explains the model variance better (see increasing marginal $R{^2}$ and Loo-stat based model weights). The predictors show expected relationships with stability we hypothesize in Fig. \ref{fig_concept}f. The posterior estimates from full model show the difference between terrestrial and freshwater realms are significant most of the time (Fig. \ref{fig_post_fm}a-f). Taxa also show variation in their effect on stability with a clear trend for freshwater communities than terrestrial (Fig. \ref{fig_post_fm}g). When we include taxa as fixed effect in a model we can see the drivers-stability relationship also vary among taxa (Fig. \ref{fig_taxa_fix}). 
+
+We conclude that the asymmetric interactions between species, make freshwater communities more synchronous and upper tail dependent with increasing skewness, and as a result less stable, than terrestrial communities. Considering asymmetric interactions will allow us to better understand how communities will respond to ongoing global change, and as such, refine management recommendations.
+
+
+# Overview of Data\label{overdata}
+
+We collected at least 20 years long community data from freshwater and terrestrial realms. Each community has information on individual species-level time series (abundance/ biomass). When species level information are not found mainly for freshwater realm, we aggregate on a higher level (e.g., most of the time genus, sometimes on subfamily, and family level). We are considering the number of species ($nsp$) consistently present in the community for at least $70\%$ of the study period ($nyr$). Here is a snippet of the cleaned metadata with 28 observations out of total 2739 communities:
 
 ```{r metadataview, echo=F}
 
 df_md<-read.csv("./Results/gather_res/metadata_summary.csv")
 df_md$UID<-paste(df_md$source,df_md$STUDY_ID,sep=",")
 df_md<-df_md%>%select(UID,newsite,REALM,TAXA,ORGANISMS,CENT_LAT,CENT_LONG,nsp,nyr)
-df_md_r<-df_md[c(1:3,823:827,859:862,2605:2606,2642:2645,2766:2768,2773,2774,2788,2789,2790,2862:2863),]
+colnames(df_md)<-c("UniqueID","Plot","REALM","TAXA","ORGANISMS","LAT","LON","nsp","nyr")
+df_md%>%str()%>%print()
+
+df_md_r<-df_md[c(1:3,823:827,859:862,2605:2606,2642:2645,2650:2652,2661:2663),]
 rownames(df_md_r)<-NULL
-df_md_r %>%
-  kbl() %>%
-  kable_styling()
+#df_md_r %>%
+#  kbl() %>%
+#  kable_styling()
 ```
 
 Data (total = `r nrow(df_md)` observations) have the following hierarchical structure: 
@@ -47,23 +70,75 @@ Data (total = `r nrow(df_md)` observations) have the following hierarchical stru
 ```{r metadataview2, echo=F}
 table(df_md$REALM)
 ```
- - Taxa: total 7 levels nested within Realms
+ - Taxa: total 7 levels nested within realms
 ```{r metadataview3, echo=F}
 df_md%>%group_by(REALM)%>%count(TAXA)%>%ungroup()
 ```
- - UID(= combination of Datasource and STUDY_ID): total 249 levels nested within TAXA, each    level might have 1 or multiple observations of **newsite**
+ - UniqueID(= combination of Datasource and STUDY_ID): total 233 levels nested within TAXA, each level might have 1 or multiple observations of **Plot**
 ```{r metadataview4, echo=F}
-df_md%>%group_by(REALM, TAXA)%>%count(UID)%>%ungroup()
+df_md%>%group_by(REALM, TAXA)%>%count(UniqueID)%>%ungroup()
 ```
 
-# Model\label{Model}
+# Modeling framework \label{Modeling framework}
 
-Fig.1 nice caption
-```{r, out.height = "460px", out.width='800px', echo=F}
-knitr::include_graphics("./Results/gather_res/f_nL_f_nU_ratio_for_eachrealm.pdf")
+Below is the description of model set up:
+
+  - **Response**: stability = inverse of variability, measured using (median/IQR)
+  
+- **Predictors**:
+
+  - **R**: richness = here we are considering the number of species consistently present in the                       community for at least 70% of study period
+  - **VR**: variance ratio = variance of total community biomass/ variance of total community                                         biomass if the species are indep.
+  - **A**: total asymmetry = (fraction of LT dep. sp-pair + fraction of UT dep. sp-pair) in the           community
+  - **uniA**: net asymmetry = (fraction of LT dep. sp-pair - fraction of UT dep. sp-pair) in the             community, if >0: more LT dep., <0: more UT dep. pair
+  - **SR**: skewness ratio = skewness of total community biomass/ skewness of total community                                         biomass if the species are indep.
+
+- considering all data at once in a hierarchical set up
+
+    - Basic model: stability ~ (R + VR) + (1 | TAXA/UniqueID)
+    - Null model: stability ~ (R + VR) * REALM + (1 | TAXA/UniqueID)
+    - Full model: stability ~ (R + VR + A + uniA + SR)* REALM + (1 | TAXA/UniqueID) 
+    - Model with taxa as fixed effect: stability ~ (R + VR + A + uniA + SR)* TAXA + (1 | UniqueID)
+    
+
+```{r, out.height = "500px", out.width='500px', echo=F}
+# example fig for html output
+#knitr::include_graphics("./conceptual_fig_cop_ai_af.pdf")
 ```
 
+\begin{figure}[!ht]
+\includegraphics[width=18cm]{./conceptual_fig_cop_ai_af.pdf}
+\caption{conceptual figure: patterns of interspecific interactions (a-e), three level of model set up (f). \label{fig_concept}}
+\end{figure} 
 
-I think \ref{OverData} is good.
+\begin{figure}[!ht]
+\includegraphics[width=18cm]{./Results/gather_res/ratio_for_eachrealm_ai.pdf}
+\caption{Synchrony>asynchrony and upper tail dominance over lower tail in asymmetry for freshwater than terrestrial communities indicate lower stability for freshwater (could be in suppmat). \label{fig_realm_ratio}}
+\end{figure} 
+
+\begin{figure}[!ht]
+\includegraphics[width=18cm]{./Results/gather_res/test/model_summary_resfig_ai.pdf}
+\caption{Results from three-level model set up. \label{fig_compare_models}}
+\end{figure} 
+
+\begin{figure}[!ht]
+\includegraphics[width=18cm]{./Results/gather_res/test/fullmodelres.pdf}
+\caption{Posterior estimates from full model (green: terrestrial, blue: freshwater, red: terrestrial-freshwater). \label{fig_post_fm}}
+\end{figure} 
+
+\begin{figure}[!ht]
+\includegraphics[width=18cm]{./Results/gather_res/taxa_fixedeffect/plot_posterior_pointinterval_ai.pdf}
+\caption{Posterior estimate from model using taxa as fixed effect (could be in suppmat). \label{fig_taxa_fix}}
+\end{figure} 
+
+
+
+
+
+
+
+
+
+
 
 
