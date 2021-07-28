@@ -13,25 +13,28 @@ gathered_post <-
   post %>% 
   select(c("b_Intercept","b_REALMTerrestrial")) %>% 
   rename(b_Intercept_Fresh=b_Intercept,
-    `b_Intercept(Terres-Fresh)`=`b_REALMTerrestrial`)%>%
+    `b_Intercept_diff_T-F`=`b_REALMTerrestrial`)%>%
   mutate("b_Intercept_Terres" = 
-           b_Intercept_Fresh + `b_Intercept(Terres-Fresh)`)%>%
+           b_Intercept_Fresh + `b_Intercept_diff_T-F`)%>%
   gather() %>% 
-  mutate(key = factor(key, levels = c("b_Intercept_Fresh" , 
-                                      "b_Intercept_Terres",
-                                      "b_Intercept(Terres-Fresh)")))
-
+  mutate(key = factor(key, levels = c("b_Intercept_diff_T-F",
+                                      "b_Intercept_Fresh" , 
+                                      "b_Intercept_Terres"
+                                      )))
 keys<-levels(gathered_post$key)
 gathered_post$color<-NA
-gathered_post$color[which(gathered_post$key==keys[1])]<-3
-gathered_post$color[which(gathered_post$key==keys[2])]<-2
-gathered_post$color[which(gathered_post$key==keys[3])]<-1
+gathered_post$color[which(gathered_post$key==keys[1])]<-1
+gathered_post$color[which(gathered_post$key==keys[2])]<-3
+gathered_post$color[which(gathered_post$key==keys[3])]<-2
+
+myColors <- c("blueviolet", "dodgerblue", "green3")
 
 gathered_postI<-gathered_post
 g_I<-gathered_postI %>% 
-  ggplot(aes(x = value, group = key, fill=as.factor(color))) +
+  ggplot(aes(x = value, group = key,fill=as.factor(key))) +
+  scale_fill_manual(values=alpha(myColors, 0.6))+
   geom_vline(xintercept = 0, linetype="dashed", color="dimgray")+
-  geom_density(size = .2, alpha=0.6)+guides(fill=FALSE, color=FALSE)+
+  geom_density(size = .2)+guides(fill=FALSE, color=FALSE)+
   stat_pointinterval(aes(y = 0), 
                      point_interval = median_qi, .width = c(.95, 0.75), 
                      interval_size_range = c(0.5, 2.5))+
@@ -46,19 +49,20 @@ gathered_post <-
   post %>% 
   select(c("b_R","b_R:REALMTerrestrial")) %>% 
   rename(b_R_Fresh=b_R,
-         `b_R(Terres-Fresh)`=`b_R:REALMTerrestrial`)%>%
+         `b_R_diff_T-F`=`b_R:REALMTerrestrial`)%>%
   mutate("b_R_Terres" = 
-           b_R_Fresh + `b_R(Terres-Fresh)`)%>%
+           b_R_Fresh + `b_R_diff_T-F`)%>%
   gather() %>% 
-  mutate(key = factor(key, levels = c("b_R_Fresh" , 
-                                      "b_R_Terres",
-                                      "b_R(Terres-Fresh)")))
+  mutate(key = factor(key, levels = c("b_R_diff_T-F",
+                                      "b_R_Fresh" , 
+                                      "b_R_Terres"
+                                      )))
 
   keys<-levels(gathered_post$key)
   gathered_post$color<-NA
-  gathered_post$color[which(gathered_post$key==keys[1])]<-3
-  gathered_post$color[which(gathered_post$key==keys[2])]<-2
-  gathered_post$color[which(gathered_post$key==keys[3])]<-1
+  gathered_post$color[which(gathered_post$key==keys[1])]<-1
+  gathered_post$color[which(gathered_post$key==keys[2])]<-3
+  gathered_post$color[which(gathered_post$key==keys[3])]<-2
 
 gathered_postR<-gathered_post
 g_R<-gathered_postR %>% 
@@ -83,19 +87,20 @@ gathered_post <-
   post %>% 
   select(c("b_VR","b_VR:REALMTerrestrial")) %>% 
   rename(b_VR_Fresh=b_VR,
-         `b_VR(Terres-Fresh)`=`b_VR:REALMTerrestrial`)%>%
+         `b_VR_diff_T-F`=`b_VR:REALMTerrestrial`)%>%
   mutate("b_VR_Terres" = 
-           b_VR_Fresh + `b_VR(Terres-Fresh)`)%>%
+           b_VR_Fresh + `b_VR_diff_T-F`)%>%
   gather() %>% 
-  mutate(key = factor(key, levels = c("b_VR_Fresh" , 
-                                      "b_VR_Terres",
-                                      "b_VR(Terres-Fresh)")))
+  mutate(key = factor(key, levels = c("b_VR_diff_T-F",
+                                      "b_VR_Fresh" , 
+                                      "b_VR_Terres"
+                                      )))
 
 keys<-levels(gathered_post$key)
 gathered_post$color<-NA
-gathered_post$color[which(gathered_post$key==keys[1])]<-3
-gathered_post$color[which(gathered_post$key==keys[2])]<-2
-gathered_post$color[which(gathered_post$key==keys[3])]<-1
+gathered_post$color[which(gathered_post$key==keys[1])]<-1
+gathered_post$color[which(gathered_post$key==keys[2])]<-3
+gathered_post$color[which(gathered_post$key==keys[3])]<-2
 
 gathered_postVR<-gathered_post
 g_VR<-gathered_postVR %>% 
@@ -116,19 +121,20 @@ gathered_post <-
   post %>% 
   select(c("b_A","b_A:REALMTerrestrial")) %>% 
   rename(b_A_Fresh=b_A,
-         `b_A(Terres-Fresh)`=`b_A:REALMTerrestrial`)%>%
+         `b_A_diff_T-F`=`b_A:REALMTerrestrial`)%>%
   mutate("b_A_Terres" = 
-           b_A_Fresh + `b_A(Terres-Fresh)`)%>%
+           b_A_Fresh + `b_A_diff_T-F`)%>%
   gather() %>% 
-  mutate(key = factor(key, levels = c("b_A_Fresh" , 
-                                      "b_A_Terres",
-                                      "b_A(Terres-Fresh)")))
+  mutate(key = factor(key, levels = c("b_A_diff_T-F",
+                                      "b_A_Fresh" , 
+                                      "b_A_Terres"
+                                      )))
 
 keys<-levels(gathered_post$key)
 gathered_post$color<-NA
-gathered_post$color[which(gathered_post$key==keys[1])]<-3
-gathered_post$color[which(gathered_post$key==keys[2])]<-2
-gathered_post$color[which(gathered_post$key==keys[3])]<-1
+gathered_post$color[which(gathered_post$key==keys[1])]<-1
+gathered_post$color[which(gathered_post$key==keys[2])]<-3
+gathered_post$color[which(gathered_post$key==keys[3])]<-2
 
 gathered_postA<-gathered_post
 g_A<-gathered_postA %>% 
@@ -149,19 +155,20 @@ gathered_post <-
   post %>% 
   select(c("b_uniA","b_uniA:REALMTerrestrial")) %>% 
   rename(b_uniA_Fresh=b_uniA,
-         `b_uniA(Terres-Fresh)`=`b_uniA:REALMTerrestrial`)%>%
+         `b_uniA_diff_T-F`=`b_uniA:REALMTerrestrial`)%>%
   mutate("b_uniA_Terres" = 
-           b_uniA_Fresh + `b_uniA(Terres-Fresh)`)%>%
+           b_uniA_Fresh + `b_uniA_diff_T-F`)%>%
   gather() %>% 
-  mutate(key = factor(key, levels = c("b_uniA_Fresh" , 
-                                      "b_uniA_Terres",
-                                      "b_uniA(Terres-Fresh)")))
+  mutate(key = factor(key, levels = c("b_uniA_diff_T-F",
+                                      "b_uniA_Fresh" , 
+                                      "b_uniA_Terres"
+                                      )))
 
 keys<-levels(gathered_post$key)
 gathered_post$color<-NA
-gathered_post$color[which(gathered_post$key==keys[1])]<-3
-gathered_post$color[which(gathered_post$key==keys[2])]<-2
-gathered_post$color[which(gathered_post$key==keys[3])]<-1
+gathered_post$color[which(gathered_post$key==keys[1])]<-1
+gathered_post$color[which(gathered_post$key==keys[2])]<-3
+gathered_post$color[which(gathered_post$key==keys[3])]<-2
 
 gathered_postuniA<-gathered_post
 g_uniA<-gathered_postuniA %>% 
@@ -183,19 +190,20 @@ gathered_post <-
   post %>% 
   select(c("b_SR","b_SR:REALMTerrestrial")) %>% 
   rename(b_SR_Fresh=b_SR,
-         `b_SR(Terres-Fresh)`=`b_SR:REALMTerrestrial`)%>%
+         `b_SR_diff_T-F`=`b_SR:REALMTerrestrial`)%>%
   mutate("b_SR_Terres" = 
-           b_SR_Fresh + `b_SR(Terres-Fresh)`)%>%
+           b_SR_Fresh + `b_SR_diff_T-F`)%>%
   gather() %>% 
-  mutate(key = factor(key, levels = c("b_SR_Fresh" , 
-                                      "b_SR_Terres",
-                                      "b_SR(Terres-Fresh)")))
+  mutate(key = factor(key, levels = c("b_SR_diff_T-F",
+                                      "b_SR_Fresh" , 
+                                      "b_SR_Terres"
+                                      )))
 
 keys<-levels(gathered_post$key)
 gathered_post$color<-NA
-gathered_post$color[which(gathered_post$key==keys[1])]<-3
-gathered_post$color[which(gathered_post$key==keys[2])]<-2
-gathered_post$color[which(gathered_post$key==keys[3])]<-1
+gathered_post$color[which(gathered_post$key==keys[1])]<-1
+gathered_post$color[which(gathered_post$key==keys[2])]<-3
+gathered_post$color[which(gathered_post$key==keys[3])]<-2
 
 gathered_postSR<-gathered_post
 g_SR<-gathered_postSR %>% 
@@ -219,11 +227,17 @@ dev.off()
 #=================================================================================
 #  point estimate plot
 #=================================================================================
+
+#gathered_postI%>%ggplot(aes(fill = key, color = key, x = value)) +
+#  scale_fill_manual(values=alpha(myColors, 0.6))+
+#  stat_slab(alpha = .3) +
+#  stat_pointinterval(position = position_dodge(width = .4, preserve = "single"))+
+
 g_I<-gathered_postI%>%ggplot(aes(y=key,x=value,col=as.factor(color)))+
   geom_vline(xintercept = 0, linetype="dashed", color="dimgray")+
   guides(fill=FALSE, color=FALSE)+
   stat_pointinterval(.width=c(0.75,0.95))+
-  annotate("text", x=-1, y=3.4, label= "Intercept", size=5)+
+  annotate("text", x=1, y=3.4, label= "Intercept", size=5)+
   theme_bw(base_size = 24)+theme(axis.title=element_blank(),
                                  panel.grid.major = element_blank(), 
                                  panel.grid.minor = element_blank(),
@@ -318,6 +332,14 @@ tx$birds<-tx$b_Intercept+tx$`r_TAXA[birds,Intercept]`
 tx$terrestrial.inv<-tx$b_Intercept+tx$`r_TAXA[terrestrial.invertebrates,Intercept]`
 tx$terrestrial.plants<-tx$b_Intercept+tx$`r_TAXA[terrestrial.plants,Intercept]`
 tx$mammals<-tx$b_Intercept+tx$`r_TAXA[mammals,Intercept]`
+
+#tx$fish<-tx$`r_TAXA[fish,Intercept]`
+#tx$freshwater.inv<-tx$`r_TAXA[freshwater.invertebrates,Intercept]`
+#tx$freshwater.plants<-tx$`r_TAXA[freshwater.plants,Intercept]`
+#tx$birds<-tx$`r_TAXA[birds,Intercept]`
+#tx$terrestrial.inv<-tx$`r_TAXA[terrestrial.invertebrates,Intercept]`
+#tx$terrestrial.plants<-tx$`r_TAXA[terrestrial.plants,Intercept]`
+#tx$mammals<-tx$`r_TAXA[mammals,Intercept]`
 
 tx_gather <-
   tx %>% 
