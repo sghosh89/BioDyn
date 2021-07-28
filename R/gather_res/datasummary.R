@@ -251,13 +251,18 @@ df$TAXA<-tolower(df$TAXA)
 write.csv(df,"../../Results/gather_res/data_summary.csv",row.names = F)
 
 # Pie Chart with Percentages for realm
+df<-read.csv("../../Results/gather_res/data_summary.csv")
+
+pdf("../../Results/gather_res/data_summary_map.pdf",height=6,width=12)
+op<-par(mar=c(4,5,2,2),mgp=c(3,1,0),cex.lab=1.5,cex.axis=1.5)
+
 df_realm<-as.data.frame(table(df$REALM))
 slices <- df_realm$Freq
 lbls <- df_realm$Var1
 pct <- round(slices/sum(slices)*100)
 lbls <- paste(lbls, pct) # add percents to labels
 lbls <- paste(lbls,"%",sep="") # ad % to labels
-pie(slices,labels = lbls, border = NA, col=c("skyblue","blue","green"),main="Data for different realms")
+pie(slices,labels = lbls, border = NA, col=c("dodgerblue","green3"),main="Data for different realms")
 
 # Pie Chart with Percentages for taxa
 df_tf<-df%>%filter(REALM%in%c("Freshwater","Terrestrial"))
@@ -269,14 +274,15 @@ pct <- round(slices/sum(slices)*100,1)
 lbls <- paste(lbls, pct) # add percents to labels
 lbls <- paste(lbls,"%",sep="") # ad % to labels
 pie(slices,labels = NA, 
-    col=c("red","green","skyblue","blue","darkturquoise","yellow3","purple","green4"),
+    col=c("green3","royalblue","skyblue","blue","seagreen1","olivedrab2","yellowgreen"),
     border = NA,
     main="Data for different taxa")
 legend("bottomleft", lbls, cex = 0.7, 
-       fill = c("red","green","skyblue","blue","darkturquoise","yellow3","purple","green4"),
+       fill = c("green3","royalblue","skyblue","blue","seagreen1","olivedrab2","yellowgreen"),
        bty="n")
 
 # Pie Chart with Percentages for coverage
+myColors<- c("green3","royalblue","skyblue","blue","seagreen1","olivedrab2","yellowgreen")
 library(maps)
 wd<-map_data("world")
 g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
@@ -284,27 +290,49 @@ g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", f
 g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
              panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
              legend.position="none",axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-g1<-g1+geom_point(data=df_tf,aes(y=CENT_LAT,x=CENT_LONG,shape=factor(REALM),col=factor(TAXA)),alpha=0.4,size=2)+
+g1<-g1+geom_point(data=df_tf,aes(y=CENT_LAT,x=CENT_LONG,shape=factor(REALM),col=factor(TAXA)),size=2)+
+  scale_color_manual(values=alpha(myColors, 1))+
   theme(legend.position = "bottom",legend.title = element_blank())+
   ggtitle(paste("Data: min 20 years",sep=""))
 g1
 
+par(op)
+dev.off()
+
+
+pdf("../../Results/gather_res/data_summary.pdf",height=6,width=12)
+op<-par(mar=c(4,5,2,2),mgp=c(3,1,0),mfrow=c(2,3),cex.lab=1.5,cex.axis=1.5)
 
 df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(iCValt ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Stability", main = "",col=c("skyblue","green"))
+        ylab = "Stability", main = "",col=c("dodgerblue","green3"))
 
 df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(nsp ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Species richness", main = "",col=c("skyblue","green"))
+        ylab = "Species richness", main = "",col=c("dodgerblue","green3"))
 
 df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(phi ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Variance ratio", main = "",col=c("skyblue","green"))
+        ylab = "Variance ratio", main = "",col=c("dodgerblue","green3"))
 
-df_tf$REALM<-as.character(df_tf$REALM)
-boxplot(phi_LdM ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Synchrony: VR_LdM", main = "",col=c("skyblue","green"))
+#df_tf$REALM<-as.character(df_tf$REALM)
+#boxplot(phi_LdM ~ REALM, data = df_tf, xlab = "Realms",
+#        ylab = "Synchrony: VR_LdM", main = "",col=c("dodgerblue","green3"))
+
+df_tf$A<-df_tf$f_nL+df_tf$f_nU # total asymmetry
+boxplot(A ~ REALM, data = df_tf, xlab = "Realms",
+        ylab = "Total asymmetry", main = "",col=c("dodgerblue","green3"))
+
+df_tf$uniA<-df_tf$f_nL-df_tf$f_nU # net asymmetry
+boxplot(uniA ~ REALM, data = df_tf, xlab = "Realms",
+        ylab = "Net asymmetry", main = "",col=c("dodgerblue","green3"))
+
+boxplot(phi_skw ~ REALM, data = df_tf, xlab = "Realms",
+        ylab = "Skewness Ratio", main = "",col=c("dodgerblue","green3"))
+
+par(op)
+dev.off()
+
 
 #=====================================================================================
 # doing a metadata summary table for John
