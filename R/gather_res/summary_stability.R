@@ -116,7 +116,11 @@ sm_all_2<-sm_all%>%select(f=f_nL,REALM)%>%mutate(Type="LT")
 sm_all_3<-sm_all%>%select(f=f_nU,REALM)%>%mutate(Type="UT")
 sm_all_4<-rbind(sm_all_2,sm_all_3)
 gp<-ggplot(sm_all_4, aes(x=REALM, y=f, fill=Type)) +
-  geom_boxplot()+theme_bw()+
+  geom_boxplot()+
+  scale_fill_manual(values=alpha(c("red","blue"),0.7))+theme_bw()+
+  theme(axis.title.x = element_text(size = 14),
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 14))+
   ylab("Fraction in synchrony")
 gp
 

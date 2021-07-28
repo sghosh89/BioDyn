@@ -110,9 +110,12 @@ gp<-ggplot(data=dd,aes(x=di,y=ratio,col=REALM))+
   geom_point(pch=19)+
   geom_line(data=dd_f,aes(x=1:10,y=ratio),lwd=0.8)+
   geom_line(data=dd_t,aes(x=1:10,y=ratio),lwd=0.8)+
-  scale_color_manual(values=c("blue","green"))+
+  scale_color_manual(values=c("dodgerblue","green3"))+
   xlab("Dominant species pairwise interaction")+ylab("Syn/Asyn ratio")+
-  theme_bw()
+  theme_bw()+
+  theme(axis.title.x = element_text(size = 14),
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 14))
 
 pdf("../../Results/gather_res/ratio_for_eachrealm.pdf",height=5,width=8)
 gp
