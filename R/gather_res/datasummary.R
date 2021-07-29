@@ -309,11 +309,11 @@ boxplot(iCValt ~ REALM, data = df_tf, xlab = "Realms",
 
 df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(nsp ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Species richness", main = "",col=c("dodgerblue","green3"))
+        ylab = "Species richness, R", main = "",col=c("dodgerblue","green3"))
 
 df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(phi ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Variance ratio", main = "",col=c("dodgerblue","green3"))
+        ylab = "Variance ratio, VR", main = "",col=c("dodgerblue","green3"))
 
 #df_tf$REALM<-as.character(df_tf$REALM)
 #boxplot(phi_LdM ~ REALM, data = df_tf, xlab = "Realms",
@@ -321,14 +321,14 @@ boxplot(phi ~ REALM, data = df_tf, xlab = "Realms",
 
 df_tf$A<-df_tf$f_nL+df_tf$f_nU # total asymmetry
 boxplot(A ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Total asymmetry", main = "",col=c("dodgerblue","green3"))
+        ylab = "Total asymmetry, A", main = "",col=c("dodgerblue","green3"))
 
 df_tf$uniA<-df_tf$f_nL-df_tf$f_nU # net asymmetry
 boxplot(uniA ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Net asymmetry", main = "",col=c("dodgerblue","green3"))
+        ylab = "Net asymmetry, uniA", main = "",col=c("dodgerblue","green3"))
 
 boxplot(phi_skw ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Skewness Ratio", main = "",col=c("dodgerblue","green3"))
+        ylab = "Skewness Ratio, SR", main = "",col=c("dodgerblue","green3"))
 
 par(op)
 dev.off()
