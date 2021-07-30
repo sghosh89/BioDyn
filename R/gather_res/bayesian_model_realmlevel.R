@@ -95,31 +95,44 @@ ggplot(data=dt,aes(y=stability_skw,x=VR,col=UID))+
 #bf_stability0<-bf(stability_skw ~ (R+VR)*REALM+
 #                    (1||REALM)+(1||REALM:TAXA)+(1||REALM:TAXA:UID))
 
-cat(paste("------- brms null model without REALM starting at time: ", Sys.time()," -------------- \n "))
+cat(paste("------- brms basic model starting at time: ", Sys.time()," -------------- \n "))
 
-bf_stability0_wo_REALM<-bf(stability_skw ~ (R+VR) + (1|TAXA/UID))
-null_model_wo_REALM<-brm(bf_stability0_wo_REALM,
+bf_stability0<-bf(stability_skw ~ (R+VR) + (1|TAXA/UID))
+basic_model<-brm(bf_stability0,
                 data=mydat_scaled,
                 family = gaussian(),
                 chains=4,cores=4,iter=16000,
                 warmup=8000,init="0",thin=4,
                 control = list(adapt_delta = 0.99, max_treedepth = 15),
                 save_pars = save_pars(all = TRUE),seed=123)
-print(summary(null_model_wo_REALM),digits = 3)
-saveRDS(null_model_wo_REALM,"../../Results/gather_res/test/nullmodel_wo_REALM.RDS")
+print(summary(basic_model),digits = 3)
+saveRDS(basic_model,"../../Results/gather_res/test/basic_model.RDS")
 
-cat(paste("------- brms null model with REALM starting at time: ", Sys.time()," -------------- \n "))
+cat(paste("------- brms basic model with asymmetry starting at time: ", Sys.time()," -------------- \n "))
 
-bf_stability0_w_REALM<-bf(stability_skw ~ (R+VR)*REALM + (1|TAXA/UID))
-null_model_w_REALM<-brm(bf_stability0_w_REALM,
+bf_stability0_w_asym<-bf(stability_skw ~ (R+VR+A+uniA+SR) + (1|TAXA/UID))
+basic_model_w_asym<-brm(bf_stability0_w_asym,
                          data=mydat_scaled,
                          family = gaussian(),
                          chains=4,cores=4,iter=16000,
                          warmup=8000,init="0",thin=4,
                          control = list(adapt_delta = 0.99, max_treedepth = 15),
                          save_pars = save_pars(all = TRUE),seed=123)
-print(summary(null_model_w_REALM),digits = 3)
-saveRDS(null_model_w_REALM,"../../Results/gather_res/test/nullmodel_w_REALM.RDS")
+print(summary(basic_model_w_asym),digits = 3)
+saveRDS(basic_model_w_asym,"../../Results/gather_res/test/basic_model_w_asym.RDS")
+
+cat(paste("------- brms basic model with REALM starting at time: ", Sys.time()," -------------- \n "))
+
+bf_stability0_w_REALM<-bf(stability_skw ~ (R+VR)*REALM + (1|TAXA/UID))
+basic_model_w_REALM<-brm(bf_stability0_w_REALM,
+                         data=mydat_scaled,
+                         family = gaussian(),
+                         chains=4,cores=4,iter=16000,
+                         warmup=8000,init="0",thin=4,
+                         control = list(adapt_delta = 0.99, max_treedepth = 15),
+                         save_pars = save_pars(all = TRUE),seed=123)
+print(summary(basic_model_w_REALM),digits = 3)
+saveRDS(basic_model_w_REALM,"../../Results/gather_res/test/basic_model_w_REALM.RDS")
 
 cat(paste("------- brms full model starting at time: ", Sys.time()," -------------- \n "))
 bf_stability<-bf(stability_skw ~ (R+VR+A+uniA+SR)*REALM + (1|TAXA/UID))
@@ -144,13 +157,15 @@ saveRDS(full_model,"../../Results/gather_res/test/fullmodel.RDS")
 
 
 cat(paste("------- compare loo for all models: ", Sys.time()," -------------- \n "))
-loo_null_wo_REALM<-loo(null_model_wo_REALM,moment_match=T,reloo=T)
-loo_null_w_REALM<-loo(null_model_w_REALM,moment_match=T,reloo=T)
+loo_basic<-loo(basic_model,moment_match=T,reloo=T)
+loo_basic_w_asym<-loo(basic_model_w_asym,moment_match=T,reloo=T)
+loo_basic_w_REALM<-loo(basic_model_w_REALM,moment_match=T,reloo=T)
 loo_full<-loo(full_model,moment_match=T,reloo=T)
-lc<-loo_compare(loo_null_wo_REALM,loo_null_w_REALM,loo_full)
-lmw<-loo_model_weights(null_model_wo_REALM,null_model_w_REALM,full_model)
-lc_list<-list(loo_null_wo_REALM=loo_null_wo_REALM,
-              loo_null_w_REALM=loo_null_w_REALM,
+lc<-loo_compare(loo_basic,loo_basic_w_asym,loo_basic_w_REALM,loo_full)
+lmw<-loo_model_weights(basic_model,basic_model_w_asym,basic_model_w_REALM,full_model)
+lc_list<-list(loo_basic=loo_basic,
+              loo_basic_w_asym=loo_basic_w_asym,
+              loo_basic_w_REALM=loo_basic_w_REALM,
               loo_full=loo_full,
               lc=lc,
               lmw=lmw)
@@ -164,18 +179,22 @@ print(lmw)
 
 
 cat(paste("------- compare R2 for all models: ", Sys.time()," -------------- \n "))
-cat("==== R2 for null model without REALM: bayes =====","\n")
-r2_null_wo_REALM<-r2_bayes(null_model_wo_REALM,ci=0.95)
-r2_null_wo_REALM
-cat("==== R2 for null model with REALM: bayes =====","\n")
-r2_null_w_REALM<-r2_bayes(null_model_w_REALM,ci=0.95)
-r2_null_w_REALM
+cat("==== R2 for basic model: bayes =====","\n")
+r2_basic<-r2_bayes(basic_model,ci=0.95)
+r2_basic
+cat("==== R2 for basic model with asym: bayes =====","\n")
+r2_basic_w_asym<-r2_bayes(basic_model_w_asym,ci=0.95)
+r2_basic_w_asym
+cat("==== R2 for basic model with REALM: bayes =====","\n")
+r2_basic_w_REALM<-r2_bayes(basic_model_w_REALM,ci=0.95)
+r2_basic_w_REALM
 cat("==== R2 for full model: bayes =====","\n")
 r2_full<-r2_bayes(full_model,ci=0.95)
 r2_full
 
-r2_list<-list(r2_null_wo_REALM=r2_null_wo_REALM,
-              r2_null_w_REALM=r2_null_w_REALM,
+r2_list<-list(r2_basic=r2_basic,
+              r2_basic_w_asym=r2_basic_w_asym,
+              r2_basic_w_REALM=r2_basic_w_REALM,
               r2_full=r2_full)
 saveRDS(r2_list,"../../Results/gather_res/test/r2_list.RDS")
 
@@ -184,43 +203,39 @@ cat(paste("------- completed: ", Sys.time()," -------------- \n "))
 sink()
 
 #################################
-null_model_wo_REALM<-readRDS("../../Results/gather_res/test/nullmodel_wo_REALM.RDS")
-null_model_w_REALM<-readRDS("../../Results/gather_res/test/nullmodel_w_REALM.RDS")
-full_model<-readRDS("../../Results/gather_res/test/fullmodel.RDS")
+#basic_model<-readRDS("../../Results/gather_res/test/basic_model.RDS")
+#basic_model_w_REALM<-readRDS("../../Results/gather_res/test/basic_model_w_REALM.RDS")
+#full_model<-readRDS("../../Results/gather_res/test/fullmodel.RDS")
 
 # is it a reasonable fit?
-#brms::pp_check(null_model_wo_REALM,nsamples = 1000)
-#brms::pp_check(null_model_w_REALM,nsamples = 1000)
-#brms::pp_check(full_model,nsamples = 1000)
+#brms::pp_check(basic_model,nsamples = 1000)
+#brms::pp_check(basic_model_w_REALM,nsamples = 1000)
+#brms::pp_check(basic_model,nsamples = 1000)
 
-conditional_effects(null_model_wo_REALM)
-conditional_effects(null_model_w_REALM)
-conditional_effects(full_model)
+#conditional_effects(basic_model)
+#conditional_effects(basic_model_w_REALM)
+#conditional_effects(full_model)
 
 # to see estimates
-fixef(full_model,probs = c(0.025, 0.125, 0.875, 0.975))
-ranobj<-ranef(full_model)
-obj<-coef(full_model) # this is the combined effect of fixed and random effect
+#fixef(full_model,probs = c(0.025, 0.125, 0.875, 0.975))
+#ranobj<-ranef(full_model)
+#obj<-coef(full_model) # this is the combined effect of fixed and random effect
   
 # to see estimates from random effects
-names(ranobj)
-ranobj$TAXA
-ranobj$`TAXA:UID`
+#names(ranobj)
+#ranobj$TAXA
+#ranobj$`TAXA:UID`
 
 
 # test case
-objf<-fixef(null_model_w_REALM)
-objr<-ranef(null_model_w_REALM)
-objr$TAXA
-objc<-coef(null_model_w_REALM)
-objc$TAXA[,,"Intercept"]
+#objf<-fixef(basic_model_w_REALM)
+#objr<-ranef(basic_model_w_REALM)
+#objr$TAXA
+#objc<-coef(basic_model_w_REALM)
+#objc$TAXA[,,"Intercept"]
 
 # fixed effect + random effect == coef effect
-objf["Intercept","Estimate"]+objr$TAXA[,,"Intercept"][1,1]==objc$TAXA[,,"Intercept"][1,1]
+#objf["Intercept","Estimate"]+objr$TAXA[,,"Intercept"][1,1]==objc$TAXA[,,"Intercept"][1,1]
 
 ## question: what are r_ terms in posterior_samples(full_model)?
-
-
-
-
 
