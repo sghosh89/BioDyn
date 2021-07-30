@@ -8,7 +8,7 @@ library(tidybayes)
 sink("../../Results/gather_res/console_model_summary_table.txt", append=TRUE, split=TRUE)
 
 # see summary from basic model without realm
-bm<-readRDS("../../Results/gather_res/test/nullmodel_wo_REALM.RDS")
+bm<-readRDS("../../Results/gather_res/test/basic_model.RDS")
 post<-posterior_samples(bm)
 df<-data.frame(Median=NA*numeric(5),
                LowCI0.95=NA*numeric(5),UpCI0.95=NA*numeric(5),
@@ -61,7 +61,7 @@ row.names(dfbm)<-rownames(df)
 dfbm
 #################################################################################
 
-nm<-readRDS("../../Results/gather_res/test/nullmodel_w_REALM.RDS")
+nm<-readRDS("../../Results/gather_res/test/basic_model_w_REALM.RDS")
 post<-posterior_samples(nm)
 post<-post%>%select(b_Intercept,b_R,b_VR,
                     b_REALMTerrestrial,`b_R:REALMTerrestrial`,`b_VR:REALMTerrestrial`,
