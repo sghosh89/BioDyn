@@ -112,6 +112,26 @@ saveRDS(sm_all,"../../Results/gather_res/stability_metric_all.RDS")
 
 #------------------ plot f_nL vs f_nU for both realms ------------------------------
 
+tempo<-sm_all%>%mutate(f_syn=f_nL+f_nU,f_asyn=f_nneg)%>%select(f_syn,f_asyn,REALM)
+tempo2<-tempo%>%select(f=f_syn,REALM)%>%mutate(Type="f_syn")
+tempo3<-tempo%>%select(f=f_asyn,REALM)%>%mutate(Type="f_asyn")
+
+tempo4<-rbind(tempo2,tempo3)
+gp<-ggplot(tempo4, aes(x=REALM, y=f, fill=Type)) +
+  geom_boxplot()+
+  scale_fill_manual(values=alpha(c("lawngreen","plum2"),0.7))+theme_bw()+
+  theme(axis.title.x = element_text(size = 14),
+        axis.text.x = element_text(size = 14),
+        axis.title.y = element_text(size = 14))+
+  ylab("Synchrony and Asynchrony")
+gp
+
+pdf("../../Results/gather_res/syn_and_asyn_ratio_for_eachrealm.pdf",height=5,width=8)
+gp
+dev.off()
+
+#------------------ plot f_nL vs f_nU for both realms ------------------------------
+
 sm_all_2<-sm_all%>%select(f=f_nL,REALM)%>%mutate(Type="LT")
 sm_all_3<-sm_all%>%select(f=f_nU,REALM)%>%mutate(Type="UT")
 sm_all_4<-rbind(sm_all_2,sm_all_3)
