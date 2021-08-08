@@ -239,3 +239,14 @@ sink()
 
 ## question: what are r_ terms in posterior_samples(full_model)?
 
+df<-readRDS("../../Results/gather_res/stability_metric_all.RDS")
+df_F<-df%>%filter(REALM=="Freshwater")
+df_T<-df%>%filter(REALM=="Terrestrial")
+sum(df_F$phi_skw>1)/nrow(df_F) # less stable
+sum(df_F$phi_skw<0)/nrow(df_F) # less stable
+sum(df_F$phi_skw>0 & df_F$phi_skw<1)/nrow(df_F) # more stable
+
+sum(df_T$phi_skw>1)/nrow(df_T) # less stable
+sum(df_T$phi_skw<0)/nrow(df_T) # less stable
+sum(df_T$phi_skw>0 & df_T$phi_skw<1)/nrow(df_T) # more stable
+
