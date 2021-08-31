@@ -131,7 +131,7 @@ for (i in c(1:length(df$site))){
   }
 }
 # reorganize
-summary_table<-summary_table%>%select(STUDY_ID,newsite,nsp,nint,nind,npos,nL,nU,nneg,L,U)
+summary_table<-summary_table%>%dplyr::select(STUDY_ID,newsite,nsp,nint,nind,npos,nL,nU,nneg,L,U)
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
@@ -140,9 +140,9 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nneg=nneg/nint)
 saveRDS(summary_table,"../../Results/for_BioTIME/Freshwater_plotlevel/summary_table.RDS")
 
-df<-summary_table%>%select(STUDY_ID,newsite,nsp,f_nind,f_nL,f_nU,f_nneg)
+df<-summary_table%>%dplyr::select(STUDY_ID,newsite,nsp,f_nind,f_nL,f_nU,f_nneg)
 xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS")
-xxm<-xxm%>%select(STUDY_ID,TAXA)
+xxm<-xxm%>%dplyr::select(STUDY_ID,TAXA)
 df<-inner_join(df,xxm,"STUDY_ID")
 df <-df[order(df$TAXA),]
 dat<-t(df)

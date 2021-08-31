@@ -24,7 +24,7 @@ sort(unique(x$Species))
 # do not consider these unknown sp into analysis
 x<-x%>%filter(Species%notin%c("unspecifiable ","Unknown","Unknown rotifer", "Unknown rotifer2", "unknown ","Unknown "))
 
-x<-x%>%select(YEAR,Species,Value=Abundance)
+x<-x%>%dplyr::select(YEAR,Species,Value=Abundance)
 x<-x%>%group_by(Species,YEAR)%>%
   dplyr::summarise(Value=median(Value))%>%ungroup()
 
