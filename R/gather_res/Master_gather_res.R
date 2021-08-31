@@ -18,12 +18,29 @@ source("datasummary.R") # summarizing metadata used in this study
 
 # Bayesian model
 source("bayesian_model_realmlevel.R") # Realm level, TAXA as random effect
-source("bayesian_model_taxalevel.R") # TAXA as fixed effect
+#source("bayesian_model_taxalevel.R") # TAXA as fixed effect
 
 # plotting model results
 source("plot_posterior_realmlevel.R")
-source("plot_posterior_taxalevel.R")
+#source("plot_posterior_taxalevel.R")
 
 source("model_summary_res_table.R")
 #===========================================
+
+# subset birds data and rerun analysis
+source("bayesian_model_realmlevel_subset_birds_31.R")
+source("plot_posterior_realmlevel_subset_birds_31.R")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
