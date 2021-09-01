@@ -3,18 +3,18 @@ library(dplyr)
 data_pt_thrs<-20
 
 # read the meta data
-xxm<-read.csv("../../DATA/for_BioTIME/raw_data/accessed18Nov2020/BioTIMEMetadata_02_04_2018.csv") # a dataframe
+xxm<-read.csv("../../DATA/for_BioTIME/raw_data/accessed31Aug2021/BioTIMEMetadata_24_06_2021.csv") # a dataframe
 # read the meta data from private version
 xxm_private<-read.csv("../../DATA/for_BioTIME/raw_data/BioTIMEData_Blowes-Supp-etal-2019/bioTIMEmetadataScienceStudies.csv") # a dataframe
-xxm_extra<-anti_join(x=xxm_private,y=xxm,by="STUDY_ID") # 26 extra data
+xxm_extra<-anti_join(x=xxm_private,y=xxm,by="STUDY_ID") # 27 extra data
 xxm_extra<-xxm_extra%>%filter(DATA_POINTS>=data_pt_thrs) # 10 extra data with >= 20 years
 # but we will exclude relative biomass type: park grass exp. as it is not frequently sampled
 xxm_extra<-xxm_extra%>%filter(BIOMASS_TYPE%notin%"Relative biomass") # 9 extra data
 saveRDS(xxm_extra,"../../DATA/for_BioTIME/raw_data/BioTIMEData_Blowes-Supp-etal-2019/BioTIMEQueryScienceStudies2019_extra_metadata.RDS")
 
 # read data first
-xx<-read.csv("../../DATA/for_BioTIME/raw_data/accessed18Nov2020/BioTIMEQuery02_04_2018.csv") # a dataframe
-saveRDS(xx,"../../DATA/for_BioTIME/raw_data/accessed18Nov2020/BioTIMEQuery02_04_2018.RDS")
+xx<-read.csv("../../DATA/for_BioTIME/raw_data/accessed31Aug2021/BioTIMEQuery_24_06_2021.csv") # a dataframe
+saveRDS(xx,"../../DATA/for_BioTIME/raw_data/accessed31Aug2021/BioTIMEQuery24_06_2021.RDS")
 # read the data from private version
 xx_private<-read.csv("../../DATA/for_BioTIME/raw_data/BioTIMEData_Blowes-Supp-etal-2019/BioTIMEQueryScienceStudies2019.csv")
 xx_extra<-xx_private%>%filter(STUDY_ID%in%xxm_extra$STUDY_ID)
