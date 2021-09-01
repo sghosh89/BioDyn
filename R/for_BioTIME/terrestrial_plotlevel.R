@@ -53,7 +53,7 @@ for(i in 1:nrow(df)){
   df$n_methods[i]<-list(unique(dat$SUMMARY_METHODS))
   
   #---------- save sampling sites on map ----------
-  dat<-dat%>%select(STUDY_ID,LATITUDE,LONGITUDE)%>%distinct()
+  dat<-dat%>%dplyr::select(STUDY_ID,LATITUDE,LONGITUDE)%>%distinct()
   
   sitemap<-leaflet(dat) %>% addTiles() %>%
     addMarkers(~LONGITUDE, ~LATITUDE, label = ~htmlEscape(STUDY_ID))
@@ -100,14 +100,25 @@ source("terrestrial_plotlevel_361.R")
 source("terrestrial_plotlevel_363.R")
 source("terrestrial_plotlevel_366.R")
 source("terrestrial_plotlevel_413.R")
-#source("terrestrial_plotlevel_414.R") # same as 413? but different time span?
-#source("terrestrial_plotlevel_416.R") # same as 413? but different time span?
+source("terrestrial_plotlevel_414.R") #
+source("terrestrial_plotlevel_416.R") # 
 source("terrestrial_plotlevel_420.R")
 #source("terrestrial_plotlevel_483.R") # all raresp, warnings!
 #source("terrestrial_plotlevel_497.R") # all raresp, warnings!
+source("terrestrial_plotlevel_528.R")
+source("terrestrial_plotlevel_529.R")
+source("terrestrial_plotlevel_530.R")
+source("terrestrial_plotlevel_531.R")
+source("terrestrial_plotlevel_532.R")
+source("terrestrial_plotlevel_533.R")
+source("terrestrial_plotlevel_534.R")
+source("terrestrial_plotlevel_536.R")
+source("terrestrial_plotlevel_538.R")
+#source("terrestrial_plotlevel_540.R") # # no site left with min 20 year sampling
+
 
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map.RDS")
-df_included<-df%>%filter(site%notin%c(195,221,298,300,356,360,414,416,483,497))
+df_included<-df%>%filter(site%notin%c(195,221,298,300,356,360,483,497,540))
 saveRDS(df_included,"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map_selected.RDS")
 
 #--------------- Do a summary stats for terrestrial sites ------------------
@@ -138,7 +149,7 @@ for (i in c(1:length(df_included$site))){
   }
 }
 # reorganize
-summary_table<-summary_table%>%select(STUDY_ID,newsite,nsp,nint,nind,npos,nL,nU,nneg,L,U)
+summary_table<-summary_table%>%dplyr::select(STUDY_ID,newsite,nsp,nint,nind,npos,nL,nU,nneg,L,U)
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
@@ -150,9 +161,9 @@ saveRDS(summary_table,"../../Results/for_BioTIME/Terrestrial_plotlevel/summary_t
 # now exclude the sites which has only indep. interaction
 #summary_table<-summary_table%>%filter(f_nind!=1)
 
-df<-summary_table%>%select(STUDY_ID,newsite,nsp,f_nind,f_nL,f_nU,f_nneg)
+df<-summary_table%>%dplyr::select(STUDY_ID,newsite,nsp,f_nind,f_nL,f_nU,f_nneg)
 xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS")
-xxm<-xxm%>%select(STUDY_ID,TAXA)
+xxm<-xxm%>%dplyr::select(STUDY_ID,TAXA)
 df<-inner_join(df,xxm,"STUDY_ID")
 df <-df[order(df$TAXA),]
 dat<-t(df)
