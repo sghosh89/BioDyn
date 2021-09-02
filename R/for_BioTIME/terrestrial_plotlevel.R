@@ -130,26 +130,33 @@ for (i in c(1:length(df_included$site))){
   if(length(newsitelist)==1){
     tempo<-newsitelist==df_included$site[i]
     if(tempo==T){
+      readpath<-resloc
       resloc2<-paste("../../Results/for_BioTIME/Terrestrial_plotlevel/",df_included$site[i],"/",sep="")
     }else{
+      readpath<-paste(resloc,newsitelist,"/",sep="")
       resloc2<-paste("../../Results/for_BioTIME/Terrestrial_plotlevel/",df_included$site[i],"/",newsitelist,"/",sep="")
     }
     st<-readRDS(paste(resloc2,"summary_df.RDS",sep=""))
     st$STUDY_ID<-df_included$site[i]
     st$newsite<-newsitelist
+    bigM<-readRDS(paste(readpath,"spmat.RDS",sep=""))
+    st$initR<-ncol(bigM$spmat)
     summary_table<-rbind(summary_table,st)
   }else{
     for(j in 1:length(newsitelist)){
+      readpath<-paste(resloc,newsitelist[j],"/",sep="")
       resloc2<-paste("../../Results/for_BioTIME/Terrestrial_plotlevel/",df_included$site[i],"/",newsitelist[j],"/",sep="")
       st<-readRDS(paste(resloc2,"summary_df.RDS",sep=""))
       st$STUDY_ID<-df_included$site[i]
       st$newsite<-newsitelist[j]
+      bigM<-readRDS(paste(readpath,"spmat.RDS",sep=""))
+      st$initR<-ncol(bigM$spmat)
       summary_table<-rbind(summary_table,st)
     }
   }
 }
 # reorganize
-summary_table<-summary_table%>%dplyr::select(STUDY_ID,newsite,nsp,nint,nind,npos,nL,nU,nneg,L,U)
+summary_table<-summary_table%>%dplyr::select(STUDY_ID,newsite,initR,nsp,nint,nind,npos,nL,nU,nneg,L,U)
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
@@ -161,7 +168,7 @@ saveRDS(summary_table,"../../Results/for_BioTIME/Terrestrial_plotlevel/summary_t
 # now exclude the sites which has only indep. interaction
 #summary_table<-summary_table%>%filter(f_nind!=1)
 
-df<-summary_table%>%dplyr::select(STUDY_ID,newsite,nsp,f_nind,f_nL,f_nU,f_nneg)
+df<-summary_table%>%dplyr::select(STUDY_ID,newsite,initR,nsp,f_nind,f_nL,f_nU,f_nneg)
 xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS")
 xxm<-xxm%>%dplyr::select(STUDY_ID,TAXA)
 df<-inner_join(df,xxm,"STUDY_ID")
