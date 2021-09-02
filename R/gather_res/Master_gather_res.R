@@ -28,8 +28,9 @@ source("model_summary_res_table.R")
 #===========================================
 
 # subset birds data and rerun analysis
-source("bayesian_model_realmlevel_subset_birds_31.R")
-source("plot_posterior_realmlevel_subset_birds_31.R")
+source("subset_BBS_21.R") # subsetting 21% bird data
+source("bayesian_model_realmlevel_subset_birds_21.R")
+source("plot_posterior_realmlevel_subset_birds_21.R")
 
 
 

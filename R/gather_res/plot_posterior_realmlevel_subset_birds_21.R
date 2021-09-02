@@ -5,7 +5,7 @@ library(tidybayes)
 library(tidyverse)
 library(gridExtra)
 
-full_model<-readRDS("../../Results/gather_res/subset_birds_31/fullmodel.RDS")
+full_model<-readRDS("../../Results/gather_res/subset_birds_21/fullmodel.RDS")
 post<-posterior_samples(full_model)
 
 #--------------------------- Intercept ----------------------------------
@@ -218,7 +218,7 @@ g_SR<-gathered_postSR %>%
                                  panel.grid.minor = element_blank())+
   facet_wrap(~key, scales = "free")
 
-pdf("../../Results/gather_res/subset_birds_31/plot_posterior.pdf",height=24,width=15)
+pdf("../../Results/gather_res/subset_birds_21/plot_posterior.pdf",height=24,width=15)
 op<-par(mar=c(2,2,2,2))
 gridExtra::grid.arrange(g_I,g_R,g_VR,g_A,g_uniA,g_SR,nrow=6)
 par(op)
@@ -301,7 +301,7 @@ g_SR<-gathered_postSR%>%ggplot(aes(y=key,x=value,col=as.factor(color)))+
                                  axis.ticks.y = element_blank())
 
 
-pdf("../../Results/gather_res/subset_birds_31/plot_posterior_pointinterval.pdf",height=6,width=12)
+pdf("../../Results/gather_res/subset_birds_21/plot_posterior_pointinterval.pdf",height=6,width=12)
 op<-par(mar=c(2,2,2,2))
 gridExtra::grid.arrange(g_I,g_R,g_VR,g_A,g_uniA,g_SR,nrow=2)
 par(op)
@@ -365,14 +365,14 @@ g_tx<-tx_gather%>%ggplot(aes(y=key,x=value))+
                                  #axis.text.y = element_blank(),
                                  axis.ticks.y = element_blank())
 
-pdf("../../Results/gather_res/subset_birds_31/plot_taxaeffect.pdf",height=5,width=8)
+pdf("../../Results/gather_res/subset_birds_21/plot_taxaeffect.pdf",height=5,width=8)
 op<-par(mar=c(2,2,2,2))
 g_tx
 par(op)
 dev.off()
 
 ##################################################################
-# model summary output for subset_birds_31
+# model summary output for subset_birds_21
 
 rm(list=ls())
 library(brms)
@@ -381,10 +381,10 @@ library(performance)
 library(tidybayes)
 
 ###########################################################################
-sink("../../Results/gather_res/console_model_summary_table_subset_birds_31.txt", append=TRUE, split=TRUE)
+sink("../../Results/gather_res/console_model_summary_table_subset_birds_21.txt", append=TRUE, split=TRUE)
 
 # see summary from basic model without realm
-bm<-readRDS("../../Results/gather_res/subset_birds_31/basic_model.RDS")
+bm<-readRDS("../../Results/gather_res/subset_birds_21/basic_model.RDS")
 post<-posterior_samples(bm)
 df<-data.frame(Median=NA*numeric(5),
                LowCI0.95=NA*numeric(5),UpCI0.95=NA*numeric(5),
@@ -437,7 +437,7 @@ row.names(dfbm)<-rownames(df)
 dfbm
 #################################################################################
 
-nm<-readRDS("../../Results/gather_res/subset_birds_31/basic_model_w_REALM.RDS")
+nm<-readRDS("../../Results/gather_res/subset_birds_21/basic_model_w_REALM.RDS")
 post<-posterior_samples(nm)
 post<-post%>%select(b_Intercept,b_R,b_VR,
                     b_REALMTerrestrial,`b_R:REALMTerrestrial`,`b_VR:REALMTerrestrial`,
@@ -527,7 +527,7 @@ dfnm
 
 #################################################################################
 
-fm<-readRDS("../../Results/gather_res/subset_birds_31/fullmodel.RDS")
+fm<-readRDS("../../Results/gather_res/subset_birds_21/fullmodel.RDS")
 post<-posterior_samples(fm)
 post<-post%>%select(b_Intercept,b_R,b_VR,b_A,b_uniA,b_SR,
                     b_REALMTerrestrial,`b_R:REALMTerrestrial`,`b_VR:REALMTerrestrial`,

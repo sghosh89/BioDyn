@@ -1,22 +1,20 @@
-source("./subset_BBS_31.R") # subsetting 31% bird data
-
 rm(list=ls())
 library(brms)
 library(tidyverse)
 library(performance)
 
-if(!dir.exists("../../Results/gather_res/subset_birds_31")){
-  dir.create("../../Results/gather_res/subset_birds_31")
+if(!dir.exists("../../Results/gather_res/subset_birds_21")){
+  dir.create("../../Results/gather_res/subset_birds_21")
 }
 
 
 #========================================================================================
-sink("../../Results/gather_res/subset_birds_31/console_practice_hierarchicalmodel_subset_birds.txt", append=TRUE, split=TRUE)
+sink("../../Results/gather_res/subset_birds_21/console_practice_hierarchicalmodel_subset_birds.txt", append=TRUE, split=TRUE)
 #====================================================================================================
 
 
 #===========================
-df<-readRDS("../../Results/gather_res/stability_metric_all_subset_birds_31.RDS")
+df<-readRDS("../../Results/gather_res/stability_metric_all_subset_birds_21.RDS")
 mydat<-df[,c("source","STUDY_ID","newsite","REALM","TAXA","ORGANISMS","iCV","iCValt","phi","phi_skw","nsp","L","U","f_nL","f_nU")]
 mydat$UID<-paste(mydat$source,mydat$STUDY_ID,sep=",")
 mydat$A<-mydat$f_nL+mydat$f_nU # total asymmetry
@@ -108,7 +106,7 @@ basic_model<-brm(bf_stability0,
                  control = list(adapt_delta = 0.99, max_treedepth = 15),
                  save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model),digits = 3)
-saveRDS(basic_model,"../../Results/gather_res/subset_birds_31/basic_model.RDS")
+saveRDS(basic_model,"../../Results/gather_res/subset_birds_21/basic_model.RDS")
 
 cat(paste("------- brms basic model with asymmetry starting at time: ", Sys.time()," -------------- \n "))
 
@@ -121,7 +119,7 @@ basic_model_w_asym<-brm(bf_stability0_w_asym,
                         control = list(adapt_delta = 0.99, max_treedepth = 15),
                         save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model_w_asym),digits = 3)
-saveRDS(basic_model_w_asym,"../../Results/gather_res/subset_birds_31/basic_model_w_asym.RDS")
+saveRDS(basic_model_w_asym,"../../Results/gather_res/subset_birds_21/basic_model_w_asym.RDS")
 
 cat(paste("------- brms basic model with REALM starting at time: ", Sys.time()," -------------- \n "))
 
@@ -134,7 +132,7 @@ basic_model_w_REALM<-brm(bf_stability0_w_REALM,
                          control = list(adapt_delta = 0.99, max_treedepth = 15),
                          save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model_w_REALM),digits = 3)
-saveRDS(basic_model_w_REALM,"../../Results/gather_res/subset_birds_31/basic_model_w_REALM.RDS")
+saveRDS(basic_model_w_REALM,"../../Results/gather_res/subset_birds_21/basic_model_w_REALM.RDS")
 
 cat(paste("------- brms full model starting at time: ", Sys.time()," -------------- \n "))
 bf_stability<-bf(stability_skw ~ (R+VR+A+uniA+SR)*REALM + (1|TAXA/UID))
@@ -148,7 +146,7 @@ full_model<-brm(bf_stability,
                 save_pars = save_pars(all = TRUE),seed=123)
 
 print(summary(full_model),digits = 3)
-saveRDS(full_model,"../../Results/gather_res/subset_birds_31/fullmodel.RDS")
+saveRDS(full_model,"../../Results/gather_res/subset_birds_21/fullmodel.RDS")
 
 
 #null_model_c<-add_criterion(null_model,
@@ -171,7 +169,7 @@ lc_list<-list(loo_basic=loo_basic,
               loo_full=loo_full,
               lc=lc,
               lmw=lmw)
-saveRDS(lc_list,"../../Results/gather_res/subset_birds_31/lc_list.RDS")
+saveRDS(lc_list,"../../Results/gather_res/subset_birds_21/lc_list.RDS")
 print(lc)
 print(lmw)
 
@@ -198,16 +196,16 @@ r2_list<-list(r2_basic=r2_basic,
               r2_basic_w_asym=r2_basic_w_asym,
               r2_basic_w_REALM=r2_basic_w_REALM,
               r2_full=r2_full)
-saveRDS(r2_list,"../../Results/gather_res/subset_birds_31/r2_list.RDS")
+saveRDS(r2_list,"../../Results/gather_res/subset_birds_21/r2_list.RDS")
 
 cat(paste("------- completed: ", Sys.time()," -------------- \n "))
 
 sink()
 
 #################################
-#basic_model<-readRDS("../../Results/gather_res/subset_birds_31/basic_model.RDS")
-#basic_model_w_REALM<-readRDS("../../Results/gather_res/subset_birds_31/basic_model_w_REALM.RDS")
-#full_model<-readRDS("../../Results/gather_res/subset_birds_31/fullmodel.RDS")
+#basic_model<-readRDS("../../Results/gather_res/subset_birds_21/basic_model.RDS")
+#basic_model_w_REALM<-readRDS("../../Results/gather_res/subset_birds_21/basic_model_w_REALM.RDS")
+#full_model<-readRDS("../../Results/gather_res/subset_birds_21/fullmodel.RDS")
 
 # is it a reasonable fit?
 #brms::pp_check(basic_model,nsamples = 1000)
@@ -241,7 +239,7 @@ sink()
 
 ## question: what are r_ terms in posterior_samples(full_model)?
 
-df<-readRDS("../../Results/gather_res/stability_metric_all_subset.RDS")
+df<-readRDS("../../Results/gather_res/stability_metric_all_subset_birds_21.RDS")
 df_F<-df%>%filter(REALM=="Freshwater")
 df_T<-df%>%filter(REALM=="Terrestrial")
 sum(df_F$phi_skw>1)/nrow(df_F) # less stable
