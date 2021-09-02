@@ -19,7 +19,7 @@ metadata<-inner_join(uroutes,x_meta,by="Country_State_Route")%>%
                             rename(Stratum_code=Stratum)
 
 bbs_strata1<-read.csv("../../DATA/for_BBS/raw_data/BBSdata_accessed_03dec2020/BBS_physiographic_strataname.csv")
-bbs_strata1<-bbs_strata1%>%select(Stratum_code=Stratum,Stratum_name=Name,Stratum_area=Area.Km2)
+bbs_strata1<-bbs_strata1%>%dplyr::select(Stratum_code=Stratum,Stratum_name=Name,Stratum_area=Area.Km2)
 #bbs_strata2<-read.csv("../../DATA/for_BBS/raw_data/BBSdata_accessed_03dec2020/BBS_physiographic_strataname_statemap.csv")
 metadata<-inner_join(metadata,bbs_strata1,by="Stratum_code")
 saveRDS(metadata,"../../DATA/for_BBS/wrangled_data/unique_routes_all_metadata.RDS")
@@ -72,6 +72,17 @@ for(i in 1:nrow(uroutes)){
   summary_table<-rbind(summary_table,x)
 }
 summary_table<-cbind(siteid=uroutes$Country_State_Route,summary_table)
+
+# to get initial richness
+for(i in 1:nrow(summary_table)){
+  siteid<-summary_table$siteid[i]
+  resloc_input<-paste("../../DATA/for_BBS/wrangled_data/",siteid,"/",sep="")
+  bigM<-readRDS(paste(resloc_input,"sourcefile.RDS",sep=""))
+  summary_table$initR[i]<-length(unique(bigM$AOU))
+}
+# reorganize
+summary_table<-summary_table%>%dplyr::select(siteid,initR,nsp,nint,nind,npos,nL,nU,nneg,L,U)
+
 saveRDS(summary_table,"../../Results/for_BBS/summary_table.RDS")
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
@@ -100,7 +111,7 @@ op<-par(mar=c(10,10,5,1),mgp=c(5,1,0))
 for(i in 1:length(sv)){
  
     xb<-sv[[i]]
-    df<-xb%>%select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
+    df<-xb%>%dplyr::select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
     dat<-t(df)
     colnames(dat)<-xb$RouteName
     dat<-dat[-1,]
@@ -131,7 +142,7 @@ dev.off()
 #   summary histogram
 
 #pie chart
-#x<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+#x<-summary_table%>%dplyr::select(f_nind,f_nL,f_nU,f_nneg)
 #x<-as.matrix(x)
 #pie(x[1,],labels=colnames(x),col=c("yellow","red","blue","green"))
 
@@ -160,7 +171,7 @@ my_summary_boxplot<-function(summary_table,nametag,myresloc){
   # for how many sites syn==comp?
   nEqSynComp<-sum((summary_table$f_nL+summary_table$f_nU)==summary_table$f_nneg)
   
-  z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+  z<-summary_table%>%dplyr::select(f_nind,f_nL,f_nU,f_nneg)
   colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
   y <- gather(z, Pairwise.Interaction, Frequency) 
   boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
