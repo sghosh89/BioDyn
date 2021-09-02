@@ -13,7 +13,7 @@ if(!dir.exists(resloc)){
 good_TimeSeriesID_q3q4<-readRDS("../../DATA/for_RivFishTIME/wrangled_data/good_TimeSeriesID_q3q4.RDS")
 x<-read.csv("../../DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020/1873_2_RivFishTIME_SurveyTable.csv") # a dataframe
 x_meta<-read.csv("../../DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020/1873_2_RivFishTIME_TimeseriesTable.csv")
-z<-x %>% distinct(TimeSeriesID, .keep_all = TRUE)%>%select(TimeSeriesID,UnitAbundance)
+z<-x %>% distinct(TimeSeriesID, .keep_all = TRUE)%>%dplyr::select(TimeSeriesID,UnitAbundance)
 x_meta<-inner_join(z,x_meta,by="TimeSeriesID")
 
 x_meta<-x_meta%>%filter(TimeSeriesID%in%good_TimeSeriesID_q3q4)
@@ -66,6 +66,17 @@ for (i in c(1:length(good_TimeSeriesID_q3q4))){
   summary_table<-rbind(summary_table,x)
 }
 summary_table<-cbind(siteid=good_TimeSeriesID_q3q4,summary_table)
+
+# to get initial richness
+for(i in 1:nrow(summary_table)){
+  siteid<-summary_table$siteid[i]
+  resloc_input<-paste("../../DATA/for_RivFishTIME/wrangled_data/",siteid,"/",sep="")
+  bigM<-readRDS(paste(resloc_input,"allspecies_timeseries.RDS",sep=""))
+  summary_table$initR[i]<-ncol(bigM)
+}
+# reorganize
+summary_table<-summary_table%>%dplyr::select(siteid,initR,nsp,nint,nind,npos,nL,nU,nneg,L,U)
+
 saveRDS(summary_table,"../../Results/for_RivFishTIME/summary_table.RDS")
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
@@ -85,7 +96,7 @@ dev.off()
 summary_table<-inner_join(summary_table,x_meta,by=c("siteid"="TimeSeriesID"))
 saveRDS(summary_table,"../../Results/for_RivFishTIME/summary_table_detail_version.RDS")
 
-df<-summary_table%>%select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
+df<-summary_table%>%dplyr::select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
 dat<-t(df)
 colnames(dat)<-dat[1,]
 dat<-dat[-1,]
@@ -153,7 +164,7 @@ my_summary_boxplot<-function(summary_table,nametag,myresloc){
   # for how many sites syn==comp?
   nEqSynComp<-sum((summary_table$f_nL+summary_table$f_nU)==summary_table$f_nneg)
   
-  z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+  z<-summary_table%>%dplyr::select(f_nind,f_nL,f_nU,f_nneg)
   colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
   y <- gather(z, Pairwise.Interaction, Frequency) 
   boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),

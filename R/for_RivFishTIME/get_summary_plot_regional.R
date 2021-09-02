@@ -15,7 +15,7 @@ get_summary_plot_regional<-function(x_meta,summary_table,country,label_country,n
   summary_table_c<-summary_table%>%filter(siteid%in%meta_c$TimeSeriesID)
   
   
-  df<-summary_table_c%>%select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
+  df<-summary_table_c%>%dplyr::select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
   dat<-t(df)
   colnames(dat)<-dat[1,]
   dat<-dat[-1,]
@@ -141,7 +141,7 @@ get_summary_plot_regional(x_meta=x_meta,summary_table=summary_table,nr=5,
 #################################################################################
 # Now if you want to exclude count data
 x<-read.csv("../../DATA/for_RivFishTIME/raw_data/RivFishTIME_accessed_08dec2020/1873_2_RivFishTIME_SurveyTable.csv") # a dataframe
-z<-x %>% distinct(TimeSeriesID, .keep_all = TRUE)%>%select(TimeSeriesID,UnitAbundance)
+z<-x %>% distinct(TimeSeriesID, .keep_all = TRUE)%>%dplyr::select(TimeSeriesID,UnitAbundance)
 x_meta<-inner_join(z,x_meta,by="TimeSeriesID")
 
 x_meta_exclude_count<-x_meta%>%filter(UnitAbundance!="Count")
