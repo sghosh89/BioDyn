@@ -102,7 +102,7 @@ basic_model<-brm(bf_stability0,
                 data=mydat_scaled,
                 family = gaussian(),
                 chains=4,cores=4,iter=16000,
-                warmup=8000,init="0",thin=4,
+                warmup=12000,init="0",thin=4,
                 control = list(adapt_delta = 0.99, max_treedepth = 15),
                 save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model),digits = 3)
@@ -115,7 +115,7 @@ basic_model_w_asym<-brm(bf_stability0_w_asym,
                          data=mydat_scaled,
                          family = gaussian(),
                          chains=4,cores=4,iter=16000,
-                         warmup=8000,init="0",thin=4,
+                         warmup=12000,init="0",thin=4,
                          control = list(adapt_delta = 0.99, max_treedepth = 15),
                          save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model_w_asym),digits = 3)
@@ -128,7 +128,7 @@ basic_model_w_REALM<-brm(bf_stability0_w_REALM,
                          data=mydat_scaled,
                          family = gaussian(),
                          chains=4,cores=4,iter=16000,
-                         warmup=8000,init="0",thin=4,
+                         warmup=12000,init="0",thin=4,
                          control = list(adapt_delta = 0.99, max_treedepth = 15),
                          save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model_w_REALM),digits = 3)
@@ -141,7 +141,7 @@ full_model<-brm(bf_stability,
                 data=mydat_scaled,
                 family = gaussian(),
                 chains=4,cores=4,iter=16000,
-                warmup=8000,init="0",thin=4,
+                warmup=12000,init="0",thin=4,
                 control = list(adapt_delta = 0.99, max_treedepth = 15),
                 save_pars = save_pars(all = TRUE),seed=123)
 

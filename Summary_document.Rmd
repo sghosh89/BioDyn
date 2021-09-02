@@ -1,27 +1,27 @@
 ---
-title: "A global analysis of community stability across freshwater and terrestrial realms"
+title: A global analysis of community stability across freshwater and terrestrial
+  realms
 author: "Shyamolina"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: 
+output:
   pdf_document:
     number_sections: no
     keep_tex: yes
     fig_caption: yes
-
+  word_document: default
 header-includes:
-      - \usepackage{setspace}\doublespacing
-      - \usepackage{lettrine}
-      - \usepackage{hyperref}
-      - \usepackage{lineno}\linenumbers
-      - \hypersetup{linkcolor=red}
-      - \usepackage{caption}\captionsetup[figure]{width=16cm}\captionsetup[figure]{font={stretch=1.5}}\captionsetup[table]{width=16cm}\captionsetup[table]{font={stretch=1.5}} 
-      - \usepackage[nomarkers,nolists]{endfloat}
-
-mainfont: Times New Roman 
-tables: True
-link-citations: True
-urlcolor : blue
-indent : True
+- \usepackage{setspace}\doublespacing
+- \usepackage{lettrine}
+- \usepackage{hyperref}
+- \usepackage{lineno}\linenumbers
+- \hypersetup{linkcolor=red}
+- \usepackage{caption}\captionsetup[figure]{width=16cm}\captionsetup[figure]{font={stretch=1.5}}\captionsetup[table]{width=16cm}\captionsetup[table]{font={stretch=1.5}}
+- \usepackage[nomarkers,nolists]{endfloat}
+mainfont: Times New Roman
+tables: yes
+link-citations: yes
+urlcolor: blue
+indent: yes
 ---
 
 ```{r setup, include=FALSE, echo=F, message=F, results="hide"}
@@ -112,11 +112,6 @@ Below is the description of model set up:
 \end{figure} 
 
 \begin{figure}[!ht]
-\includegraphics[width=18cm]{./Results/gather_res/ratio_for_eachrealm_ai.pdf}
-\caption{Synchrony higher than asynchrony and upper tail dominance over lower tail in asymmetry for freshwater than terrestrial communities indicate lower stability for freshwater (could be in suppmat). \label{fig_realm_ratio}}
-\end{figure} 
-
-\begin{figure}[!ht]
 \includegraphics[width=18cm]{./Results/gather_res/test/model_summary_resfig_ai.pdf}
 \caption{Results from three-level model set up. \label{fig_compare_models}}
 \end{figure} 
@@ -127,16 +122,32 @@ Below is the description of model set up:
 75$\%$ (thickest bars), and 95$\%$ (thinnest bars) uncertainty intervals. \label{fig_post_fm}}
 \end{figure} 
 
+
+\begin{figure}[!ht]
+\includegraphics[width=18cm]{./Results/gather_res/data_summary_map_ai-pages-3.pdf}
+\caption{Data summary \label{fig_data_summary_map}}
+\end{figure} 
+
+\begin{figure}[!ht]
+\includegraphics[width=18cm]{./Results/gather_res/data_summary.pdf}
+\caption{Data summary \label{fig_data_summary}}
+\end{figure} 
+
+\begin{figure}[!ht]
+\includegraphics[width=18cm]{./Results/gather_res/ratio_for_eachrealm_withtailasym_ai2.pdf}
+\caption{Synchrony higher than asynchrony and upper tail dominance over lower tail in asymmetry for freshwater than terrestrial communities indicate lower stability for freshwater (could be in suppmat). \label{fig_realm_ratio}}
+\end{figure} 
+
+\begin{figure}[!ht]
+\includegraphics[width=18cm]{./Results/for_BioTIME/terrestrial_plotlevel/sketch_method_Corl-Coru_ai.pdf}
+\caption{method fig. \label{fig_methods}}
+\end{figure}
+
+
 \begin{figure}[!ht]
 \includegraphics[width=18cm]{./Results/gather_res/taxa_fixedeffect/plot_posterior_pointinterval_ai.pdf}
 \caption{Posterior estimate from model using taxa as fixed effect. Point estimates are median values (circles) with 75$\%$ (thickest bars), and 95$\%$ (thinnest bars) uncertainty intervals. (could be in suppmat). \label{fig_taxa_fix}}
-\end{figure} 
-
-
-
-
-
-
+\end{figure}
 
 
 
