@@ -61,8 +61,8 @@ ci_all<-rbind(ci_BioTIME,ci_BioTIMEx,ci_BBS,ci_RF,ci_SL_P,ci_SL_Z,ci_z2014,ci_in
 #######################################################################
 
 
-res_freshw<-ci_all%>%filter(REALM=="Freshwater")%>%select(Interaction,freq_type,Frequency)
-res_terres<-ci_all%>%filter(REALM=="Terrestrial")%>%select(Interaction,freq_type,Frequency)
+res_freshw<-ci_all%>%filter(REALM=="Freshwater")%>%dplyr::select(Interaction,freq_type,Frequency)
+res_terres<-ci_all%>%filter(REALM=="Terrestrial")%>%dplyr::select(Interaction,freq_type,Frequency)
 
 
 pdf("../../Results/gather_res/interaction_freq_for_eachrealm.pdf",height=4,width=16)
