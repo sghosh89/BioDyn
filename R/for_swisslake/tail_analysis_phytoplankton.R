@@ -100,6 +100,13 @@ summary_df<-summary_df%>%mutate(f_nind=nind/nint,
                                       f_nneg=nneg/nint)
 summary_df$siteid<-c("L1WA","L2UZ","L3LU","L4LZ","L5SE","L6HA","L7BA","L8GR")
 
+summary_df$initR<-NA
+for(i in 1:nrow(summary_df)){
+  bigM<-read.csv(paste("../../DATA/for_swisslake/wrangled_data/species_list_",summary_df$siteid[i],"_c_blake_sorted.csv",sep=""))
+  bigM<-bigM%>%filter(include==1)
+  summary_df$initR[i]<-length(unique(bigM$species))
+}
+
 saveRDS(summary_df,"../../Results/for_swisslake/summary_table_phytoplankton.RDS")
 
 df<-summary_df%>%select(nsp,f_nind,f_nL,f_nU,f_nneg)
