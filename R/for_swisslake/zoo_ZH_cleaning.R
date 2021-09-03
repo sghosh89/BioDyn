@@ -96,6 +96,10 @@ spmat<-spmat%>%group_by(year,sp)%>%summarize(mean_val=mean(val))%>%ungroup()%>%
 rownames(spmat)<-spmat$year
 spmat<-spmat[,-1]
 
+saveRDS(spmat,
+        paste(resloc_z,"allspmat_zoo_ZH.RDS",sep=""))
+
+
 presentyr<-apply(spmat,MARGIN = 2,FUN = function(x){sum(x!=0)})
 commonsp<-which(presentyr>=0.7*nrow(spmat)) # commonsp present 70% of sampling year 
 raresp<-which(presentyr<0.7*nrow(spmat))
