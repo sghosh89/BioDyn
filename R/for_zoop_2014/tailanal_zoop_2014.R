@@ -65,6 +65,13 @@ for (i in c(1:length(good_LakeID))){
   summary_table<-rbind(summary_table,x)
 }
 summary_table<-cbind(siteid=good_LakeID,summary_table)
+summary_table$initR<-NA
+for(i in 1:nrow(summary_table)){
+  bigM<-readRDS(paste("../../DATA/for_zoop_2014/wrangled_data/",summary_table$siteid[i],"/allsp_timeseries.RDS",sep=""))
+  summary_table$initR[i]<-ncol(bigM)
+}
+# reorganize
+summary_table<-summary_table%>%dplyr::select(siteid,initR,nsp,nint,nind,npos,nL,nU,nneg,L,U)
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
@@ -82,7 +89,7 @@ dev.off()
 
 saveRDS(summary_table,"../../Results/for_zoop_2014/summary_table.RDS")
 
-df<-summary_table%>%select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
+df<-summary_table%>%dplyr::select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
 dat<-t(df)
 colnames(dat)<-dat[1,]
 dat<-dat[-1,]
@@ -123,7 +130,7 @@ my_summary_boxplot<-function(summary_table,nametag,myresloc){
   # for how many sites syn==comp?
   nEqSynComp<-sum((summary_table$f_nL+summary_table$f_nU)==summary_table$f_nneg)
   
-  z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+  z<-summary_table%>%dplyr::select(f_nind,f_nL,f_nU,f_nneg)
   colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
   y <- gather(z, Pairwise.Interaction, Frequency) 
   boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
