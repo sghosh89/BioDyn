@@ -183,14 +183,14 @@ get_communitylevel_data<-function(cc,resloc){
     }
     
     cc_all<-arrange(cc_all,Phylum,Class,Subclass,Order,Suborder,Family,Subfamily,Genus,Species,Year)
-    cc_all<-cc_all%>%select(-c(uid0,uid1,uid2,uid3))
+    cc_all<-cc_all%>%dplyr::select(-c(uid0,uid1,uid2,uid3))
     
     write.csv(cc_all,paste(resloc,"wrangleddata_community.csv",sep=""),row.names = F)
   }
   
   #------------------------- now get inputmat_tailanalysis -------------------------------
   
-  mat<-cc_all%>%select(Year,Phylum, Class,Family,Subfamily,Genus,Species,Number,selection)
+  mat<-cc_all%>%dplyr::select(Year,Phylum, Class,Family,Subfamily,Genus,Species,Number,selection)
   mat$sp<-NA
   id<-which(mat$selection=="splevel" & mat$Genus=="NA.genus" & mat$Species=="NA.species")
   mat$sp[id]<-paste(mat$Phylum[id],mat$Class[id],mat$Family[id],sep=" ")
@@ -222,7 +222,7 @@ get_communitylevel_data<-function(cc,resloc){
   
   # =========== now split it by sp column so that each sp along the column ==========
   
-  mat<-mat%>%select(Year,sp,Number)
+  mat<-mat%>%dplyr::select(Year,sp,Number)
   yrs<-sort(unique(mat$Year))
   sp<-sort(unique(mat$sp))
   mat$Number<-as.numeric(mat$Number) # just to ensure
@@ -242,7 +242,7 @@ get_communitylevel_data<-function(cc,resloc){
   badsp<-apply(spmat,MARGIN=2,function(x){all(x==0)})
   badspid<-names(badsp)[which(badsp==T)]
   spmat<-as.data.frame(spmat)
-  spmat<-spmat%>%select(-all_of(badspid))
+  spmat<-spmat%>%dplyr::select(-all_of(badspid))
   
   if(ncol(spmat)<2){
    cat("-------- not enough sp present ------------")

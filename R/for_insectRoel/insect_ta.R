@@ -8,7 +8,9 @@ xm<-read.csv("../../DATA/for_insectRoel/20yrFreshwater_Metadata.csv")
 x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData 202106.rds")
 #x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData.rds")
 #x<-x%>%filter(Number>0)
-
+xtbl<-x%>%dplyr::distinct(Rank,.keep_all=T)
+xtbl<-xtbl[order(xtbl$Rank),]
+xtbl<-xtbl%>%dplyr::select(Rank,Level)
 #---------------------------------------
 resloc<-"../../Results/for_insectRoel/"
 if(!dir.exists(resloc)){
@@ -74,12 +76,22 @@ for(i in 1:length(Datasource_ID)){
 summary_table<-cbind(STUDY_ID=didlist,newsite=pidlist,summary_table)
 saveRDS(summary_table,"../../Results/for_insectRoel/summary_table.RDS")
 
+source("get_operational_richness.R")
+
+summary_table$initR<-NA
+for(i in 1:nrow(summary_table)){
+  initR<-readRDS(paste("../../DATA/for_insectRoel/wrangled_data/",
+                       summary_table$STUDY_ID[i],"/",summary_table$newsite[i],
+                       "/initial_richness.RDS",sep=""))
+  summary_table$initR[i]<-initR
+}
+
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
                                       f_nL=nL/nint,
                                       f_nU=nU/nint,
                                       f_nneg=nneg/nint)
-metadata<-xm%>%select(Plot_ID,REALM=Realm,TAXA=Taxonomic_scope,ORGANISMS=Taxonomic_scope,Latitude,Longitude)
+metadata<-xm%>%dplyr::select(Plot_ID,REALM=Realm,TAXA=Taxonomic_scope,ORGANISMS=Taxonomic_scope,Latitude,Longitude)
 length(unique(xm$Plot_ID))==nrow(xm)
 summary_table<-inner_join(summary_table,metadata,by=c("newsite"="Plot_ID"))
 summary_table$TAXA<-"Freshwater invertebrates"
@@ -115,7 +127,7 @@ my_summary_boxplot<-function(summary_table,nametag,myresloc){
   
   # nrow(summary_table)==nLT+nUT+nC+nSym+nEqSynComp+findep
   
-  z<-summary_table%>%select(f_nind,f_nL,f_nU,f_nneg)
+  z<-summary_table%>%dplyr::select(f_nind,f_nL,f_nU,f_nneg)
   colnames(z)<-c("Independent","Synchrony(rare)","Synchrony(abundant)","Compensatory")
   y <- gather(z, Pairwise.Interaction, Frequency) 
   boxplot(Frequency~Pairwise.Interaction,y,ylim=c(0,1),
