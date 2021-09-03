@@ -81,6 +81,152 @@ get_rankabun(inputmatfile_list = inputloc_table$inputloc, pathlist = inputloc_ta
 
 saveRDS(inputloc_table,"../../Results/for_BioTIMEx/inputloc_table.RDS")
 
+#------------------------------------------------------------------------------
+# get initial richness
+inputloc_table$tempoloc<-NA
+for(i in 1:nrow(inputloc_table)){
+  inputloc_table$tempoloc[i]<-paste(strsplit(inputloc_table$inputloc[i],"/")[[1]][1:6],collapse="/")
+  inputloc_table$tempoloc[i]<-paste(inputloc_table$tempoloc[i],"/",sep="")
+}
+
+inputloc_table$initR<-NA
+
+i<-1
+bigM<-read.csv(paste(inputloc_table$tempoloc[i],"allrawdata.csv",sep=""))
+inputloc_table$initR[i]<-length(unique(bigM$ID_SPECIES))
+
+i<-2
+#M<-readRDS(inputloc_table$inputloc[i])
+bigM<-read.csv(paste(inputloc_table$tempoloc[i],"grouped_splist_carpenter_2016_blake_sorted.csv",sep=""))
+bigM<-bigM%>%filter(included==1)
+inputloc_table$initR[i]<-length(unique(bigM$Species_agg))
+
+i<-3
+#M<-readRDS(inputloc_table$inputloc[i])
+bigM<-read.csv(paste(inputloc_table$tempoloc[i],"allrawdata.csv",sep=""))
+bigM_BLEL<-bigM%>%filter(SITE=="BLEL")
+inputloc_table$initR[i]<-length(unique(bigM_BLEL$ID_SPECIES))
+i<-4
+#M<-readRDS(inputloc_table$inputloc[i])
+bigM_ESTH<-bigM%>%filter(SITE=="ESTH")
+inputloc_table$initR[i]<-length(unique(bigM_ESTH$ID_SPECIES))
+i<-5
+#M<-readRDS(inputloc_table$inputloc[i])
+bigM_NBAS<-bigM%>%filter(SITE=="NBAS")
+inputloc_table$initR[i]<-length(unique(bigM_NBAS$ID_SPECIES))
+i<-6
+#M<-readRDS(inputloc_table$inputloc[i])
+bigM_SBAS<-bigM%>%filter(SITE=="SBAS")
+inputloc_table$initR[i]<-length(unique(bigM_SBAS$ID_SPECIES))
+
+i<-7
+M<-readRDS(inputloc_table$inputloc[i])
+bigM<-read.csv(paste(inputloc_table$tempoloc[i],"allrawdata.csv",sep=""))
+inputloc_table$initR[i]<-length(unique(bigM$ID_SPECIES))
+
+i<-8
+#M<-readRDS(inputloc_table$inputloc[i])
+inputloc_table$initR[i]<-129 # I know it from file data wrangling/gross_2016.r
+
+i<-9
+inputloc_table$initR[i]<-21 # I know it from file data wrangling/landis_2018.r
+
+i<-10
+#M<-readRDS(inputloc_table$inputloc[i])
+inputloc_table$initR[i]<-36 # I know it from file data wrangling/lightfoot_2015.r late summer BOER
+
+i<-11
+#M<-readRDS(inputloc_table$inputloc[i])
+inputloc_table$initR[i]<-27 # I know it from file data wrangling/lightfoot_2015.r late summer LATR
+
+i<-12
+#M<-readRDS(inputloc_table$inputloc[i])
+bigM<-read.csv(paste(inputloc_table$tempoloc[i],"allrawdata.csv",sep=""))
+bigM_s<-bigM%>%filter(SITE=="Buoy 113")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-13
+bigM_s<-bigM%>%filter(SITE=="Buoy 125")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-14
+bigM_s<-bigM%>%filter(SITE=="Buoy 129")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-15
+bigM_s<-bigM%>%filter(SITE=="Buoy 133")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-16
+bigM_s<-bigM%>%filter(SITE=="Bushnell Point")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-17
+bigM_s<-bigM%>%filter(SITE=="Cleveland")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-18
+bigM_s<-bigM%>%filter(SITE=="Dakin Shoal")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-19
+bigM_s<-bigM%>%filter(SITE=="Damon Point")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-20
+bigM_s<-bigM%>%filter(SITE=="Dunham Island")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-21
+bigM_s<-bigM%>%filter(SITE=="Dutchman Island")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-22
+bigM_s<-bigM%>%filter(SITE=="Jewell")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-23
+bigM_s<-bigM%>%filter(SITE=="Lewis Point")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-24
+bigM_s<-bigM%>%filter(SITE=="Phillips Point")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-25
+bigM_s<-bigM%>%filter(SITE=="Shackelton Point")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-26
+bigM_s<-bigM%>%filter(SITE=="Willard Island")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+
+i<-27
+#M<-readRDS(inputloc_table$inputloc[i])
+bigM<-read.csv(paste(inputloc_table$tempoloc[i],"allrawdata.csv",sep=""))
+unique(bigM$SITE)
+bigM_s<-bigM%>%filter(SITE=="Billington Bay_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-28
+bigM_s<-bigM%>%filter(SITE=="Buoy 117_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-29
+bigM_s<-bigM%>%filter(SITE=="Buoy 125 North_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-30
+bigM_s<-bigM%>%filter(SITE=="Buoy 125_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-31
+bigM_s<-bigM%>%filter(SITE=="Buoy 133_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-32
+bigM_s<-bigM%>%filter(SITE=="Bushnell Point_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-33
+bigM_s<-bigM%>%filter(SITE=="Delmarter Bay_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-34
+bigM_s<-bigM%>%filter(SITE=="Shackelton Point Deep_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-35
+bigM_s<-bigM%>%filter(SITE=="Shackelton Point Shallow_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+i<-36
+bigM_s<-bigM%>%filter(SITE=="Three Mile Bay_standard")
+inputloc_table$initR[i]<-length(unique(bigM_s$ID_SPECIES))
+
+i<-37
+#M<-readRDS(inputloc_table$inputloc[i])
+bigM<-read.csv(paste(inputloc_table$tempoloc[i],"oneida_phytopl_1975_grouped_phytoplankton_list_1975to2013_BM.csv",sep=""))
+bigM<-bigM%>%filter(include==1)
+inputloc_table$initR[i]<-length(unique(bigM$species))
+
 #=============================================================================================
 # get summary table for BioTIMEx data
 # first we need to decide the REALM, organism for each dataset
@@ -90,7 +236,8 @@ for(i in 1:length(pathlist)){
   tempo<-readRDS(paste(pathlist[i],"summary_df.RDS",sep=""))
   summary_table<-rbind(summary_table,tempo)
 }
-summary_table<-cbind(STUDY_ID=inputloc_table$STUDY_ID,newsite=inputloc_table$newsite,summary_table)
+summary_table<-cbind(STUDY_ID=inputloc_table$STUDY_ID,newsite=inputloc_table$newsite,initR=inputloc_table$initR,
+                     summary_table)
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
@@ -181,7 +328,6 @@ for(i in 1:length(pathlist)){
 #########################################################################################
 # save the results for interaction freq plot
 
-# now we need only community with f_nind!=1
 mytable<-left_join(summary_table,inputloc_table,by=c("STUDY_ID","newsite"))
 pathlist<-mytable$resloc
 
