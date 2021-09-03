@@ -1,7 +1,6 @@
 # to get total number of species before applying 70% threshold but after aggregation 
 # generally, we aggregated from family level downwards until genus level
 
-rm(list=ls())
 library(tidyverse)
 
 x<-readRDS("../../DATA/for_insectRoel/20yrFreshwaterData 202106.rds")
