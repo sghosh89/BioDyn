@@ -17,20 +17,26 @@ source("datasummary.R") # summarizing metadata used in this study
 #source("targetspecieslist_alldata.R") # summarizing target sp list used for tail analysis in this study
 
 # Bayesian model
-source("bayesian_model_realmlevel.R") # Realm level, TAXA as random effect
-#source("bayesian_model_taxalevel.R") # TAXA as fixed effect
+#source("bayesian_model_realmlevel.R") # Realm level, TAXA as random effect
+#source("plot_posterior_realmlevel.R")
+#source("model_summary_res_table.R")
 
-# plotting model results
-source("plot_posterior_realmlevel.R")
+#source("bayesian_model_taxalevel.R") # TAXA as fixed effect
 #source("plot_posterior_taxalevel.R")
 
-source("model_summary_res_table.R")
+
+#===========================================
+# simple version Bayesian model
+source("bayesian_model_realmlevel_simple.R") 
+source("model_summary_realmlevel_simple.R")
+source("plot_posterior_realmlevel_simple.R")
 #===========================================
 
 # subset birds data and rerun analysis
 source("subset_BBS_21.R") # subsetting 21% bird data
-source("bayesian_model_realmlevel_subset_birds_21.R")
-source("plot_posterior_realmlevel_subset_birds_21.R")
+source("bayesian_model_realmlevel_simple_subset_birds.R")
+source("model_summary_realmlevel_simple_subset_birds.R")
+source("plot_posterior_realmlevel_simple_subset_birds.R")
 
 
 
