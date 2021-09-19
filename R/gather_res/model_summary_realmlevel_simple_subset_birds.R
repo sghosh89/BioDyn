@@ -604,3 +604,10 @@ dfbm
 #------------------------------------------------------------------
 sink()
 
+
+cp<-readRDS("../../Results/gather_res/simple_subset_birds_21/cp.RDS")
+row.names(cp)<-cp[,1]
+cp<-cp[,3:11]
+cp<-format(cp,3)
+write.csv(cp,"../../Results/gather_res/simple_subset_birds_21/cp.csv")
+
