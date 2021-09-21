@@ -13,7 +13,7 @@ sink("../../Results/gather_res/simple/console_bayesian_model_simple.txt", append
 
 
 #===========================
-df<-readRDS("../../Results/gather_res/stability_metric_all_subset_birds_21.RDS")
+df<-readRDS("../../Results/gather_res/stability_metric_all.RDS")
 mydat<-df[,c("source","STUDY_ID","newsite","REALM","TAXA","ORGANISMS","iCV","iCValt","phi","phi_skw","nsp","L","U","f_nL","f_nU","f_nneg")]
 mydat$UID<-paste(mydat$source,mydat$STUDY_ID,sep=",")
 mydat$A<-mydat$L+abs(mydat$U) # total asymmetry
