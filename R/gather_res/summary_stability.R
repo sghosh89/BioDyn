@@ -110,7 +110,7 @@ sm_all$TAXA<-tolower(sm_all$TAXA)
 sm_all$ORGANISMS<-tolower(sm_all$ORGANISMS)
 saveRDS(sm_all,"../../Results/gather_res/stability_metric_all.RDS")
 
-#------------------ plot f_nL vs f_nU for both realms ------------------------------
+#------------------ plot Synchrony vs asynchrony for both realms ------------------------------
 
 tempo<-sm_all%>%mutate(f_syn=f_nL+f_nU,f_asyn=f_nneg)%>%dplyr::select(f_syn,f_asyn,REALM)
 tempo2<-tempo%>%dplyr::select(f=f_syn,REALM)%>%mutate(Type="f_syn")
@@ -148,10 +148,6 @@ pdf("../../Results/gather_res/f_nL_f_nU_ratio_for_eachrealm.pdf",height=5,width=
 gp
 dev.off()
 
-sm_all<-readRDS("../../Results/gather_res/stability_metric_all.RDS")
-sm_all$domrich<-(sm_all$nsp/sm_all$initR)*100
-ggplot(sm_all,aes(x=domrich,y=iCValt,col=REALM))+geom_point()
-cor.test(sm_all$domrich,sm_all$iCValt)
 
 
 

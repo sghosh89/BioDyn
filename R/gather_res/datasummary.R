@@ -250,6 +250,7 @@ df$TAXA<-tolower(df$TAXA)
 
 write.csv(df,"../../Results/gather_res/data_summary.csv",row.names = F)
 
+#---------------------------------------------------------------------------------------------
 # Pie Chart with Percentages for realm
 df<-read.csv("../../Results/gather_res/data_summary.csv")
 
@@ -341,7 +342,7 @@ df<-read.csv("../../Results/gather_res/data_summary.csv")
 df_md<-df%>%select(source,STUDY_ID,newsite,REALM,TAXA,ORGANISMS,CENT_LAT,CENT_LONG,nsp,nyr)
 write.csv(df_md,"../../Results/gather_res/metadata_summary.csv",row.names = F)
 
-
+#=====================================================================================================
 
 
 

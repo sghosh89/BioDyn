@@ -2,6 +2,8 @@ rm(list=ls())
 library(brms)
 library(tidyverse)
 library(performance)
+library(lmerTest)
+library(see)
 
 if(!dir.exists("../../Results/gather_res/simple_subset_birds_21")){
   dir.create("../../Results/gather_res/simple_subset_birds_21")
@@ -45,7 +47,15 @@ mydat_scaled$uniA<- scale(mydat_scaled$uniA)
 
 class(mydat_scaled$REALM)
 #=====================================================
+# check collinearity
+check_cor<-mydat_scaled%>%dplyr::select(R,VR,A)
+cor(check_cor)
 
+mod<-lmerTest::lmer(stability_skw~ R+VR+A+REALM + (1|TAXA/UID),data=mydat_scaled)
+car::vif(mod)
+x<-performance::check_collinearity(mod)
+plot(x)
+#================================================
 # (R+VR)*REALM = R + VR + REALM + R:REALM + VR:REALM
 
 cat("------- Hierarchical structure in the data -------------- \n ")
@@ -205,7 +215,7 @@ cat("------- compare performance with all simple models -------------- \n ")
 cp<-compare_performance(basic_model_w_R, basic_model_w_R_REALM,
                         basic_model_w_R_VR,basic_model_w_R_VR_REALM,
                         basic_model_w_R_A,basic_model_w_R_A_REALM,
-                        basic_model_w_R_A_VR,full_model, rank=T, metrics="common")
+                        basic_model_w_R_A_VR,full_model, rank=T, metrics="all")
 cp
 saveRDS(cp,"../../Results/gather_res/simple_subset_birds_21/cp.RDS")
 
