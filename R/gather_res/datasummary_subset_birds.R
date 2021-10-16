@@ -78,7 +78,28 @@ g1
 par(op)
 dev.off()
 
+#------------------------------------------------------
+p1 <- df %>%
+  ggplot( aes(x=nyr, fill=REALM)) +
+  geom_histogram(alpha=0.6, position = 'dodge', binwidth = 0.8) +
+  scale_fill_manual(values=c("dodgerblue","green3"))+ theme_classic()+
+  theme(text=element_text(size=20)) +
+  labs(fill="")
+p1
 
+p2 <- df %>%
+  ggplot( aes(x=(nsp/initR)*100, fill=REALM)) +
+  geom_histogram( alpha=0.6, position = 'dodge', binwidth = 2) +
+  scale_fill_manual(values=c("dodgerblue","green3")) + theme_classic()+
+  theme(text=element_text(size=20)) +
+  labs(fill="")
+p2
+
+pdf("../../Results/gather_res/datasummary_subset_birds_res/year_percsp_hist.pdf",height=5,width=10)
+gridExtra::grid.arrange(p1,p2,nrow=2)
+dev.off()
+
+#-----------------------------------------------------------------------
 pdf("../../Results/gather_res/datasummary_subset_birds_res/data_summary.pdf",height=6,width=8)
 op<-par(mar=c(4,5,2,2),mgp=c(3,1,0),mfrow=c(2,2),cex.lab=1.5,cex.axis=1.5)
 

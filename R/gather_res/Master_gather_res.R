@@ -26,19 +26,20 @@ source("datasummary.R") # summarizing metadata used in this study
 
 
 #===========================================
-# simple version Bayesian model
-source("bayesian_model_realmlevel_simple.R") 
-source("model_summary_realmlevel_simple.R")
-source("plot_posterior_realmlevel_simple.R")
-#===========================================
+#---------- simple version Bayesian model -------------------
+#source("bayesian_model_realmlevel_simple.R") 
+#source("model_summary_realmlevel_simple.R")
+#source("plot_posterior_realmlevel_simple.R")
 
-# subset birds data and rerun analysis
+#------------ subset birds data and rerun analysis -------------
 source("subset_BBS_21.R") # subsetting 21% bird data
 source("bayesian_model_realmlevel_simple_subset_birds.R")
 source("model_summary_realmlevel_simple_subset_birds.R")
 source("plot_posterior_realmlevel_simple_subset_birds.R")
 
+source("datasummary_subset_birds.R") # summarizing metadata for subsetted birds
 
+#===========================================
 
 
 

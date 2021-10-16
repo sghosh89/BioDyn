@@ -210,15 +210,6 @@ full_model<-brm(bf_stability,
 print(summary(full_model),digits = 3)
 saveRDS(full_model,"../../Results/gather_res/simple_subset_birds_21/fullmodel.RDS")
 
-
-cat("------- compare performance with all simple models -------------- \n ")
-cp<-compare_performance(basic_model_w_R, basic_model_w_R_REALM,
-                        basic_model_w_R_VR,basic_model_w_R_VR_REALM,
-                        basic_model_w_R_A,basic_model_w_R_A_REALM,
-                        basic_model_w_R_A_VR,full_model, rank=T, metrics="all")
-cp
-saveRDS(cp,"../../Results/gather_res/simple_subset_birds_21/cp.RDS")
-
 sink()
 
 #################################
