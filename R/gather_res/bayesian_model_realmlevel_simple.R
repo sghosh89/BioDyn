@@ -2,6 +2,8 @@ rm(list=ls())
 library(brms)
 library(tidyverse)
 library(performance)
+library(lmerTest)
+library(see)
 
 if(!dir.exists("../../Results/gather_res/simple")){
   dir.create("../../Results/gather_res/simple")
@@ -45,6 +47,15 @@ mydat_scaled$uniA<- scale(mydat_scaled$uniA)
 
 class(mydat_scaled$REALM)
 #=====================================================
+# check collinearity
+check_cor<-mydat_scaled%>%dplyr::select(R,VR,A)
+cor(check_cor)
+
+mod<-lmerTest::lmer(stability_skw~ R+VR+A+REALM + (1|TAXA/UID),data=mydat_scaled)
+car::vif(mod)
+x<-performance::check_collinearity(mod)
+plot(x)
+#================================================
 
 # (R+VR)*REALM = R + VR + REALM + R:REALM + VR:REALM
 
@@ -98,7 +109,7 @@ basic_model_w_R<-brm(bf_stability0,
                  data=mydat_scaled,
                  family = gaussian(),
                  chains=4,cores=4,iter=16000,
-                 warmup=12000,init="0",thin=4,
+                 warmup=12000,inits="random",thin=4,
                  control = list(adapt_delta = 0.99, max_treedepth = 15),
                  save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model_w_R),digits = 3)
@@ -112,7 +123,7 @@ basic_model_w_R_REALM<-brm(bf_stability0,
                          data=mydat_scaled,
                          family = gaussian(),
                          chains=4,cores=4,iter=16000,
-                         warmup=12000,init="0",thin=4,
+                         warmup=12000,inits="random",thin=4,
                          control = list(adapt_delta = 0.99, max_treedepth = 15),
                          save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model_w_R_REALM),digits = 3)
@@ -125,7 +136,7 @@ basic_model_w_R_VR<-brm(bf_stability0,
                         data=mydat_scaled,
                         family = gaussian(),
                         chains=4,cores=4,iter=16000,
-                        warmup=12000,init="0",thin=4,
+                        warmup=12000,inits="random",thin=4,
                         control = list(adapt_delta = 0.99, max_treedepth = 15),
                         save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model_w_R_VR),digits = 3)
@@ -138,7 +149,7 @@ basic_model_w_R_VR_REALM<-brm(bf_stability0,
                            data=mydat_scaled,
                            family = gaussian(),
                            chains=4,cores=4,iter=16000,
-                           warmup=12000,init="0",thin=4,
+                           warmup=12000,inits="random",thin=4,
                            control = list(adapt_delta = 0.99, max_treedepth = 15),
                            save_pars = save_pars(all = TRUE),seed=123)
 print(summary(basic_model_w_R_VR_REALM),digits = 3)
@@ -151,7 +162,7 @@ basic_model_w_R_A<-brm(bf_stability0,
                              data=mydat_scaled,
                              family = gaussian(),
                              chains=4,cores=4,iter=16000,
-                             warmup=12000,init="0",thin=4,
+                             warmup=12000,inits="random",thin=4,
                              control = list(adapt_delta = 0.99, max_treedepth = 15),
                              save_pars = save_pars(all = TRUE),seed=123)
 
@@ -165,7 +176,7 @@ basic_model_w_R_A_REALM<-brm(bf_stability0,
                      data=mydat_scaled,
                      family = gaussian(),
                      chains=4,cores=4,iter=16000,
-                     warmup=12000,init="0",thin=4,
+                     warmup=12000,inits="random",thin=4,
                      control = list(adapt_delta = 0.99, max_treedepth = 15),
                      save_pars = save_pars(all = TRUE),seed=123)
 
@@ -179,7 +190,7 @@ basic_model_w_R_A_VR<-brm(bf_stability0,
                 data=mydat_scaled,
                 family = gaussian(),
                 chains=4,cores=4,iter=16000,
-                warmup=12000,init="0",thin=4,
+                warmup=12000,inits="random",thin=4,
                 control = list(adapt_delta = 0.99, max_treedepth = 15),
                 save_pars = save_pars(all = TRUE),seed=123)
 
@@ -193,7 +204,7 @@ full_model<-brm(bf_stability,
                 data=mydat_scaled,
                 family = gaussian(),
                 chains=4,cores=4,iter=16000,
-                warmup=12000,init="0",thin=4,
+                warmup=12000,inits="random",thin=4,
                 control = list(adapt_delta = 0.99, max_treedepth = 15),
                 save_pars = save_pars(all = TRUE),seed=123)
 
