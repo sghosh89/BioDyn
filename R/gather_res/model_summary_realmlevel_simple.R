@@ -602,10 +602,33 @@ row.names(dfbm)<-rownames(df)
 dfbm
 
 #------------------------------------------------------------------
+
+rm(list=ls())
+library(performance)
+
+# read models
+
+basic_model_w_R<-readRDS("../../Results/gather_res/simple/basic_model_w_R.RDS")
+basic_model_w_R_REALM<-readRDS("../../Results/gather_res/simple/basic_model_w_R_REALM.RDS")
+basic_model_w_R_VR<-readRDS("../../Results/gather_res/simple/basic_model_w_R_VR.RDS")
+basic_model_w_R_VR_REALM<-readRDS("../../Results/gather_res/simple/basic_model_w_R_VR_REALM.RDS")
+basic_model_w_R_A<-readRDS("../../Results/gather_res/simple/basic_model_w_R_A.RDS")
+basic_model_w_R_A_REALM<-readRDS("../../Results/gather_res/simple/basic_model_w_R_A_REALM.RDS")
+basic_model_w_R_A_VR<-readRDS("../../Results/gather_res/simple/basic_model_w_R_A_VR.RDS")
+full_model<-readRDS("../../Results/gather_res/simple/fullmodel.RDS")
+
+cp<-compare_performance(basic_model_w_R, basic_model_w_R_REALM,
+                        basic_model_w_R_VR,basic_model_w_R_VR_REALM,
+                        basic_model_w_R_A,basic_model_w_R_A_REALM,
+                        basic_model_w_R_A_VR,full_model, rank=T, metrics="common")
+cp
+saveRDS(cp,"../../Results/gather_res/simple/cp.RDS")
 sink()
+
 
 cp<-readRDS("../../Results/gather_res/simple/cp.RDS")
 row.names(cp)<-cp[,1]
 cp<-cp[,3:11]
 cp<-format(cp,3)
 write.csv(cp,"../../Results/gather_res/simple/cp.csv")
+

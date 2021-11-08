@@ -182,12 +182,56 @@ gp
 dev.off()
 
 
+#------------ plot richness, variance ratio, total tail asymmetry on map ----------------
 
+# first richness
+df<-read.csv("../../Results/gather_res/datasummary_subset_birds_res/data_summary_subset_birds.csv")
+df$nsp<-as.numeric(df$nsp)
+library(maps)
+wd<-map_data("world")
+g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
+g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", fill="gray90")
+g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+             panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
+             axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
 
+g1_richness<-g1+geom_point(aes(x = CENT_LONG, y = CENT_LAT, color=nsp),
+                              data = df, alpha=0.3,size=0.2) + 
+  scale_color_gradient(low="blue",high="red")+
+  facet_wrap(~ REALM)
 
+pdf("../../Results/gather_res/datasummary_subset_birds_res/richness_map.pdf",height=2,width=7)
+g1_richness
+dev.off()
 
+# variance ratio
+g1_vr<-g1+geom_point(aes(x = CENT_LONG, y = CENT_LAT, color=phi/10),
+                           data = df, alpha=0.3,size=0.2) + 
+  scale_color_gradient(low="blue",high="red")+
+  facet_wrap(~ REALM)
 
+pdf("../../Results/gather_res/datasummary_subset_birds_res/vr_map.pdf",height=2,width=7)
+g1_vr
+dev.off()
 
+df$A<-df$L+abs(df$U)
+# total tail asymmetry
+g1_A<-g1+geom_point(aes(x = CENT_LONG, y = CENT_LAT, color=A),
+                     data = df, alpha=0.3, size=0.2) + 
+  scale_color_gradient(low="blue",high="red")+
+  facet_wrap(~ REALM)
 
+pdf("../../Results/gather_res/datasummary_subset_birds_res/tail_asymmetry_map.pdf",height=2,width=7)
+g1_A
+dev.off()
 
+# stability
+g1_stab<-g1+geom_point(aes(x = CENT_LONG, y = CENT_LAT, color=iCValt),
+                    data = df, alpha=0.3, size=0.2) + 
+  scale_color_gradient(low="blue",high="red")+
+  facet_wrap(~ REALM)
+
+pdf("../../Results/gather_res/datasummary_subset_birds_res/stability_map.pdf",height=2,width=7)
+g1_stab
+dev.off()
 
