@@ -99,31 +99,6 @@ pdf("../../Results/gather_res/datasummary_subset_birds_res/year_percsp_hist.pdf"
 gridExtra::grid.arrange(p1,p2,nrow=2)
 dev.off()
 
-#-----------------------------------------------------------------------
-pdf("../../Results/gather_res/datasummary_subset_birds_res/data_summary.pdf",height=6,width=8)
-op<-par(mar=c(4,5,2,2),mgp=c(3,1,0),mfrow=c(2,2),cex.lab=1.5,cex.axis=1.5)
-
-df_tf$REALM<-as.character(df_tf$REALM)
-boxplot(iCValt ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Stability", main = "",col=c("dodgerblue","green3"))
-
-df_tf$REALM<-as.character(df_tf$REALM)
-boxplot(nsp ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Species richness, R", main = "",col=c("dodgerblue","green3"))
-
-df_tf$REALM<-as.character(df_tf$REALM)
-boxplot(phi ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Variance ratio, VR", main = "",col=c("dodgerblue","green3"))
-
-
-df_tf$A<-df_tf$L+abs(df_tf$U) # total asymmetry
-boxplot(A ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Total asymmetry, A", main = "",col=c("dodgerblue","green3"))
-
-par(op)
-dev.off()
-
-
 #=====================================================================================
 
 #------------------ plot Synchrony vs asynchrony for both realms ------------------------------
@@ -181,57 +156,126 @@ pdf("../../Results/gather_res/datasummary_subset_birds_res/L_U_values_for_eachre
 gp
 dev.off()
 
-
-#------------ plot richness, variance ratio, total tail asymmetry on map ----------------
-
-# first richness
+############################### rainclouds plot with raw data, VR_LdM ####################################################
+rm(list=ls())
+library(tidyverse)
+library(PupillometryR)
+#---------------------------
 df<-read.csv("../../Results/gather_res/datasummary_subset_birds_res/data_summary_subset_birds.csv")
-df$nsp<-as.numeric(df$nsp)
-library(maps)
-wd<-map_data("world")
-g1<-ggplot()+coord_fixed()+xlab("")+ylab("")
-g1<-g1+geom_polygon(data=wd, aes(x=long, y=lat, group=group), colour="gray90", fill="gray90")
-g1<-g1+theme(panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
-             panel.background=element_rect(fill="white", colour="white"), axis.line=element_line(colour="white"),
-             axis.ticks=element_blank(), axis.text.x=element_blank(), axis.text.y=element_blank())
-
-g1_richness<-g1+geom_point(aes(x = CENT_LONG, y = CENT_LAT, color=nsp),
-                              data = df, alpha=0.3,size=0.2) + 
-  scale_color_gradient(low="blue",high="red")+
-  facet_wrap(~ REALM)
-
-pdf("../../Results/gather_res/datasummary_subset_birds_res/richness_map.pdf",height=2,width=7)
-g1_richness
-dev.off()
-
-# variance ratio
-g1_vr<-g1+geom_point(aes(x = CENT_LONG, y = CENT_LAT, color=phi/10),
-                           data = df, alpha=0.3,size=0.2) + 
-  scale_color_gradient(low="blue",high="red")+
-  facet_wrap(~ REALM)
-
-pdf("../../Results/gather_res/datasummary_subset_birds_res/vr_map.pdf",height=2,width=7)
-g1_vr
-dev.off()
-
-df$A<-df$L+abs(df$U)
-# total tail asymmetry
-g1_A<-g1+geom_point(aes(x = CENT_LONG, y = CENT_LAT, color=A),
-                     data = df, alpha=0.3, size=0.2) + 
-  scale_color_gradient(low="blue",high="red")+
-  facet_wrap(~ REALM)
-
-pdf("../../Results/gather_res/datasummary_subset_birds_res/tail_asymmetry_map.pdf",height=2,width=7)
-g1_A
-dev.off()
 
 # stability
-g1_stab<-g1+geom_point(aes(x = CENT_LONG, y = CENT_LAT, color=iCValt),
-                    data = df, alpha=0.3, size=0.2) + 
-  scale_color_gradient(low="blue",high="red")+
-  facet_wrap(~ REALM)
+gs<-ggplot(data = df, aes(y = iCValt, x = REALM, fill = REALM)) +
+  scale_fill_manual(values=alpha(c("dodgerblue","green3"), 1))+
+  geom_flat_violin(position = position_nudge(x = .2, y = 0), alpha = .4) + 
+  #coord_flip()+
+  geom_point(aes(y = iCValt, color = REALM), position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
+  geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.4)+ 
+  ylab("Stability")+xlab("Realms")+
+  theme_bw()+
+  theme(
+    #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+    panel.background=element_rect(fill="white", colour="white"), 
+    legend.position="none",text=element_text(size=20))+
+  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))
 
-pdf("../../Results/gather_res/datasummary_subset_birds_res/stability_map.pdf",height=2,width=7)
-g1_stab
+# richness
+g1<-ggplot(data = df, aes(y = nsp, x = REALM, fill = REALM)) +
+  scale_fill_manual(values=alpha(c("dodgerblue","green3"), 1))+
+  geom_flat_violin(position = position_nudge(x = .2, y = 0), alpha = .4) + 
+  #coord_flip()+
+  geom_point(aes(y = nsp, color = REALM), position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
+  geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.4)+
+  ylab("Richness")+xlab("Realms")+
+  theme_bw()+
+  theme(
+    #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+    panel.background=element_rect(fill="white", colour="white"), 
+    legend.position="none",text=element_text(size=20))+
+  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))
+
+# variance ratio
+g2<-ggplot(data = df, aes(y = phi_LdM, x = REALM, fill = REALM)) +
+  scale_fill_manual(values=alpha(c("dodgerblue","green3"), 1))+
+  geom_flat_violin(position = position_nudge(x = .2, y = 0), alpha = .4) + 
+  #geom_hline(yintercept = 1,linetype=2)+ 
+  #coord_flip()+
+  geom_point(aes(y = phi_LdM, color = REALM), position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
+  geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.4)+ 
+  ylab("Synchrony (Variance ratio)")+xlab("Realms")+ 
+  theme_bw()+
+  theme(
+    #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+    panel.background=element_rect(fill="white", colour="white"), 
+    legend.position="none",text=element_text(size=20))+
+  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))
+
+# total asymmetry
+df$A<-df$L+abs(df$U) 
+g3<-ggplot(data = df, aes(y = A, x = REALM, fill = REALM)) +
+  scale_fill_manual(values=alpha(c("dodgerblue","green3"), 1))+
+  geom_flat_violin(position = position_nudge(x = 0.2, y = 0), alpha = .4) + 
+  #coord_flip()+
+  geom_point(aes(y = A, color = REALM), position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
+  geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.4)+ 
+  ylab("Synchrony with tail dependence \n (Total tail asymmetry)")+xlab("Realms")+
+  theme_bw()+
+  theme(
+    #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+    panel.background=element_rect(fill="white", colour="white"), 
+    legend.position="none",text=element_text(size=20))+
+  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))
+
+pdf("../../Results/gather_res/datasummary_subset_birds_res/rawdata_rainclouds.pdf",height=8,width=10)
+gridExtra::grid.arrange(gs,g1,g2,g3,nrow=2)
 dev.off()
+
+w<-wilcox.test(phi_LdM~REALM,data=df, 
+               alternative = "greater")
+w
+# VR_LdM shows freshwater has higher mean than terrestrial, more syn in freshwater then.
+
+#------- similar conclusion from pairwise interaction: synchrony higher for freshwater ---------
+df<-read.csv("../../Results/gather_res/datasummary_subset_birds_res/data_summary_subset_birds.csv")
+
+tempo<-df%>%mutate(f_syn=f_nL+f_nU,f_asyn=f_nneg)%>%dplyr::select(f_syn,f_asyn,REALM)
+tempo$fsyn_minus_fasyn<-tempo$f_syn - tempo$f_asyn
+
+tempo$REALM<-as.factor(tempo$REALM)
+
+gsma<-ggplot(data = tempo, aes(y = fsyn_minus_fasyn, x = REALM, fill = REALM)) +
+  scale_fill_manual(values=alpha(c("dodgerblue","green3"), 1))+
+  geom_flat_violin(position = position_nudge(x = .2, y = 0), alpha = .4) + 
+  geom_hline(yintercept = 0,linetype=2)+ 
+  #coord_flip()+
+  geom_point(aes(y = fsyn_minus_fasyn, color = REALM), position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
+  geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.4)+ 
+  ylab("Synchrony-Asynchrony")+xlab("Realms")+
+  theme_bw()+
+  theme(
+    #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
+    panel.background=element_rect(fill="white", colour="white"), 
+    legend.position="none",text=element_text(size=20))+
+  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))
+tempo2<-tempo%>%select(REALM,fsyn_minus_fasyn)
+# unpaired two sample wilcox test (non-parametric good for non-normal distribution)
+w<-wilcox.test(fsyn_minus_fasyn~REALM,data=tempo2, 
+            alternative = "greater")
+w
+
+pdf("../../Results/gather_res/datasummary_subset_birds_res/syn_minus_asyn_rainclouds.pdf",height=4,width=5)
+gsma
+dev.off()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
