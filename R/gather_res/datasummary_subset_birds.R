@@ -20,7 +20,7 @@ write.csv(df_subset,"../../Results/gather_res/datasummary_subset_birds_res/data_
 #=====================================================================================
 # doing a metadata summary table for John
 
-df_md<-df_subset%>%select(source,STUDY_ID,newsite,REALM,TAXA,ORGANISMS,CENT_LAT,CENT_LONG,nsp,nyr)
+df_md<-df_subset%>%select(source,STUDY_ID,newsite,REALM,TAXA,ORGANISMS,CENT_LAT,CENT_LONG,initR,nsp,nyr,startyr,endyr)
 write.csv(df_md,"../../Results/gather_res/datasummary_subset_birds_res/metadata_summary_subset_birds.csv",row.names = F)
 
 #=====================================================================================================

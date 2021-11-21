@@ -16,6 +16,8 @@ data_BioTIME<-inner_join(x=data_BioTIME,y=meta_BioTIME, by=c("STUDY_ID"))
 #colnames(data_BioTIME)[28:29]<-c("Latitude","Longitude")
 
 data_BioTIME$nyr<-NA
+data_BioTIME$startyr<-NA
+data_BioTIME$endyr<-NA
 for(i in 1:nrow(data_BioTIME)){
   if(data_BioTIME$STUDY_ID[i]==data_BioTIME$newsite[i]){
     mypath<-paste("../../DATA/for_BioTIME/wrangled_data/",data_BioTIME$REALM[i],"_plotlevel/",data_BioTIME$STUDY_ID[i],"/",sep="")
@@ -24,6 +26,8 @@ for(i in 1:nrow(data_BioTIME)){
   }
   xx<-readRDS(paste(mypath,"input_tailanal.RDS",sep=""))
   data_BioTIME$nyr[i]<-nrow(xx)
+  data_BioTIME$startyr[i]<-as.integer(head(rownames(xx),1)) 
+  data_BioTIME$endyr[i]<-as.integer(tail(rownames(xx),1)) 
 }
 
 #---------------------- for BioTIMEx -----------------------------------------------------
@@ -85,12 +89,16 @@ data_BioTIMEx$CENT_LAT[id]<-43.2046
 data_BioTIMEx$CENT_LONG[id]<- -75.9231
 
 data_BioTIMEx$nyr<-NA
+data_BioTIMEx$startyr<-NA
+data_BioTIMEx$endyr<-NA
 zz<-readRDS("../../Results/for_BioTIMEx/inputloc_table.RDS")
 zz<-inner_join(data_BioTIMEx,zz,by=c("STUDY_ID","newsite"))
 
 for(i in 1:nrow(zz)){
   xx<-readRDS(zz$inputloc[i])
   data_BioTIMEx$nyr[i]<-nrow(xx)
+  data_BioTIMEx$startyr[i]<-as.integer(head(rownames(xx),1)) 
+  data_BioTIMEx$endyr[i]<-as.integer(tail(rownames(xx),1)) 
 }
 
 #------------ for BBS -------------------------------------------------------------------
@@ -101,10 +109,14 @@ data_BBS<-sm_all%>%filter(source=="BBS")
 data_BBS<-inner_join(x=data_BBS,y=meta_BBS, by=c("newsite" = "Country_State_Route"))
 
 data_BBS$nyr<-NA
+data_BBS$startyr<-NA
+data_BBS$endyr<-NA
 for(i in 1:nrow(data_BBS)){
   mypath<-paste("../../DATA/for_BBS/wrangled_data/",data_BBS$newsite[i],"/",sep="")
   xx<-readRDS(paste(mypath,"input_mat_for_tailanal.RDS",sep=""))
   data_BBS$nyr[i]<-nrow(xx)
+  data_BBS$startyr[i]<-as.integer(head(rownames(xx),1)) 
+  data_BBS$endyr[i]<-as.integer(tail(rownames(xx),1)) 
 }
 
 #------------ for RivFishTIME -------------------------------------------------------------------
@@ -114,9 +126,13 @@ meta_RF<-meta_RF%>%select(TimeSeriesID,CENT_LAT=Latitude,CENT_LONG=Longitude)
 data_RF<-sm_all%>%filter(source=="RivFishTIME")
 data_RF<-inner_join(x=data_RF,y=meta_RF, by=c("newsite" = "TimeSeriesID"))
 data_RF$nyr<-NA
+data_RF$startyr<-NA
+data_RF$endyr<-NA
 for(i in 1:nrow(data_RF)){
   xx<-readRDS(paste("../../DATA/for_RivFishTIME/wrangled_data/",data_RF$newsite[i],"/commonspecies_timeseries.RDS",sep=""))
   data_RF$nyr[i]<-nrow(xx)
+  data_RF$startyr[i]<-as.integer(head(rownames(xx),1)) 
+  data_RF$endyr[i]<-as.integer(tail(rownames(xx),1)) 
 }
 #------------ for SwissLakePhyto -------------------------------------------------------------------
 data_Phyto<-sm_all%>%filter(source=="SwissLakePhyto")
@@ -155,9 +171,13 @@ data_Phyto$CENT_LAT[8]<-47.3666
 data_Phyto$CENT_LONG[8]<-8.6795
 
 data_Phyto$nyr<-NA
+data_Phyto$startyr<-NA
+data_Phyto$endyr<-NA
 for(i in 1:nrow(data_Phyto)){
   xx<-readRDS(paste("../../DATA/for_swisslake/wrangled_data/input_mat_for_tail_analysis_",data_Phyto$newsite[i],".RDS",sep=""))
   data_Phyto$nyr[i]<-nrow(xx)
+  data_Phyto$startyr[i]<-as.integer(head(rownames(xx),1)) 
+  data_Phyto$endyr[i]<-as.integer(tail(rownames(xx),1))
 }
 
 #------------ for SwissLakezoo -------------------------------------------------------------------
@@ -194,6 +214,8 @@ data_zoo$CENT_LAT[6]<-47.2003
 data_zoo$CENT_LONG[6]<-8.2600
 
 data_zoo$nyr<-NA
+data_zoo$startyr<-NA
+data_zoo$endyr<-NA
 for(i in 1:nrow(data_zoo)){
   if(data_zoo$newsite[i]=="LU"){
     xx<-readRDS("../../DATA/for_swisslake/wrangled_data/zooplankton/input_mat_for_tail_analysis_zoo_LU_site3A01.RDS")
@@ -201,6 +223,8 @@ for(i in 1:nrow(data_zoo)){
     xx<-readRDS(paste("../../DATA/for_swisslake/wrangled_data/zooplankton/input_mat_for_tail_analysis_zoo_",data_zoo$newsite[i],".RDS",sep="")) 
   }
   data_zoo$nyr[i]<-nrow(xx)
+  data_zoo$startyr[i]<-as.integer(head(rownames(xx),1)) 
+  data_zoo$endyr[i]<-as.integer(tail(rownames(xx),1))
 }
 
 #------------ for zoop2014 -------------------------------------------------------------------
@@ -214,18 +238,26 @@ meta_zoo2014<-meta_zoo2014%>%select(c(1,3,4))
 data_zoo2014<-inner_join(x=data_zoo2014,y=meta_zoo2014, by=c("newsite"="LakeID to Use"))
 
 data_zoo2014$nyr<-NA
+data_zoo2014$startyr<-NA
+data_zoo2014$endyr<-NA
 for(i in 1:nrow(data_zoo2014)){
   xx<-readRDS(paste("../../DATA/for_zoop_2014/wrangled_data/",data_zoo2014$newsite[i],"/inputmat_for_tailanal.RDS",sep="")) 
   data_zoo2014$nyr[i]<-nrow(xx)
+  data_zoo2014$startyr[i]<-as.integer(head(rownames(xx),1)) 
+  data_zoo2014$endyr[i]<-as.integer(tail(rownames(xx),1))
 }
 
 #------------ for insectRoel -------------------------------------------------------------------
 data_insect<-sm_all%>%filter(source=="InsectRoel")
 data_insect$nyr<-NA
+data_insect$startyr<-NA
+data_insect$endyr<-NA
 for(i in 1:nrow(data_insect)){
   xx<-readRDS(paste("../../DATA/for_insectRoel/wrangled_data/",data_insect$STUDY_ID[i],
                     "/",data_insect$newsite[i],"/inputmat_for_tailanal.RDS",sep="")) 
   data_insect$nyr[i]<-nrow(xx)
+  data_insect$startyr[i]<-as.integer(head(rownames(xx),1)) 
+  data_insect$endyr[i]<-as.integer(tail(rownames(xx),1))
 }
 
 meta_insect<-read.csv("../../DATA/for_insectRoel/20yrFreshwater_Metadata.csv")
@@ -339,7 +371,7 @@ dev.off()
 # doing a metadata summary table for John
 
 df<-read.csv("../../Results/gather_res/data_summary.csv")
-df_md<-df%>%select(source,STUDY_ID,newsite,REALM,TAXA,ORGANISMS,CENT_LAT,CENT_LONG,nsp,nyr)
+df_md<-df%>%select(source,STUDY_ID,newsite,REALM,TAXA,ORGANISMS,CENT_LAT,CENT_LONG,initR,nsp,nyr,startyr,endyr)
 write.csv(df_md,"../../Results/gather_res/metadata_summary.csv",row.names = F)
 
 #=====================================================================================================
