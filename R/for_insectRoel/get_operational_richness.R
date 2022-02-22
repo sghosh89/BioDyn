@@ -10,7 +10,7 @@ xtbl<-xtbl%>%dplyr::select(Rank,Level)
 xtbl$Rank<-as.factor(xtbl$Rank)
 
 summary_table<-readRDS("../../Results/for_insectRoel/summary_table.RDS")
-
+sink("../../DATA/for_insectRoel/wrangled_data/operational_richness.text")
 for(i in 1:nrow(summary_table)){
   cc<-x%>%filter(Datasource_ID==summary_table$STUDY_ID[i] & Plot_ID==summary_table$newsite[i])
   
@@ -64,9 +64,17 @@ for(i in 1:nrow(summary_table)){
   #print(spconsidered)
   
   orich<-nsp_9+nsp_8+nsp_7+nsp_6
-  print(orich)
+  #print(orich)
+  cat(paste("----- poor resolution in % of original richness for datasourceID = ,",summary_table$STUDY_ID[i]," , plotID = ", summary_table$newsite[i]," -------------- \n "))
+  
+  print(((nsp_6+nsp_7+nsp_8)/orich)*100)
+  #cat(paste("    sp, rank 9 = ,",nsp_9," , genus, rank 8 = ", nsp_8,
+  #          " , subfamily, rank 7 = ", nsp_7," , family, rank 6 = ", nsp_6,
+  #          "     \n "))
+  
   saveRDS(orich,paste("../../DATA/for_insectRoel/wrangled_data/",
                       summary_table$STUDY_ID[i],"/",summary_table$newsite[i],
                       "/initial_richness.RDS",sep=""))
 }
 
+sink()
