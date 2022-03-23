@@ -334,7 +334,7 @@ dev.off()
 
 
 pdf("../../Results/gather_res/data_summary.pdf",height=6,width=12)
-op<-par(mar=c(4,5,2,2),mgp=c(3,1,0),mfrow=c(2,3),cex.lab=1.5,cex.axis=1.5)
+op<-par(mar=c(4,5,2,2),mgp=c(3,1,0),mfrow=c(2,2),cex.lab=1.5,cex.axis=1.5)
 
 df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(iCValt ~ REALM, data = df_tf, xlab = "Realms",
@@ -344,24 +344,25 @@ df_tf$REALM<-as.character(df_tf$REALM)
 boxplot(nsp ~ REALM, data = df_tf, xlab = "Realms",
         ylab = "Species richness, R", main = "",col=c("dodgerblue","green3"))
 
-df_tf$REALM<-as.character(df_tf$REALM)
-boxplot(phi ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Variance ratio, VR", main = "",col=c("dodgerblue","green3"))
-
 #df_tf$REALM<-as.character(df_tf$REALM)
-#boxplot(phi_LdM ~ REALM, data = df_tf, xlab = "Realms",
-#        ylab = "Synchrony: VR_LdM", main = "",col=c("dodgerblue","green3"))
+#boxplot(phi ~ REALM, data = df_tf, xlab = "Realms",
+#        ylab = "Variance ratio, VR", main = "",col=c("dodgerblue","green3"))
 
-df_tf$A<-df_tf$f_nL+df_tf$f_nU # total asymmetry
+df_tf$REALM<-as.character(df_tf$REALM)
+boxplot(phi_LdM ~ REALM, data = df_tf, xlab = "Realms",
+        ylab = "Synchrony: VR_LdM", main = "",col=c("dodgerblue","green3"))
+
+#df_tf$A<-df_tf$f_nL+df_tf$f_nU # total asymmetry
+df_tf$A<-df_tf$L+abs(df_tf$U)
 boxplot(A ~ REALM, data = df_tf, xlab = "Realms",
         ylab = "Total asymmetry, A", main = "",col=c("dodgerblue","green3"))
 
-df_tf$uniA<-df_tf$f_nL-df_tf$f_nU # net asymmetry
-boxplot(uniA ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Net asymmetry, uniA", main = "",col=c("dodgerblue","green3"))
+#df_tf$uniA<-df_tf$f_nL-df_tf$f_nU # net asymmetry
+#boxplot(uniA ~ REALM, data = df_tf, xlab = "Realms",
+#        ylab = "Net asymmetry, uniA", main = "",col=c("dodgerblue","green3"))
 
-boxplot(phi_skw ~ REALM, data = df_tf, xlab = "Realms",
-        ylab = "Skewness Ratio, SR", main = "",col=c("dodgerblue","green3"))
+#boxplot(phi_skw ~ REALM, data = df_tf, xlab = "Realms",
+#        ylab = "Skewness Ratio, SR", main = "",col=c("dodgerblue","green3"))
 
 par(op)
 dev.off()
