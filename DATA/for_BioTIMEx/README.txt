@@ -1,4 +1,4 @@
-for_BioTIMEx: 
+data folder for extended version of BioTIMEx 
 raw_data: data downloaded when it is not included in BioTIME database
 wrangled_data: output saved from BioDyn/R/for_BioTIMEx/2.0_wrangling_raw_data.r
 
