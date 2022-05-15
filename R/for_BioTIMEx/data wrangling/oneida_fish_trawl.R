@@ -79,11 +79,11 @@ allrawdata<-allrawdata%>%filter(SITE%in%goodsite)
 for(i in 1:length(goodsite)){
   x<-allrawdata%>%filter(SITE==goodsite[i]) # May to August
   print(unique(x$DEPTH)) # each site sampled from unique depth
-  tt<-x%>%group_by(YEAR)%>%summarize(nm=n_distinct(MONTH))%>%ungroup()# unique depth
+  tt<-x%>%group_by(YEAR)%>%summarise(nm=n_distinct(MONTH))%>%ungroup()# unique depth
   # equally sampled: once in a year
   
   #print(length(unique(x$YEAR)))
-  spmat<-x%>%group_by(ID_SPECIES,YEAR)%>%summarize(ABUNDANCE=mean(ABUNDANCE))%>%ungroup()
+  spmat<-x%>%group_by(ID_SPECIES,YEAR)%>%summarise(ABUNDANCE=mean(ABUNDANCE))%>%ungroup()
   spmat<-spmat%>%spread(ID_SPECIES,ABUNDANCE,fill=0)%>%as.data.frame()
   rownames(spmat)<-spmat$YEAR
   spmat<-spmat[,-1]

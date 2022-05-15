@@ -20,12 +20,12 @@ get_data_EarlyLate<-function(x,dataset_id='lightfoot_2015',resloc,samplingtime){
     filter(BURNED!="B") #exclude burned site
   
   # count number of years sampled per site and consider sites which only have all 21 years sampled
-  c1<-xE%>%group_by(SITE)%>%summarize(nyr=n_distinct(YEAR))%>%ungroup()
+  c1<-xE%>%group_by(SITE)%>%summarise(nyr=n_distinct(YEAR))%>%ungroup()
   
   xE<-xE%>%filter(SITE%in%c("BOER","LATR"))
   
   # equal sampling effort: once annually 6 transects sampled for each year for each sites 
-  c<-xE%>%group_by(SITE,YEAR)%>%summarize(nsd=n_distinct(TRANSECT))%>%ungroup() 
+  c<-xE%>%group_by(SITE,YEAR)%>%summarise(nsd=n_distinct(TRANSECT))%>%ungroup() 
   
   # finite counts only
   xE<-xE%>%filter(!is.na(COUNT) & COUNT>0)

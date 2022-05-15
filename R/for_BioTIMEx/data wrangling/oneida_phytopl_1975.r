@@ -36,13 +36,13 @@ ddata<-ddata%>%select(site,year,date,daynum,density,
                       filter(standard_site=="yes")
 
 # choosing sites with at least 20 years of data
-c<-ddata%>%group_by(site)%>%summarize(nyr=n_distinct(year))%>%ungroup()%>%filter(nyr>=20)
+c<-ddata%>%group_by(site)%>%summarise(nyr=n_distinct(year))%>%ungroup()%>%filter(nyr>=20)
 ddata<-ddata%>%filter(site%in%c$site)
 
 # Exclusion of samples outside of the first of May to 31st of August period
 ddata<-ddata%>%filter(daynum> 121 & daynum < 243)
-c1<-ddata%>%group_by(site)%>%summarize(nsd=n_distinct(date))%>%ungroup() # more or less even sampling effort at each site
-c2<-ddata%>%group_by(year)%>%summarize(nsd=n_distinct(date))%>%ungroup() # 1978,1982 year less sampled
+c1<-ddata%>%group_by(site)%>%summarise(nsd=n_distinct(date))%>%ungroup() # more or less even sampling effort at each site
+c2<-ddata%>%group_by(year)%>%summarise(nsd=n_distinct(date))%>%ungroup() # 1978,1982 year less sampled
 
 # NOTE: the 3 sites in c1 are very closely located (within 1 by 1 degree lat-lon cell: see info from xstation)
 #       so, we are going to merge all this sites data into single site and will consider them as single site
@@ -96,13 +96,13 @@ nyr<-length(unique(ddata$year))
 
 # if we assume yes, then proceed as follows:
 
-c<-ddata%>%group_by(site)%>%summarize(nyr=n_distinct(year))%>%ungroup()
+c<-ddata%>%group_by(site)%>%summarise(nyr=n_distinct(year))%>%ungroup()
 ddata<-ddata%>%filter(site%in%c$site)
 
 # Exclusion of samples outside of the first of May to 31st of August period
 ddata<-ddata%>%filter(daynum> 121 & daynum < 243)
-c1<-ddata%>%group_by(site)%>%summarize(nsd=n_distinct(date))%>%ungroup() # uneven sampling: exclude Shackelton Point
-c2<-ddata%>%group_by(year)%>%summarize(nsd=n_distinct(date))%>%ungroup() # more/less even sampling effort
+c1<-ddata%>%group_by(site)%>%summarise(nsd=n_distinct(date))%>%ungroup() # uneven sampling: exclude Shackelton Point
+c2<-ddata%>%group_by(year)%>%summarise(nsd=n_distinct(date))%>%ungroup() # more/less even sampling effort
 ddata<-ddata%>%filter(site%in%"Pooled Stations")
 
 # now for phytoplankton data - we want to get the occurence data for all the species 
@@ -157,7 +157,7 @@ spmat$sp[id2]<-"sp."
 dall<-inner_join(dall,spmat,by=c("species"="spname"))
 dall<-dall%>%select(year,genus,sp,density)%>%mutate(species=paste(genus,sp,sep=" "))%>%
   select(year,species,density)
-dall<-dall%>%group_by(year,species)%>%summarize(mean_density=mean(density))%>%ungroup()
+dall<-dall%>%group_by(year,species)%>%summarise(mean_density=mean(density))%>%ungroup()
 dall<-dall%>%spread(species,mean_density,fill=0)%>%as.data.frame()
 rownames(dall)<-dall$year
 dall<-dall[,-1]

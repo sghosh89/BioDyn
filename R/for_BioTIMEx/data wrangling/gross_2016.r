@@ -15,11 +15,11 @@ x$biomass_g<-as.numeric(x$biomass_g)
 x<-x%>%filter(disturbed=="undisturbed" & fertilized=="unfertilized") # control sites only
 x<-x%>%mutate(year=str_sub(sample_date,1,4),
               month=str_sub(sample_date,6,7))
-c1<-x%>%group_by(year)%>%summarize(nsd=n_distinct(month))%>%ungroup()
+c1<-x%>%group_by(year)%>%summarise(nsd=n_distinct(month))%>%ungroup()
 
 #for consistent sampling effort in July,August
 x<-x%>%filter(month%in%c("07","08"))
-c1<-x%>%group_by(year)%>%summarize(nsd=n_distinct(month))%>%ungroup()
+c1<-x%>%group_by(year)%>%summarise(nsd=n_distinct(month))%>%ungroup()
 
 badsp<-c("Surface Litter","unknown Asteraceae","unknown Brassicaceae","Unknown dicot (*)",
          "Unknown grass","Unknown monocot (*)","Unknown Solanaceae","UnSorted","Woody")

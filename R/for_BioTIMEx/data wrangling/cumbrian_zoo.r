@@ -48,14 +48,14 @@ goodsite<-tempo$SITE[which(tempo$nsp>2)]
 for(i in 1:length(goodsite)){
   x<-allrawdata%>%filter(MONTH%in%c(5:8) & SITE==goodsite[i]) # May to August
   print(unique(x$DEPTH))
-  tt<-x%>%group_by(YEAR)%>%summarize(nm=n_distinct(MONTH))%>%ungroup()# unique depth
+  tt<-x%>%group_by(YEAR)%>%summarise(nm=n_distinct(MONTH))%>%ungroup()# unique depth
   # for i =1, 2001 should be excluded as only month 8 sampled out of 5 to 8 months 
   badyr<-tt$YEAR[which(tt$nm<=2)] # bad year means when less than or equal to 50% sampling months
   if(length(badyr)>0){
     x<-x%>%filter(YEAR%notin%badyr)
   }
   print(length(unique(x$YEAR)))
-  spmat<-x%>%group_by(ID_SPECIES,YEAR)%>%summarize(ABUNDANCE=mean(ABUNDANCE))%>%ungroup()
+  spmat<-x%>%group_by(ID_SPECIES,YEAR)%>%summarise(ABUNDANCE=mean(ABUNDANCE))%>%ungroup()
   spmat<-spmat%>%spread(ID_SPECIES,ABUNDANCE,fill=0)%>%as.data.frame()
   rownames(spmat)<-spmat$YEAR
   spmat<-spmat[,-1]

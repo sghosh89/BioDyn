@@ -169,7 +169,7 @@ ddata<-ddata%>%filter(species%notin%badsp) # exclude badsp
 ddata<-inner_join(ddata,sp_blake,by="species") 
 
 spmat<-ddata%>%select(year, species=Species_agg, value)
-spmat<-spmat%>%group_by(year,species)%>%summarize(value=sum(value))%>%ungroup()%>%
+spmat<-spmat%>%group_by(year,species)%>%summarise(value=sum(value))%>%ungroup()%>%
                spread(species, value, fill=0)%>%as.data.frame()
 
 rownames(spmat)<-spmat$year

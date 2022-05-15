@@ -156,7 +156,7 @@ effort_poplar<-effort_by_site$T5 # 29 years
 badyr<-effort_poplar$year[which(effort_poplar$`n_distinct(date)`<10)]
 ddata_poplar<-ddata%>%filter(site=="T5")%>%filter(year%notin%badyr)
 ddata_poplar<-ddata_poplar%>%group_by(species,year)%>%
-                              summarize(value=mean(value))%>%
+                              summarise(value=mean(value))%>%
                               ungroup()%>%
                               spread(species, value, fill=0)%>%as.data.frame()
 

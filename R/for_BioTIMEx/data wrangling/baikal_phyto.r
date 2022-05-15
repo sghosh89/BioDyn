@@ -28,12 +28,12 @@ samp<-read.csv("../../DATA/for_BioTIMEx/wrangled_data/baikal_phyto/sample.csv")
 sites<-read.csv("../../DATA/for_BioTIMEx/wrangled_data/baikal_phyto/sites.csv")
 
 allrawdata<-allrawdata%>%filter(MONTH%in%c(5:8)) # May to August
-tt<-allrawdata%>%group_by(YEAR)%>%summarize(nm=n_distinct(MONTH),nsp=n_distinct(ID_SPECIES))%>%ungroup()
+tt<-allrawdata%>%group_by(YEAR)%>%summarise(nm=n_distinct(MONTH),nsp=n_distinct(ID_SPECIES))%>%ungroup()
 # consistently, 4 months sampled for each of 23 years for all 6 groups of sp.
 # single site (lat-lon) sampled
 
-spmat<-allrawdata%>%group_by(ID_SPECIES,YEAR)%>%summarize(ABUNDANCE=mean(ABUNDANCE))%>%ungroup()
-tt<-spmat%>%group_by(ID_SPECIES)%>%summarize(ny=n_distinct(YEAR))%>%ungroup()
+spmat<-allrawdata%>%group_by(ID_SPECIES,YEAR)%>%summarise(ABUNDANCE=mean(ABUNDANCE))%>%ungroup()
+tt<-spmat%>%group_by(ID_SPECIES)%>%summarise(ny=n_distinct(YEAR))%>%ungroup()
 
 spmat<-spmat%>%spread(ID_SPECIES,ABUNDANCE,fill=0)%>%as.data.frame()
 rownames(spmat)<-spmat$YEAR
