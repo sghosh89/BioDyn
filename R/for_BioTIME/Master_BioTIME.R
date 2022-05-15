@@ -1,17 +1,9 @@
 path<-dirname(rstudioapi::getSourceEditorContext()$path)
 setwd(path)
 
-#source("get_rarefied_BioTIME_data.R") # rarefy bioTIME data
-#source("freshwater.R") # tail analysis for freshwater
-#source("marine.R")     # tail analysis for marine
-#source("terrestrial.R") # tail analysis for terrestrial
-#source("try_summarize.R") # summarize tail analysis res, plot for each realm
-#source("rank_category.R") # compute and save categorized interaction freq between dominant groups
-#source("summary_for_stabilitymetric.R") # get stability metric for BioTIME data
-
 #------------ plotlevel analysis ---------------
 source("get_BioTIME_data.R") # reading data
-source("freshwater_plotlevel.R") # instead of source("freshwater.R")
-source("terrestrial_plotlevel.R") # instead of source("terrestrial.R")
-source("rank_category_plotlevel.R") # instead of source("rank_category.R")
-source("summary_for_stabilitymetric_plotlevel.R") # instead of source("summary_for_stabilitymetric.R")
+source("freshwater_plotlevel.R") 
+source("terrestrial_plotlevel.R") 
+#source("rank_category_plotlevel.R") 
+source("summary_for_stabilitymetric_plotlevel.R") 

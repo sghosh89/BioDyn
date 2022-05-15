@@ -28,7 +28,7 @@ x<-x%>%dplyr::select(YEAR,Species,Value=Abundance)
 x<-x%>%group_by(Species,YEAR)%>%
   dplyr::summarise(Value=median(Value))%>%ungroup()
 
-c1<-x%>%group_by(Species)%>%summarize(n_distinct(YEAR))%>%ungroup() 
+c1<-x%>%group_by(Species)%>%summarise(n_distinct(YEAR))%>%ungroup() 
 # As all species are not found each year, we need to fill in the missing values with 0.
 x_c<-x %>% 
   complete(Species, 
