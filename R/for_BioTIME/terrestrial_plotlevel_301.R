@@ -22,7 +22,7 @@ x<-x%>%mutate(newsite=paste("STUDY_ID_",site,"_PLOT_",PLOT,sep=""))
 newsite<-sort(unique(x$newsite))
 
 # check if each newsite visited for >20 years?
-tt<-x%>%group_by(newsite)%>%summarize(n=n_distinct(YEAR))%>%ungroup()
+tt<-x%>%group_by(newsite)%>%summarise(n=n_distinct(YEAR))%>%ungroup()
 
 # include sites which are sampled > 20 years
 tt<-tt%>%filter(n>=20)
@@ -31,7 +31,7 @@ tt<-tt%>%filter(n>=20)
 x_allsite<- x %>% filter(newsite %in% tt$newsite)
 newsite<-tt$newsite
 
-t2<-x_allsite%>%group_by(newsite,YEAR)%>%summarize(n=n_distinct(MONTH))%>%ungroup()
+t2<-x_allsite%>%group_by(newsite,YEAR)%>%summarise(n=n_distinct(MONTH))%>%ungroup()
 
 # Now, create folder for all these newsite
 for(k in 1:length(newsite)){
@@ -46,7 +46,7 @@ for(k in 1:length(newsite)){
 x_allsite$Abundance<-as.numeric(x_allsite$Abundance)
 x_allsite$Biomass<-as.numeric(x_allsite$Biomass)
 x_allsite<-x_allsite%>%group_by(newsite,YEAR,MONTH,Species)%>%
-  summarize(Abundance=mean(Abundance,na.rm=T),
+  summarise(Abundance=mean(Abundance,na.rm=T),
             Biomass=mean(Biomass,na.rm=T),
             ABUNDANCE_TYPE=unique(ABUNDANCE_TYPE))%>%ungroup()
 # NOTE: ABUNDANCE TYPE should be kept as it is - if NA then keep NA
@@ -83,7 +83,7 @@ for(k in 1:length(newsite)){
     x<-x%>%dplyr::select(YEAR,Species,Value=id)
     x<-x%>%group_by(Species,YEAR)%>%
       dplyr::summarise(Value=mean(Value))%>%ungroup()
-    c1<-x%>%group_by(Species)%>%summarize(n_distinct(YEAR))%>%ungroup() 
+    c1<-x%>%group_by(Species)%>%summarise(n_distinct(YEAR))%>%ungroup() 
     # As all species are not found each year, we need to fill in the missing values with 0.
     x_c<-x %>% 
       complete(Species, 

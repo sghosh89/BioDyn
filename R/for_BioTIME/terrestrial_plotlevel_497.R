@@ -6,11 +6,12 @@ library(tidyverse)
 xxm<-readRDS("../../DATA/for_BioTIME/BioTIME_public_private_metadata.RDS")
 grid_terres<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/bt_terres_min20yr_rawdata.RDS")
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/table_for_map.RDS")
-df<-df%>%filter(site==308)
-# single lat-lon is reported, multiple plots sampled for different monthly freq in year
+df<-df%>%filter(site==497)
+
+# single lat-lon but multiple plots with same monthly freq (=1) reported
 
 #----------- create result folder for wrangle data -------------------------
-resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/308/"
+resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/497/"
 if(!dir.exists(resloc)){
   dir.create(resloc)
 }
@@ -19,6 +20,7 @@ if(!dir.exists(resloc)){
 site<-df$site
 x<-grid_terres%>%filter(STUDY_ID==site)
 x<-x%>%mutate(newsite=paste("STUDY_ID_",site,"_PLOT_",PLOT,sep=""))
+x$newsite<-gsub("/","_",x$newsite) # replace / pattern otherwise error later as if directory path
 newsite<-sort(unique(x$newsite))
 
 # check if each newsite visited for >20 years?
@@ -29,29 +31,19 @@ tt<-tt%>%filter(n>=20)
 
 #update
 x_allsite<- x %>% filter(newsite %in% tt$newsite)
+
 newsite<-tt$newsite
 
 t2<-x_allsite%>%group_by(newsite,YEAR)%>%summarise(n=n_distinct(MONTH))%>%ungroup()
 
 # Now, create folder for all these newsite
 for(k in 1:length(newsite)){
-  resloc2<-paste("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/308/",newsite[k],"/",sep="")
+  resloc2<-paste("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/497/",newsite[k],"/",sep="")
   if(!dir.exists(resloc2)){
     dir.create(resloc2)
   }
 }
-#-------------------------------------------------------------------------------------------------------------
-# sometimes months have different multiple sampling dates within a year
-# so, take the average
-x_allsite$Abundance<-as.numeric(x_allsite$Abundance)
-x_allsite$Biomass<-as.numeric(x_allsite$Biomass)
-x_allsite<-x_allsite%>%group_by(newsite,YEAR,MONTH,Species)%>%
-  summarise(Abundance=mean(Abundance,na.rm=T),
-            Biomass=mean(Biomass,na.rm=T),
-            ABUNDANCE_TYPE=unique(ABUNDANCE_TYPE))%>%ungroup()
-# NOTE: ABUNDANCE TYPE should be kept as it is - if NA then keep NA
-#------------------------------------------------------------------------------------------------------------
-
+#------------------------------------------------------------
 newsite_bad<-c()
 for(k in 1:length(newsite)){
   x<-x_allsite%>%filter(newsite==newsite[k])
@@ -60,7 +52,7 @@ for(k in 1:length(newsite)){
   x<-x%>%filter(Species%notin%c("Unknown","Unknown "))
   
   t0<-x%>%group_by(YEAR)%>%summarise(nm=n_distinct(MONTH))%>%ungroup()
-  #t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
+  t1<-x%>%group_by(YEAR,MONTH)%>%summarise(nd=n_distinct(DAY))%>%ungroup()
   
   #---------- ok, after seeing t0, we need to rarefy --------------
   min_samp<-min(t0$nm) # min months sampled each year
@@ -77,10 +69,10 @@ for(k in 1:length(newsite)){
   id<-which(colnames(x)==field)
   
   if(need_rarefy==T){
-    study<-x%>%dplyr::select(MONTH,YEAR,Species,Value=id)
+    study<-x%>%select(DAY,MONTH,YEAR,Species,Value=id)
     x_c<-monthly_rarefy(study = study,resamples = 100,field = field)
   }else{
-    x<-x%>%dplyr::select(YEAR,Species,Value=id)
+    x<-x%>%select(YEAR,Species,Value=id)
     x<-x%>%group_by(Species,YEAR)%>%
       dplyr::summarise(Value=mean(Value))%>%ungroup()
     c1<-x%>%group_by(Species)%>%summarise(n_distinct(YEAR))%>%ungroup() 
@@ -100,7 +92,7 @@ for(k in 1:length(newsite)){
   xmeta<-xxm%>%filter(STUDY_ID==site)
   
   input_sp<-list(spmat=xmat,meta=xmeta)
-  resloc<-paste("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/308/",newsite[k],"/",sep="")
+  resloc<-paste("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/497/",newsite[k],"/",sep="")
   saveRDS(input_sp,paste(resloc,"spmat.RDS",sep=""))
   
   #----------- saving input spmat for tailanal ---------------------
@@ -149,4 +141,4 @@ for(k in 1:length(newsite)){
 
 #--------------------------------------------------------
 newsite<-setdiff(newsite,newsite_bad)
-saveRDS(newsite,"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/308/newsite.RDS")
+saveRDS(newsite,"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/497/newsite.RDS")

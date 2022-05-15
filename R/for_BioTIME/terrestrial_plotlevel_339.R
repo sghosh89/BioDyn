@@ -41,7 +41,7 @@ if(length(newsite)>1){
   newsite<-sort(unique(x$newsite))
   
   # check if each newsite visited for >20 years?
-  tt<-x%>%group_by(newsite)%>%summarize(n=n_distinct(YEAR))%>%ungroup()
+  tt<-x%>%group_by(newsite)%>%summarise(n=n_distinct(YEAR))%>%ungroup()
   
   # include sites which are sampled > 20 years
   tt<-tt%>%filter(n>=20)
@@ -85,7 +85,7 @@ for(k in 1:length(newsite)){
     x<-x%>%dplyr::select(YEAR,Species,Value=id)
     x<-x%>%group_by(Species,YEAR)%>%
       dplyr::summarise(Value=mean(Value))%>%ungroup()
-    c1<-x%>%group_by(Species)%>%summarize(n_distinct(YEAR))%>%ungroup() 
+    c1<-x%>%group_by(Species)%>%summarise(n_distinct(YEAR))%>%ungroup() 
     # As all species are not found each year, we need to fill in the missing values with 0.
     x_c<-x %>% 
       complete(Species, 
