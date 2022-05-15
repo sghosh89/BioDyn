@@ -1,4 +1,7 @@
-data folder
+data folder contains:
+20yrFreshwater_Metadata.csv - metadata
+20yrFreshwaterData 202106.rds - raw data in rds format
+20yrFreshwaterData 202106.csv - raw data in csv format
 
 # How did we clean the data?
 
