@@ -28,7 +28,7 @@ get_communitylevel_data<-function(cc,resloc){
   nyr<-length(sort(unique(cc$Year)))
   nyr_thrs<-nyr*0.7 # 70% of year of study period should be present 
   
-  tt<-cc%>%group_by(uid3)%>%summarize(nyr=n_distinct(Year),
+  tt<-cc%>%group_by(uid3)%>%summarise(nyr=n_distinct(Year),
                                       nuid3=n(),  
                                       nuid0=n_distinct(uid0), # this must be 1 as it is higher taxonomic level than species
                                       nuid1=n_distinct(uid1), # this must be 1
@@ -54,7 +54,7 @@ get_communitylevel_data<-function(cc,resloc){
     # update cc, tt
     cc<-cc%>%filter(uid3%notin%tt_splevel$uid3)
     
-    tt<-cc%>%group_by(uid2)%>%summarize(nyr=n_distinct(Year),
+    tt<-cc%>%group_by(uid2)%>%summarise(nyr=n_distinct(Year),
                                         nuid2=n(),  
                                         nuid0=n_distinct(uid0), # this must be 1 as it is higher taxonomic level than species
                                         nuid1=n_distinct(uid1))%>% # this must be 1
@@ -80,7 +80,7 @@ get_communitylevel_data<-function(cc,resloc){
     cc<-cc%>%filter(uid2%notin%tt_genuslevel$uid2)
     cc<-rbind(cc,cc_genuslevel_extra)
     
-    tt<-cc%>%group_by(uid1)%>%summarize(nyr=n_distinct(Year),
+    tt<-cc%>%group_by(uid1)%>%summarise(nyr=n_distinct(Year),
                                         nuid1=n(),  
                                         nuid0=n_distinct(uid0))%>% # this must be 1 as it is higher taxonomic level than species
       ungroup()%>%arrange(desc(nuid1))
@@ -103,7 +103,7 @@ get_communitylevel_data<-function(cc,resloc){
     # the rest extra left upto family level
     cc_extra<-cc%>%filter(uid1%notin%tt_sfamlevel$uid1)
     cc_extra<-rbind(cc_extra,cc_sfamlevel_extra)
-    tt_extra<-cc_extra%>%group_by(uid0)%>%summarize(nyr=n_distinct(Year),
+    tt_extra<-cc_extra%>%group_by(uid0)%>%summarise(nyr=n_distinct(Year),
                                                     nuid0=n(),
                                                     nuid1=n_distinct(uid1))%>%ungroup()%>%
       arrange(desc(nuid0))
@@ -122,7 +122,7 @@ get_communitylevel_data<-function(cc,resloc){
       t1<-cc_famlevel%>%group_by(Family)%>%count(Subfamily)%>%ungroup()
       
       t11<-t1%>%group_by(Family)%>%
-        summarize(usf=n_distinct(Subfamily),Subfamily=unique(Subfamily))%>%
+        summarise(usf=n_distinct(Subfamily),Subfamily=unique(Subfamily))%>%
         ungroup()
       t11<-inner_join(t11,t1, by=c("Family"="Family","Subfamily"="Subfamily"))
       
@@ -139,7 +139,7 @@ get_communitylevel_data<-function(cc,resloc){
       if(nrow(cc_famlevel_agg2sfam)>0){
        cc_famlevel_agg2sfam$selection<-"famlevel_agg2sfam"
        #----------------- but keep if per family more than >= nyr_thrs obs was there -----------------------
-       tempo<-cc_famlevel_agg2sfam%>%group_by(Family)%>%summarize(nyr=n_distinct(Year))%>%ungroup()
+       tempo<-cc_famlevel_agg2sfam%>%group_by(Family)%>%summarise(nyr=n_distinct(Year))%>%ungroup()
        tempo<-tempo%>%filter(nyr>=nyr_thrs)
        cc_famlevel_agg2sfam<-cc_famlevel_agg2sfam%>%filter(Family%in%tempo$Family)
        #----------------------------------------------------------------------------------------------------
@@ -153,7 +153,7 @@ get_communitylevel_data<-function(cc,resloc){
        if(nrow(c2)>0){
          c2$selection<-"famlevel_agg2genus"
          #----------------- but keep if per family more than >= nyr_thrs obs was there -----------------------
-         tempo<-c2%>%group_by(Family)%>%summarize(nyr=n_distinct(Year))%>%ungroup()
+         tempo<-c2%>%group_by(Family)%>%summarise(nyr=n_distinct(Year))%>%ungroup()
          tempo<-tempo%>%filter(nyr>=nyr_thrs)
          cc_famlevel_agg2sfam<-cc_famlevel_agg2sfam%>%filter(Family%in%tempo$Family)
          if(nrow(cc_famlevel_agg2sfam)>0){cc_famlevel_agg2sfam$selection<-"famlevel_agg2sfam"}
@@ -226,7 +226,7 @@ get_communitylevel_data<-function(cc,resloc){
   yrs<-sort(unique(mat$Year))
   sp<-sort(unique(mat$sp))
   mat$Number<-as.numeric(mat$Number) # just to ensure
-  mat<-mat%>%group_by(sp,Year)%>%summarize(Number=mean(Number))%>%ungroup()
+  mat<-mat%>%group_by(sp,Year)%>%summarise(Number=mean(Number))%>%ungroup()
   
   tempo<-mat%>%complete(Year, nesting(sp),fill=list(Number=0))
     
