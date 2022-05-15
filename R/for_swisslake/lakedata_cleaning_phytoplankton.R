@@ -196,13 +196,13 @@ get_meanstat_multisamp<-function(dat){
               filter(month %in% c("06","07","08","09"))
   #=======================================================================================
   # to check even sampling effort per year? I am going to consider lake data for 06-09 months
-  c<-dat%>%group_by(year)%>%summarize(ns=n_distinct(month))%>%ungroup()
+  c<-dat%>%group_by(year)%>%summarise(ns=n_distinct(month))%>%ungroup()
   id_badyr<-which(c$ns!=4)
   if(length(id_badyr)!=0){
     c<-c[-id_badyr,] # exclude those years which were not sampled all 4 months
   }
   dat<-dat%>%filter(year%in%c$year)
-  c1<-dat%>%group_by(year,month)%>%summarize(ns=n_distinct(day))%>%ungroup()
+  c1<-dat%>%group_by(year,month)%>%summarise(ns=n_distinct(day))%>%ungroup()
   range(c1$ns)
   # Lake----------total sampled years-----------years excluded as all 4 months not sampled/ comments-------
   #  1 -----------------29------------None: perfect sampling effort: all months in all year sampled once-------
@@ -215,11 +215,11 @@ get_meanstat_multisamp<-function(dat){
   #  8 --------------------32---------2 (2015-2016): other included years have 1-4 sampling date per month-----------------------------
   #==========================================================================================
   
-  # first summarize for each month in a year for multiple sampling days
+  # first summarise for each month in a year for multiple sampling days
   x<-dat%>%group_by(year,month,id_Eawag,species)%>%
-    summarize(biov=mean(biov),abundance=mean(abundance))%>%ungroup()
+    summarise(biov=mean(biov),abundance=mean(abundance))%>%ungroup()
   
-  # then summarize for each year for multiple sampling months
+  # then summarise for each year for multiple sampling months
   x<-x%>%group_by(year,id_Eawag,species) %>%   # group by combinations
     summarise(biov = mean(biov),                 # get summary stats
               abun_mean = mean(abundance)) %>%ungroup()

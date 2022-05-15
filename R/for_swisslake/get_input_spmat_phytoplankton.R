@@ -18,7 +18,7 @@ get_input_spmat_phytoplankton<-function(Ldata,badsp,nametag){
   Ldata<-Ldata%>%unite("species",genus:sp,sep=" ")
   
   Ldata<-Ldata%>%group_by(year,species)%>%
-    summarize(abundance=sum(abun_mean))%>%ungroup()
+    summarise(abundance=sum(abun_mean))%>%ungroup()
   mat<-Ldata%>%spread(species,abundance,fill=0)%>%as.data.frame()
   rownames(mat)<-mat$year
   mat<-mat[,-1]
