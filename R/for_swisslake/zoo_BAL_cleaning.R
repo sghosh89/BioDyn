@@ -45,17 +45,17 @@ l7z_bal_mod<-inner_join(l7z_bal_mod,xm,by=c("taxon"="id_CH"))
 l7z_bal_mod$genus_sp<-paste(l7z_bal_mod$genus,l7z_bal_mod$species)
 
 # is every year uniformly sampled? no
-c<-l7z_bal_mod%>%group_by(year)%>%summarize(nm=n_distinct(month))%>%ungroup()
+c<-l7z_bal_mod%>%group_by(year)%>%summarise(nm=n_distinct(month))%>%ungroup()
 
 # for continuous and consistent sampling
 l7z_bal_mod<-l7z_bal_mod%>%filter(year>=1977)
 
 # is every month uniformly sampled? no (1-5 times)
-c1<-l7z_bal_mod%>%group_by(year,month)%>%summarize(nd=n_distinct(day))%>%ungroup()
+c1<-l7z_bal_mod%>%group_by(year,month)%>%summarise(nd=n_distinct(day))%>%ungroup()
 unique(c1$nd)
 
 syr<-length(unique(l7z_bal_mod$year))
-blake_z_bal<-l7z_bal_mod%>%group_by(genus_sp)%>%summarize(present_yr=n_distinct(year),
+blake_z_bal<-l7z_bal_mod%>%group_by(genus_sp)%>%summarise(present_yr=n_distinct(year),
                                                           sampled_yr=syr)%>%ungroup()
 blake_z_bal<-blake_z_bal[-1,]
 write.csv(blake_z_bal,paste(resloc_z,"splist_z_l7z_bal.csv",sep=""),row.names = F)
@@ -70,12 +70,12 @@ l7z_bal_mod<-inner_join(l7z_bal_mod,splist_l7bal,by="genus_sp")%>%
   select(year,month,day,value,sp=aggregate)
 
 # is every year uniformly sampled? no
-c<-l7z_bal_mod%>%group_by(year)%>%summarize(nm=n_distinct(month))%>%ungroup()
+c<-l7z_bal_mod%>%group_by(year)%>%summarise(nm=n_distinct(month))%>%ungroup()
 
 badyr<-c$year[which(c$nm<4)] # for consistent sampling effort
 
 # is every month uniformly sampled? no (1-4 times)
-c1<-l7z_bal_mod%>%group_by(year,month)%>%summarize(nd=n_distinct(day))%>%ungroup()
+c1<-l7z_bal_mod%>%group_by(year,month)%>%summarise(nd=n_distinct(day))%>%ungroup()
 unique(c1$nd)
 
 # for those bad years, all 4 months are not sampled, 
@@ -83,9 +83,9 @@ unique(c1$nd)
 
 l7z_bal_mod<-l7z_bal_mod%>%filter(year%notin%badyr)
 
-spmat<-l7z_bal_mod%>%group_by(year,month,sp)%>%summarize(val=mean(value))%>%ungroup()
+spmat<-l7z_bal_mod%>%group_by(year,month,sp)%>%summarise(val=mean(value))%>%ungroup()
 
-spmat<-spmat%>%group_by(year,sp)%>%summarize(mean_val=mean(val))%>%ungroup()%>%
+spmat<-spmat%>%group_by(year,sp)%>%summarise(mean_val=mean(val))%>%ungroup()%>%
   spread(sp,mean_val,fill=0)%>%as.data.frame()
 rownames(spmat)<-spmat$year
 spmat<-spmat[,-1]

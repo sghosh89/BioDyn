@@ -28,10 +28,10 @@ l1z_wal<-l1z_wal%>%separate(date, c("year","month","day"), "-")
 l1z_wal<-l1z_wal%>%filter(month%in%c("06","07","08","09"))
 
 # is every year uniformly sampled? yes (11 for 1987 only)
-c<-l1z_wal%>%group_by(year)%>%summarize(nm=n_distinct(month))%>%ungroup()
+c<-l1z_wal%>%group_by(year)%>%summarise(nm=n_distinct(month))%>%ungroup()
 
 # is every month uniformly sampled? yes (1-3 times)
-c1<-l1z_wal%>%group_by(year,month)%>%summarize(nd=n_distinct(day))%>%ungroup()
+c1<-l1z_wal%>%group_by(year,month)%>%summarise(nd=n_distinct(day))%>%ungroup()
 unique(c1$nd)
 
 # lake walen max depth 151m @wikipaedia
@@ -49,7 +49,7 @@ nrow(sp_m)
 
 sp_m$sampled_yr<-length(unique(l1z_wal_full$year)) # 16 year sampled: 1972-1987
 
-blake_z_wal<-l1z_wal_full%>%group_by(taxon)%>%summarize(present_yr=n_distinct(year))%>%ungroup()
+blake_z_wal<-l1z_wal_full%>%group_by(taxon)%>%summarise(present_yr=n_distinct(year))%>%ungroup()
 sp_m<-inner_join(sp_m,blake_z_wal,by=c("id_CH"="taxon"))
 write.csv(sp_m,paste(resloc_z,"splist_z_l1wal.csv",sep=""),row.names = F)
 

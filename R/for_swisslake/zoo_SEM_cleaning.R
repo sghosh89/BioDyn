@@ -50,10 +50,10 @@ l4z_sem_2C01_m3$unit<-"1/l"
 l4z_sem_2C01_modified<-rbind(l4z_sem_2C01_m3,l4z_sem_2C01_l)
 
 # is every year uniformly sampled? yes 
-c<-l4z_sem_2C01_modified%>%group_by(year)%>%summarize(nm=n_distinct(month))%>%ungroup()
+c<-l4z_sem_2C01_modified%>%group_by(year)%>%summarise(nm=n_distinct(month))%>%ungroup()
 
 # is every month uniformly sampled? no (1-5 times)
-c1<-l4z_sem_2C01_modified%>%group_by(year,month)%>%summarize(nd=n_distinct(day))%>%ungroup()
+c1<-l4z_sem_2C01_modified%>%group_by(year,month)%>%summarise(nd=n_distinct(day))%>%ungroup()
 unique(c1$nd)
 
 # for continuous year we consider from 1985
@@ -63,7 +63,7 @@ l4z_sem_2C01_modified$genus_sp<-paste(l4z_sem_2C01_modified$genus,l4z_sem_2C01_m
 
 # for site 2C01
 syr<-length(unique(l4z_sem_2C01_modified$year))
-blake_z_sem_2C01<-l4z_sem_2C01_modified%>%group_by(genus_sp)%>%summarize(present_yr=n_distinct(year),
+blake_z_sem_2C01<-l4z_sem_2C01_modified%>%group_by(genus_sp)%>%summarise(present_yr=n_distinct(year),
                                                                          sampled_yr=syr)%>%ungroup()
 blake_z_sem_2C01<-blake_z_sem_2C01[-1,]
 write.csv(blake_z_sem_2C01,paste(resloc_z,"splist_z_l4zsem_site2C01.csv",sep=""),row.names = F)
@@ -77,11 +77,11 @@ l4z_sem_2C01_modified<-inner_join(l4z_sem_2C01_modified,splist_l4sem,by="genus_s
   select(year,month,day,value,sp=aggregate)
 
 # is every month uniformly sampled? yes (1-5 days in month)
-c1<-l4z_sem_2C01_modified%>%group_by(year,month)%>%summarize(nd=n_distinct(day))%>%ungroup()
+c1<-l4z_sem_2C01_modified%>%group_by(year,month)%>%summarise(nd=n_distinct(day))%>%ungroup()
 unique(c1$nd)
 
 # is every year uniformly sampled? yes (2-4 months in year)
-c1<-l4z_sem_2C01_modified%>%group_by(year)%>%summarize(nm=n_distinct(month))%>%ungroup()
+c1<-l4z_sem_2C01_modified%>%group_by(year)%>%summarise(nm=n_distinct(month))%>%ungroup()
 unique(c1$nm)
 
 badyr<-c1$year[which(c1$nm<4)] # for these years, all 4 months are not sampled, 
@@ -89,9 +89,9 @@ badyr<-c1$year[which(c1$nm<4)] # for these years, all 4 months are not sampled,
 
 l4z_sem_2C01_modified<-l4z_sem_2C01_modified%>%filter(year%notin%badyr)
 
-spmat<-l4z_sem_2C01_modified%>%group_by(year,month,sp)%>%summarize(val=mean(value))%>%ungroup()
+spmat<-l4z_sem_2C01_modified%>%group_by(year,month,sp)%>%summarise(val=mean(value))%>%ungroup()
 
-spmat<-spmat%>%group_by(year,sp)%>%summarize(mean_val=mean(val))%>%ungroup()%>%
+spmat<-spmat%>%group_by(year,sp)%>%summarise(mean_val=mean(val))%>%ungroup()%>%
   spread(sp,mean_val,fill=0)%>%as.data.frame()
 rownames(spmat)<-spmat$year
 spmat<-spmat[,-1]

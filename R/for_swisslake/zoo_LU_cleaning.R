@@ -63,7 +63,7 @@ l3z_lu_l_3A04<-l3z_lu_l%>%filter(site=="'3A04'")
 
 # for site 3A01
 syr<-length(unique(l3z_lu_l_3A01$year))
-blake_z_lu_3A01<-l3z_lu_l_3A01%>%group_by(genus_sp)%>%summarize(present_yr=n_distinct(year),
+blake_z_lu_3A01<-l3z_lu_l_3A01%>%group_by(genus_sp)%>%summarise(present_yr=n_distinct(year),
                                                                 sampled_yr=syr)%>%ungroup()
 blake_z_lu_3A01<-blake_z_lu_3A01[-1,]
 write.csv(blake_z_lu_3A01,paste(resloc_z,"splist_z_l3zlu_site3A01.csv",sep=""),row.names = F)
@@ -71,7 +71,7 @@ write.csv(blake_z_lu_3A01,paste(resloc_z,"splist_z_l3zlu_site3A01.csv",sep=""),r
 
 # for site 3A04
 syr<-length(unique(l3z_lu_l_3A04$year))
-blake_z_lu_3A04<-l3z_lu_l_3A04%>%group_by(genus_sp)%>%summarize(present_yr=n_distinct(year),
+blake_z_lu_3A04<-l3z_lu_l_3A04%>%group_by(genus_sp)%>%summarise(present_yr=n_distinct(year),
                                                                 sampled_yr=syr)%>%ungroup()
 blake_z_lu_3A04<-blake_z_lu_3A04[-1,]
 write.csv(blake_z_lu_3A04,paste(resloc_z,"splist_z_l3zlu_site3A04.csv",sep=""),row.names = F)
@@ -88,19 +88,19 @@ l3z_lu_l_3A01<-inner_join(l3z_lu_l_3A01,splist_l3lu_A301_BM,by=c("genus_sp"))%>%
   select(year,month,day,value,sp=aggregation)
 
 # is every month uniformly sampled? (1-5 days in month)
-c1<-l3z_lu_l_3A01%>%group_by(year,month)%>%summarize(nd=n_distinct(day))%>%ungroup()
+c1<-l3z_lu_l_3A01%>%group_by(year,month)%>%summarise(nd=n_distinct(day))%>%ungroup()
 unique(c1$nd)
 
 # is every year uniformly sampled? yes (3-4 months in year)
-c1<-l3z_lu_l_3A01%>%group_by(year)%>%summarize(nm=n_distinct(month))%>%ungroup()
+c1<-l3z_lu_l_3A01%>%group_by(year)%>%summarise(nm=n_distinct(month))%>%ungroup()
 unique(c1$nm)
 
 badyr<-c1$year[which(c1$nm<4)] # for consistent sampling effort exclude the year which has not all 4 months sampled
 
 spmat<-l3z_lu_l_3A01%>%filter(year%notin%badyr)%>%
-          group_by(year,month,sp)%>%summarize(val=mean(value))%>%ungroup()
+          group_by(year,month,sp)%>%summarise(val=mean(value))%>%ungroup()
 
-spmat<-spmat%>%group_by(year,sp)%>%summarize(mean_val=mean(val))%>%ungroup()%>%
+spmat<-spmat%>%group_by(year,sp)%>%summarise(mean_val=mean(val))%>%ungroup()%>%
   spread(sp,mean_val,fill=0)%>%as.data.frame()
 rownames(spmat)<-spmat$year
 spmat<-spmat[,-1]
@@ -134,11 +134,11 @@ l3z_lu_l_3A04<-inner_join(l3z_lu_l_3A04,splist_l3lu_A304_BM,by=c("genus_sp"))%>%
   select(year,month,day,value,sp=aggregation)
 
 # is every month uniformly sampled? (1-4 days in month)
-c1<-l3z_lu_l_3A04%>%group_by(year,month)%>%summarize(nd=n_distinct(day))%>%ungroup()
+c1<-l3z_lu_l_3A04%>%group_by(year,month)%>%summarise(nd=n_distinct(day))%>%ungroup()
 unique(c1$nd)
 
 # is every year uniformly sampled? yes (2-4 months in year)
-c1<-l3z_lu_l_3A04%>%group_by(year)%>%summarize(nm=n_distinct(month))%>%ungroup()
+c1<-l3z_lu_l_3A04%>%group_by(year)%>%summarise(nm=n_distinct(month))%>%ungroup()
 unique(c1$nm)
 
 # don't consider site 3A04 as it has only 1998-2014 consistent years and they are only 17 years
