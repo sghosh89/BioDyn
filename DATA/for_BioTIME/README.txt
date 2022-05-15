@@ -1,5 +1,9 @@
 for_BioTIME: 
-raw_data: accessed on 31 Aug 2021 from file:///D:/BGB_Papers/BioDyn/DATA/for_BioTIME/raw_data/accessed31Aug2021/BioTIME%20_%20Zenodo.html#.YS9NJI4zY2w, also few private data from Sarah
+raw_data: accessed on 31 Aug 2021 from BioTIME database
+https://biotime.st-andrews.ac.uk/download.php 
+also few private data from Sarah
+
+To know more about the database, see https://doi.org/10.1111/geb.12729
 
 wrangled_data: rarefied version 
 - considered Freshwater and Terrestrial realms, Marine were very few.
