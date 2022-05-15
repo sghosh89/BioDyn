@@ -43,7 +43,7 @@ table(xq3q4$UnitAbundance)
 #115809      2677     40972
 # we will only consider the "Count" - it is the majority in data? then only 180 TimeSeriesID will be there
 #xq3q4<-xq3q4%>%filter(UnitAbundance=="Count")
-xtbl<-xq3q4%>%group_by(TimeSeriesID)%>%summarize(n=n_distinct(UnitAbundance))%>%ungroup()
+xtbl<-xq3q4%>%group_by(TimeSeriesID)%>%summarise(n=n_distinct(UnitAbundance))%>%ungroup()
 all(xtbl$n==1)# so, each timeseriesID has unique unit
 
 xq3q4<-xq3q4%>%
