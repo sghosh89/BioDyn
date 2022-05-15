@@ -21,7 +21,7 @@ x<-x%>%mutate(newsite=paste("STUDY_ID_",site,"_PLOT_",PLOT,sep=""))
 newsite<-sort(unique(x$newsite))
 
 # check if each newsite visited for >20 years?
-tt<-x%>%group_by(newsite)%>%summarize(n=n_distinct(YEAR))%>%ungroup()
+tt<-x%>%group_by(newsite)%>%summarise(n=n_distinct(YEAR))%>%ungroup()
 
 # include sites which are sampled > 20 years
 tt<-tt%>%filter(n>=20)
