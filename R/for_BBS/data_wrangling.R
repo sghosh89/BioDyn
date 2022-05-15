@@ -53,7 +53,7 @@ fshort<-fshort%>%filter(RouteDataID%in%xweather_good$RouteDataID)%>%select(-RPID
 
 # check some summary 
 # consistent sampling effort? no: because each route within a state of a country was not sampled for each year
-c<-fshort%>%group_by(CountryNum,StateNum,Route)%>%summarize(nyr=n_distinct(Year),
+c<-fshort%>%group_by(CountryNum,StateNum,Route)%>%summarise(nyr=n_distinct(Year),
                                                       nRID=n_distinct(RouteDataID),
                                                       uRID=unique(RouteDataID))%>%ungroup()
 
@@ -71,11 +71,11 @@ c0ym1<-as.data.frame(table(c0ym$um)) # months saampled 4<7<5<6 # caution: whethe
                                      # currently I am considering all months
 
 # number of rotes and years per country-state combo
-c1<-fshort%>%group_by(CountryNum,StateNum)%>%summarize(nr=n_distinct(Route),
+c1<-fshort%>%group_by(CountryNum,StateNum)%>%summarise(nr=n_distinct(Route),
                                                       nyr=n_distinct(Year))%>%ungroup()
 
 # but how many years per route in a state in a country?
-c2<-fshort%>%group_by(CountryNum,StateNum,Route)%>%summarize(nyr=n_distinct(Year))%>%ungroup()
+c2<-fshort%>%group_by(CountryNum,StateNum,Route)%>%summarise(nyr=n_distinct(Year))%>%ungroup()
 # so, the number of rows in table c2 is eqv. to the site number where we will consider the bird community
 
 fshort<-fshort%>%unite("Country_State_Route",CountryNum,StateNum,Route,sep="_")
