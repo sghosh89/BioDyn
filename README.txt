@@ -20,7 +20,7 @@ Authors (and affiliations):
 
 About:
 	This repository records the complete workflow that produced the analysis from the data. 
-	Each folder contains a "README.txt" to guide through the repo. Data are deposited in the DRYAD, 
+	Each folder contains a "README.txt" to guide through the repository. Data are deposited in the DRYAD, 
 	and corresponding code is given in the GitHub repo named "BioDyn". The core software dependency is R, R-Studio. 
 	Codes are written and performed by Ghosh with R version 4.0.5 on a windows 10 laptop. This repository is intended
 	to record a workflow, and is not designed or tested for distribution and wide use on multiple platforms. For any reproducibility 
