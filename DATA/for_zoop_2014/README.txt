@@ -1,7 +1,7 @@
 for_zoop_2014: data folder contains
-LakeNameMasterand coords.xlsx
-ZooplanktonTaxa.xlsx
-and 28 csv files in Zoop Data folder
+LakeNameMasterand coords.xlsx - info about lake ID, name, region and central latitude, longitude, number of species have.
+ZooplanktonTaxa.xlsx - details of zooplankton taxa
+and 28 csv files in Zoop Data folder for each lake
 and key.xlsx, speciespool_BM.csv files in wrangled_data folder
 
 
