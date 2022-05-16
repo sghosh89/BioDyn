@@ -15,7 +15,7 @@ xm<-xm%>%select(id_CH,empire,kingdom,phylum,
                 affiliation,synonyms,comments,size_category)
 #---------------------------------------------------------------------
 # lake vierwaldstättersee/ lake lucerne
-l3z_lu<-read.csv(paste(path,"zoo_vws.csv",sep=""),sep=";")
+l3z_lu<-read.csv(paste(path,"zoo_VWS.csv",sep=""),sep=";")
 
 #===================================================================================================
 #------------------ lake lucerne: 55 years of data (1960-2014) ------------------
