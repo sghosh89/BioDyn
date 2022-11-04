@@ -281,7 +281,7 @@ dev.off()
 # alternative version of plotting
 plotter_conditionalplot_100runsavg<-function(tab_terres1,tab_freshw1,
                                              tab_terres2,tab_freshw2,
-                                             xlab,ylab,ylim,legend_text="NA"){
+                                             xlab,ylab,ylim){
   xvar<-tab_terres1[,1]
   tab_t1<-tab_terres1[,-1]
   tab_f1<-tab_freshw1[,-1]
@@ -299,13 +299,13 @@ plotter_conditionalplot_100runsavg<-function(tab_terres1,tab_freshw1,
   lines(xvar,meanF1, col='skyblue',lty=1)
   lines(xvar,meanT2, col='green4', lty=2)
   lines(xvar,meanF2, col='blue', lty=2)
-  legend(1, 300, legend=legend_text,
-         col=c("green", "skyblue","green4","blue"), 
-         lty=c(1,1,2,2), 
-         box.lty=0)
+  #legend(1, 300, legend=legend_text,
+  #       col=c("green", "skyblue","green4","blue"), 
+  #       lty=c(1,1,2,2), 
+  #       box.lty=0)
 }
 
-pdf("../../Results/gather_res/res_taxa15/summary_fixed_realm/conditionalplot_100runsavg_stability.pdf",height=5.5,width=6)
+pdf("../../Results/gather_res/res_taxa15/summary_fixed_realm/conditionalplot_100runsavg_stability.pdf",height=6,width=6)
 op<-par(mfrow=c(2,2),mar=c(4,4,1,1),mgp=c(2.5,1,0))
 
 # stability-diversity relationship: indep. of overall synchrony
@@ -315,8 +315,7 @@ tab_terres2<-readRDS("../../Results/gather_res/res_taxa15/summary_fixed_realm/co
 tab_freshw2<-readRDS("../../Results/gather_res/res_taxa15/summary_fixed_realm/conditional_stability_richness_100runs_freshw_at_VR0.9_A0.RDS")
 plotter_conditionalplot_100runsavg(tab_terres1 = tab_terres1,tab_freshw1=tab_freshw1,
                                 tab_terres2 = tab_terres2,tab_freshw2=tab_freshw2,
-                                xlab="Richness",ylab="Stability",ylim=c(-100,400),
-                                legend_text = c("VR=0.1, TA=0","VR=0.1, TA=0","VR=0.9, TA=0","VR=0.9, TA=0"))
+                                xlab="Richness",ylab="Stability",ylim=c(-100,400))
 
 # stability-diversity relationship: sensitive to tail-dependent synchrony
 tab_terres1<-readRDS("../../Results/gather_res/res_taxa15/summary_fixed_realm/conditional_stability_richness_100runs_terres_at_VR0.1_A1.RDS")
@@ -325,8 +324,7 @@ tab_terres2<-readRDS("../../Results/gather_res/res_taxa15/summary_fixed_realm/co
 tab_freshw2<-readRDS("../../Results/gather_res/res_taxa15/summary_fixed_realm/conditional_stability_richness_100runs_freshw_at_VR0.1_A15.RDS")
 plotter_conditionalplot_100runsavg(tab_terres1 = tab_terres1,tab_freshw1=tab_freshw1,
                                    tab_terres2 = tab_terres2,tab_freshw2=tab_freshw2,
-                                   xlab="Richness",ylab="Stability",ylim=c(-100,400),
-                                   legend_text = c("VR=0.1, TA=1","VR=0.1, TA=1","VR=0.1, TA=15","VR=0.1, TA=15"))
+                                   xlab="Richness",ylab="Stability",ylim=c(-100,400))
 
 # stability-overall synchrony relationship at different richness level
 tab_terres1<-readRDS("../../Results/gather_res/res_taxa15/summary_fixed_realm/conditional_stability_VR_100runs_terres_at_R4_A0.RDS")
@@ -345,7 +343,7 @@ tab_terres2<-readRDS("../../Results/gather_res/res_taxa15/summary_fixed_realm/co
 tab_freshw2<-readRDS("../../Results/gather_res/res_taxa15/summary_fixed_realm/conditional_stability_A_100runs_freshw_at_R20_VR0.RDS")
 plotter_conditionalplot_100runsavg(tab_terres1 = tab_terres1,tab_freshw1=tab_freshw1,
                                    tab_terres2 = tab_terres2,tab_freshw2=tab_freshw2,
-                                   xlab="Tail-dependent synchrony",ylab="Stability",ylim=c(-70,200))
+                                   xlab="Synchrony in the extremes",ylab="Stability",ylim=c(-70,200))
 
 
 par(op)
