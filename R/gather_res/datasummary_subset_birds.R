@@ -176,8 +176,9 @@ gs<-ggplot(data = df, aes(y = iCValt, x = REALM, fill = REALM)) +
     #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
     panel.background=element_rect(fill="white", colour="white"), 
     legend.position="none",text=element_text(size=20))+
-  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))
-
+  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))+ 
+  annotate("text",  x=0.85, y = 20, label = "(a)", vjust=1.5, hjust=1.5, size=10)
+#gs
 # richness
 g1<-ggplot(data = df, aes(y = nsp, x = REALM, fill = REALM)) +
   scale_fill_manual(values=alpha(c("dodgerblue","green3"), 1))+
@@ -191,8 +192,9 @@ g1<-ggplot(data = df, aes(y = nsp, x = REALM, fill = REALM)) +
     #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
     panel.background=element_rect(fill="white", colour="white"), 
     legend.position="none",text=element_text(size=20))+
-  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))
-
+  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))+ 
+  annotate("text",  x=0.85, y = 90, label = "(b)", vjust=1.5, hjust=1.5, size=10)
+#g1
 # variance ratio
 g2<-ggplot(data = df, aes(y = phi_LdM, x = REALM, fill = REALM)) +
   scale_fill_manual(values=alpha(c("dodgerblue","green3"), 1))+
@@ -207,7 +209,9 @@ g2<-ggplot(data = df, aes(y = phi_LdM, x = REALM, fill = REALM)) +
     #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
     panel.background=element_rect(fill="white", colour="white"), 
     legend.position="none",text=element_text(size=20))+
-  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))
+  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))+ 
+  annotate("text",  x=0.85, y = 1, label = "(c)", vjust=1.5, hjust=1.5, size=10)
+#g2
 
 # total asymmetry
 df$A<-df$L+abs(df$U) 
@@ -217,14 +221,15 @@ g3<-ggplot(data = df, aes(y = A, x = REALM, fill = REALM)) +
   #coord_flip()+
   geom_point(aes(y = A, color = REALM), position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
   geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.4)+ 
-  ylab("Synchrony with tail dependence \n (Total tail asymmetry)")+xlab("Realms")+
+  ylab("Synchrony at the extremes \n (Total tail asymmetry)")+xlab("Realms")+
   theme_bw()+
   theme(
     #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
     panel.background=element_rect(fill="white", colour="white"), 
     legend.position="none",text=element_text(size=20))+
-  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))
-
+  scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))+ 
+  annotate("text",  x=0.85, y = 75, label = "(d)", vjust=1.5, hjust=1.5, size=10)
+#g3
 pdf("../../Results/gather_res/datasummary_subset_birds_res/rawdata_rainclouds.pdf",height=8,width=10)
 gridExtra::grid.arrange(gs,g1,g2,g3,nrow=2)
 dev.off()
