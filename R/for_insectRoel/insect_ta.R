@@ -86,6 +86,29 @@ for(i in 1:nrow(summary_table)){
   summary_table$initR[i]<-initR
 }
 
+# to get pairwise Spearman correlation
+summary_table$tot_spear_sig<-NA # sum of all significant positive and negative correlation
+
+for(i in 1:nrow(summary_table)){
+  nsp<-summary_table$nsp[i]
+  did<-summary_table$STUDY_ID[i]
+  pid<-summary_table$newsite[i]
+  resloc_input<-paste("../../Results/for_insectRoel/",did,"/",pid,"/",sep="")
+  x<-readRDS(paste(resloc_input,"NonParamStat.RDS",sep=""))
+  spx<-x$spear
+  
+  posnn<-x$posn_notneeded
+  #posN_ind<-which(x$posnN==1, arr.ind = T)
+  posI_ind<-which(x$posnI==1, arr.ind = T)
+  
+  spx[posI_ind]<-NA # only exclude indep. interaction
+  spx[posnn]<-NA
+  
+  spx<-spx[1:nsp,1:nsp]
+  
+  summary_table$tot_spear_sig[i]<-sum(spx, na.rm=T) # you have to normalize it by dividing with nsp*(nsp-1)/2
+}
+
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
                                       f_nL=nL/nint,
