@@ -79,6 +79,31 @@ summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_nU=nU/nint,
                                       f_nneg=nneg/nint)
 
+# to get pairwise Spearman correlation
+summary_table$tot_spear_sig<-NA # sum of all significant positive and negative correlation
+
+for(i in 1:nrow(summary_table)){
+  nsp<-summary_table$nsp[i]
+  siteid<-good_LakeID[i]
+  resloc_input<-paste(resloc,siteid,"/",sep="")
+  x<-readRDS(paste(resloc_input,"NonParamStat.RDS",sep=""))
+  spx<-x$spear
+  
+  posnn<-x$posn_notneeded
+  #posN_ind<-which(x$posnN==1, arr.ind = T)
+  posI_ind<-which(x$posnI==1, arr.ind = T)
+  
+  spx[posI_ind]<-NA # only exclude indep. interaction
+  spx[posnn]<-NA
+  
+  spx<-spx[1:nsp,1:nsp]
+  
+  summary_table$tot_spear_sig[i]<-sum(spx, na.rm=T) # you have to normalize it by dividing with nsp*(nsp-1)/2
+}
+
+
+saveRDS(summary_table,"../../Results/for_zoop_2014/summary_table.RDS")
+
 pdf(paste("../../Results/for_zoop_2014/hist_targetsp.pdf",sep=""),width=10,height=6)
 op<-par(mar=c(5,5,5,2))
 hist(summary_table$nsp, breaks=10, xlim=c(0,10), xlab="Number of target sp. group",
@@ -87,7 +112,6 @@ hist(summary_table$nsp, breaks=10, xlim=c(0,10), xlab="Number of target sp. grou
 par(op)
 dev.off()
 
-saveRDS(summary_table,"../../Results/for_zoop_2014/summary_table.RDS")
 
 df<-summary_table%>%dplyr::select(siteid,nsp,f_nind,f_nL,f_nU,f_nneg)
 dat<-t(df)
