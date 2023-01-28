@@ -156,6 +156,12 @@ for(k in 1:length(newsite)){
       dir.create(resloc)
     }
     res<-tail_analysis(mat = input_tailanal, resloc = resloc, nbin = 2)
+    
+    resloc3<-paste(resloc,"nbin3/",sep="")
+    if(!dir.exists(resloc3)){
+      dir.create(resloc3)
+    }
+    res_nbin3<-tail_analysis(mat = input_tailanal, resloc = resloc3, nbin = 3)
   }
   cat("---------- k = ",k,"-----------\n")
 }
