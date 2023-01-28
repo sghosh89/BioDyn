@@ -123,6 +123,21 @@ for (i in c(1:length(df$site))){
     st$newsite<-newsitelist
     bigM<-readRDS(paste(readpath,"spmat.RDS",sep=""))
     st$initR<-ncol(bigM$spmat)
+    
+    x<-readRDS(paste(resloc2,"NonParamStat.RDS",sep=""))
+    spx<-x$spear
+    
+    posnn<-x$posn_notneeded
+    #posN_ind<-which(x$posnN==1, arr.ind = T)
+    posI_ind<-which(x$posnI==1, arr.ind = T)
+    
+    spx[posI_ind]<-NA # only exclude indep. interaction
+    spx[posnn]<-NA
+    
+    nsp<-st$nsp
+    spx<-spx[1:nsp,1:nsp]
+    st$tot_spear_sig<-sum(spx, na.rm=T)
+    
     summary_table<-rbind(summary_table,st)
   }else{
     for(j in 1:length(newsitelist)){
@@ -133,12 +148,26 @@ for (i in c(1:length(df$site))){
       st$newsite<-newsitelist[j]
       bigM<-readRDS(paste(readpath,"spmat.RDS",sep=""))
       st$initR<-ncol(bigM$spmat)
+      
+      x<-readRDS(paste(resloc2,"NonParamStat.RDS",sep=""))
+      spx<-x$spear
+      
+      posnn<-x$posn_notneeded
+      #posN_ind<-which(x$posnN==1, arr.ind = T)
+      posI_ind<-which(x$posnI==1, arr.ind = T)
+      
+      spx[posI_ind]<-NA # only exclude indep. interaction
+      spx[posnn]<-NA
+      
+      nsp<-st$nsp
+      spx<-spx[1:nsp,1:nsp]
+      st$tot_spear_sig<-sum(spx, na.rm=T)
       summary_table<-rbind(summary_table,st)
     }
   }
 }
 # reorganize
-summary_table<-summary_table%>%dplyr::select(STUDY_ID,newsite,initR,nsp,nint,nind,npos,nL,nU,nneg,L,U)
+summary_table<-summary_table%>%dplyr::select(STUDY_ID,newsite,initR,nsp,nint,nind,npos,nL,nU,nneg,L,U,tot_spear_sig)
 
 summary_table<-summary_table%>%mutate(f_nind=nind/nint,
                                       f_npos=npos/nint,
