@@ -107,7 +107,30 @@ for(i in 1:nrow(summary_df)){
   summary_df$initR[i]<-length(unique(bigM$species))
 }
 
+# to get pairwise Spearman correlation
+summary_df$tot_spear_sig<-NA # sum of all significant positive and negative correlation
+
+for(i in 1:nrow(summary_df)){
+  nsp<-summary_df$nsp[i]
+  resloc<-resloc_list[i]
+  resloc_input<-paste(resloc,"/",sep="")
+  x<-readRDS(paste(resloc_input,"NonParamStat.RDS",sep=""))
+  spx<-x$spear
+  
+  posnn<-x$posn_notneeded
+  #posN_ind<-which(x$posnN==1, arr.ind = T)
+  posI_ind<-which(x$posnI==1, arr.ind = T)
+  
+  spx[posI_ind]<-NA # only exclude indep. interaction
+  spx[posnn]<-NA
+  
+  spx<-spx[1:nsp,1:nsp]
+  
+  summary_df$tot_spear_sig[i]<-sum(spx, na.rm=T) # you have to normalize it by dividing with nsp*(nsp-1)/2
+}
+
 saveRDS(summary_df,"../../Results/for_swisslake/summary_table_phytoplankton.RDS")
+
 
 df<-summary_df%>%select(nsp,f_nind,f_nL,f_nU,f_nneg)
 dat<-t(df)

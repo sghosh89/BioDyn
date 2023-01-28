@@ -6,3 +6,5 @@ source("get_input_spmat_phytoplankton.R") # get input matrix for tail analysis
 source("tail_analysis_phytoplankton.R") # tail analysis results
 #source("rank_category_phytoplankton.R") # compute and save categorized interaction freq between dominant groups for each site
 source("summary_for_stabilitymetric_phytoplankton.R") # stability metric for phytoplankton
+
+# swisslakephyto max 40 years sampled - so not included for nbin=3 analysis
