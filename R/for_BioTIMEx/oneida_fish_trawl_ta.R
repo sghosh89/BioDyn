@@ -26,5 +26,12 @@ for(i in 1:length(sites)){
   spmat<-readRDS(paste("../../DATA/for_BioTIMEx/wrangled_data/",dataset_id,"/",dataset_id,"_",sites[i],"_inputmatrix_tailanal.RDS",sep=""))
   myresloc<-paste(resloc,dataset_id,"/",sites[i],"/",sep="")
   tail_analysis(mat=spmat,resloc=myresloc,nbin=2)
+  
+  resloc3<-paste(myresloc,"nbin3/",sep="")
+  if(!dir.exists(resloc3)){
+    dir.create(resloc3)
+  }
+  tail_analysis(mat=spmat,resloc=resloc3,nbin=3)
+  
 }
 

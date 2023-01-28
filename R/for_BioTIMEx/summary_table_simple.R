@@ -197,6 +197,23 @@ summary_table<-c()
 pathlist <- inputloc_table$resloc
 for(i in 1:length(pathlist)){
   tempo<-readRDS(paste(pathlist[i],"summary_df.RDS",sep=""))
+  
+  x<-readRDS(paste(pathlist[i],"NonParamStat.RDS",sep=""))
+  spx<-x$spear
+  
+  posnn<-x$posn_notneeded
+  #posN_ind<-which(x$posnN==1, arr.ind = T)
+  posI_ind<-which(x$posnI==1, arr.ind = T)
+  
+  spx[posI_ind]<-NA # only exclude indep. interaction
+  spx[posnn]<-NA
+  
+  nsp<-tempo$nsp
+  spx<-spx[1:nsp,1:nsp]
+  
+  tempo$tot_spear_sig<-sum(spx, na.rm=T)
+  
+  
   summary_table<-rbind(summary_table,tempo)
 }
 summary_table<-cbind(STUDY_ID=inputloc_table$STUDY_ID,newsite=inputloc_table$newsite,initR=inputloc_table$initR,
