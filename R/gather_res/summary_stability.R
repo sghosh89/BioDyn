@@ -6,7 +6,7 @@ library(tidyverse)
 sm_BioTIME<-readRDS("../../Results/for_BioTIME/stability_metric_plotlevel.RDS")
 sm_BioTIME<-sm_BioTIME%>%dplyr::select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                                   initR,nsp, nind,npos,nL,nU,nneg,
-                                  L,U,f_nind,f_nL,f_nU,f_nneg,
+                                  L,U,tot_spear_sig,f_nind,f_nL,f_nU,f_nneg,
                                   cvsq_real,cvsq_indep,phi,phi_LdM,
                                   skw_real,skw_indep,phi_skw,
                                   iCV,iCValt))
@@ -16,7 +16,7 @@ sm_BioTIME$source<-"BioTIME"
 sm_BioTIMEx<-readRDS("../../Results/for_BioTIMEx/stability_metric.RDS")
 sm_BioTIMEx<-sm_BioTIMEx%>%dplyr::select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                                     initR,nsp, nind,npos,nL,nU,nneg,
-                                    L,U,f_nind,f_nL,f_nU,f_nneg,
+                                    L,U,tot_spear_sig,f_nind,f_nL,f_nU,f_nneg,
                                     cvsq_real,cvsq_indep,phi,phi_LdM,
                                     skw_real,skw_indep,phi_skw,
                                     iCV,iCValt))
@@ -30,7 +30,7 @@ sm_BBS<-rename(sm_BBS, newsite = siteid) # each siteid is renamed as newsite to 
 sm_BBS<-rename(sm_BBS, STUDY_ID = Stratum_name) # stratum name renamed as STUDY_ID
 sm_BBS<-sm_BBS%>%dplyr::select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                           initR,nsp, nind,npos,nL,nU,nneg,
-                          L,U,f_nind,f_nL,f_nU,f_nneg,
+                          L,U,tot_spear_sig,f_nind,f_nL,f_nU,f_nneg,
                           cvsq_real,cvsq_indep,phi,phi_LdM,
                           skw_real,skw_indep,phi_skw,
                           iCV,iCValt))
@@ -44,7 +44,7 @@ sm_RF<-rename(sm_RF, newsite = siteid) # each siteid is renamed as newsite to be
 sm_RF<-rename(sm_RF, STUDY_ID = HydroBasin) # Hydrobasin renamed as STUDY_ID
 sm_RF<-sm_RF%>%dplyr::select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                         initR,nsp, nind,npos,nL,nU,nneg,
-                          L,U,f_nind,f_nL,f_nU,f_nneg,
+                          L,U,tot_spear_sig,f_nind,f_nL,f_nU,f_nneg,
                           cvsq_real,cvsq_indep,phi,phi_LdM,
                           skw_real,skw_indep,phi_skw,
                           iCV,iCValt))
@@ -60,7 +60,7 @@ sm_swisslake_phyto$STUDY_ID<-c("lake walensee","lake zurich","lake luzern","lake
   
 sm_swisslake_phyto<-sm_swisslake_phyto%>%dplyr::select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                                                   initR,nsp, nind,npos,nL,nU,nneg,
-                                                  L,U,f_nind,f_nL,f_nU,f_nneg,
+                                                  L,U,tot_spear_sig,f_nind,f_nL,f_nU,f_nneg,
                                                   cvsq_real,cvsq_indep,phi,phi_LdM,
                                                   skw_real,skw_indep,phi_skw,
                                                   iCV,iCValt))
@@ -75,7 +75,7 @@ sm_swisslake_zoo$STUDY_ID<-c("lake zurich","lake luzern","lake sempach",
                              "lake hallwil","lake greifensee","lake baldegg")
 sm_swisslake_zoo<-sm_swisslake_zoo%>%dplyr::select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                                               initR,nsp, nind,npos,nL,nU,nneg,
-                                              L,U,f_nind,f_nL,f_nU,f_nneg,
+                                              L,U,tot_spear_sig,f_nind,f_nL,f_nU,f_nneg,
                                               cvsq_real,cvsq_indep,phi,phi_LdM,
                                               skw_real,skw_indep,phi_skw,
                                               iCV,iCValt))
@@ -88,7 +88,7 @@ sm_zoop$ORGANISMS<-"Zooplankton"
 sm_zoop$STUDY_ID<-sm_zoop$newsite<-sm_zoop$siteid
 sm_zoop<-sm_zoop%>%dplyr::select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                             initR,nsp, nind,npos,nL,nU,nneg,
-                            L,U,f_nind,f_nL,f_nU,f_nneg,
+                            L,U,tot_spear_sig,f_nind,f_nL,f_nU,f_nneg,
                             cvsq_real,cvsq_indep,phi,phi_LdM,
                             skw_real,skw_indep,phi_skw,
                             iCV,iCValt))
@@ -98,7 +98,7 @@ sm_zoop$source<-"Zooplankton2014"
 sm_insect<-readRDS("../../Results/for_insectRoel/stability_metric.RDS")
 sm_insect<-sm_insect%>%dplyr::select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                               initR,nsp, nind,npos,nL,nU,nneg,
-                            L,U,f_nind,f_nL,f_nU,f_nneg,
+                            L,U,tot_spear_sig,f_nind,f_nL,f_nU,f_nneg,
                             cvsq_real,cvsq_indep,phi,phi_LdM,
                             skw_real,skw_indep,phi_skw,
                             iCV,iCValt))

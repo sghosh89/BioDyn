@@ -19,7 +19,7 @@ source("datasummary.R") # summarizing metadata used in this study
 #===========================================
 
 #----- subset birds data and rerun analysis but with VR_LdM -------------
-source("subset_BBS_21.R") # subsetting 21% bird data
+source("subset_BBS_21.R") # subsetting 21% bird data - do NOT run again this code
 #source("bayesian_model_realmlevel_simple_subset_birds_vr_LdM.R")
 #source("model_summary_realmlevel_simple_subset_birds_vr_LdM.R")
 #source("plot_posterior_realmlevel_simple_subset_birds_vr_LdM.R")
@@ -33,7 +33,7 @@ source("call_toymodel_fixed_realm.R") # this is the main analysis
 source("conditionalplot_100runs.R") # this is for conditional plotting
 
 
-
+#source("revision_test.R") # on working mode
 
 
 

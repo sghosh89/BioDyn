@@ -40,6 +40,6 @@ saveRDS(res_subset,"../../Results/gather_res/stability_metric_all_subset_birds_2
 
 
 
-
-
+#old<-readRDS("../../Results/gather_res/stability_metric_all_subset_birds_21.RDS")
+#old_b<-old%>%filter(source=="BBS")
 
