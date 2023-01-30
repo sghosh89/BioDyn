@@ -7,7 +7,7 @@ source("summary_table_simple.R") # initial richness and summary table
 source("summary_for_stabilitymetric.R") # for stability metric info
 
 
-# 25 communities have >=41 years sampled at least, so adding nbin=3 calculation for them
+# 25 communities have >=41 years sampled at least, so adding nbin=3, nbin=4 calculation for them
 #STUDY_ID                           newsite
 #1  oneida_fish_gillnets                          Buoy 113
 #2  oneida_fish_gillnets                          Buoy 125

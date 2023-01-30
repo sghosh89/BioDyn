@@ -33,5 +33,11 @@ for(i in 1:length(sites)){
   }
   tail_analysis(mat=spmat,resloc=resloc3,nbin=3)
   
+  resloc4<-paste(myresloc,"nbin4/",sep="")
+  if(!dir.exists(resloc4)){
+    dir.create(resloc4)
+  }
+  tail_analysis(mat=spmat,resloc=resloc4,nbin=4)
+  
 }
 
