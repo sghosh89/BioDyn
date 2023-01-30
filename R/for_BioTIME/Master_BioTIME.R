@@ -21,5 +21,5 @@ source("summary_for_stabilitymetric_plotlevel.R")
 #7      413  STUDY_ID_413_PLOT_G
 #8      413 STUDY_ID_413_PLOT_OF
 #9      414                  414
-# so I run for both nbin=2, 3 in the corresponding tail analysis file for terrestrial plots
+# so I run for both nbin=2, 3, 4 in the corresponding tail analysis file for terrestrial plots
 
