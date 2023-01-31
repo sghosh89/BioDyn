@@ -290,7 +290,7 @@ taxaeffect_mammals$taxa<-"mammals"
 for(i in c(1:100)){
   resloc<-paste("../../Results/gather_res/res_taxa15/run_",i,"/res_fixed_realm",sep="")
   bm<-readRDS(paste(resloc,"/full_model.RDS",sep=""))
-  post<-posterior_samples(bm)
+  post<-as_draws_df(bm)
   #----------------------------------taxa effect data -------
   tx<-post%>%select(b_Intercept,
                     `r_TAXA[fish,Intercept]`,
@@ -418,7 +418,7 @@ for(i in c(1:100)){
   df$UpCI0.95[7]<-df1$.upper[1]
   df$UpCI0.75[7]<-df1$.upper[2]
   
-  df1<-post %>%mutate(b_VR_LdM_terres=b_A+`b_VR_LdM:REALMTerrestrial`)%>% select(b_VR_LdM_terres)%>% 
+  df1<-post %>%mutate(b_VR_LdM_terres=b_VR_LdM+`b_VR_LdM:REALMTerrestrial`)%>% select(b_VR_LdM_terres)%>% 
     tidybayes::median_qi(.width = c(.95,0.75))
   df$Median[8]<-df1$b_VR_LdM_terres[1]
   df$LowCI0.95[8]<-df1$.lower[1]
