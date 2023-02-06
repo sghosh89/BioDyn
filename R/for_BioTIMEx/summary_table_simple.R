@@ -199,7 +199,7 @@ for(i in 1:length(pathlist)){
   tempo<-readRDS(paste(pathlist[i],"summary_df.RDS",sep=""))
   
   x<-readRDS(paste(pathlist[i],"NonParamStat.RDS",sep=""))
-  spx<-x$spear
+  spx<-x$corval # actual positive and negative spearman correlation
   
   posnn<-x$posn_notneeded
   #posN_ind<-which(x$posnN==1, arr.ind = T)
