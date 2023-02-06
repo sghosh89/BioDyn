@@ -21,7 +21,7 @@ mycorrplot<-function(z,posnI_ind,posnN_ind,posn_notneeded,colrange,tl.cex,cl.cex
   
   corrplot(z,is.corr = F,col=col1(100),method="color",addgrid.col = "black",type="lower",
            diag=F,bg = "white",tl.cex=tl.cex,tl.col = "black",tl.offset = 2.4,tl.pos="ld",
-           cl.cex = cl.cex,cl.lim = colrange,mar=c(0,0,0,0),cl.length=7,tl.srt=30,
+           cl.cex = cl.cex,col.lim = colrange,mar=c(0,0,0,0),cl.length=7,tl.srt=30,
            cl.align.text = "l",cl.ratio = 0.1)
   
   # colorize as black for diagonal indices
