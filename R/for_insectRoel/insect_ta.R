@@ -95,7 +95,7 @@ for(i in 1:nrow(summary_table)){
   pid<-summary_table$newsite[i]
   resloc_input<-paste("../../Results/for_insectRoel/",did,"/",pid,"/",sep="")
   x<-readRDS(paste(resloc_input,"NonParamStat.RDS",sep=""))
-  spx<-x$spear
+  spx<-x$corval # actual positive and negative spearman correlation
   
   posnn<-x$posn_notneeded
   #posN_ind<-which(x$posnN==1, arr.ind = T)
