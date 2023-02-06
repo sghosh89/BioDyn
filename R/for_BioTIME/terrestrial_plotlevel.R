@@ -143,7 +143,7 @@ for (i in c(1:length(df_included$site))){
     st$initR<-ncol(bigM$spmat)
     
     x<-readRDS(paste(resloc2,"NonParamStat.RDS",sep=""))
-    spx<-x$spear
+    spx<-x$corval # actual positive and negative spearman correlation
     
     posnn<-x$posn_notneeded
     #posN_ind<-which(x$posnN==1, arr.ind = T)
@@ -168,7 +168,7 @@ for (i in c(1:length(df_included$site))){
       st$initR<-ncol(bigM$spmat)
       
       x<-readRDS(paste(resloc2,"NonParamStat.RDS",sep=""))
-      spx<-x$spear
+      spx<-x$corval # actual positive and negative spearman correlation
       
       posnn<-x$posn_notneeded
       #posN_ind<-which(x$posnN==1, arr.ind = T)
