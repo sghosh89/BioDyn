@@ -134,7 +134,7 @@ call_toymodel_fixed_realm<-function(i){
 #.rs.restartR()
 
 # fixed_realm
-for(i in 1:100){
+for(i in 1:4){
   call_toymodel_fixed_realm(i=i)
 }
 #.rs.restartR() 

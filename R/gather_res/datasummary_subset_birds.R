@@ -203,7 +203,7 @@ g2<-ggplot(data = df, aes(y = phi_LdM, x = REALM, fill = REALM)) +
   #coord_flip()+
   geom_point(aes(y = phi_LdM, color = REALM), position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
   geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.4)+ 
-  ylab("Synchrony (Variance ratio)")+xlab("Realms")+ 
+  ylab("Overall synchrony \n (LM synchrony metric)")+xlab("Realms")+ 
   theme_bw()+
   theme(
     #panel.grid.major=element_blank(), panel.grid.minor=element_blank(),
