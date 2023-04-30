@@ -34,3 +34,9 @@ source("conditionalplot_100runs.R") # this is for conditional plotting
 
 
 source("revision_test.R") # Extra models
+source("compare_stability_definition.R") # defining stability figure in suppmat
+
+
+
+
+
