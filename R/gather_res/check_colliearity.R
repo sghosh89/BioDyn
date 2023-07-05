@@ -21,6 +21,12 @@ df1_scaled$A<- scale(df1_scaled$A)
 mod1<-lmer(stability_skw ~ R+ A + VR_LdM + REALM + (1|TAXA/UID), 
                               data=df1_scaled)
 car::vif(mod1) # VIF was always <2
+mod1wi<-lmer(stability_skw ~ (R+ A + VR_LdM)* REALM + (1|TAXA/UID), 
+           data=df1_scaled)
+car::vif(mod1wi) # here with interaction term, of course VIF shows high values
+# But you can ignore those high VIFs as you include same variables twice, and when the interaction terms significant
+# https://stats.stackexchange.com/questions/52856/vif-values-and-interactions-in-multiple-regression
+# see this post: https://statisticalhorizons.com/multicollinearity/
 
 #library("olsrr")
 #ols_eigen_cindex(mod1) # condition matrix was also ok for lm model
