@@ -1,5 +1,4 @@
 rm(list=ls())
-set.seed(101)
 library(VineCopula)
 #=====================================
 Corbds<-function(vi,vj,lb,ub){
@@ -30,9 +29,6 @@ CorlCoru<-function(vi,vj,nbin){
 }
 #==================================
 #generate data from a seed copula
-fc<-BiCopSim(N=500,family=5, par=10) # frank copula
-cc<-BiCopSim(N=500,family=3, par=10) # clayton copula
-gc<-BiCopSim(N=500,family=13, par=10) # inverted clayton copula
 
 
 get_cop<-function(d){
@@ -81,117 +77,124 @@ pdf("../../Results/sampling_effort_fig.pdf",height=11,width=22)
 op<-par(mfrow=c(3,7))
 
 #================ for frank copula ============
+set.seed(101)
+fc<-BiCopSim(N=500,family=5, par=10) # frank copula
 
 tl<-CorlCoru(vi=fc[,1],vj=fc[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(fc[,1],fc[,2], xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 res_fc<-get_cop(d=fc)
 tl<-CorlCoru(vi=res_fc$dc_u_0.8[,1],vj=res_fc$dc_u_0.8[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_fc$dc_u_0.8[,1],res_fc$dc_u_0.8[,2],col="blue", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_fc$dc_u_0.4[,1],vj=res_fc$dc_u_0.4[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_fc$dc_u_0.4[,1],res_fc$dc_u_0.4[,2],col="blue", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_fc$dc_u_0.2[,1],vj=res_fc$dc_u_0.2[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_fc$dc_u_0.2[,1],res_fc$dc_u_0.2[,2],col="blue", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_fc$dc_l_0.8[,1],vj=res_fc$dc_l_0.8[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_fc$dc_l_0.8[,1],res_fc$dc_l_0.8[,2],col="red", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_fc$dc_l_0.4[,1],vj=res_fc$dc_l_0.4[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_fc$dc_l_0.4[,1],res_fc$dc_l_0.4[,2],col="red", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_fc$dc_l_0.2[,1],vj=res_fc$dc_l_0.2[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_fc$dc_l_0.2[,1],res_fc$dc_l_0.2[,2],col="red", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 #============= for clayton copula ==============
+#set.seed(101)
+cc<-BiCopSim(N=500,family=3, par=10) # clayton copula
 
 tl<-CorlCoru(vi=cc[,1],vj=cc[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(cc[,1],cc[,2], xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 res_cc<-get_cop(d=cc)
 tl<-CorlCoru(vi=res_cc$dc_u_0.8[,1],vj=res_cc$dc_u_0.8[,2],nbin=2)
 CorlmCoru<-tl[1]-tl[2]
 plot(res_cc$dc_u_0.8[,1],res_cc$dc_u_0.8[,2],col="blue", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_cc$dc_u_0.4[,1],vj=res_cc$dc_u_0.4[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_cc$dc_u_0.4[,1],res_cc$dc_u_0.4[,2],col="blue", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_cc$dc_u_0.2[,1],vj=res_cc$dc_u_0.2[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_cc$dc_u_0.2[,1],res_cc$dc_u_0.2[,2],col="blue", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_cc$dc_l_0.8[,1],vj=res_cc$dc_l_0.8[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_cc$dc_l_0.8[,1],res_cc$dc_l_0.8[,2],col="red", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_cc$dc_l_0.4[,1],vj=res_cc$dc_l_0.4[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_cc$dc_l_0.4[,1],res_cc$dc_l_0.4[,2],col="red", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_cc$dc_l_0.2[,1],vj=res_cc$dc_l_0.2[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_cc$dc_l_0.2[,1],res_cc$dc_l_0.2[,2],col="red", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 #============= for inverted clayton copula ==============
+#set.seed(101)
+gc<-1-cc#BiCopSim(N=500,family=13, par=10) # inverted clayton copula
+
 tl<-CorlCoru(vi=gc[,1],vj=gc[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(gc[,1],gc[,2], xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 res_gc<-get_cop(d=gc)
 tl<-CorlCoru(vi=res_gc$dc_u_0.8[,1],vj=res_gc$dc_u_0.8[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_gc$dc_u_0.8[,1],res_gc$dc_u_0.8[,2],col="blue", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_gc$dc_u_0.4[,1],vj=res_gc$dc_u_0.4[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_gc$dc_u_0.4[,1],res_gc$dc_u_0.4[,2],col="blue", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_gc$dc_u_0.2[,1],vj=res_gc$dc_u_0.2[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_gc$dc_u_0.2[,1],res_gc$dc_u_0.2[,2],col="blue", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_gc$dc_l_0.8[,1],vj=res_gc$dc_l_0.8[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_gc$dc_l_0.8[,1],res_gc$dc_l_0.8[,2],col="red", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_gc$dc_l_0.4[,1],vj=res_gc$dc_l_0.4[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_gc$dc_l_0.4[,1],res_gc$dc_l_0.4[,2],col="red", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 tl<-CorlCoru(vi=res_gc$dc_l_0.2[,1],vj=res_gc$dc_l_0.2[,2],nbin=2)
-#CorlmCoru<-tl[1]-tl[2]
+CorlmCoru<-tl[1]-tl[2]
 plot(res_gc$dc_l_0.2[,1],res_gc$dc_l_0.2[,2],col="red", xlab="",ylab="",cex.axis=1.6,
-     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n TA= ",round(tl[1], 2)+round(abs(tl[2]),2),sep=""),cex.main=2) 
+     main=paste("Corl= ",round(tl[1],2),", Coru= ",round(tl[2],2),"\n Corl-Coru= ",round(CorlmCoru, 2),sep=""),cex.main=2) 
 
 
 par(op)
