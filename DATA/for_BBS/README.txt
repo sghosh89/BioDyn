@@ -1,6 +1,6 @@
 for_BBS: data folder
 
-# How did we wrangle BBS data to be used for our analysis? (guide: R/for_BBS/data_wrangling.R)
+# How did we wrangle BBS data to be used for our analysis? 
 
 Routes those maintained BBS protocol and surveyed for atleast 20 years of total study period (1997-2019) 
 were considered. We took total abundance from 50 stops (months: 4 to 7) for each such route.
