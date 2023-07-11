@@ -76,8 +76,8 @@ for(i in 1:100){
 #hist(vf_all_max,50) # histogram showing the max of VIF values for 4 variables for 100 replicates
 
 #======== plot ==============
-pdf("../../Results/plot_vif.pdf",height=4,width=12)
-op<-par(mfrow=c(1,3), mar=c(2,2,2,2),mgp=c(2,1,0))
+pdf("../../Results/plot_vif.pdf",height=7,width=8)
+op<-par(mfrow=c(2,2), mar=c(3,3,2,2),mgp=c(2,1,0))
 
 #create vector of VIF values for whole data
 vif_values <- vif(mod1)
@@ -95,8 +95,17 @@ barplot(vif_values2, main = "VIF with subsetted data: n=1791",
 #add vertical line at 5
 abline(v = 5, lwd = 3, lty = 2)
 
-
-boxplot(vif_df, horizontal = T, ylim=c(0,7),col="lightskyblue", cex.axis=1.5, main="VIF for 100 replicates")
+vif_df_l<-gather(vif_df, key="key", value="value")
+vif_df_l$key<-as.factor(vif_df_l$key)
+vif_df_l$key<-factor(vif_df_l$key,     # Reorder factor levels
+                     c("R", "A", "VR_LdM", "REALM"))
+boxplot(value~key, data=vif_df_l,horizontal = T, ylim=c(0,7),#col="lightskyblue", 
+        cex.axis=1.2, main="VIF for 100 replicates",col="white", xlab="", ylab="")
+stripchart(value ~ key,
+           data = vif_df_l,
+           method = "overplot",
+           pch = 19,col=rgb(0,0,1,0.3),
+           add = TRUE)
 
 par(op)
 dev.off()
