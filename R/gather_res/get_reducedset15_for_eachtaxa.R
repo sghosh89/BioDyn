@@ -7,17 +7,21 @@ set.seed(seed=123)
 #====================================================================================================
 # read data
 df<-readRDS("../../Results/gather_res/stability_metric_all_subset_birds_21.RDS")
-mydat<-df[,c("source","STUDY_ID","newsite","REALM","TAXA","ORGANISMS","iCV","iCValt","phi","phi_LdM","nsp","L","U","f_nL","f_nU","f_nneg")]
+mydat<-df[,c("source","STUDY_ID","newsite","REALM","TAXA","ORGANISMS","iCV","iCValt","phi","phi_LdM","nsp","L","U","f_nL","f_nU","f_nneg","tot_spear_sig")]
 mydat$UID<-paste(mydat$source,mydat$STUDY_ID,sep=",")
 mydat$A<-mydat$L+abs(mydat$U) # total asymmetry
 mydat$uniA<-mydat$L+mydat$U # net asymmetry
+mydat$absU<-abs(mydat$U)
+
 
 mydat<-mydat%>%dplyr::rename(
   stability_skw=iCValt,
   VR_LdM=phi_LdM,
   R=nsp)
+mydat$nint<-mydat$R *(mydat$R -1)*0.5
+mydat<-mydat%>%select(REALM,TAXA,UID,iCV,stability_skw,R,VR_LdM,L,U, absU,A,tot_spear_sig,nint)
+mydat$newcormetric <- mydat$tot_spear_sig / mydat$nint
 
-mydat<-mydat%>%select(REALM,TAXA,UID,stability_skw,R,VR_LdM,A)
 #============================================================================
 table(mydat$TAXA) # mammals for terrestrial, terrestrial data are 
 # always large in number than freshwater
