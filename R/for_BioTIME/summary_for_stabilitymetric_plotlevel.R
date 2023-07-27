@@ -51,3 +51,9 @@ for(i in 1:nrow(r_BioTIME)){
 r_BioTIME$REALM<-as.factor(r_BioTIME$REALM)
 ##########################################################
 saveRDS(r_BioTIME,"../../Results/for_BioTIME/stability_metric_plotlevel.RDS")
+
+
+#checktab1<-r_BioTIME%>%group_by(STUDY_ID)%>%summarise(nsites=n_distinct(newsite),
+#                                                          nuq_stab=n_distinct(iCValt))%>%ungroup()
+# 54, 56
+

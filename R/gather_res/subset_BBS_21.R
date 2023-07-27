@@ -24,15 +24,28 @@ r_BBS_selected<-r_BBS%>%distinct(Stratum_name,.keep_all = T)
 sum(r_BBS_selected$n_int)/nrow(r_BBS)  # 21%
 #(183+159+440)/3
 
+r_BBS_selected<-r_BBS_selected%>%dplyr::select(Stratum_name,n_int)
+
 set.seed(seed=123)
-zz<-r_BBS%>%group_by(Stratum_name)%>%sample_n(n_int)
+
+subset_BBS<-c()
+for(i in 1:nrow(r_BBS_selected)){
+  selid<-r_BBS_selected$Stratum_name[i]
+  nid<-r_BBS_selected$n_int[i]
+  tempo<-r_BBS%>%filter(Stratum_name%in%selid)%>%slice_sample(n=nid)
+  subset_BBS<-rbind(subset_BBS,tempo)
+}
+#zz<-r_BBS%>%group_by(Stratum_name)%>%sample_n(size=n_int)
+
+
 
 # ================= now draw the samples ==============================
 df<-readRDS("../../Results/gather_res/stability_metric_all.RDS")
 df_nb<-df%>%filter(source%notin%"BBS") # not bird result
 dfb<-df%>%filter(source%in%"BBS") # bird result from BBS
 
-dfb<-dfb%>%filter(newsite%in%zz$siteid) # sampled bird result
+#dfb<-dfb%>%filter(newsite%in%zz$siteid) # sampled bird result
+dfb<-dfb%>%filter(newsite%in%subset_BBS$siteid) # sampled bird result
 
 # now add together
 res_subset<-rbind(df_nb,dfb)

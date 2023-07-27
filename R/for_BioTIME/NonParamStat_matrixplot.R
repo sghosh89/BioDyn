@@ -134,7 +134,7 @@ NonParamStat_matrixplot<-function(data,resloc,posn_notneeded,tot_target_sp,tl.ce
   tempo[indI]<-NA
   diag(tempo)<-NA
   
-  if(all(is.na(tempo))==T){
+  if(all(is.na(tempo))==T | any(tempo==0,na.rm=T)){
     cr<-1
   }else{
     minval<-min(tempo,na.rm=T)

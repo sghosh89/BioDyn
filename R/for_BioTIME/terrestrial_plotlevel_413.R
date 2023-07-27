@@ -53,7 +53,8 @@ x_allsite<-x_allsite%>%group_by(newsite,YEAR,MONTH,Species)%>%
 
 newsite_bad<-c()
 for(k in 1:length(newsite)){
-  x<-x_allsite%>%filter(newsite==newsite[k])
+  id<-which(x_allsite$newsite%in%newsite[k])
+  x<-x_allsite[id,]
   
   # do not consider these unknown sp into analysis
   x<-x%>%filter(Species%notin%c("Unknown","Unknown "))
@@ -130,30 +131,35 @@ for(k in 1:length(newsite)){
     }
     saveRDS(input_tailanal,paste(resloc,"input_tailanal.RDS",sep=""))
     
-    #----------------- now do tail analysis ----------------------
-    resloc2<-paste("../../Results/for_BioTIME/Terrestrial_plotlevel/",site,"/",sep="")
-    if(!dir.exists(resloc2)){
-      dir.create(resloc2)
+    only1sp<-input_tailanal%>%dplyr::select(-raresp)
+    if(ncol(only1sp)==1){
+      newsite_bad<-c(newsite_bad,newsite[k])
+    }else{
+      #----------------- now do tail analysis ----------------------
+      resloc2<-paste("../../Results/for_BioTIME/Terrestrial_plotlevel/",site,"/",sep="")
+      if(!dir.exists(resloc2)){
+        dir.create(resloc2)
+      }
+      
+      #----------- analysis with covary sp ----------------
+      resloc<-paste(resloc2,newsite[k],"/",sep="")
+      if(!dir.exists(resloc)){
+        dir.create(resloc)
+      }
+      res<-tail_analysis(mat = input_tailanal, resloc = resloc, nbin = 2)
+      
+      resloc3<-paste(resloc,"nbin3/",sep="")
+      if(!dir.exists(resloc3)){
+        dir.create(resloc3)
+      }
+      res_nbin3<-tail_analysis(mat = input_tailanal, resloc = resloc3, nbin = 3)
+      
+      resloc4<-paste(resloc,"nbin4/",sep="")
+      if(!dir.exists(resloc4)){
+        dir.create(resloc4)
+      }
+      res_nbin4<-tail_analysis(mat = input_tailanal, resloc = resloc4, nbin = 4)
     }
-    
-    #----------- analysis with covary sp ----------------
-    resloc<-paste(resloc2,newsite[k],"/",sep="")
-    if(!dir.exists(resloc)){
-      dir.create(resloc)
-    }
-    res<-tail_analysis(mat = input_tailanal, resloc = resloc, nbin = 2)
-    
-    resloc3<-paste(resloc,"nbin3/",sep="")
-    if(!dir.exists(resloc3)){
-      dir.create(resloc3)
-    }
-    res_nbin3<-tail_analysis(mat = input_tailanal, resloc = resloc3, nbin = 3)
-    
-    resloc4<-paste(resloc,"nbin4/",sep="")
-    if(!dir.exists(resloc4)){
-      dir.create(resloc4)
-    }
-    res_nbin4<-tail_analysis(mat = input_tailanal, resloc = resloc4, nbin = 4)
     
   }
   cat("---------- k = ",k,"-----------\n")

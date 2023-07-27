@@ -93,6 +93,8 @@ monthly_rarefy<-function(study,resamples=100,field){
          em_extra<-em_extra[1:needm]
          
          selected_cms<-sort(c(cmr,fm_extra,em_extra))
+       }else{# only one common month is there, so min sampling =1 here
+         selected_cms<-common_months
        }
        
         
@@ -104,7 +106,7 @@ monthly_rarefy<-function(study,resamples=100,field){
        }
        
        mydfc[[i]]<-selected_cms
-       
+       print(i)
      }
      
    }
