@@ -163,10 +163,10 @@ for (i in 1:100){
                           basic_model_w_R_A_VR,full_model, rank=T, metrics="common")
   
   saveRDS(cp,paste(resloc,"/cp.RDS",sep=""))
-  row.names(cp)<-cp[,1]
-  cp<-cp[,3:11]
-  cp<-format(cp,3)
-  write.csv(cp,paste(resloc,"/cp.csv",sep=""))
+  #row.names(cp)<-cp[,1]
+  #cp<-cp[,3:8]
+  #cp<-format(cp,3)
+  #write.csv(cp,paste(resloc,"/cp.csv",sep=""))
   cat(paste("------- i = ", i ," -------done ------- \n "))
 }
 ###########################################################################################
@@ -188,34 +188,34 @@ plot(1, type = "n",                        # Remove all elements of plot
 cp_all<-c()
 for(i in c(1:100)){
   resloc<-paste("../../Results/gather_res/res_taxa15/run_",i,"/res_fixed_realm",sep="")
-  cp<-read.csv(paste(resloc,"/cp.csv",sep=""))
+  cp<-readRDS(paste(resloc,"/cp.RDS",sep=""))
   cp$rank<-1:8
-  cp<-cp[,c(1,8,10,11)]
-  cp$X <- gsub("basic_model_w_", "", cp$X)
-  cp$X<- gsub("R_A_REALM", "REALM_R_A", cp$X)
-  cp$X<- gsub("R_VR_REALM", "REALM_R_VR", cp$X)
-  cp$X<- gsub("R_REALM", "REALM_R", cp$X)
-  cp$X<- gsub("full_model", "REALM_R_A_VR", cp$X)
-  cp$REALM<-ifelse(startsWith(cp$X,"REALM_"),1,0)
-  cp$X<-as.factor(cp$X)
-  cp$Performance.Score <- gsub("%", "", cp$Performance.Score)
-  cp$Performance.Score<-as.numeric(cp$Performance.Score)
-  cp<-cp%>%arrange(X)
+  cp<-cp[,c(1,8,9)]
+  cp$Name <- gsub("basic_model_w_", "", cp$Name)
+  cp$Name<- gsub("R_A_REALM", "REALM_R_A", cp$Name)
+  cp$Name<- gsub("R_VR_REALM", "REALM_R_VR", cp$Name)
+  cp$Name<- gsub("R_REALM", "REALM_R", cp$Name)
+  cp$Name<- gsub("full_model", "REALM_R_A_VR", cp$Name)
+  cp$REALM<-ifelse(startsWith(cp$Name,"REALM_"),1,0)
+  cp$Name<-as.factor(cp$Name)
+  #cp$Performance_Score <- gsub("%", "", cp$Performance_Score)
+  #cp$Performance_Score<-as.numeric(cp$Performance_Score)
+  cp<-cp%>%arrange(Name)
   cp_all<-rbind(cp_all,cp)
-  lines(cp$X,cp$Performance.Score,type="o", col=rgb(0,0,0,0.3)) # overall performance
+  lines(cp$Name,100*cp$Performance_Score,type="o", col=rgb(0,0,0,0.3)) # overall performance
   #lines(cp$X,cp$R2..marg..,type="o", col=rgb(0,0,0,0.3)) # for marginal R2
 }
-axis(1, at = 1:8, las=2, labels=cp$X)
+axis(1, at = 1:8, las=2, labels=cp$Name)
 par(op)
 dev.off()
 #-------------------------------------------------
 library(tidyverse)
 library(PupillometryR)
 cp_all$REALM<-as.factor(cp_all$REALM)
-gs<-ggplot(data = cp_all, aes(y = Performance.Score, x = X, fill=REALM)) +
+gs<-ggplot(data = cp_all, aes(y = Performance_Score, x = Name, fill=REALM)) +
   scale_fill_manual(values=alpha(c("white","grey"), 1))+
   geom_flat_violin(position = position_nudge(x = .2, y = 0), alpha = .4) +
-  geom_point(aes(y = Performance.Score),  
+  geom_point(aes(y = Performance_Score),  
              position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
   geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.4)+ 
   ylab("Score")+xlab("Predictors used")+
@@ -233,11 +233,11 @@ dev.off()
 # see how many times model including predictor "A" get top ranks?
 # and plot frequency of performance for each model
 fp<-as.data.frame(matrix(NA,nrow=8, ncol=8))
-colnames(fp)<-cp$X  
+colnames(fp)<-cp$Name  
 dummytab<-data.frame(Var1=as.factor(1:8), Freq=0*numeric(8)) # Var1 is the 1:8 model rank levels
 
 for(i in 1:8){
-  tempo <- cp_all%>%filter(X%in%colnames(fp)[i])
+  tempo <- cp_all%>%filter(Name%in%colnames(fp)[i])
   bb<-as.data.frame(table(tempo$rank)/(nrow(cp_all)/8))
   
   tt<-merge(dummytab,bb,by="Var1",all=T)

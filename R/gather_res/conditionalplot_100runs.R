@@ -368,11 +368,15 @@ g1_freshw_A
 
 pdf("../../Results/gather_res/res_taxa15/summary_fixed_realm/conditionalplot_100runs_stability_detailed.pdf", height=6, width=7)
 grid.arrange(g1_terres_R, g1_freshw_R,
-             g1_freshw_LM,
-             g1_terres_A, ncol=2)
+             g1_terres_A, g1_freshw_LM,
+              ncol=2)
 dev.off()
 
 
+pdf("../../Results/gather_res/res_taxa15/summary_fixed_realm/conditionalplot_100runs_stability_extra.pdf", height=3, width=7)
+grid.arrange(g1_terres_LM, g1_freshw_A,
+             ncol=2)
+dev.off()
 
 
 

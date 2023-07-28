@@ -1,5 +1,5 @@
 library(brms)
-
+library(tidyverse)
 reslocn<-"../../Results/gather_res/res_taxa15/LT_and_UT_sep/"
 if(!dir.exists(reslocn)){
   dir.create(reslocn)
@@ -9,12 +9,16 @@ if(!dir.exists(reslocn)){
 call_toymodel_fixed_realm_LT_and_UT_sep<-function(i){
   
   mydat_scaled<-readRDS(paste("../../Results/gather_res/res_taxa15/run_",i,"/reduced_data_taxa15.RDS",sep=""))
+  mydat_scaled<-mydat_scaled%>%dplyr::select(REALM, TAXA, UID, stability_skw,R,VR_LdM,A,L,absU)
+  
   mydat_scaled$stability_skw<-scale(mydat_scaled$stability_skw)
   mydat_scaled$R<-scale(mydat_scaled$R)
   mydat_scaled$VR_LdM<- scale(mydat_scaled$VR_LdM) 
   mydat_scaled$A<- scale(mydat_scaled$A)
   mydat_scaled$L<- scale(mydat_scaled$L)
-  mydat_scaled$U<- scale(abs(mydat_scaled$U))
+  #mydat_scaled$U<- scale(abs(mydat_scaled$U))
+  mydat_scaled$U<- scale((mydat_scaled$absU))# note we took absolute value of U
+  mydat_scaled<-mydat_scaled%>%dplyr::select(-absU)
   #=====================================================
   
   resloc<-paste("../../Results/gather_res/res_taxa15/LT_and_UT_sep/run_",i,sep="")

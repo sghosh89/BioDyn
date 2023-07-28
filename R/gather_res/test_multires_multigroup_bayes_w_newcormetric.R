@@ -7,7 +7,7 @@ if(!dir.exists(reslocn)){
 
 call_multires_multigroup<-function(i){
   
-  mydat_scaled<-readRDS(paste("../../Results/gather_res/res_taxa15/run_",i,"/reduced_data_taxa15_with_newmetric.RDS",sep=""))
+  mydat_scaled<-readRDS(paste("../../Results/gather_res/res_taxa15/run_",i,"/reduced_data_taxa15.RDS",sep=""))
   mydat_scaled$stability_skw<-scale(mydat_scaled$stability_skw)
   mydat_scaled$R<-scale(mydat_scaled$R)
   mydat_scaled$LM<- scale(mydat_scaled$VR_LdM)# LM synchrony: modified variance ratio 

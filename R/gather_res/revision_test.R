@@ -68,6 +68,7 @@ for(i in 1:nrow(df_sel)){
     df_sel$L_nbin4[i]<-sdf$L
     df_sel$U_nbin4[i]<-sdf$U
   }
+  print(i)
 }
 
 plot(df_sel$L,df_sel$L_nbin4)
@@ -78,7 +79,8 @@ df_sel<-df_sel[-1,]
 
 cor.test(df_sel$L,df_sel$L_nbin4)
 cor.test(df_sel$U,df_sel$U_nbin4)
-# ok, both have significant correlation: 0.9, p-value <2.2e-16
+# ok, both have significant correlation: for L 0.9, p-value <2.2e-16
+# ok, both have significant correlation: for U 0.76, p-value <1.11e-07
 
 #=================================================================================
 #check consistency in the model what if you consider only LT or UT instead of A?
@@ -90,10 +92,7 @@ library(tidybayes)
 
 source("./call_toymodel_fixed_realm_LT_and_UT_sep.R")
 
-source("./call_toymodel_fixed_realm_w_newcormetric.R")
-
 source("./test_multires_multigroup_bayes.R")
-#source("./conditionalplot_100runs_multires_multigroup.R") 
 
 source("./test_multires_multigroup_bayes_w_newcormetric.R")
 
