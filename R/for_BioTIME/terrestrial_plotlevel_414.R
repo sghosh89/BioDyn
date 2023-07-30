@@ -51,11 +51,8 @@ if(length(newsite)>1){
   x_allsite<-x
 }
 
+# only 1 site left
 
-for(k in 1:length(newsite)){
-  
-  x<-x_allsite%>%filter(newsite==newsite[k])
-  
   # do not consider these unknown sp into analysis
   x<-x%>%filter(Species%notin%c("Unknown","Unknown "))
   
@@ -64,7 +61,7 @@ for(k in 1:length(newsite)){
   
   #---------- ok, after seeing t0, we need to rarefy --------------
   min_samp<-min(t0$nm) # min months sampled each year
-  cat("---------- min_samp = ",min_samp," , newsite = ",newsite[k]," ------------------- \n")
+  cat("---------- min_samp = ",min_samp," , newsite = ",newsite," ------------------- \n")
   need_rarefy<-length(unique(t0$nm))>1
   
   AB<-is.na(x$ABUNDANCE_TYPE)[1]
@@ -101,12 +98,9 @@ for(k in 1:length(newsite)){
   
   input_sp<-list(spmat=xmat,meta=xmeta)
   
-  if(length(newsite)>1){
-    resloc<-paste("../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/414/",newsite[k],"/",sep="")
-  }else{
-    resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/414/"
-  }
-  
+
+  resloc<-"../../DATA/for_BioTIME/wrangled_data/Terrestrial_plotlevel/414/"
+ 
   saveRDS(input_sp,paste(resloc,"spmat.RDS",sep=""))
   
   #----------- saving input spmat for tailanal ---------------------
@@ -114,11 +108,12 @@ for(k in 1:length(newsite)){
   # first we aggregated the rare sp (present even less than 30% of sampled years) into a pseudo sp 
   presentyr<-apply(X=m$spmat,MARGIN=2,FUN=function(x){sum(x>0)})
   presentyr<-unname(presentyr)
-  rareid<-which(presentyr<=0.3*nrow(m$spmat)) # rare sp = present less than 30% of sampled year
-  
+  commonspid<-which(presentyr>=0.7*nrow(m$spmat)) # consider species with >70% present yr
+  rareid<-which(presentyr<0.7*nrow(m$spmat)) 
   allraresp<-ncol(m$spmat)==length(rareid) # that means not all sp are rare
   
-  if(allraresp==T){
+  nsp<-length(commonspid)
+  if(allraresp==T | nsp<2){
     
     newsite_bad<-c(newsite_bad,newsite[k])
     
@@ -127,7 +122,7 @@ for(k in 1:length(newsite)){
       raresp<-m$spmat[,rareid]
       raresp<-as.matrix(raresp) # this line is for when you have only one rare sp
       raresp<-apply(X=raresp,MARGIN=1,FUN=sum)
-      m1<-m$spmat[,-rareid]
+      m1<-m$spmat[,commonspid]
       m1<-cbind(m1,raresp=raresp)
       m1<-as.data.frame(m1)
       input_tailanal<-m1
@@ -144,11 +139,9 @@ for(k in 1:length(newsite)){
     }
     
     #----------- analysis with covary sp ----------------
-    if(length(newsite)>1){
-      resloc<-paste(resloc2,newsite[k],"/",sep="")
-    }else{
+    
       resloc<-resloc2
-    }
+    
     
     if(!dir.exists(resloc)){
       dir.create(resloc)
@@ -168,8 +161,6 @@ for(k in 1:length(newsite)){
   }
   res_nbin4<-tail_analysis(mat = input_tailanal, resloc = resloc4, nbin = 4)
   
-  cat("---------- k = ",k,"-----------\n")
-}
 
 
 #--------------------------------------------------------

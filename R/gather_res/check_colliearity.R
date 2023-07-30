@@ -2,7 +2,7 @@ rm(list=ls())
 library(car)
 library(lmerTest)
 library(tidyverse)
-#With whole data: 2759 communities
+#With whole data: 2668 communities
 df1<-read.csv("../../Results/gather_res/data_summary.csv") # whole data summary
 df1<-df1%>%dplyr::select(REALM,TAXA,newsite,
                          stability_skw=iCValt,STUDY_ID,source,
@@ -31,7 +31,7 @@ car::vif(mod1wi) # here with interaction term, of course VIF shows high values
 #library("olsrr")
 #ols_eigen_cindex(mod1) # condition matrix was also ok for lm model
 
-#With subsetted data: 1791 communities
+#With subsetted data: 1768 communities
 df2<-read.csv("../../Results/gather_res/datasummary_subset_birds_res/data_summary_subset_birds.csv")
 df2<-df2%>%dplyr::select(REALM,TAXA,newsite,
                          stability_skw=iCValt,STUDY_ID,source,
@@ -82,7 +82,7 @@ op<-par(mfrow=c(2,2), mar=c(3,3,2,2),mgp=c(2,1,0))
 #create vector of VIF values for whole data
 vif_values <- vif(mod1)
 #create horizontal bar chart to display each VIF value
-barplot(vif_values, main = "VIF with whole data: n=2758", horiz = TRUE, 
+barplot(vif_values, main = "VIF with whole data: n=2668", horiz = TRUE, 
         col = "steelblue", xlim=c(0,7), cex.axis=1.5)
 #add vertical line at 5
 abline(v = 5, lwd = 3, lty = 2)
@@ -90,7 +90,7 @@ abline(v = 5, lwd = 3, lty = 2)
 #create vector of VIF values for subsetted data
 vif_values2 <- vif(mod2)
 #create horizontal bar chart to display each VIF value
-barplot(vif_values2, main = "VIF with subsetted data: n=1790", 
+barplot(vif_values2, main = "VIF with subsetted data: n=1768", 
         horiz = TRUE, col = "deepskyblue", xlim=c(0,7), cex.axis=1.5)
 #add vertical line at 5
 abline(v = 5, lwd = 3, lty = 2)

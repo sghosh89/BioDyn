@@ -55,7 +55,8 @@ x_allsite<-x_allsite%>%group_by(newsite,YEAR,MONTH,Species)%>%
 #------------------------------------------------------------------------------------------------------------
 
 for(k in 1:length(newsite)){
-  x<-x_allsite%>%filter(newsite==newsite[k])
+  id<-which(x_allsite$newsite%in%newsite[k])
+  x<-x_allsite[id,]
   
   # do not consider these unknown sp into analysis
   x<-x%>%filter(Species%notin%c("unspecifiable ","Unknown","Unknown rotifer", "Unknown rotifer2", "unknown ","Unknown "))
@@ -109,15 +110,15 @@ for(k in 1:length(newsite)){
   # first we aggregated the rare sp (present even less than 30% of sampled years) into a pseudo sp 
   presentyr<-apply(X=m$spmat,MARGIN=2,FUN=function(x){sum(x>0)})
   presentyr<-unname(presentyr)
-  rareid<-which(presentyr<=0.3*nrow(m$spmat)) # rare sp = present less than 30% of sampled year
-  
+  commonspid<-which(presentyr>=0.7*nrow(m$spmat)) # consider species with >70% present yr
+  rareid<-which(presentyr<0.7*nrow(m$spmat)) 
   ncol(m$spmat)==length(rareid) # that means not all sp are rare
   
   if(length(rareid)!=0){
     raresp<-m$spmat[,rareid]
     raresp<-as.matrix(raresp) # this line is for when you have only one rare sp
     raresp<-apply(X=raresp,MARGIN=1,FUN=sum)
-    m1<-m$spmat[,-rareid]
+    m1<-m$spmat[,commonspid]
     m1<-cbind(m1,raresp=raresp)
     m1<-as.data.frame(m1)
     input_tailanal<-m1

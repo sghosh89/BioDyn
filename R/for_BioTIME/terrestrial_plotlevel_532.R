@@ -53,7 +53,8 @@ x_allsite<-x_allsite%>%group_by(newsite,YEAR,MONTH,Species)%>%
 
 newsite_bad<-c()
 for(k in 1:length(newsite)){
-  x<-x_allsite%>%filter(newsite==newsite[k])
+  id<-which(x_allsite$newsite%in%newsite[k])
+  x<-x_allsite[id,]
   
   # do not consider these unknown sp into analysis
   x<-x%>%filter(Species%notin%c("Unknown","Unknown "))
@@ -107,12 +108,12 @@ for(k in 1:length(newsite)){
   # first we aggregated the rare sp (present even less than 30% of sampled years) into a pseudo sp 
   presentyr<-apply(X=m$spmat,MARGIN=2,FUN=function(x){sum(x>0)})
   presentyr<-unname(presentyr)
-  rareid<-which(presentyr<=0.3*nrow(m$spmat)) # rare sp = present less than 30% of sampled year
-  
+  commonspid<-which(presentyr>=0.7*nrow(m$spmat)) # consider species with >70% present yr
+  rareid<-which(presentyr<0.7*nrow(m$spmat)) 
   allraresp<-ncol(m$spmat)==length(rareid) # that means not all sp are rare
   
-  if(allraresp==T){
-    
+  nsp<-length(commonspid)
+  if(allraresp==T | nsp<2){
     newsite_bad<-c(newsite_bad,newsite[k])
     
   }else{

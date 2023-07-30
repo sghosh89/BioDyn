@@ -103,6 +103,9 @@ sm_insect<-sm_insect%>%dplyr::select(c(STUDY_ID,newsite,REALM,TAXA,ORGANISMS,
                             skw_real,skw_indep,phi_skw,
                             iCV,iCValt))
 sm_insect$source<-"InsectRoel"
+# 478 study id already included in BioTIME freshwater study
+# so exclude it
+sm_insect<-sm_insect%>%filter(STUDY_ID!=478)
 
 #================================================================================================
 sm_all<-rbind(sm_BioTIME,sm_BioTIMEx,sm_BBS,sm_RF,sm_swisslake_phyto,sm_swisslake_zoo,sm_zoop,sm_insect)

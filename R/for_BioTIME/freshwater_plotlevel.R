@@ -98,10 +98,12 @@ source("./freshwater_plotlevel_247.R")
 source("./freshwater_plotlevel_253.R")
 source("./freshwater_plotlevel_254.R")
 source("./freshwater_plotlevel_430.R") # each lat lon mostly visited once: aggregated by basin
-source("./freshwater_plotlevel_431.R") # each lat lon mostly visited once: aggregated by basin
+#source("./freshwater_plotlevel_431.R") # only one species left - so don't include
 source("./freshwater_plotlevel_478.R")
 
 df<-readRDS("../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/table_for_map.RDS")
+df<-df%>%filter(site!=431)
+saveRDS(df,"../../DATA/for_BioTIME/wrangled_data/Freshwater_plotlevel/table_for_map_goodsite.RDS")
 
 #--------------- Do a summary stats for freshwater sites ------------------
 summary_table<-c()

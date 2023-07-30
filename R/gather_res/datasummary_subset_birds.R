@@ -177,7 +177,7 @@ gs<-ggplot(data = df, aes(y = iCValt, x = REALM, fill = REALM)) +
     panel.background=element_rect(fill="white", colour="white"), 
     legend.position="none",text=element_text(size=20))+
   scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))+ 
-  annotate("text",  x=0.85, y = 10, label = "(a)", vjust=1.5, hjust=1.5, size=10)
+  annotate("text",  x=0.85, y = 80, label = "(a)", vjust=1.5, hjust=1.5, size=10)
 #gs
 # richness
 g1<-ggplot(data = df, aes(y = nsp, x = REALM, fill = REALM)) +

@@ -16,7 +16,7 @@ sum(df0$nint==df0$nind)# 270 communities all independent - so no synchrony or as
 df<-df%>%filter(nind!=nint)
 plot(df$phi_LdM,df$newcor)
 
-cor.test(df$newcor,df$phi_LdM)
+cor.test(df$newcor,df$phi_LdM) #0.73, p-value < 2.2e-16
 
 #===================================================================================
 # Now test the correlation between extrme syn computed based on nbin=2, and nbin=4
@@ -74,13 +74,13 @@ for(i in 1:nrow(df_sel)){
 plot(df_sel$L,df_sel$L_nbin4)
 plot(df_sel$U,df_sel$U_nbin4)
 
-# the first data point for study_ID=39 is an outlier
-df_sel<-df_sel[-1,]
-
 cor.test(df_sel$L,df_sel$L_nbin4)
 cor.test(df_sel$U,df_sel$U_nbin4)
+
+cor.test(df_sel$L,df_sel$L_nbin4, method="spearman")
+cor.test(df_sel$U,df_sel$U_nbin4, method="spearman")
 # ok, both have significant correlation: for L 0.9, p-value <2.2e-16
-# ok, both have significant correlation: for U 0.76, p-value <1.11e-07
+# ok, both have significant correlation: for U 0.9, p-value <2.2e-16
 
 #=================================================================================
 #check consistency in the model what if you consider only LT or UT instead of A?
