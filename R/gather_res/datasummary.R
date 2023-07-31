@@ -376,9 +376,24 @@ df_md<-df%>%select(source,STUDY_ID,newsite,REALM,TAXA,ORGANISMS,CENT_LAT,CENT_LO
 write.csv(df_md,"../../Results/gather_res/metadata_summary.csv",row.names = F)
 
 #=====================================================================================================
+#rm(list=ls())
+#library(tidyverse)
+#df_md<-read.csv("../../Results/gather_res/metadata_summary.csv")
+#dfc<-read.csv("../../DATA/metadata_summary_with_citation_old.csv")
+#dfc<-dfc%>%dplyr::select(source,STUDY_ID,newsite,
+#                         citation_1,citation_2,
+#                         citation_3,citation_4,
+#                         citation_5,citation_6,
+#                         citation_7,citation_8)
+#dfnew<-left_join(df_md,dfc,by=c("source"="source",
+#                                "STUDY_ID"="STUDY_ID",
+#                                "newsite"="newsite"))
+#write.csv(dfnew,"../../DATA/metadata_summary_with_citation.csv",row.names = F)
 
-
-
+# now get how many STUDY_ID
+tb<-df_md%>%group_by(source)%>%summarize(n=n_distinct(STUDY_ID))%>%ungroup()
+sum(tb$n)# 242 unique STUDY_ID
+tb<-df_md%>%group_by(source)%>%summarize(n=unique(STUDY_ID))%>%ungroup()
 
 
 
