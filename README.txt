@@ -28,10 +28,11 @@ Affiliations:
 
 About:
 	This repository records the complete workflow that produced the analysis from the data. 
-	Each folder contains a "README.txt" to guide through the repository. Data are deposited in the ZENODO, 
-	and corresponding code is given in the GitHub repo named "BioDyn" (https://github.com/sghosh89/BioDyn). 
-	The core software dependency is R, R-Studio. 
-	Codes are written and performed by Ghosh with R version 4.0.5 on a windows 10 laptop. This repository is intended
+	Each folder contains a "README.txt" to guide through the repository. Data are deposited in the ZENODO 
+	(doi: 10.5281/zenodo.8233591; url: https://doi.org/10.5281/zenodo.8233591).  
+	The core software dependency is R (R Core Team, 2022. R: A language and environment for statistical computing. 
+	R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.). 
+	Codes are written and performed by Ghosh with R version 4.2.1 on a windows 10 laptop. This repository is intended
 	to record a workflow, and is not designed or tested for distribution and wide use on multiple platforms. 
 	For any reproducibility issue, you may contact S. Ghosh at ghoshshyamolina89@gmail.com 
 
