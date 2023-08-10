@@ -1,6 +1,6 @@
 for_swisslake: 
 raw_data: accessed from zenodo link and also from Francesko's private folder for zooplankton
-wrangled_data: output saved from lakedata_cleaning_.....R file
+wrangled_data: output saved after data cleaning
 
 # for phytoplankton/ zooplankton 
 - common months June-Sept were considered for atleast 20 years study period
