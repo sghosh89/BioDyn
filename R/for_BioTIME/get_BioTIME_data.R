@@ -6,8 +6,8 @@ data_pt_thrs<-20
 xxm<-read.csv("../../DATA/for_BioTIME/raw_data/accessed31Aug2021/BioTIMEMetadata_24_06_2021.csv") # a dataframe
 # read the meta data from private version
 xxm_private<-read.csv("../../DATA/for_BioTIME/raw_data/BioTIMEData_Blowes-Supp-etal-2019/bioTIMEmetadataScienceStudies.csv") # a dataframe
-xxm_extra<-anti_join(x=xxm_private,y=xxm,by="STUDY_ID") # 27 extra data
-xxm_extra<-xxm_extra%>%filter(DATA_POINTS>=data_pt_thrs) # 10 extra data with >= 20 years
+xxm_extra<-anti_join(x=xxm_private,y=xxm,by="STUDY_ID") # extra data
+xxm_extra<-xxm_extra%>%filter(DATA_POINTS>=data_pt_thrs) # extra data with >= 20 years
 # but we will exclude relative biomass type: park grass exp. as it is not frequently sampled
 xxm_extra<-xxm_extra%>%filter(BIOMASS_TYPE%notin%"Relative biomass") # 9 extra data
 saveRDS(xxm_extra,"../../DATA/for_BioTIME/raw_data/BioTIMEData_Blowes-Supp-etal-2019/BioTIMEQueryScienceStudies2019_extra_metadata.RDS")
