@@ -40,7 +40,9 @@ Funding and acknowledgement:
 	We also thank Dr. Shahid Naeem for his constructive feedback on the initial draft of the manuscript. 
 	We thank the ETH Board for funding through the Blue-Green Biodiversity (BGB) Initiative 2020, 
 	the Seehausen/Eawag lab and European Research Council under the European Union’s Horizon 2020 research and 
-	innovation program (grant agreement No 787638) granted to CHG. 
+	innovation program (grant agreement No 787638) granted to CHG. We would like to thank the large number of 
+        scientists and volunteers that contributed to long-term data collection, and the data providers who chose 
+        to openly publish and share their datasets for continued analysis.
 
 
 
