@@ -1,5 +1,5 @@
 Repository for analysis: 
-	Synchrony and tail-dependent synchrony have differential effects on the stability of terrestrial and freshwater communities
+	Synchrony and tail-dependent synchrony have different effects on the stability of terrestrial and freshwater communities
 
 
 Authors: Shyamolina Ghosh (1,2,3*), Blake Matthews (2), Sarah R. Supp (4), Roel van Klink (5,6), Francesco Pomati (7), James A. Rusak (8), 
