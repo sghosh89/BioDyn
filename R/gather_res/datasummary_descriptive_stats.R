@@ -7,7 +7,7 @@ resloc<-"../../Results/gather_res/"
 sink(paste(resloc,"/datasummary_descriptive_stats.txt",sep=""),
      append=TRUE, split=TRUE)
 # stability 
-ct<-df%>%select(stability=iCValt,REALM)
+ct<-df%>%select(stability=iCV,REALM)
 ct1<-ct%>%group_by(REALM)%>%summarise(n=n(),# number of data points
                                       median=median(stability), #median
                                       mean=mean(stability), # mean

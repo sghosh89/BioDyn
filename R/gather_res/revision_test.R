@@ -83,22 +83,34 @@ cor.test(df_sel$U,df_sel$U_nbin4, method="spearman")
 # ok, both have significant correlation: for U 0.9, p-value <2.2e-16
 
 #=================================================================================
-#check consistency in the model what if you consider only LT or UT instead of A?
-#=================================================================================
-#-----Now, make table for Summary estimates from 100 runs, LT and UT only, separate -----------
 rm(list=ls())
 library(tidyverse)
 library(tidybayes)
 
-source("./call_toymodel_fixed_realm_LT_and_UT_sep.R")
+# analysis with whole data
+source("./model2668_fixed_realm_traditionalstability.R") 
 
-source("./test_multires_multigroup_bayes.R")
-
-source("./test_multires_multigroup_bayes_w_newcormetric.R")
-
-
+# analysis without BBS data
+source("./model2668_fixed_realm_traditionalstability_without_BBS_data.R") 
 
 
+
+#========== analysis with 100 replicates ==========
+# for LT, UT separate
+source("./call_toymodel_fixed_realm_LT_and_UT_sep_traditional_stability.R")
+
+#for direct and indirect effect of richness on stability
+source("./test_multires_multigroup_bayes_traditional_stability.R")
+source("./test_multires_multigroup_bayes_w_newcormetric_traditional_stability.R")
+
+
+##############################
+source("./R2_example2.R")
+source("./Method_fig.R")
+source("./mechanism.R")
+source("./negcor_copula.R")
+source("./stability_vs_mean.R")
+source("./taildep_population_stab.R")
 
 
 

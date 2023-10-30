@@ -164,11 +164,11 @@ library(PupillometryR)
 df<-read.csv("../../Results/gather_res/datasummary_subset_birds_res/data_summary_subset_birds.csv")
 
 # stability
-gs<-ggplot(data = df, aes(y = iCValt, x = REALM, fill = REALM)) +
+gs<-ggplot(data = df, aes(y = iCV, x = REALM, fill = REALM)) +
   scale_fill_manual(values=alpha(c("dodgerblue","green3"), 1))+
   geom_flat_violin(position = position_nudge(x = .2, y = 0), alpha = .4) + 
   #coord_flip()+
-  geom_point(aes(y = iCValt, color = REALM), position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
+  geom_point(aes(y = iCV, color = REALM), position = position_jitter(width = .15), size = 0.9, alpha = 0.2) +
   geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.4)+ 
   ylab("Stability")+xlab("Realms")+
   theme_bw()+
@@ -177,7 +177,7 @@ gs<-ggplot(data = df, aes(y = iCValt, x = REALM, fill = REALM)) +
     panel.background=element_rect(fill="white", colour="white"), 
     legend.position="none",text=element_text(size=20))+
   scale_color_manual(values=alpha(c("dodgerblue","green3"), 1))+ 
-  annotate("text",  x=0.85, y = 80, label = "(a)", vjust=1.5, hjust=1.5, size=10)
+  annotate("text",  x=0.85, y = 15, label = "(a)", vjust=1.5, hjust=1.5, size=10)
 #gs
 # richness
 g1<-ggplot(data = df, aes(y = nsp, x = REALM, fill = REALM)) +
