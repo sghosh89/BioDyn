@@ -218,7 +218,7 @@ taxaeffect_mammals$taxa<-"mammals"
 bm<-readRDS(paste(resloc,"/full_model.RDS",sep=""))
 post<-as_draws_df(bm)
 #----------------------------------taxa effect data -------
-tx<-post%>%dplyr::select(b_Intercept,
+tx<-post%>%dplyr::select(b_Intercept,b_REALMTerrestrial,
                          `r_TAXA[fish,Intercept]`,
                          `r_TAXA[freshwater.invertebrates,Intercept]`,
                          `r_TAXA[freshwater.plants,Intercept]`,
@@ -228,13 +228,13 @@ tx<-post%>%dplyr::select(b_Intercept,
                          `r_TAXA[mammals,Intercept]`)
 
 # following columns are the original source for objc$TAXA[,,"Intercept"]
-tx$fish<-tx$b_Intercept+tx$`r_TAXA[fish,Intercept]`
-tx$freshwater.inv<-tx$b_Intercept+tx$`r_TAXA[freshwater.invertebrates,Intercept]`
-tx$freshwater.plants<-tx$b_Intercept+tx$`r_TAXA[freshwater.plants,Intercept]`
-tx$birds<-tx$b_Intercept+tx$`r_TAXA[birds,Intercept]`
-tx$terrestrial.inv<-tx$b_Intercept+tx$`r_TAXA[terrestrial.invertebrates,Intercept]`
-tx$terrestrial.plants<-tx$b_Intercept+tx$`r_TAXA[terrestrial.plants,Intercept]`
-tx$mammals<-tx$b_Intercept+tx$`r_TAXA[mammals,Intercept]`
+tx$fish<-tx$`r_TAXA[fish,Intercept]`
+tx$freshwater.inv<-tx$`r_TAXA[freshwater.invertebrates,Intercept]`
+tx$freshwater.plants<-tx$`r_TAXA[freshwater.plants,Intercept]`
+tx$birds<-tx$`r_TAXA[birds,Intercept]`
+tx$terrestrial.inv<-tx$`r_TAXA[terrestrial.invertebrates,Intercept]`
+tx$terrestrial.plants<-tx$`r_TAXA[terrestrial.plants,Intercept]`
+tx$mammals<-tx$`r_TAXA[mammals,Intercept]`
 
 tx<-tx %>% 
   select(fish,freshwater.inv,freshwater.plants,

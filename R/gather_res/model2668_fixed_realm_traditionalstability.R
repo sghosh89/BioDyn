@@ -219,7 +219,7 @@ bm<-readRDS(paste(resloc,"/full_model.RDS",sep=""))
 post<-as_draws_df(bm)
 
 #----------------------------------taxa effect data -------
-tx<-post%>%dplyr::select(b_Intercept,
+tx<-post%>%dplyr::select(b_Intercept,b_REALMTerrestrial,
                          `r_TAXA[fish,Intercept]`,
                          `r_TAXA[freshwater.invertebrates,Intercept]`,
                          `r_TAXA[freshwater.plants,Intercept]`,
@@ -229,13 +229,14 @@ tx<-post%>%dplyr::select(b_Intercept,
                          `r_TAXA[mammals,Intercept]`)
 
 # following columns are the original source for objc$TAXA[,,"Intercept"]
-tx$fish<-tx$b_Intercept+tx$`r_TAXA[fish,Intercept]`
-tx$freshwater.inv<-tx$b_Intercept+tx$`r_TAXA[freshwater.invertebrates,Intercept]`
-tx$freshwater.plants<-tx$b_Intercept+tx$`r_TAXA[freshwater.plants,Intercept]`
-tx$birds<-tx$b_Intercept+tx$`r_TAXA[birds,Intercept]`
-tx$terrestrial.inv<-tx$b_Intercept+tx$`r_TAXA[terrestrial.invertebrates,Intercept]`
-tx$terrestrial.plants<-tx$b_Intercept+tx$`r_TAXA[terrestrial.plants,Intercept]`
-tx$mammals<-tx$b_Intercept+tx$`r_TAXA[mammals,Intercept]`
+tx$fish<-tx$`r_TAXA[fish,Intercept]`#+tx$b_Intercept
+tx$freshwater.inv<-tx$`r_TAXA[freshwater.invertebrates,Intercept]`#+tx$b_Intercept
+tx$freshwater.plants<-tx$`r_TAXA[freshwater.plants,Intercept]`#+tx$b_Intercept
+
+tx$birds<-tx$`r_TAXA[birds,Intercept]`#+tx$b_Intercept+tx$b_REALMTerrestrial
+tx$terrestrial.inv<-tx$`r_TAXA[terrestrial.invertebrates,Intercept]`#+tx$b_Intercept+tx$b_REALMTerrestrial
+tx$terrestrial.plants<-tx$`r_TAXA[terrestrial.plants,Intercept]`#+tx$b_Intercept+tx$b_REALMTerrestrial
+tx$mammals<-tx$`r_TAXA[mammals,Intercept]`#+tx$b_Intercept+tx$b_REALMTerrestrial
 
 tx<-tx %>% 
   select(fish,freshwater.inv,freshwater.plants,
@@ -584,7 +585,7 @@ sd_rd<-ggplot(data = df1, aes(y = value, x = key, fill = key)) +
   geom_point(aes(y = value, color = key), position = position_jitter(width = .15), 
              size = 0.9, alpha = 0.2) +
   geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.3)+ 
-  ylab("Random effects")+xlab("")+
+  ylab("SD of random effects")+xlab("")+
   theme_bw()+
   scale_color_manual(values=alpha(c("purple","gold3"), 1))+ 
   theme(
