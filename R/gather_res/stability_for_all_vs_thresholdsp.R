@@ -290,26 +290,6 @@ r_all<-rbind(r_BioTIME,r_BioTIMEx,r_BBS,r_fish,r_phyto,r_zoo,r_zoop,r_insect)
 
 saveRDS(r_all,"../../Results/gather_res/stability_considering_allsp.RDS")
 ############################
-# now plot for stability vs mean community biomass
-ggplot(r_all, aes(x=mean.cb,y=iCV),add="reg.line")+
-  geom_point()+
-  geom_smooth(method="lm")+theme_bw()+
-  stat_cor(aes(label = paste(..r.label..,..rr.label.., ..p.label.., sep = "*`,`~")),
-                                               label.x = 0, label.y = 20,col="black")+
-  stat_regline_equation(label.x = 0, label.y = 18)
-
-ggplot(r_all, aes(x=log10(mean.cb),y=log10(iCV)),add="reg.line")+
-  geom_point()+
-  geom_smooth(method="lm")+theme_bw()+
-  #scale_x_continuous(trans = 'log10') +
-  #scale_y_continuous(trans = 'log10')+
-  stat_cor(aes(label = paste(..r.label..,..rr.label.., ..p.label.., sep = "*`,`~")),
-           label.x = 0, label.y = 2,col="black")+
-  stat_regline_equation(label.x = 0, label.y = 1.8)
-
-ggplot(r_all, aes(x=log10(mean.cb),y=log10(iCV)))+
-  geom_point()+
-  geom_smooth(method="loess")+theme_bw()
 
 # stability plot considering all sp vs common sp (>70% threshold)
 ggplot(r_all, aes(x=iCV,y=iCV_allsp),add="reg.line")+
