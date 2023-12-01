@@ -111,7 +111,7 @@ source("./mechanism.R")
 source("./negcor_copula.R")
 source("./stability_for_all_vs_thresholdsp.R")
 source("./taildep_population_stab.R")
-#source("./spatial_scale_summary.R")
+source("./spatial_scale_summary.R")
 
 
 
