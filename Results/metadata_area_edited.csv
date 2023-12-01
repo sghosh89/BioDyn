@@ -1,0 +1,2669 @@
+source,STUDY_ID,newsite,REALM,TAXA,estimated_area_in_sqKm
+BioTIME,57,57,Freshwater,fish,40
+BioTIME,229,STUDY_ID_229_LAT35.04016_LON-83.36127,Freshwater,fish,1358
+BioTIME,229,STUDY_ID_229_LAT35.11187_LON-83.39091,Freshwater,fish,1358
+BioTIME,229,STUDY_ID_229_LAT35.14137_LON-83.29577,Freshwater,fish,1358
+BioTIME,229,STUDY_ID_229_LAT35.15409_LON-83.48787,Freshwater,fish,1358
+BioTIME,229,STUDY_ID_229_LAT35.15755_LON-83.38673,Freshwater,fish,1358
+BioTIME,229,STUDY_ID_229_LAT35.2087_LON-83.3515,Freshwater,fish,1358
+BioTIME,238,STUDY_ID_238_LAT43.06337_LON-89.36086,Freshwater,freshwater invertebrates,23.4
+BioTIME,238,STUDY_ID_238_LAT43.09885_LON-89.40545,Freshwater,freshwater invertebrates,23.4
+BioTIME,247,STUDY_ID_247_LAT43.18083_LON-75.92639,Freshwater,freshwater invertebrates,207
+BioTIME,247,STUDY_ID_247_LAT43.18611_LON-75.77083,Freshwater,freshwater invertebrates,207
+BioTIME,247,STUDY_ID_247_LAT43.19472_LON-75.85361,Freshwater,freshwater invertebrates,207
+BioTIME,247,STUDY_ID_247_LAT43.21028_LON-75.92278,Freshwater,freshwater invertebrates,207
+BioTIME,247,STUDY_ID_247_LAT43.22111_LON-76.04444,Freshwater,freshwater invertebrates,207
+BioTIME,253,STUDY_ID_253_LAT46.00275_LON-89.61223,Freshwater,freshwater invertebrates,50.37
+BioTIME,253,STUDY_ID_253_LAT46.00758_LON-89.60618,Freshwater,freshwater invertebrates,50.37
+BioTIME,253,STUDY_ID_253_LAT46.00773_LON-89.70118,Freshwater,freshwater invertebrates,50.37
+BioTIME,253,STUDY_ID_253_LAT46.02107_LON-89.61178,Freshwater,freshwater invertebrates,50.37
+BioTIME,253,STUDY_ID_253_LAT46.02927_LON-89.66502,Freshwater,freshwater invertebrates,50.37
+BioTIME,253,STUDY_ID_253_LAT46.03832_LON-89.62062,Freshwater,freshwater invertebrates,50.37
+BioTIME,253,STUDY_ID_253_LAT46.04125_LON-89.68628,Freshwater,freshwater invertebrates,50.37
+BioTIME,254,STUDY_ID_254_LAT43.09885_LON-89.40545,Freshwater,freshwater plants,1.74E-02
+BioTIME,430,STUDY_ID_430_basin_80355,Freshwater,fish,1018302
+BioTIME,430,STUDY_ID_430_basin_98961,Freshwater,fish,1018302
+BioTIME,430,STUDY_ID_430_basin_100981,Freshwater,fish,1018302
+BioTIME,430,STUDY_ID_430_basin_101416,Freshwater,fish,1018302
+BioTIME,478,478,Freshwater,freshwater invertebrates,1
+BioTIME,18,STUDY_ID_18_PLOT_1,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_11,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_12,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_13,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_14,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_15,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_16,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_17,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_18,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_19,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_2,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_20,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_21,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_22,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_23,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_24,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_25,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_26,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_3,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_4,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_5,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,18,STUDY_ID_18_PLOT_6,Terrestrial,terrestrial plants,5.59E-06
+BioTIME,39,39,Terrestrial,birds,0.1
+BioTIME,42,42,Terrestrial,birds,1.60E-01
+BioTIME,46,46,Terrestrial,birds,1.00E+00
+BioTIME,47,STUDY_ID_47_PLOT_Redvers,Terrestrial,birds,4.15
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_139,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_142,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_145,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_148,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_151,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_190,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_193,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_196,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_202,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_244,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_247,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_250,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_253,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_292,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_295,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_301,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_304,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_343,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_346,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_352,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_355,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_394,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_40,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_400,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_406,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_46,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_91,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_1_97,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_139,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_142,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_145,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_148,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_151,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_190,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_193,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_196,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_244,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_247,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_250,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_253,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_292,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_295,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_298,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_301,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_304,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_343,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_346,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_349,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_352,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_355,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_394,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_40,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_43,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_46,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_2_97,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_139,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_142,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_145,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_148,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_151,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_190,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_193,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_241,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_244,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_247,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_250,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_253,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_292,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_298,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_301,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_304,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_343,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_346,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_352,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_355,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_394,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_40,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_43,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_46,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_3_97,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_139,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_142,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_145,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_148,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_151,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_190,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_193,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_244,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_250,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_292,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_301,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_304,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_343,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_346,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_349,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_355,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_394,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_40,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_406,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,54,STUDY_ID_54_PLOT_Wet_4_46,Terrestrial,terrestrial invertebrates,0.0000283
+BioTIME,56,STUDY_ID_56_PLOT_103,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_115,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_117,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_119,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_12,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_120,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_132,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_142,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_143,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_23,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_24,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_33,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_35,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_42,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_44,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_46,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_47,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_48,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_57,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_70,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_72,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_83,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_84,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_92,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_95,Terrestrial,mammals,3.14E-02
+BioTIME,56,STUDY_ID_56_PLOT_96,Terrestrial,mammals,3.14E-02
+BioTIME,59,STUDY_ID_59_PLOT_Plot11,Terrestrial,mammals,2.50E-03
+BioTIME,59,STUDY_ID_59_PLOT_Plot14,Terrestrial,mammals,2.50E-03
+BioTIME,63,63,Terrestrial,terrestrial invertebrates,2.08
+BioTIME,67,STUDY_ID_67_LAT_-33.88_LON_18.5,Terrestrial,birds,1586205
+BioTIME,67,STUDY_ID_67_LAT_-34.08_LON_18.52,Terrestrial,birds,1586205
+BioTIME,214,STUDY_ID_214_LAT_44.1692_LON_-122.4327,Terrestrial,terrestrial plants,0.01
+BioTIME,214,STUDY_ID_214_LAT_44.18319_LON_-122.4188,Terrestrial,terrestrial plants,0.01
+BioTIME,214,STUDY_ID_214_LAT_44.21823_LON_-122.2559,Terrestrial,terrestrial plants,0.01
+BioTIME,214,STUDY_ID_214_LAT_44.2187_LON_-122.2441,Terrestrial,terrestrial plants,0.01
+BioTIME,214,STUDY_ID_214_LAT_44.22958_LON_-122.2239,Terrestrial,terrestrial plants,0.01
+BioTIME,214,STUDY_ID_214_LAT_44.344_LON_-122.123,Terrestrial,terrestrial plants,0.01
+BioTIME,214,STUDY_ID_214_LAT_45.06271_LON_-123.9398,Terrestrial,terrestrial plants,0.01
+BioTIME,214,STUDY_ID_214_LAT_45.06477_LON_-123.9413,Terrestrial,terrestrial plants,0.01
+BioTIME,214,STUDY_ID_214_LAT_45.06532_LON_-123.9423,Terrestrial,terrestrial plants,0.01
+BioTIME,215,STUDY_ID_215_LAT_38.916667_LON_-74.958,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_39.166667_LON_-76.483333,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_40.266667_LON_-77.276028,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_40.633333_LON_-75.991528,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_40.833333_LON_-74.212944,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_41.083333_LON_-73.688667,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_41.233333_LON_-72.901417,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_41.266667_LON_-72.902778,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_41.733333_LON_-73.170694,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_42.016667_LON_-72.966944,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_42.016667_LON_-83.0455,Terrestrial,birds,28944570
+BioTIME,215,STUDY_ID_215_LAT_46.833333_LON_-92.031944,Terrestrial,birds,28944570
+BioTIME,243,STUDY_ID_243_LAT_37.44534_LON_-75.66411,Terrestrial,terrestrial plants,0.000025
+BioTIME,243,STUDY_ID_243_LAT_37.4465_LON_-75.66651,Terrestrial,terrestrial plants,0.000025
+BioTIME,243,STUDY_ID_243_LAT_37.44807_LON_-75.67178,Terrestrial,terrestrial plants,0.000025
+BioTIME,301,STUDY_ID_301_PLOT_002d fl_a,Terrestrial,terrestrial invertebrates,0.4841
+BioTIME,301,STUDY_ID_301_PLOT_002d fl_b,Terrestrial,terrestrial invertebrates,0.4841
+BioTIME,308,STUDY_ID_308_PLOT_A1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_A10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_A2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_A3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_A4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_A5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_A6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_A7,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_A8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_A9,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_B1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_B10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_B2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_B3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_B4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_B5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_B6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_B8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_B9,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C7,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_C9,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D7,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_D9,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E7,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_E9,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_F1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_F10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_F2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_F3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_F4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_F5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_F6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_F8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_F9,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G7,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_G9,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H7,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_H9,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I7,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_I9,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J1,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J10,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J2,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J3,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J4,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J5,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J6,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J7,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J8,Terrestrial,mammals,0.001
+BioTIME,308,STUDY_ID_308_PLOT_J9,Terrestrial,mammals,0.001
+BioTIME,311,311,Terrestrial,mammals,0.06
+BioTIME,333,333,Terrestrial,birds,7.10E-06
+BioTIME,339,339,Terrestrial,birds,5.20E-06
+BioTIME,355,STUDY_ID_355_PLOT_001d_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_001d_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002c_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_002d_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004a_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_004b_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fa_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00fb_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wa_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_00wb_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_020b_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spa_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0spb_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sua_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_0sub_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01a_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n01b_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04a_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n04d_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20a_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_a_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_a_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_a_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_a_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_a_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_b_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_b_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_b_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_b_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_b_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_c_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_c_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_c_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_c_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_c_5,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_d_1,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_d_2,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_d_3,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_d_4,Terrestrial,terrestrial plants,0.083
+BioTIME,355,STUDY_ID_355_PLOT_n20b_d_5,Terrestrial,terrestrial plants,0.083
+BioTIME,361,361,Terrestrial,birds,9.80E-06
+BioTIME,363,363,Terrestrial,birds,4.80E-06
+BioTIME,366,STUDY_ID_366_PLOT_5pgrass_2,Terrestrial,mammals,4.80E-06
+BioTIME,366,STUDY_ID_366_PLOT_5pgrass_3,Terrestrial,mammals,4.80E-06
+BioTIME,366,STUDY_ID_366_PLOT_5pgrass_5,Terrestrial,mammals,4.80E-06
+BioTIME,366,STUDY_ID_366_PLOT_5plarrea_1,Terrestrial,mammals,4.80E-06
+BioTIME,366,STUDY_ID_366_PLOT_5plarrea_3,Terrestrial,mammals,4.80E-06
+BioTIME,366,STUDY_ID_366_PLOT_5plarrea_5,Terrestrial,mammals,4.80E-06
+BioTIME,366,STUDY_ID_366_PLOT_rslarrea_2,Terrestrial,mammals,4.80E-06
+BioTIME,366,STUDY_ID_366_PLOT_rslarrea_4,Terrestrial,mammals,4.80E-06
+BioTIME,366,STUDY_ID_366_PLOT_rslarrea_5,Terrestrial,mammals,4.80E-06
+BioTIME,413,STUDY_ID_413_PLOT_CF,Terrestrial,birds,5.20E-06
+BioTIME,413,STUDY_ID_413_PLOT_FE,Terrestrial,birds,5.20E-06
+BioTIME,413,STUDY_ID_413_PLOT_OF,Terrestrial,birds,5.20E-06
+BioTIME,414,414,Terrestrial,birds,5.20E-06
+BioTIME,416,STUDY_ID_416_PLOT_CF,Terrestrial,birds,5.20E-06
+BioTIME,416,STUDY_ID_416_PLOT_FE,Terrestrial,birds,5.20E-06
+BioTIME,416,STUDY_ID_416_PLOT_OF,Terrestrial,birds,5.20E-06
+BioTIME,416,STUDY_ID_416_PLOT_undefined,Terrestrial,birds,5.20E-06
+BioTIME,420,STUDY_ID_420_PLOT_K1,Terrestrial,birds,1.89
+BioTIME,420,STUDY_ID_420_PLOT_K2,Terrestrial,birds,1.89
+BioTIME,528,STUDY_ID_528_PLOT_0spb fl_a,Terrestrial,terrestrial invertebrates,0.3574
+BioTIME,528,STUDY_ID_528_PLOT_0spb fl_b,Terrestrial,terrestrial invertebrates,0.3574
+BioTIME,529,STUDY_ID_529_PLOT_0sub fl_a,Terrestrial,terrestrial invertebrates,0.1563
+BioTIME,529,STUDY_ID_529_PLOT_0sub fl_b,Terrestrial,terrestrial invertebrates,0.1563
+BioTIME,530,STUDY_ID_530_PLOT_001d fl_a,Terrestrial,terrestrial invertebrates,0.4155
+BioTIME,530,STUDY_ID_530_PLOT_001d fl_b,Terrestrial,terrestrial invertebrates,0.4155
+BioTIME,531,STUDY_ID_531_PLOT_002c fl_a,Terrestrial,terrestrial invertebrates,0.2295
+BioTIME,531,STUDY_ID_531_PLOT_002c fl_b,Terrestrial,terrestrial invertebrates,0.2295
+BioTIME,532,STUDY_ID_532_PLOT_004b fl_a,Terrestrial,terrestrial invertebrates,0.545
+BioTIME,532,STUDY_ID_532_PLOT_004b fl_b,Terrestrial,terrestrial invertebrates,0.545
+BioTIME,533,STUDY_ID_533_PLOT_004f fl_a,Terrestrial,terrestrial invertebrates,0.1637
+BioTIME,533,STUDY_ID_533_PLOT_004f fl_b,Terrestrial,terrestrial invertebrates,0.1637
+BioTIME,534,STUDY_ID_534_PLOT_020b fl_a,Terrestrial,terrestrial invertebrates,0.2377
+BioTIME,534,STUDY_ID_534_PLOT_020b fl_b,Terrestrial,terrestrial invertebrates,0.2377
+BioTIME,536,STUDY_ID_536_PLOT_n01b fl_a,Terrestrial,terrestrial invertebrates,1.20683
+BioTIME,536,STUDY_ID_536_PLOT_n01b fl_b,Terrestrial,terrestrial invertebrates,1.20683
+BioTIME,538,STUDY_ID_538_PLOT_n04d fl_a,Terrestrial,terrestrial invertebrates,1.3545
+BioTIME,538,STUDY_ID_538_PLOT_n04d fl_b,Terrestrial,terrestrial invertebrates,1.3545
+BioTIMEx,baikal_phyto,baikal_phyto,Freshwater,freshwater plants,31722
+BioTIMEx,carpenter_2016,carpenter_2016,Freshwater,freshwater invertebrates,0.017
+BioTIMEx,cumbrian_phyto,BLEL,Freshwater,freshwater plants,15.1345
+BioTIMEx,cumbrian_phyto,ESTH,Freshwater,freshwater plants,15.1345
+BioTIMEx,cumbrian_phyto,NBAS,Freshwater,freshwater plants,15.1345
+BioTIMEx,cumbrian_phyto,SBAS,Freshwater,freshwater plants,15.1345
+BioTIMEx,cumbrian_zoo,NBAS,Freshwater,freshwater invertebrates,15.1345
+BioTIMEx,gross_2016,gross_2016,Terrestrial,terrestrial plants,1.00E-06
+BioTIMEx,landis_2018,poplarT5,Terrestrial,terrestrial invertebrates,4.08E-08
+BioTIMEx,lightfoot_2015,BOER,Terrestrial,terrestrial invertebrates,5.00E-05
+BioTIMEx,lightfoot_2015,LATR,Terrestrial,terrestrial invertebrates,5.00E-05
+BioTIMEx,oneida_fish_gillnets,Buoy 113,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Buoy 125,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Buoy 129,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Buoy 133,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Bushnell Point,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Cleveland,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Dakin Shoal,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Damon Point,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Dunham Island,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Dutchman Island,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Jewell,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Lewis Point,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Phillips Point,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Shackelton Point,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_gillnets,Willard Island,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,billington bay_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,buoy 117_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,buoy 125 north_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,buoy 125_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,buoy 133_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,bushnell point_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,delmarter bay_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,shackelton point deep_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,shackelton point shallow_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_fish_trawl,three mile bay_standard,Freshwater,fish,205.904
+BioTIMEx,oneida_phytopl_1975,oneida_phytopl_1975,Freshwater,freshwater plants,205.904
+BBS,Northern Pacific Rainforests,124_11_126,Terrestrial,birds,31.36
+BBS,Central Rockies,124_11_208,Terrestrial,birds,31.36
+BBS,Fraser Plateau,124_11_222,Terrestrial,birds,31.36
+BBS,Fraser Plateau,124_11_244,Terrestrial,birds,31.36
+BBS,Fraser Plateau,124_11_255,Terrestrial,birds,31.36
+BBS,Northern Rockies,124_11_270,Terrestrial,birds,31.36
+BBS,Central Rockies,124_11_3,Terrestrial,birds,31.36
+BBS,Northern Pacific Rainforests,124_11_402,Terrestrial,birds,31.36
+BBS,Central Rockies,124_11_407,Terrestrial,birds,31.36
+BBS,Central Rockies,124_11_420,Terrestrial,birds,31.36
+BBS,Fraser Plateau,124_11_45,Terrestrial,birds,31.36
+BBS,Central Rockies,124_11_608,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_11_74,Terrestrial,birds,31.36
+BBS,Fraser Plateau,124_11_75,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_4_10,Terrestrial,birds,31.36
+BBS,Dissected Rockies,124_4_105,Terrestrial,birds,31.36
+BBS,Drift Prairie,124_4_113,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_4_114,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_4_115,Terrestrial,birds,31.36
+BBS,Central Rockies,124_4_125,Terrestrial,birds,31.36
+BBS,Central Rockies,124_4_17,Terrestrial,birds,31.36
+BBS,Central Rockies,124_4_196,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,124_4_2,Terrestrial,birds,31.36
+BBS,Drift Prairie,124_4_20,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,124_4_204,Terrestrial,birds,31.36
+BBS,Drift Prairie,124_4_212,Terrestrial,birds,31.36
+BBS,Drift Prairie,124_4_213,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_4_22,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_4_229,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_4_28,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_4_29,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,124_4_3,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,124_4_302,Terrestrial,birds,31.36
+BBS,Drift Prairie,124_4_312,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_4_330,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,124_4_4,Terrestrial,birds,31.36
+BBS,Closed Boreal Forest,124_4_40,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_4_55,Terrestrial,birds,31.36
+BBS,Closed Boreal Forest,124_4_63,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,124_4_77,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,124_4_9,Terrestrial,birds,31.36
+BBS,Closed Boreal Forest,124_43_9,Terrestrial,birds,31.36
+BBS,Closed Boreal Forest,124_45_1,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_45_101,Terrestrial,birds,31.36
+BBS,Black Prairie,124_45_102,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_103,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_105,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_111,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_113,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_121,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_13,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_2,Terrestrial,birds,31.36
+BBS,Black Prairie,124_45_205,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_209,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_21,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_218,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_220,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_45_41,Terrestrial,birds,31.36
+BBS,Black Prairie,124_45_5,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_56_15,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_56_21,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_56_22,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_56_33,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_56_41,Terrestrial,birds,31.36
+BBS,Closed Boreal Forest,124_57_12,Terrestrial,birds,31.36
+BBS,Closed Boreal Forest,124_57_36,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_65_117,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_65_13,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_65_14,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_65_19,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_65_20,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_65_27,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_65_33,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_65_36,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_11,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_113,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_117,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_119,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_12,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_14,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_68_142,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_15,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_18,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,124_68_203,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,124_68_207,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_211,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_214,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_216,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_218,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_22,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_224,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_225,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_25,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_68_251,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_68_26,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_68_28,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_68_296,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,124_68_308,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_319,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_68_326,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_68_37,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_5,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_68_54,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_6,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_68_66,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,124_68_7,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_68_8,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_75_5,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_75_9,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_76_1,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_76_120,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_76_121,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_76_125,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_76_165,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_76_190,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_76_201,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_76_21,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_76_22,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_76_3,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_76_302,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_76_306,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_76_309,Terrestrial,birds,31.36
+BBS,Closed Boreal Forest,124_76_39,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_76_4,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,124_76_5,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_76_60,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,124_76_9,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_79_132,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_79_133,Terrestrial,birds,31.36
+BBS,Aspen Parklands,124_79_33,Terrestrial,birds,31.36
+BBS,Northern Rockies,124_93_21,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_14_1,Terrestrial,birds,31.36
+BBS,Southern California Grasslands,840_14_106,Terrestrial,birds,31.36
+BBS,California Foothills,840_14_108,Terrestrial,birds,31.36
+BBS,Southern California Grasslands,840_14_137,Terrestrial,birds,31.36
+BBS,California Foothills,840_14_153,Terrestrial,birds,31.36
+BBS,Central Valley,840_14_155,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_156,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_14_160,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_14_162,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_14_166,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_14_168,Terrestrial,birds,31.36
+BBS,California Foothills,840_14_179,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_18,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_181,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_14_182,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_185,Terrestrial,birds,31.36
+BBS,California Foothills,840_14_186,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_188,Terrestrial,birds,31.36
+BBS,California Foothills,840_14_189,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_14_193,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_14_198,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_14_199,Terrestrial,birds,31.36
+BBS,Central Valley,840_14_21,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_14_406,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_417,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_418,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_419,Terrestrial,birds,31.36
+BBS,California Foothills,840_14_421,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_434,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_14_435,Terrestrial,birds,31.36
+BBS,Mojave Desert,840_14_59,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_14_6,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_14_71,Terrestrial,birds,31.36
+BBS,Central Valley,840_14_80,Terrestrial,birds,31.36
+BBS,Sierra Nevada,840_14_82,Terrestrial,birds,31.36
+BBS,Sonoran Deserts,840_14_88,Terrestrial,birds,31.36
+BBS,Basin and Range,840_14_96,Terrestrial,birds,31.36
+BBS,California Foothills,840_14_98,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_17_1,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_11,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_17_12,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_17,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_202,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_203,Terrestrial,birds,31.36
+BBS,High Plains,840_17_205,Terrestrial,birds,31.36
+BBS,High Plains,840_17_207,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_17_208,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_209,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_211,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_17_216,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_217,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_218,Terrestrial,birds,31.36
+BBS,High Plains,840_17_221,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_222,Terrestrial,birds,31.36
+BBS,High Plains,840_17_228,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_17_3,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_17_301,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_17_302,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_304,Terrestrial,birds,31.36
+BBS,High Plains,840_17_305,Terrestrial,birds,31.36
+BBS,High Plains,840_17_306,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_309,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_17_31,Terrestrial,birds,31.36
+BBS,High Plains,840_17_312,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_17_315,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_318,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_17_32,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_17_322,Terrestrial,birds,31.36
+BBS,High Plains,840_17_35,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_17_362,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_367,Terrestrial,birds,31.36
+BBS,High Plains,840_17_37,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_372,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_17_4,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_40,Terrestrial,birds,31.36
+BBS,High Plains,840_17_42,Terrestrial,birds,31.36
+BBS,High Plains,840_17_44,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_46,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_47,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_17_52,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_17_55,Terrestrial,birds,31.36
+BBS,High Plains,840_17_58,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_17_9,Terrestrial,birds,31.36
+BBS,Southern New England,840_18_102,Terrestrial,birds,31.36
+BBS,Southern New England,840_18_3,Terrestrial,birds,31.36
+BBS,Southern New England,840_18_8,Terrestrial,birds,31.36
+BBS,Southern New England,840_18_9,Terrestrial,birds,31.36
+BBS,Highland Rim,840_2_1,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_2_10,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_2_105,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_2_111,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_2_14,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_2_140,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_2_142,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_2_156,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_2_17,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_19,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_20,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_201,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_2_204,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_205,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_2_207,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_21,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_211,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_212,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_214,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_2_218,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_22,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_24,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_25,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_27,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_29,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_35,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_38,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_2_43,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_45,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_47,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_50,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_52,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_53,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_2_57,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_59,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_60,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_63,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_65,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_2_66,Terrestrial,birds,31.36
+BBS,Highland Rim,840_2_7,Terrestrial,birds,31.36
+BBS,Highland Rim,840_2_72,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_21_1,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_21_105,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_21_109,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_21_3,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_10,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_113,Terrestrial,birds,31.36
+BBS,Floridian,840_25_129,Terrestrial,birds,31.36
+BBS,Subtropical,840_25_135,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_14,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_15,Terrestrial,birds,31.36
+BBS,Floridian,840_25_175,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_18,Terrestrial,birds,31.36
+BBS,Floridian,840_25_20,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_21,Terrestrial,birds,31.36
+BBS,Floridian,840_25_22,Terrestrial,birds,31.36
+BBS,Floridian,840_25_24,Terrestrial,birds,31.36
+BBS,Floridian,840_25_25,Terrestrial,birds,31.36
+BBS,Floridian,840_25_27,Terrestrial,birds,31.36
+BBS,Floridian,840_25_28,Terrestrial,birds,31.36
+BBS,Floridian,840_25_31,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_37,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_4,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_53,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_57,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_25_62,Terrestrial,birds,31.36
+BBS,Floridian,840_25_66,Terrestrial,birds,31.36
+BBS,Floridian,840_25_67,Terrestrial,birds,31.36
+BBS,Floridian,840_25_73,Terrestrial,birds,31.36
+BBS,Floridian,840_25_74,Terrestrial,birds,31.36
+BBS,Floridian,840_25_81,Terrestrial,birds,31.36
+BBS,Floridian,840_25_86,Terrestrial,birds,31.36
+BBS,Subtropical,840_25_87,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_27_10,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_27_15,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_27_21,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_27_27,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_27_33,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_27_36,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_27_46,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_27_48,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_27_50,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_27_51,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_27_57,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_10,Terrestrial,birds,31.36
+BBS,Northern Rockies,840_3_11,Terrestrial,birds,31.36
+BBS,Northern Rockies,840_3_115,Terrestrial,birds,31.36
+BBS,Southern Alaska Coast,840_3_117,Terrestrial,birds,31.36
+BBS,Southern Alaska Coast,840_3_118,Terrestrial,birds,31.36
+BBS,Southern Alaska Coast,840_3_119,Terrestrial,birds,31.36
+BBS,Northern Rockies,840_3_13,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_142,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_192,Terrestrial,birds,31.36
+BBS,Northern Pacific Rainforests,840_3_21,Terrestrial,birds,31.36
+BBS,Northern Pacific Rainforests,840_3_224,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_284,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_3,Terrestrial,birds,31.36
+BBS,Southern Alaska Coast,840_3_319,Terrestrial,birds,31.36
+BBS,Tundra,840_3_372,Terrestrial,birds,31.36
+BBS,Tundra,840_3_403,Terrestrial,birds,31.36
+BBS,Tundra,840_3_404,Terrestrial,birds,31.36
+BBS,Tundra,840_3_408,Terrestrial,birds,31.36
+BBS,Tundra,840_3_409,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_41,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_418,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_419,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_420,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_423,Terrestrial,birds,31.36
+BBS,Northern Pacific Rainforests,840_3_429,Terrestrial,birds,31.36
+BBS,Northern Rockies,840_3_51,Terrestrial,birds,31.36
+BBS,Northern Rockies,840_3_7,Terrestrial,birds,31.36
+BBS,Open Boreal Forest,840_3_8,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_33_10,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_33_111,Terrestrial,birds,31.36
+BBS,Central Rockies,840_33_12,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_33_128,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_33_14,Terrestrial,birds,31.36
+BBS,Central Rockies,840_33_2,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_33_20,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_33_204,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_33_21,Terrestrial,birds,31.36
+BBS,Central Rockies,840_33_212,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_33_214,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_33_217,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_33_219,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_33_220,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_33_222,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_33_225,Terrestrial,birds,31.36
+BBS,Basin and Range,840_33_227,Terrestrial,birds,31.36
+BBS,Basin and Range,840_33_25,Terrestrial,birds,31.36
+BBS,Basin and Range,840_33_27,Terrestrial,birds,31.36
+BBS,Central Rockies,840_33_29,Terrestrial,birds,31.36
+BBS,Driftless Area,840_34_1,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_34_10,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_12,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_14,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_34_2,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_20,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_34_22,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_34_23,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_34_24,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_25,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_29,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_34_3,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_30,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_34,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_36,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_38,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_41,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_42,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_43,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_44,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_46,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_47,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_49,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_50,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_51,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_52,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_54,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_56,Terrestrial,birds,31.36
+BBS,Highland Rim,840_34_59,Terrestrial,birds,31.36
+BBS,Highland Rim,840_34_60,Terrestrial,birds,31.36
+BBS,Highland Rim,840_34_61,Terrestrial,birds,31.36
+BBS,Highland Rim,840_34_63,Terrestrial,birds,31.36
+BBS,Driftless Area,840_34_65,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_34_66,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_34_67,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_70,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_71,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_74,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_75,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_76,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_78,Terrestrial,birds,31.36
+BBS,Till Plains,840_34_79,Terrestrial,birds,31.36
+BBS,Highland Rim,840_34_80,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_34_9,Terrestrial,birds,31.36
+BBS,Till Plains,840_35_10,Terrestrial,birds,31.36
+BBS,Till Plains,840_35_11,Terrestrial,birds,31.36
+BBS,Till Plains,840_35_115,Terrestrial,birds,31.36
+BBS,Till Plains,840_35_12,Terrestrial,birds,31.36
+BBS,Till Plains,840_35_13,Terrestrial,birds,31.36
+BBS,Till Plains,840_35_14,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_35_21,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_35_22,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_35_26,Terrestrial,birds,31.36
+BBS,Till Plains,840_35_28,Terrestrial,birds,31.36
+BBS,Till Plains,840_35_29,Terrestrial,birds,31.36
+BBS,Till Plains,840_35_306,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_35_313,Terrestrial,birds,31.36
+BBS,Highland Rim,840_35_314,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_35_315,Terrestrial,birds,31.36
+BBS,Highland Rim,840_35_35,Terrestrial,birds,31.36
+BBS,Highland Rim,840_35_37,Terrestrial,birds,31.36
+BBS,Highland Rim,840_35_38,Terrestrial,birds,31.36
+BBS,Highland Rim,840_35_39,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_35_41,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_35_5,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_35_9,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_36_1,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_36_11,Terrestrial,birds,31.36
+BBS,Black Prairie,840_36_123,Terrestrial,birds,31.36
+BBS,Black Prairie,840_36_13,Terrestrial,birds,31.36
+BBS,Black Prairie,840_36_14,Terrestrial,birds,31.36
+BBS,Driftless Area,840_36_17,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_36_2,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_36_28,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_36_3,Terrestrial,birds,31.36
+BBS,Black Prairie,840_36_32,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_36_33,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_36_6,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_36_9,Terrestrial,birds,31.36
+BBS,High Plains Border,840_38_10,Terrestrial,birds,31.36
+BBS,High Plains Border,840_38_11,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_38_118,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_38_13,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_38_14,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_38_15,Terrestrial,birds,31.36
+BBS,Rolling Red Prairies,840_38_16,Terrestrial,birds,31.36
+BBS,Rolling Red Prairies,840_38_17,Terrestrial,birds,31.36
+BBS,Rolling Red Prairies,840_38_19,Terrestrial,birds,31.36
+BBS,High Plains Border,840_38_21,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_38_26,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_38_27,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_38_28,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_38_29,Terrestrial,birds,31.36
+BBS,High Plains Border,840_38_30,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_38_302,Terrestrial,birds,31.36
+BBS,Rolling Red Prairies,840_38_304,Terrestrial,birds,31.36
+BBS,High Plains,840_38_307,Terrestrial,birds,31.36
+BBS,Rolling Red Prairies,840_38_312,Terrestrial,birds,31.36
+BBS,High Plains,840_38_315,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_38_317,Terrestrial,birds,31.36
+BBS,High Plains Border,840_38_32,Terrestrial,birds,31.36
+BBS,High Plains Border,840_38_34,Terrestrial,birds,31.36
+BBS,High Plains Border,840_38_35,Terrestrial,birds,31.36
+BBS,High Plains Border,840_38_37,Terrestrial,birds,31.36
+BBS,High Plains,840_38_38,Terrestrial,birds,31.36
+BBS,Rolling Red Prairies,840_38_6,Terrestrial,birds,31.36
+BBS,Rolling Red Prairies,840_38_7,Terrestrial,birds,31.36
+BBS,High Plains Border,840_38_8,Terrestrial,birds,31.36
+BBS,Highland Rim,840_39_10,Terrestrial,birds,31.36
+BBS,Cumberland Plateau,840_39_11,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_39_137,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_39_2,Terrestrial,birds,31.36
+BBS,Highland Rim,840_39_21,Terrestrial,birds,31.36
+BBS,Highland Rim,840_39_25,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_39_26,Terrestrial,birds,31.36
+BBS,Highland Rim,840_39_28,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_39_3,Terrestrial,birds,31.36
+BBS,Highland Rim,840_39_36,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_39_44,Terrestrial,birds,31.36
+BBS,Highland Rim,840_39_5,Terrestrial,birds,31.36
+BBS,Highland Rim,840_39_6,Terrestrial,birds,31.36
+BBS,Highland Rim,840_39_9,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_42_101,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_42_104,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_42_119,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_42_128,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_42_16,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_42_18,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_42_221,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_42_38,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_42_57,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_42_9,Terrestrial,birds,31.36
+BBS,Northern New England,840_44_115,Terrestrial,birds,31.36
+BBS,Northern New England,840_44_120,Terrestrial,birds,31.36
+BBS,Northern New England,840_44_13,Terrestrial,birds,31.36
+BBS,Northern New England,840_44_19,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_44_26,Terrestrial,birds,31.36
+BBS,Southern New England,840_44_3,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_44_31,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_44_32,Terrestrial,birds,31.36
+BBS,Northern New England,840_44_33,Terrestrial,birds,31.36
+BBS,Southern New England,840_44_4,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_44_6,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_44_7,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_46_1,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_46_102,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_11,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_110,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_112,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_123,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_125,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_126,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_13,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_14,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_15,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_16,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_17,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_29,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_46_3,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_30,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_31,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_32,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_33,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_35,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_36,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_37,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_38,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_39,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_46_4,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_40,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_41,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_42,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_43,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_44,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_46,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_47,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_46_48,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_46_5,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_46_51,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_46_52,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_46_53,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_46_55,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_46_6,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_46_8,Terrestrial,birds,31.36
+BBS,Glaciated Coastal Plains,840_47_1,Terrestrial,birds,31.36
+BBS,Glaciated Coastal Plains,840_47_102,Terrestrial,birds,31.36
+BBS,Southern New England,840_47_112,Terrestrial,birds,31.36
+BBS,Southern New England,840_47_14,Terrestrial,birds,31.36
+BBS,Northern New England,840_47_17,Terrestrial,birds,31.36
+BBS,Northern New England,840_47_19,Terrestrial,birds,31.36
+BBS,Southern New England,840_47_5,Terrestrial,birds,31.36
+BBS,Southern New England,840_47_9,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_49_131,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_49_15,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_49_165,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_49_17,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_49_18,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_49_22,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_49_25,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_49_33,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_49_35,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_49_38,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_49_39,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_49_41,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_49_55,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_49_73,Terrestrial,birds,31.36
+BBS,Driftless Area,840_50_1,Terrestrial,birds,31.36
+BBS,Black Prairie,840_50_11,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_50_15,Terrestrial,birds,31.36
+BBS,Black Prairie,840_50_17,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_50_28,Terrestrial,birds,31.36
+BBS,Black Prairie,840_50_29,Terrestrial,birds,31.36
+BBS,Black Prairie,840_50_3,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_32,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_33,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_35,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_37,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_42,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_47,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_48,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_50_55,Terrestrial,birds,31.36
+BBS,Driftless Area,840_50_58,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_67,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_68,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_72,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_50_73,Terrestrial,birds,31.36
+BBS,Black Prairie,840_50_77,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_50_8,Terrestrial,birds,31.36
+BBS,Aspen Parklands,840_50_81,Terrestrial,birds,31.36
+BBS,Aspen Parklands,840_50_82,Terrestrial,birds,31.36
+BBS,Black Prairie,840_50_9,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_51_113,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_51_119,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_51_229,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_51_23,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_51_30,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_52_1,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_10,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_109,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_11,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_52_131,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_52_14,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_52_16,Terrestrial,birds,31.36
+BBS,Till Plains,840_52_19,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_2,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_20,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_21,Terrestrial,birds,31.36
+BBS,Till Plains,840_52_27,Terrestrial,birds,31.36
+BBS,Till Plains,840_52_28,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_4,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_52,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_53,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_54,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_56,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_57,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_58,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_52_61,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_52_66,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_52_67,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_52_68,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_52_7,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_52_70,Terrestrial,birds,31.36
+BBS,Central Rockies,840_53_13,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,840_53_17,Terrestrial,birds,31.36
+BBS,Central Rockies,840_53_176,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_53_18,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_53_19,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_53_2,Terrestrial,birds,31.36
+BBS,Central Rockies,840_53_25,Terrestrial,birds,31.36
+BBS,Central Rockies,840_53_26,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_53_27,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_53_28,Terrestrial,birds,31.36
+BBS,Central Rockies,840_53_36,Terrestrial,birds,31.36
+BBS,Central Rockies,840_53_39,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_53_40,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_53_41,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,840_53_6,Terrestrial,birds,31.36
+BBS,Central Rockies,840_53_64,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_53_74,Terrestrial,birds,31.36
+BBS,Central Rockies,840_53_75,Terrestrial,birds,31.36
+BBS,Central Rockies,840_53_86,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_53_87,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,840_53_9,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_53_97,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_54_1,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_54_12,Terrestrial,birds,31.36
+BBS,High Plains Border,840_54_14,Terrestrial,birds,31.36
+BBS,High Plains Border,840_54_17,Terrestrial,birds,31.36
+BBS,Dissected Till Plains,840_54_22,Terrestrial,birds,31.36
+BBS,High Plains,840_54_31,Terrestrial,birds,31.36
+BBS,High Plains Border,840_54_35,Terrestrial,birds,31.36
+BBS,High Plains,840_54_40,Terrestrial,birds,31.36
+BBS,High Plains Border,840_54_7,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_55_101,Terrestrial,birds,31.36
+BBS,Great Basin Deserts,840_55_114,Terrestrial,birds,31.36
+BBS,Great Basin Deserts,840_55_28,Terrestrial,birds,31.36
+BBS,Basin and Range,840_55_45,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_1,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_10,Terrestrial,birds,31.36
+BBS,Southern New England,840_58_102,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_11,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_58_116,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_58_12,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_13,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_14,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_15,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_58_17,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_58_18,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_58_19,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_58_20,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_58_21,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_58_22,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_3,Terrestrial,birds,31.36
+BBS,Southern New England,840_58_4,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_5,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_6,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_7,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_8,Terrestrial,birds,31.36
+BBS,Northern New England,840_58_9,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_59_10,Terrestrial,birds,31.36
+BBS,Southern New England,840_59_116,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_59_2,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_59_20,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_59_21,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_59_3,Terrestrial,birds,31.36
+BBS,Mojave Desert,840_6_12,Terrestrial,birds,31.36
+BBS,Sonoran Deserts,840_6_121,Terrestrial,birds,31.36
+BBS,Mexican Highlands,840_6_122,Terrestrial,birds,31.36
+BBS,Sonoran Deserts,840_6_127,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_6_14,Terrestrial,birds,31.36
+BBS,Sonoran Deserts,840_6_18,Terrestrial,birds,31.36
+BBS,Sonoran Deserts,840_6_24,Terrestrial,birds,31.36
+BBS,Mexican Highlands,840_6_28,Terrestrial,birds,31.36
+BBS,Mexican Highlands,840_6_32,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_6_51,Terrestrial,birds,31.36
+BBS,Sonoran Deserts,840_6_69,Terrestrial,birds,31.36
+BBS,Sonoran Deserts,840_6_71,Terrestrial,birds,31.36
+BBS,Sonoran Deserts,840_6_74,Terrestrial,birds,31.36
+BBS,Mexican Highlands,840_6_78,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_60_10,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_111,Terrestrial,birds,31.36
+BBS,Staked Plains,840_60_112,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_114,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_115,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_126,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_13,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_130,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_155,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_164,Terrestrial,birds,31.36
+BBS,Staked Plains,840_60_17,Terrestrial,birds,31.36
+BBS,Staked Plains,840_60_18,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_19,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_2,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_60_20,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_60_22,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_23,Terrestrial,birds,31.36
+BBS,Staked Plains,840_60_24,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_25,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_27,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_60_28,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_29,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_60_3,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_31,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_60_4,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_5,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_51,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_52,Terrestrial,birds,31.36
+BBS,Staked Plains,840_60_56,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_57,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_60_59,Terrestrial,birds,31.36
+BBS,Staked Plains,840_60_6,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_60_60,Terrestrial,birds,31.36
+BBS,Staked Plains,840_60_62,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_65,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_67,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_60_69,Terrestrial,birds,31.36
+BBS,Mexican Highlands,840_60_70,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_71,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_73,Terrestrial,birds,31.36
+BBS,Staked Plains,840_60_74,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_75,Terrestrial,birds,31.36
+BBS,Mexican Highlands,840_60_76,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_60_78,Terrestrial,birds,31.36
+BBS,Mexican Highlands,840_60_79,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_8,Terrestrial,birds,31.36
+BBS,Staked Plains,840_60_80,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_81,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_60_82,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_60_9,Terrestrial,birds,31.36
+BBS,Adirondack Mountains,840_61_100,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_111,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_121,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_123,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_136,Terrestrial,birds,31.36
+BBS,Southern New England,840_61_207,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_22,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_29,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_30,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_31,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_34,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_38,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_45,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_61_47,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_61_48,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_49,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_52,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_61_53,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_56,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_57,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_61_58,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_61_59,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_61_64,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_61_65,Terrestrial,birds,31.36
+BBS,Adirondack Mountains,840_61_73,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_61_89,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_61_90,Terrestrial,birds,31.36
+BBS,Adirondack Mountains,840_61_93,Terrestrial,birds,31.36
+BBS,Adirondack Mountains,840_61_97,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_10,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_101,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_107,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_108,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_63_11,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_63_119,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_63_12,Terrestrial,birds,31.36
+BBS,Blue Ridge Mountains,840_63_121,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_63_13,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_63_14,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_2,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_202,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_204,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_205,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_63_207,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_208,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_63_210,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_63_217,Terrestrial,birds,31.36
+BBS,Blue Ridge Mountains,840_63_221,Terrestrial,birds,31.36
+BBS,Blue Ridge Mountains,840_63_222,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_63_224,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_63_225,Terrestrial,birds,31.36
+BBS,Blue Ridge Mountains,840_63_228,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_63_233,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_63_24,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_63_27,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_3,Terrestrial,birds,31.36
+BBS,Blue Ridge Mountains,840_63_31,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_311,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_63_4,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_64_1,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_64_10,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_64_103,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,840_64_11,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_64_12,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,840_64_19,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_64_28,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_64_33,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_64_37,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,840_64_38,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,840_64_39,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_64_4,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_64_42,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_64_43,Terrestrial,birds,31.36
+BBS,Aspen Parklands,840_64_44,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,840_64_5,Terrestrial,birds,31.36
+BBS,Black Prairie,840_64_7,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_66_107,Terrestrial,birds,31.36
+BBS,Till Plains,840_66_11,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_66_15,Terrestrial,birds,31.36
+BBS,Till Plains,840_66_165,Terrestrial,birds,31.36
+BBS,Till Plains,840_66_168,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_66_21,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_66_22,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_66_25,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_66_3,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_66_40,Terrestrial,birds,31.36
+BBS,Till Plains,840_66_42,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_66_49,Terrestrial,birds,31.36
+BBS,Till Plains,840_66_5,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_66_64,Terrestrial,birds,31.36
+BBS,Till Plains,840_66_67,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_66_72,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_66_73,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_66_74,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_66_75,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_66_76,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_66_82,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_66_85,Terrestrial,birds,31.36
+BBS,Lexington Plain,840_66_86,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_67_11,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_67_125,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_67_14,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_67_15,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_67_17,Terrestrial,birds,31.36
+BBS,Rolling Red Plains,840_67_20,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_67_22,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_67_23,Terrestrial,birds,31.36
+BBS,Staked Plains,840_67_34,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_67_50,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_67_51,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_67_59,Terrestrial,birds,31.36
+BBS,Rolling Red Plains,840_67_61,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_67_65,Terrestrial,birds,31.36
+BBS,Staked Plains,840_67_70,Terrestrial,birds,31.36
+BBS,Staked Plains,840_67_71,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_69_127,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_69_136,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_69_142,Terrestrial,birds,31.36
+BBS,Cascade Mountains,840_69_147,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_69_19,Terrestrial,birds,31.36
+BBS,Cascade Mountains,840_69_203,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_69_21,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_69_211,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_69_212,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_69_22,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_69_229,Terrestrial,birds,31.36
+BBS,Willamette Lowlands,840_69_237,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_69_238,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_69_243,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_69_251,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_69_252,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_69_253,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_69_26,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_69_29,Terrestrial,birds,31.36
+BBS,Cascade Mountains,840_69_3,Terrestrial,birds,31.36
+BBS,Willamette Lowlands,840_69_33,Terrestrial,birds,31.36
+BBS,Willamette Lowlands,840_69_34,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_69_35,Terrestrial,birds,31.36
+BBS,Willamette Lowlands,840_69_41,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_69_48,Terrestrial,birds,31.36
+BBS,Dissected Rockies,840_69_8,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_69_9,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_7_10,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_7_109,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_111,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_7_13,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_15,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_19,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_20,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_22,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_23,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_24,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_26,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_27,Terrestrial,birds,31.36
+BBS,Ozark/Ouachita Plateau,840_7_28,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_7_4,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_7_5,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_7_7,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_7_8,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_10,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_101,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_107,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_12,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_126,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_127,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_13,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_132,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_151,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_155,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_16,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_165,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_173,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_72_182,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_192,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_72_193,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_194,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_72_195,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_72_198,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_2,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_21,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_22,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_25,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_29,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_30,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_31,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_33,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_34,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_35,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_36,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_38,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_39,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_4,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_42,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_47,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_48,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_49,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_5,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_50,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_52,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_53,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_54,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_56,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_57,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_58,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_6,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_60,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_61,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_62,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_63,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_64,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_68,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_71,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_72,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_76,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_8,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_83,Terrestrial,birds,31.36
+BBS,Northern Piedmont,840_72_84,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_85,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_72_86,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_72_88,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_9,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_90,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_72_91,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_80_101,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_80_18,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_80_2,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_80_21,Terrestrial,birds,31.36
+BBS,Coastal Flatwoods,840_80_3,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_80_51,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_80_55,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_81_1,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_81_10,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_81_18,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_81_19,Terrestrial,birds,31.36
+BBS,Glaciated Missouri Plateau,840_81_23,Terrestrial,birds,31.36
+BBS,Black Hills,840_81_29,Terrestrial,birds,31.36
+BBS,Drift Prairie,840_81_3,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_81_30,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_81_37,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_81_41,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_81_43,Terrestrial,birds,31.36
+BBS,Black Hills,840_81_705,Terrestrial,birds,31.36
+BBS,Black Hills,840_81_706,Terrestrial,birds,31.36
+BBS,Mississippi Alluvial Plain,840_82_1,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_82_10,Terrestrial,birds,31.36
+BBS,Cumberland Plateau,840_82_128,Terrestrial,birds,31.36
+BBS,Highland Rim,840_82_13,Terrestrial,birds,31.36
+BBS,Cumberland Plateau,840_82_130,Terrestrial,birds,31.36
+BBS,Blue Ridge Mountains,840_82_139,Terrestrial,birds,31.36
+BBS,Highland Rim,840_82_16,Terrestrial,birds,31.36
+BBS,Highland Rim,840_82_20,Terrestrial,birds,31.36
+BBS,Highland Rim,840_82_23,Terrestrial,birds,31.36
+BBS,Highland Rim,840_82_25,Terrestrial,birds,31.36
+BBS,Highland Rim,840_82_26,Terrestrial,birds,31.36
+BBS,Highland Rim,840_82_27,Terrestrial,birds,31.36
+BBS,Cumberland Plateau,840_82_29,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_82_3,Terrestrial,birds,31.36
+BBS,Cumberland Plateau,840_82_31,Terrestrial,birds,31.36
+BBS,Cumberland Plateau,840_82_32,Terrestrial,birds,31.36
+BBS,Cumberland Plateau,840_82_34,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_82_4,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_82_41,Terrestrial,birds,31.36
+BBS,Blue Ridge Mountains,840_82_42,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_82_6,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_82_9,Terrestrial,birds,31.36
+BBS,South Texas Brushlands,840_83_1,Terrestrial,birds,31.36
+BBS,Coastal Prairies,840_83_11,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_136,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_139,Terrestrial,birds,31.36
+BBS,Edward's Plateau,840_83_140,Terrestrial,birds,31.36
+BBS,South Texas Brushlands,840_83_15,Terrestrial,birds,31.36
+BBS,South Texas Brushlands,840_83_17,Terrestrial,birds,31.36
+BBS,Mexican Highlands,840_83_189,Terrestrial,birds,31.36
+BBS,Coastal Prairies,840_83_20,Terrestrial,birds,31.36
+BBS,Coastal Prairies,840_83_24,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_26,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_273,Terrestrial,birds,31.36
+BBS,South Texas Brushlands,840_83_29,Terrestrial,birds,31.36
+BBS,Coastal Prairies,840_83_311,Terrestrial,birds,31.36
+BBS,South Texas Brushlands,840_83_315,Terrestrial,birds,31.36
+BBS,Edward's Plateau,840_83_317,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_83_319,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_323,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_83_33,Terrestrial,birds,31.36
+BBS,Mexican Highlands,840_83_331,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_83_333,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_336,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_83_345,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_83_346,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_351,Terrestrial,birds,31.36
+BBS,Rolling Red Plains,840_83_363,Terrestrial,birds,31.36
+BBS,Rolling Red Plains,840_83_368,Terrestrial,birds,31.36
+BBS,Edward's Plateau,840_83_41,Terrestrial,birds,31.36
+BBS,Edward's Plateau,840_83_42,Terrestrial,birds,31.36
+BBS,Edward's Plateau,840_83_43,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_83_45,Terrestrial,birds,31.36
+BBS,Edward's Plateau,840_83_54,Terrestrial,birds,31.36
+BBS,Edward's Plateau,840_83_55,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_60,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_83_64,Terrestrial,birds,31.36
+BBS,Osage Plain/Cross Timbers,840_83_65,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_72,Terrestrial,birds,31.36
+BBS,East Texas Prairies,840_83_75,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_83_81,Terrestrial,birds,31.36
+BBS,Chihuahuan Desert,840_83_82,Terrestrial,birds,31.36
+BBS,Rolling Red Plains,840_83_92,Terrestrial,birds,31.36
+BBS,Staked Plains,840_83_94,Terrestrial,birds,31.36
+BBS,Staked Plains,840_83_97,Terrestrial,birds,31.36
+BBS,Great Basin Deserts,840_85_104,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_85_108,Terrestrial,birds,31.36
+BBS,Great Basin Deserts,840_85_109,Terrestrial,birds,31.36
+BBS,Basin and Range,840_85_11,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_85_112,Terrestrial,birds,31.36
+BBS,Basin and Range,840_85_119,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_85_12,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_85_121,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_85_123,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_85_15,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_85_153,Terrestrial,birds,31.36
+BBS,Basin and Range,840_85_155,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_85_161,Terrestrial,birds,31.36
+BBS,Basin and Range,840_85_169,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_85_171,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_85_174,Terrestrial,birds,31.36
+BBS,Basin and Range,840_85_19,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_85_20,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_85_21,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_85_22,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_85_313,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_85_316,Terrestrial,birds,31.36
+BBS,Intermountain Grasslands,840_85_317,Terrestrial,birds,31.36
+BBS,Pinyon/Juniper Woodlands,840_85_321,Terrestrial,birds,31.36
+BBS,Great Basin Deserts,840_85_4,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_85_8,Terrestrial,birds,31.36
+BBS,Northern New England,840_87_10,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_87_11,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_87_14,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_87_15,Terrestrial,birds,31.36
+BBS,St. Lawrence River Plain,840_87_22,Terrestrial,birds,31.36
+BBS,Northern New England,840_87_5,Terrestrial,birds,31.36
+BBS,Northern New England,840_87_6,Terrestrial,birds,31.36
+BBS,Northern New England,840_87_7,Terrestrial,birds,31.36
+BBS,Northern New England,840_87_9,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_88_134,Terrestrial,birds,31.36
+BBS,Cumberland Plateau,840_88_14,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_88_21,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_88_23,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_88_28,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_88_29,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_88_30,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_88_4,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_88_40,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_88_41,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_88_43,Terrestrial,birds,31.36
+BBS,Upper Coastal Plain,840_88_44,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_88_5,Terrestrial,birds,31.36
+BBS,Southern Piedmont,840_88_51,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_88_7,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_1,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_111,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_89_145,Terrestrial,birds,31.36
+BBS,Central Rockies,840_89_152,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_89_164,Terrestrial,birds,31.36
+BBS,Cascade Mountains,840_89_19,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_2,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_89_25,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_27,Terrestrial,birds,31.36
+BBS,Cascade Mountains,840_89_29,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_89_30,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_89_36,Terrestrial,birds,31.36
+BBS,Cascade Mountains,840_89_4,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_41,Terrestrial,birds,31.36
+BBS,Cascade Mountains,840_89_43,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_89_44,Terrestrial,birds,31.36
+BBS,Cascade Mountains,840_89_49,Terrestrial,birds,31.36
+BBS,Pitt-Klamath Plateau,840_89_5,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_53,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_89_57,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_66,Terrestrial,birds,31.36
+BBS,Central Rockies,840_89_70,Terrestrial,birds,31.36
+BBS,Central Rockies,840_89_71,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_72,Terrestrial,birds,31.36
+BBS,Columbia Plateau,840_89_75,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_79,Terrestrial,birds,31.36
+BBS,Central Rockies,840_89_8,Terrestrial,birds,31.36
+BBS,Southern Pacific Rainforests,840_89_9,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_1,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_14,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_140,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_90_149,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_16,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_19,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_26,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_90_27,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_90_3,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_90_30,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_90_31,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_37,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_38,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_41,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_43,Terrestrial,birds,31.36
+BBS,Ohio Hills,840_90_46,Terrestrial,birds,31.36
+BBS,Ridge and Valley,840_90_48,Terrestrial,birds,31.36
+BBS,Allegheny Plateau,840_90_53,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_10,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_11,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_118,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_12,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_13,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_14,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_15,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_16,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_167,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_17,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_19,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_2,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_20,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_22,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_24,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_26,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_27,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_28,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_29,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_3,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_301,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_303,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_307,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_308,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_31,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_312,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_313,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_314,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_315,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_316,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_317,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_319,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_320,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_322,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_33,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_35,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_36,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_39,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_4,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_41,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_42,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_43,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_44,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_45,Terrestrial,birds,31.36
+BBS,Great Lakes Transition,840_91_47,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_48,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_49,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_5,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_52,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_54,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_55,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_56,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_57,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_6,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_62,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_63,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_65,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_66,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_68,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_69,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_7,Terrestrial,birds,31.36
+BBS,Great Lakes Plain,840_91_70,Terrestrial,birds,31.36
+BBS,Northern Spruce/Hardwoods,840_91_8,Terrestrial,birds,31.36
+BBS,Driftless Area,840_91_9,Terrestrial,birds,31.36
+BBS,Central Rockies,840_92_1,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_92_104,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_92_11,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_92_120,Terrestrial,birds,31.36
+BBS,Black Hills,840_92_150,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_92_17,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_92_19,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_92_2,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_92_26,Terrestrial,birds,31.36
+BBS,High Plains,840_92_28,Terrestrial,birds,31.36
+BBS,Central Rockies,840_92_30,Terrestrial,birds,31.36
+BBS,Central Rockies,840_92_38,Terrestrial,birds,31.36
+BBS,Great Plains Roughlands,840_92_5,Terrestrial,birds,31.36
+BBS,Central Rockies,840_92_53,Terrestrial,birds,31.36
+BBS,Black Hills,840_92_7,Terrestrial,birds,31.36
+BBS,Central Rockies,840_92_77,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_92_83,Terrestrial,birds,31.36
+BBS,Wyoming Basin,840_92_84,Terrestrial,birds,31.36
+BBS,Southern Rockies,840_92_87,Terrestrial,birds,31.36
+BBS,High Plains,840_92_90,Terrestrial,birds,31.36
+RivFishTIME,2080030160,G10003,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10016,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10024,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10029,Freshwater,fish,0.0001
+RivFishTIME,2080030220,G10037,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10038,Freshwater,fish,0.0001
+RivFishTIME,2080030220,G10040,Freshwater,fish,0.0001
+RivFishTIME,2080030220,G10043,Freshwater,fish,0.0001
+RivFishTIME,2080030220,G10046,Freshwater,fish,0.0001
+RivFishTIME,2080030220,G10050,Freshwater,fish,0.0001
+RivFishTIME,2080030220,G10058,Freshwater,fish,0.0001
+RivFishTIME,2080030220,G10061,Freshwater,fish,0.0001
+RivFishTIME,2080030220,G10062,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10064,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10068,Freshwater,fish,0.0001
+RivFishTIME,2080030220,G10074,Freshwater,fish,0.0001
+RivFishTIME,2080032990,G10076,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10078,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10081,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10086,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10088,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10104,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10105,Freshwater,fish,0.0001
+RivFishTIME,2080032990,G10109,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1012,Freshwater,fish,0.0001
+RivFishTIME,2080032990,G10120,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10125,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1013,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10130,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10135,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10137,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10139,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1014,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10143,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10145,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10149,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1015,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1016,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10164,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10167,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10168,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1017,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10170,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10172,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10173,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10175,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10179,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10180,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10181,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10184,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10186,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10189,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10191,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1020,Freshwater,fish,0.0001
+RivFishTIME,2080030160,G10200,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10203,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10206,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1021,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1022,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10224,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1023,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10232,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10233,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10234,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10239,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1024,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10240,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10241,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10242,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10244,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10245,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10246,Freshwater,fish,0.0001
+RivFishTIME,2080030100,G10247,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1025,Freshwater,fish,0.0001
+RivFishTIME,2080032350,G10250,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10258,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10259,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1026,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10261,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10262,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10266,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10267,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10269,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1027,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10272,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10275,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10276,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10277,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1028,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10282,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1029,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10292,Freshwater,fish,0.0001
+RivFishTIME,2080032680,G10293,Freshwater,fish,0.0001
+RivFishTIME,2080032680,G10297,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1030,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10300,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10302,Freshwater,fish,0.0001
+RivFishTIME,2080033090,G10308,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1031,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10313,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10319,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1032,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10322,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10328,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1033,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10330,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10334,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10337,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1034,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10342,Freshwater,fish,0.0001
+RivFishTIME,2080033090,G10343,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10345,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10347,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1035,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10353,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10355,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10358,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10359,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1036,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10361,Freshwater,fish,0.0001
+RivFishTIME,2080033090,G10362,Freshwater,fish,0.0001
+RivFishTIME,2080033020,G10363,Freshwater,fish,0.0001
+RivFishTIME,2080033090,G10365,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10367,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1037,Freshwater,fish,0.0001
+RivFishTIME,2080032670,G10371,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10375,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1038,Freshwater,fish,0.0001
+RivFishTIME,2080033090,G10380,Freshwater,fish,0.0001
+RivFishTIME,2080032670,G10382,Freshwater,fish,0.0001
+RivFishTIME,2080033090,G10384,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1039,Freshwater,fish,0.0001
+RivFishTIME,2080033090,G10395,Freshwater,fish,0.0001
+RivFishTIME,2080033090,G10397,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1040,Freshwater,fish,0.0001
+RivFishTIME,2080032280,G10406,Freshwater,fish,0.0001
+RivFishTIME,2080033090,G10409,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1041,Freshwater,fish,0.0001
+RivFishTIME,2080032280,G10410,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1042,Freshwater,fish,0.0001
+RivFishTIME,2080032280,G10426,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1043,Freshwater,fish,0.0001
+RivFishTIME,2080032280,G10431,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10438,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1044,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10444,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10446,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1045,Freshwater,fish,0.0001
+RivFishTIME,2080033130,G10452,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1046,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10464,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10468,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1047,Freshwater,fish,0.0001
+RivFishTIME,2080033130,G10470,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10479,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1048,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10481,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10486,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1049,Freshwater,fish,0.0001
+RivFishTIME,2080032230,G10497,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1050,Freshwater,fish,0.0001
+RivFishTIME,2080032230,G10509,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1051,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10512,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10517,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1052,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10520,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10527,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1053,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10538,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1054,Freshwater,fish,0.0001
+RivFishTIME,2080033130,G10545,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1055,Freshwater,fish,0.0001
+RivFishTIME,2080033130,G10550,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10556,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1056,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10561,Freshwater,fish,0.0001
+RivFishTIME,2080032230,G10567,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10568,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1058,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10585,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1059,Freshwater,fish,0.0001
+RivFishTIME,2080032230,G10590,Freshwater,fish,0.0001
+RivFishTIME,2080033120,G10595,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1060,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10607,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1061,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1062,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10626,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1063,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1064,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1065,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10653,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1066,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1067,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1068,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1069,Freshwater,fish,0.0001
+RivFishTIME,2080032230,G10691,Freshwater,fish,0.0001
+RivFishTIME,2080032230,G10696,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1070,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10700,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1071,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1072,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10723,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1073,Freshwater,fish,0.0001
+RivFishTIME,2080032230,G10739,Freshwater,fish,0.0001
+RivFishTIME,7080047060,G1074,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10752,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10761,Freshwater,fish,0.0001
+RivFishTIME,2080032680,G10762,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10764,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10788,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10794,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10797,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10800,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10804,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10807,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10808,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10813,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10821,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10826,Freshwater,fish,0.0001
+RivFishTIME,2080033010,G10828,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10846,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10853,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10855,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10859,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10867,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10886,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10894,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10895,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10913,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10926,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10950,Freshwater,fish,0.0001
+RivFishTIME,2080033190,G10960,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10965,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10967,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10973,Freshwater,fish,0.0001
+RivFishTIME,2080032230,G10978,Freshwater,fish,0.0001
+RivFishTIME,2080032870,G10980,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G10982,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10988,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10994,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G10995,Freshwater,fish,0.0001
+RivFishTIME,2080033080,G11025,Freshwater,fish,0.0001
+RivFishTIME,2080033290,G11059,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G11069,Freshwater,fish,0.0001
+RivFishTIME,2080033290,G11080,Freshwater,fish,0.0001
+RivFishTIME,2080032870,G11091,Freshwater,fish,0.0001
+RivFishTIME,2080033290,G11095,Freshwater,fish,0.0001
+RivFishTIME,2080032680,G11096,Freshwater,fish,0.0001
+RivFishTIME,2080033200,G11105,Freshwater,fish,0.0001
+RivFishTIME,2080033320,G11148,Freshwater,fish,0.0001
+RivFishTIME,2080032870,G11165,Freshwater,fish,0.0001
+RivFishTIME,2080031960,G11171,Freshwater,fish,0.0001
+RivFishTIME,2080031960,G11213,Freshwater,fish,0.0001
+RivFishTIME,2080033320,G11218,Freshwater,fish,0.0001
+RivFishTIME,2080033320,G11220,Freshwater,fish,0.0001
+RivFishTIME,2080033330,G11233,Freshwater,fish,0.0001
+RivFishTIME,2080033320,G11239,Freshwater,fish,0.0001
+RivFishTIME,2080033330,G11253,Freshwater,fish,0.0001
+RivFishTIME,2080033330,G11257,Freshwater,fish,0.0001
+RivFishTIME,2080033330,G11263,Freshwater,fish,0.0001
+RivFishTIME,2080033330,G11264,Freshwater,fish,0.0001
+RivFishTIME,2080033320,G11273,Freshwater,fish,0.0001
+RivFishTIME,2080033330,G11302,Freshwater,fish,0.0001
+RivFishTIME,2080033330,G11367,Freshwater,fish,0.0001
+RivFishTIME,2080033400,G11372,Freshwater,fish,0.0001
+RivFishTIME,2080033400,G11374,Freshwater,fish,0.0001
+RivFishTIME,2080033400,G11375,Freshwater,fish,0.0001
+RivFishTIME,2080033400,G11376,Freshwater,fish,0.0001
+RivFishTIME,2080033400,G11377,Freshwater,fish,0.0001
+RivFishTIME,2080032970,G11429,Freshwater,fish,0.0001
+RivFishTIME,2080033320,G11440,Freshwater,fish,0.0001
+RivFishTIME,2080032970,G11447,Freshwater,fish,0.0001
+RivFishTIME,2080033450,G11465,Freshwater,fish,0.0001
+RivFishTIME,2080033450,G11473,Freshwater,fish,0.0001
+RivFishTIME,2080033450,G11476,Freshwater,fish,0.0001
+RivFishTIME,2080033450,G11479,Freshwater,fish,0.0001
+RivFishTIME,2080033450,G11480,Freshwater,fish,0.0001
+RivFishTIME,2080033320,G11502,Freshwater,fish,0.0001
+RivFishTIME,2080032600,G11529,Freshwater,fish,0.0001
+RivFishTIME,2080032680,G11607,Freshwater,fish,0.0001
+RivFishTIME,2080032600,G11719,Freshwater,fish,0.0001
+RivFishTIME,2080032410,G11864,Freshwater,fish,0.0001
+RivFishTIME,2080032680,G11877,Freshwater,fish,0.0001
+RivFishTIME,2080032600,G11971,Freshwater,fish,0.0001
+RivFishTIME,2080032600,G12145,Freshwater,fish,0.0001
+RivFishTIME,2080031470,G12154,Freshwater,fish,0.0001
+RivFishTIME,2080050510,G3044,Freshwater,fish,0.0001
+RivFishTIME,2080050510,G3205,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G351,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G353,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G450,Freshwater,fish,0.0001
+RivFishTIME,2080049290,G4522,Freshwater,fish,0.0001
+RivFishTIME,2080049290,G4541,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G464,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G468,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G518,Freshwater,fish,0.0001
+RivFishTIME,2080053670,G5289,Freshwater,fish,0.0001
+RivFishTIME,2080053790,G5537,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G555,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G562,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G568,Freshwater,fish,0.0001
+RivFishTIME,2080053260,G5689,Freshwater,fish,0.0001
+RivFishTIME,2080029400,G578,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7264,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7265,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7267,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7272,Freshwater,fish,0.0001
+RivFishTIME,2080020620,G7280,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7290,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7293,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7294,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7299,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7336,Freshwater,fish,0.0001
+RivFishTIME,2080021970,G7342,Freshwater,fish,0.0001
+RivFishTIME,2080021890,G7343,Freshwater,fish,0.0001
+RivFishTIME,2080021860,G7344,Freshwater,fish,0.0001
+RivFishTIME,2080021860,G7347,Freshwater,fish,0.0001
+RivFishTIME,2080021820,G7348,Freshwater,fish,0.0001
+RivFishTIME,2080021800,G7355,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7357,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G7358,Freshwater,fish,0.0001
+RivFishTIME,2080022030,G7361,Freshwater,fish,0.0001
+RivFishTIME,2080021990,G7369,Freshwater,fish,0.0001
+RivFishTIME,2080022080,G7370,Freshwater,fish,0.0001
+RivFishTIME,2080022080,G7372,Freshwater,fish,0.0001
+RivFishTIME,2080021970,G7386,Freshwater,fish,0.0001
+RivFishTIME,2080016510,G7438,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G7454,Freshwater,fish,0.0001
+RivFishTIME,2080021310,G7513,Freshwater,fish,0.0001
+RivFishTIME,2080021300,G7515,Freshwater,fish,0.0001
+RivFishTIME,2080021280,G7516,Freshwater,fish,0.0001
+RivFishTIME,2080021350,G7517,Freshwater,fish,0.0001
+RivFishTIME,2080021360,G7519,Freshwater,fish,0.0001
+RivFishTIME,2080021780,G7533,Freshwater,fish,0.0001
+RivFishTIME,2080021560,G7539,Freshwater,fish,0.0001
+RivFishTIME,2080021690,G7543,Freshwater,fish,0.0001
+RivFishTIME,2080021220,G7569,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G7602,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7701,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G7702,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G7703,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G7714,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G7719,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7724,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G7725,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7731,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7732,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7734,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7735,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7736,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7740,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7743,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7745,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7746,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7748,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G7756,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G7791,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G7805,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G7881,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G7913,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G7922,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G7968,Freshwater,fish,0.0001
+RivFishTIME,2080016510,G7986,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8069,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G8091,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G8096,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8117,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G8121,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G8122,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G8126,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G8127,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8128,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8134,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8140,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8143,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8145,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8170,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8173,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8175,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8176,Freshwater,fish,0.0001
+RivFishTIME,2080022970,G8178,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8179,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8181,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8184,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8185,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8205,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8215,Freshwater,fish,0.0001
+RivFishTIME,2080020620,G8255,Freshwater,fish,0.0001
+RivFishTIME,2080020590,G8266,Freshwater,fish,0.0001
+RivFishTIME,2080020590,G8275,Freshwater,fish,0.0001
+RivFishTIME,2080020590,G8280,Freshwater,fish,0.0001
+RivFishTIME,2080020590,G8293,Freshwater,fish,0.0001
+RivFishTIME,2080020590,G8303,Freshwater,fish,0.0001
+RivFishTIME,2080020590,G8306,Freshwater,fish,0.0001
+RivFishTIME,2080020590,G8308,Freshwater,fish,0.0001
+RivFishTIME,2080020590,G8320,Freshwater,fish,0.0001
+RivFishTIME,2080020330,G8325,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8349,Freshwater,fish,0.0001
+RivFishTIME,2080020590,G8427,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G8441,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G8442,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G8466,Freshwater,fish,0.0001
+RivFishTIME,2080020330,G8504,Freshwater,fish,0.0001
+RivFishTIME,2080022150,G8519,Freshwater,fish,0.0001
+RivFishTIME,2080020730,G8567,Freshwater,fish,0.0001
+RivFishTIME,2080020790,G8568,Freshwater,fish,0.0001
+RivFishTIME,2080021030,G8569,Freshwater,fish,0.0001
+RivFishTIME,2080016510,G8680,Freshwater,fish,0.0001
+RivFishTIME,2080023010,G8724,Freshwater,fish,0.0001
+RivFishTIME,2080020010,G8847,Freshwater,fish,0.0001
+RivFishTIME,2080020240,G8849,Freshwater,fish,0.0001
+RivFishTIME,2080020120,G8871,Freshwater,fish,0.0001
+RivFishTIME,2080017150,G8873,Freshwater,fish,0.0001
+RivFishTIME,2080020120,G8877,Freshwater,fish,0.0001
+RivFishTIME,2080017150,G8884,Freshwater,fish,0.0001
+RivFishTIME,2080017150,G8888,Freshwater,fish,0.0001
+RivFishTIME,2080020130,G8902,Freshwater,fish,0.0001
+RivFishTIME,2080020120,G8910,Freshwater,fish,0.0001
+RivFishTIME,2080020120,G8916,Freshwater,fish,0.0001
+RivFishTIME,2080020120,G8917,Freshwater,fish,0.0001
+RivFishTIME,2080020120,G8922,Freshwater,fish,0.0001
+RivFishTIME,2080020240,G8926,Freshwater,fish,0.0001
+RivFishTIME,2080020120,G8932,Freshwater,fish,0.0001
+RivFishTIME,7080034520,G9014,Freshwater,fish,0.0001
+RivFishTIME,2080032600,G9128,Freshwater,fish,0.0001
+RivFishTIME,2080031490,G9206,Freshwater,fish,0.0001
+RivFishTIME,2080031310,G9275,Freshwater,fish,0.0001
+RivFishTIME,2080031310,G9276,Freshwater,fish,0.0001
+RivFishTIME,2080031310,G9278,Freshwater,fish,0.0001
+RivFishTIME,2080031490,G9296,Freshwater,fish,0.0001
+RivFishTIME,2080031410,G9327,Freshwater,fish,0.0001
+RivFishTIME,1080023890,G934,Freshwater,fish,0.0001
+RivFishTIME,1080023890,G935,Freshwater,fish,0.0001
+RivFishTIME,2080031070,G9357,Freshwater,fish,0.0001
+RivFishTIME,1080023950,G936,Freshwater,fish,0.0001
+RivFishTIME,2080031160,G9366,Freshwater,fish,0.0001
+RivFishTIME,2080031210,G9379,Freshwater,fish,0.0001
+RivFishTIME,2080031160,G9389,Freshwater,fish,0.0001
+RivFishTIME,2080031160,G9391,Freshwater,fish,0.0001
+RivFishTIME,2080031210,G9393,Freshwater,fish,0.0001
+RivFishTIME,2080031210,G9396,Freshwater,fish,0.0001
+RivFishTIME,2080031160,G9421,Freshwater,fish,0.0001
+RivFishTIME,2080031160,G9422,Freshwater,fish,0.0001
+RivFishTIME,2080030880,G9455,Freshwater,fish,0.0001
+RivFishTIME,2080030880,G9456,Freshwater,fish,0.0001
+RivFishTIME,2080030770,G9464,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9475,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9477,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9478,Freshwater,fish,0.0001
+RivFishTIME,2080030660,G9481,Freshwater,fish,0.0001
+RivFishTIME,2080030660,G9486,Freshwater,fish,0.0001
+RivFishTIME,2080030760,G9487,Freshwater,fish,0.0001
+RivFishTIME,2080030760,G9488,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9495,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9498,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9503,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9504,Freshwater,fish,0.0001
+RivFishTIME,2080030660,G9515,Freshwater,fish,0.0001
+RivFishTIME,2080030660,G9523,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9525,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9526,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9530,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9533,Freshwater,fish,0.0001
+RivFishTIME,2080030760,G9535,Freshwater,fish,0.0001
+RivFishTIME,2080030660,G9537,Freshwater,fish,0.0001
+RivFishTIME,2080030650,G9541,Freshwater,fish,0.0001
+RivFishTIME,2080030650,G9542,Freshwater,fish,0.0001
+RivFishTIME,2080030650,G9544,Freshwater,fish,0.0001
+RivFishTIME,2080030660,G9548,Freshwater,fish,0.0001
+RivFishTIME,2080030660,G9551,Freshwater,fish,0.0001
+RivFishTIME,2080030760,G9558,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9562,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9568,Freshwater,fish,0.0001
+RivFishTIME,2080030630,G9570,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9572,Freshwater,fish,0.0001
+RivFishTIME,2080030760,G9573,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9575,Freshwater,fish,0.0001
+RivFishTIME,2080030660,G9577,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9586,Freshwater,fish,0.0001
+RivFishTIME,2080030710,G9589,Freshwater,fish,0.0001
+RivFishTIME,2080030630,G9602,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9609,Freshwater,fish,0.0001
+RivFishTIME,2080030630,G9610,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9613,Freshwater,fish,0.0001
+RivFishTIME,2080030630,G9614,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9618,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9619,Freshwater,fish,0.0001
+RivFishTIME,2080030570,G9620,Freshwater,fish,0.0001
+RivFishTIME,2080030630,G9624,Freshwater,fish,0.0001
+RivFishTIME,2080030570,G9626,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9631,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9632,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9633,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9635,Freshwater,fish,0.0001
+RivFishTIME,2080030570,G9638,Freshwater,fish,0.0001
+RivFishTIME,2080030570,G9639,Freshwater,fish,0.0001
+RivFishTIME,2080030570,G9640,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9643,Freshwater,fish,0.0001
+RivFishTIME,2080030570,G9644,Freshwater,fish,0.0001
+RivFishTIME,2080030570,G9645,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9652,Freshwater,fish,0.0001
+RivFishTIME,2080030650,G9657,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9659,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9661,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9665,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9682,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9684,Freshwater,fish,0.0001
+RivFishTIME,2080031060,G9685,Freshwater,fish,0.0001
+RivFishTIME,2080031060,G9687,Freshwater,fish,0.0001
+RivFishTIME,2080031060,G9690,Freshwater,fish,0.0001
+RivFishTIME,2080030610,G9692,Freshwater,fish,0.0001
+RivFishTIME,2080030560,G9700,Freshwater,fish,0.0001
+RivFishTIME,2080031060,G9702,Freshwater,fish,0.0001
+RivFishTIME,2080030560,G9741,Freshwater,fish,0.0001
+RivFishTIME,2080030460,G9757,Freshwater,fish,0.0001
+RivFishTIME,2080032990,G9775,Freshwater,fish,0.0001
+RivFishTIME,2080030430,G9799,Freshwater,fish,0.0001
+RivFishTIME,2080032990,G9801,Freshwater,fish,0.0001
+RivFishTIME,2080030430,G9805,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9809,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9816,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9821,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9825,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9826,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9827,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9831,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9834,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9840,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9850,Freshwater,fish,0.0001
+RivFishTIME,2080030650,G9852,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9858,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9863,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9868,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9870,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9878,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9879,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9880,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9882,Freshwater,fish,0.0001
+RivFishTIME,2080032990,G9887,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9893,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9897,Freshwater,fish,0.0001
+RivFishTIME,2080032990,G9899,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9900,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9901,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9905,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9908,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9921,Freshwater,fish,0.0001
+RivFishTIME,2080030370,G9924,Freshwater,fish,0.0001
+RivFishTIME,2080030420,G9925,Freshwater,fish,0.0001
+SwissLakePhyto,lake walensee,L1WA,Freshwater,freshwater plants,24.19
+SwissLakePhyto,lake zurich,L2UZ,Freshwater,freshwater plants,88.66
+SwissLakePhyto,lake luzern,L3LU,Freshwater,freshwater plants,113.6
+SwissLakePhyto,lake zurich,L4LZ,Freshwater,freshwater plants,88.66
+SwissLakePhyto,lake sempach,L5SE,Freshwater,freshwater plants,14.5
+SwissLakePhyto,lake hallwil,L6HA,Freshwater,freshwater plants,10.3
+SwissLakePhyto,lake baldegg,L7BA,Freshwater,freshwater plants,5.2
+SwissLakePhyto,lake greifensee,L8GR,Freshwater,freshwater plants,8.45
+SwissLakeZoo,lake zurich,ZH,Freshwater,freshwater invertebrates,88.66
+SwissLakeZoo,lake luzern,LU,Freshwater,freshwater invertebrates,113.6
+SwissLakeZoo,lake sempach,SEM,Freshwater,freshwater invertebrates,14.5
+SwissLakeZoo,lake hallwil,HAL,Freshwater,freshwater invertebrates,10.3
+SwissLakeZoo,lake greifensee,GRE,Freshwater,freshwater invertebrates,8.45
+SwissLakeZoo,lake baldegg,BAL,Freshwater,freshwater invertebrates,5.2
+Zooplankton2014,239,239,Freshwater,freshwater invertebrates,NA
+Zooplankton2014,373,373,Freshwater,freshwater invertebrates,NA
+Zooplankton2014,BC,BC,Freshwater,freshwater invertebrates,0.487
+Zooplankton2014,CH,CH,Freshwater,freshwater invertebrates,1.26
+Zooplankton2014,CR,CR,Freshwater,freshwater invertebrates,4.45
+Zooplankton2014,CS,CS,Freshwater,freshwater invertebrates,4.4
+Zooplankton2014,DK,DK,Freshwater,freshwater invertebrates,0.91
+Zooplankton2014,HP,HP,Freshwater,freshwater invertebrates,0.71
+Zooplankton2014,HY,HY,Freshwater,freshwater invertebrates,0.21
+Zooplankton2014,PL,PL,Freshwater,freshwater invertebrates,0.3
+Zooplankton2014,RC,RC,Freshwater,freshwater invertebrates,0.54
+InsectRoel,1347,848,Freshwater,freshwater invertebrates,16.08
+InsectRoel,1347,851,Freshwater,freshwater invertebrates,16.08
+InsectRoel,1388,1049,Freshwater,freshwater invertebrates,35
+InsectRoel,1388,1052,Freshwater,freshwater invertebrates,35
+InsectRoel,1488,1195,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1200,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1206,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1207,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1212,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1213,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1225,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1226,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1229,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1230,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1231,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1235,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1241,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1246,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1247,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1256,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1265,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1266,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1272,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1274,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1279,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1287,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1296,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1304,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1310,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1311,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1338,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1339,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1376,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1400,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1401,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1408,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1416,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1418,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1419,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1423,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1424,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1431,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1432,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1452,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1460,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1466,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1468,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1471,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1472,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1475,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1476,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1498,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1505,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1506,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1507,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1508,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1509,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1513,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1522,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1523,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1527,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1542,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1543,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1545,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1561,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1568,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1570,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1575,Freshwater,freshwater invertebrates,NA
+InsectRoel,1488,1577,Freshwater,freshwater invertebrates,NA
+InsectRoel,1551,2173,Freshwater,freshwater invertebrates,6.68
+InsectRoel,1551,2176,Freshwater,freshwater invertebrates,6.68
+InsectRoel,1551,2178,Freshwater,freshwater invertebrates,6.68
+InsectRoel,1551,2179,Freshwater,freshwater invertebrates,6.68
+InsectRoel,1551,2180,Freshwater,freshwater invertebrates,6.68
+InsectRoel,1551,2181,Freshwater,freshwater invertebrates,6.68
+InsectRoel,1551,2182,Freshwater,freshwater invertebrates,6.68
+InsectRoel,1551,2184,Freshwater,freshwater invertebrates,6.68
+InsectRoel,1551,2213,Freshwater,freshwater invertebrates,6.68
