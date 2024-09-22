@@ -4,6 +4,7 @@
 rm(list=ls())
 library(tidyverse)
 library(ggpubr)
+library(BiodiversityR)
 
 #========== first, for BioTIME data ====================
 r_frs<-readRDS("../../Results/for_BioTIME/Freshwater_plotlevel/summary_table.RDS")
@@ -31,6 +32,7 @@ for(i in 1:nrow(r_BioTIME)){
   }else{
     mypath<-paste("../../DATA/for_BioTIME/wrangled_data/",realm,"_plotlevel/",STUDY_ID,"/",newsite,"/",sep="")
   }
+  
   
   m<-readRDS(paste(mypath,"input_tailanal.RDS",sep=""))
   
@@ -292,16 +294,18 @@ saveRDS(r_all,"../../Results/gather_res/stability_considering_allsp.RDS")
 ############################
 
 # stability plot considering all sp vs common sp (>70% threshold)
-ggplot(r_all, aes(x=iCV,y=iCV_allsp),add="reg.line")+
+g1<-ggplot(r_all, aes(x=iCV,y=iCV_allsp),add="reg.line")+
   geom_point()+
   geom_smooth(method="lm")+theme_bw()+
-  xlab("Stability=mean/sd, for common species")+
-  ylab("Stability=mean/sd, for all species")+
+  xlab("Stability for common species")+
+  ylab("Stability for all species")+
   stat_cor(aes(label = paste(..r.label..,..rr.label.., ..p.label.., sep = "*`,`~")),
            label.x = 0, label.y = 20,col="black")+
-  stat_regline_equation(label.x = 0, label.y = 18)
+  stat_regline_equation(label.x = 0, label.y = 18)+theme_bw(base_size = 18)
 
-
+pdf("../../Results/gather_res/plot_stability_for_allsp_vs_commonsp.pdf", height=5, width=5)
+g1
+dev.off()
 
 
 
